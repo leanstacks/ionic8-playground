@@ -1,8 +1,16 @@
-import React from 'react';
-import { render } from '@testing-library/react';
+import {describe, expect, it} from 'vitest';
+import { render, screen } from '@testing-library/react';
+
 import App from './App';
 
-test('renders without crashing', () => {
-  const { baseElement } = render(<App />);
-  expect(baseElement).toBeDefined();
-});
+describe('App', () => {
+  it('should render successfully', async () => {
+    // ARRANGE
+    render(<App />);
+    await screen.findByTestId('app');
+
+    // ASSERT
+    expect(screen.getByTestId('app')).toBeDefined();
+  });
+  
+})
