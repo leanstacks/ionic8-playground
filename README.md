@@ -1,1 +1,1 @@
-# ionic8-playground
+# Ionic 8 Playground
