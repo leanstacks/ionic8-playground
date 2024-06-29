@@ -9,6 +9,12 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  AWS_CFN_TEMPLATE: template.yml
+  AWS_REGION: ${{ vars.AWS_REGION }}
+  AWS_ROLE_ARN: ${{ vars.AWS_ROLE_ARN_DEV }}
+  ENV_FILE: ${{ secrets.ENV_CI }}
+
 jobs:
   build:
     name: 'Build'
@@ -28,6 +34,10 @@ jobs:
 
       - name: Install Dependencies
         run: npm ci
+
+      - name: 'Create .env File'
+        run: |
+          echo "${{ env.ENV_FILE }}" > .env
 
       - name: Build
         run: npm run build
@@ -51,8 +61,12 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
+      - name: 'Create .env File'
+        run: |
+          echo "${{ env.ENV_FILE }}" > .env
+
       - name: Run Unit Tests
-        run: npm run test.unit
+        run: npm run test:ci
 
   scan:
     name: 'Scan'
@@ -73,5 +87,34 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
+      - name: 'Create .env File'
+        run: |
+          echo "${{ env.ENV_FILE }}" > .env
+
       - name: Run Linter
         run: npm run lint
+
+  validate-template:
+    name: 'Validate CloudFormation Template'
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Validate AWS CloudFormation Template
+        run: |-
+          aws cloudformation validate-template \
+          --template-body file://${{ env.AWS_CFN_TEMPLATE }}
