@@ -34,7 +34,7 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: !Sub
-        - 'ionic8playground-ui-app.${HostedZone}-${AWS::Region}-${AWS::AccountId}'
+        - 'ionic8-ui-app.${HostedZone}-${AWS::Region}-${AWS::AccountId}'
         - HostedZone: !FindInMap [EnvironmentAttributeMap, !Ref EnvironmentCode, HostedZone]
 
   ##
@@ -110,7 +110,7 @@ Resources:
         Comment: !Sub 'Ionic 8 Playground UI App (${EnvironmentCode})'
         Aliases:
           - !Sub
-            - 'ionic8-playground.${HostedZone}'
+            - 'ionic8.${HostedZone}'
             - HostedZone: !FindInMap [EnvironmentAttributeMap, !Ref EnvironmentCode, HostedZone]
         CacheBehaviors:
           - AllowedMethods:
@@ -192,7 +192,7 @@ Resources:
         - '${HostedZone}.'
         - HostedZone: !FindInMap [EnvironmentAttributeMap, !Ref EnvironmentCode, HostedZone]
       Name: !Sub
-        - 'ionic8-playground.${HostedZone}'
+        - 'ionic8.${HostedZone}'
         - HostedZone: !FindInMap [EnvironmentAttributeMap, !Ref EnvironmentCode, HostedZone]
       Type: A
       AliasTarget:
@@ -209,7 +209,7 @@ Resources:
         - '${HostedZone}.'
         - HostedZone: !FindInMap [EnvironmentAttributeMap, !Ref EnvironmentCode, HostedZone]
       Name: !Sub
-        - 'ionic8-playground.${HostedZone}'
+        - 'ionic8.${HostedZone}'
         - HostedZone: !FindInMap [EnvironmentAttributeMap, !Ref EnvironmentCode, HostedZone]
       Type: AAAA
       AliasTarget:
