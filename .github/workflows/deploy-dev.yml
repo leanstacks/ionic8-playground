@@ -1,0 +1,87 @@
+name: Deploy to Development
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - dev
+
+concurrency:
+  group: ${{ github.workflow }}
+
+env:
+  APP_NAME: ionic8-playground.leanstacks.net
+  AWS_CFN_STACK_NAME: ls-ui-ionic8playground-resources-dev
+  AWS_CFN_TEMPLATE: template.yml
+  AWS_ENV_CODE: dev
+  AWS_REGION: ${{ vars.AWS_REGION }}
+  AWS_ROLE_ARN: ${{ vars.AWS_ROLE_ARN_DEV }}
+  ENV_FILE: ${{ secrets.ENV_DEV }}
+
+jobs:
+  deploy:
+    name: Deploy
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Create Environment Configuration
+        run: |
+          echo "${{ env.ENV_FILE }}" > .env
+          echo "VITE_BUILD_DATE=$(date +'%Y-%m-%d')" >> .env
+          echo "VITE_BUILD_TIME=$(date +'%H:%M:%S%z')" >> .env
+          echo "VITE_BUILD_TS=$(date +'%Y-%m-%dT%H:%M:%S%z')" >> .env
+          echo "VITE_BUILD_COMMIT_SHA=${{ github.sha }}" >> .env
+          echo "VITE_BUILD_ENV_CODE=${{ env.AWS_ENV_CODE }}" >> .env
+          echo "VITE_BUILD_WORKFLOW_NAME=${{ github.workflow }}" >> .env
+          echo "VITE_BUILD_WORKFLOW_RUN_NUMBER=${{ github.run_number }}" >> .env
+          echo "VITE_BUILD_WORKFLOW_RUN_ATTEMPT=${{ github.run_attempt }}" >> .env
+
+      - name: Build
+        run: npm run build
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Deploy AWS CloudFormation Stack
+        run: |-
+          aws cloudformation deploy \
+          --stack-name ${{ env.AWS_CFN_STACK_NAME }} \
+          --template-file ${{ env.AWS_CFN_TEMPLATE }} \
+          --parameter-overrides EnvironmentCode=${{ env.AWS_ENV_CODE }} \
+          --tags App=${{ env.APP_NAME }} Env=${{ env.AWS_ENV_CODE }} OU=leanstacks Owner='Matthew Warman'
+
+      - name: Get CloudFormation Stack Outputs
+        id: cloudformation
+        run: |-
+          APP_BUCKET_NAME=$(
+            aws cloudformation describe-stacks \
+            --stack-name ${{ env.AWS_CFN_STACK_NAME }} \
+            --query "Stacks[0].Outputs[?OutputKey=='AppBucketName'].OutputValue | [0]"
+          )
+          echo "APP_BUCKET_NAME=$APP_BUCKET_NAME" >> "$GITHUB_OUTPUT"
+
+      - name: Deploy to AWS S3
+        run: |
+          aws s3 sync dist s3://${{ steps.cloudformation.outputs.APP_BUCKET_NAME }} --delete
