@@ -7,10 +7,10 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test.e2e": "cypress run",
-    "test.unit": "vitest",
-    "test:coverage": "vitest run --coverage",
+    "test": "vitest",
     "test:ci": "vitest run --coverage --silent",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "cypress run",
     "lint": "eslint"
   },
   "dependencies": {
@@ -27,7 +27,8 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-router": "5.3.4",
-    "react-router-dom": "5.3.4"
+    "react-router-dom": "5.3.4",
+    "yup": "1.4.0"
   },
   "devDependencies": {
     "@capacitor/cli": "6.1.0",

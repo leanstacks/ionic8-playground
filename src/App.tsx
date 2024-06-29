@@ -2,6 +2,7 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 
+import ConfigContextProvider from './providers/ConfigProvider';
 import HomePage from './pages/Home/HomePage';
 import NewItemPage from './pages/Items/NewItemPage';
 
@@ -39,19 +40,21 @@ setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp data-testid="app">
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/home">
-          <HomePage />
-        </Route>
-        <Route exact path="/new">
-          <NewItemPage />
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
-      </IonRouterOutlet>
-    </IonReactRouter>
+    <ConfigContextProvider>
+      <IonReactRouter>
+        <IonRouterOutlet>
+          <Route exact path="/home">
+            <HomePage />
+          </Route>
+          <Route exact path="/new">
+            <NewItemPage />
+          </Route>
+          <Route exact path="/">
+            <Redirect to="/home" />
+          </Route>
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </ConfigContextProvider>
   </IonApp>
 );
 
