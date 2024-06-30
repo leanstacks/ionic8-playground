@@ -1,16 +1,19 @@
 import { IonBackButton, IonButtons, IonHeader, IonTitle, IonToolbar } from '@ionic/react';
 
-interface HeaderProps {
+interface HeaderProps extends Pick<HTMLIonBackButtonElement, 'defaultHref'> {
+  backButton?: boolean;
   title?: string;
 }
 
-const Header = ({ title }: HeaderProps): JSX.Element => {
+const Header = ({ backButton = false, defaultHref, title }: HeaderProps): JSX.Element => {
   return (
     <IonHeader>
       <IonToolbar>
-        <IonButtons slot="start">
-          <IonBackButton defaultHref="/home" />
-        </IonButtons>
+        {backButton && (
+          <IonButtons slot="start">
+            <IonBackButton defaultHref={defaultHref} />
+          </IonButtons>
+        )}
         <IonTitle>{title}</IonTitle>
       </IonToolbar>
     </IonHeader>
