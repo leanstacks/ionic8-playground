@@ -1,14 +1,10 @@
-import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
+import { IonApp, setupIonicReact } from '@ionic/react';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import ConfigContextProvider from './common/providers/ConfigProvider';
 import { queryClient } from 'common/utils/query-client';
-import HomePage from './pages/Home/HomePage';
-import NewItemPage from './pages/Items/NewItemPage';
-import UsersPage from 'pages/Users/UsersPage';
+import Router from 'common/components/Router/Router';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -46,22 +42,7 @@ const App: React.FC = () => (
   <IonApp data-testid="app">
     <ConfigContextProvider>
       <QueryClientProvider client={queryClient}>
-        <IonReactRouter>
-          <IonRouterOutlet>
-            <Route exact path="/home">
-              <HomePage />
-            </Route>
-            <Route exact path="/new">
-              <NewItemPage />
-            </Route>
-            <Route exact path="/users">
-              <UsersPage />
-            </Route>
-            <Route exact path="/">
-              <Redirect to="/users" />
-            </Route>
-          </IonRouterOutlet>
-        </IonReactRouter>
+        <Router />
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </ConfigContextProvider>
