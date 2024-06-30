@@ -9,7 +9,7 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
-import { useConfig } from '../../hooks/useConfig';
+import { useConfig } from 'common/hooks/useConfig';
 
 const NewItemPage = (): JSX.Element => {
   const config = useConfig();

@@ -11,14 +11,10 @@ export default defineConfig({
   resolve: {
     alias: {
       __fixtures__: '/src/__fixtures__',
-      api: '/src/api',
       assets: '/src/assets',
-      components: '/src/components',
-      hooks: '/src/hooks',
+      common: '/src/common',
       pages: '/src/pages',
-      providers: '/src/providers',
       test: '/src/test',
-      utils: '/src/utils',
     },
   },
   test: {
