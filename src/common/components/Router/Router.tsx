@@ -3,7 +3,8 @@ import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router';
 
 import HomePage from 'pages/Home/HomePage';
-import UsersPage from 'pages/Users/components/UsersPage';
+import UserListPage from 'pages/Users/components/UserList/UserListPage';
+import UserDetailPage from 'pages/Users/components/UserDetail/UserDetailPage';
 
 const Router = (): JSX.Element => {
   return (
@@ -12,8 +13,11 @@ const Router = (): JSX.Element => {
         <Route path="/home">
           <HomePage />
         </Route>
-        <Route path="/users">
-          <UsersPage />
+        <Route exact path="/users">
+          <UserListPage />
+        </Route>
+        <Route path="/users/:userId">
+          <UserDetailPage />
         </Route>
         <Route exact path="/">
           <Redirect to="/home" />
