@@ -1,4 +1,4 @@
-import { IonContent, IonPage } from '@ionic/react';
+import { IonContent } from '@ionic/react';
 
 import './UserListPage.scss';
 import Header from 'common/components/Header/Header';

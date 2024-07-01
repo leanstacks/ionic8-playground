@@ -1,0 +1,20 @@
+import { IonContent } from '@ionic/react';
+import { useParams } from 'react-router';
+
+import Header from 'common/components/Header/Header';
+import { useGetUser } from 'pages/Users/api/useGetUser';
+
+export const UserDetailPage = (): JSX.Element => {
+  const { userId } = useParams<{ userId: string }>();
+  const { data: user } = useGetUser({ userId });
+
+  return (
+    <>
+      <Header backButton defaultHref="/users" title="Users" />
+
+      <IonContent fullscreen>{user && <h1>{user.name}</h1>}</IonContent>
+    </>
+  );
+};
+
+export default UserDetailPage;

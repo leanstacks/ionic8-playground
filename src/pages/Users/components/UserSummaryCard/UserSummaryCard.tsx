@@ -16,7 +16,12 @@ const UserSummaryCard = ({}: UserSummaryCardProps): JSX.Element => {
   const { data: users } = useGetUsers();
 
   return (
-    <IonCard button href="/users" className="card-user-summary" data-testid="card-user-summary">
+    <IonCard
+      button
+      routerLink="/users"
+      className="card-user-summary"
+      data-testid="card-user-summary"
+    >
       <IonCardHeader>
         <IonCardTitle>
           Users
