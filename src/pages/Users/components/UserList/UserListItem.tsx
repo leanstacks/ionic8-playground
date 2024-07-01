@@ -12,7 +12,7 @@ const UserListItem = ({ lines, user }: UserListItemProps): JSX.Element => {
     <IonItem
       className="list-item-user"
       data-testid={`list-item-user-${user.id}`}
-      routerLink={`/users/${user.id}`}
+      routerLink={`/tabs/users/${user.id}`}
       lines={lines}
       detail
     >

@@ -4,7 +4,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import ConfigContextProvider from './common/providers/ConfigProvider';
 import { queryClient } from 'common/utils/query-client';
-import Router from 'common/components/Router/Router';
+import AppRouter from 'common/components/Router/AppRouter';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -42,7 +42,7 @@ const App: React.FC = () => (
   <IonApp data-testid="app">
     <ConfigContextProvider>
       <QueryClientProvider client={queryClient}>
-        <Router />
+        <AppRouter />
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </ConfigContextProvider>

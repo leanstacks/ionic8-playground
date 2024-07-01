@@ -18,7 +18,7 @@ const UserSummaryCard = ({}: UserSummaryCardProps): JSX.Element => {
   return (
     <IonCard
       button
-      routerLink="/users"
+      routerLink="/tabs/users"
       className="card-user-summary"
       data-testid="card-user-summary"
     >
