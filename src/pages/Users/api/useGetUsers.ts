@@ -5,6 +5,10 @@ import { useConfig } from 'common/hooks/useConfig';
 import { User } from 'common/models/user';
 import { QueryKey } from 'common/utils/constants';
 
+/**
+ * An API hook which fetches a collection of `User` objects.
+ * @returns Returns a `UseQueryResult` with `User` collection data.
+ */
 export const useGetUsers = () => {
   const config = useConfig();
 
