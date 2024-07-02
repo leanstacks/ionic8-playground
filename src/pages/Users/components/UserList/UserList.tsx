@@ -1,8 +1,11 @@
 import { IonList, IonListHeader } from '@ionic/react';
+import classNames from 'classnames';
 
+import './UserList.scss';
 import { useGetUsers } from 'pages/Users/api/useGetUsers';
 import UserListItem from './UserListItem';
 import { BaseComponentProps } from 'common/components/types';
+import LoaderSpinner from 'common/components/Loader/LoaderSpinner';
 
 /**
  * Properties for the `UserList` component.
@@ -26,11 +29,20 @@ const UserList = ({
   showHeader = false,
   testid = 'list-user',
 }: UserListProps): JSX.Element => {
-  const { data: users } = useGetUsers();
+  const { data: users, isLoading } = useGetUsers();
 
   return (
-    <IonList className={className} data-testid={testid}>
+    <IonList className={classNames('list-user', className)} data-testid={testid}>
       {showHeader && <IonListHeader data-testid={`${testid}-header`}>{header}</IonListHeader>}
+
+      {isLoading && (
+        <LoaderSpinner
+          className="loader"
+          data-testid={`${testid}-loader`}
+          text="Loading users..."
+        />
+      )}
+
       {users &&
         users.map((user, index) => (
           <UserListItem
