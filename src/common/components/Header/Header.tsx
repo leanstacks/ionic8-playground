@@ -1,4 +1,11 @@
-import { IonBackButton, IonButtons, IonHeader, IonTitle, IonToolbar } from '@ionic/react';
+import {
+  IonBackButton,
+  IonButtons,
+  IonHeader,
+  IonMenuButton,
+  IonTitle,
+  IonToolbar,
+} from '@ionic/react';
 
 interface HeaderProps extends Pick<HTMLIonBackButtonElement, 'defaultHref'> {
   backButton?: boolean;
@@ -15,6 +22,14 @@ const Header = ({ backButton = false, defaultHref, title }: HeaderProps): JSX.El
           </IonButtons>
         )}
         <IonTitle>{title}</IonTitle>
+        <IonButtons slot="end">
+          <IonMenuButton
+            autoHide={false}
+            menu="menu-app"
+            className="ion-hide-md-down"
+            data-testid="menu-app"
+          ></IonMenuButton>
+        </IonButtons>
       </IonToolbar>
     </IonHeader>
   );

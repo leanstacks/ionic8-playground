@@ -12,11 +12,15 @@ export const UserDetailPage = (): JSX.Element => {
   const { userId } = useParams<UserDetailPageRouteParams>();
   const { data: user } = useGetUser({ userId });
 
+  const headerTitle: string = user ? user.name : '';
+
   return (
     <IonPage>
-      <Header backButton defaultHref="/users" title="Users" />
+      <Header backButton defaultHref="/users" title={headerTitle} />
 
-      <IonContent fullscreen>{user && <h1>{user.name}</h1>}</IonContent>
+      <IonContent className="ion-padding" fullscreen>
+        {user && <h1>{user.name}</h1>}
+      </IonContent>
     </IonPage>
   );
 };
