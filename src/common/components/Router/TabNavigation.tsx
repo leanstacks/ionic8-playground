@@ -7,6 +7,21 @@ import HomePage from 'pages/Home/HomePage';
 import UserDetailPage from 'pages/Users/components/UserDetail/UserDetailPage';
 import UserListPage from 'pages/Users/components/UserList/UserListPage';
 
+/**
+ * The `TabNavigation` component provides a router outlet for all of the
+ * application routes. The component renders two main application
+ * navigation controls.
+ *
+ * On smaller viewport sizes, Ionic mobile tab navigation is rendered at
+ * the bottom of the page.
+ *
+ * On larger viewport sizes, the Ionic [side] menu is rendered. The menu
+ * may be toggled using the hamburger (three lines) icon in the top
+ * toolbar.
+ *
+ * @returns JSX
+ * @see {@link AppMenu}
+ */
 const TabNavigation = (): JSX.Element => {
   return (
     <>

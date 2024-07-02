@@ -10,32 +10,46 @@ import {
   IonToolbar,
 } from '@ionic/react';
 import { home, people } from 'ionicons/icons';
+import classNames from 'classnames';
 
 import './AppMenu.scss';
+import { BaseComponentProps } from '../types';
 
-const AppMenu = (): JSX.Element => {
+/**
+ * Properties for the `AppMenu` component.
+ * @see {@link BaseComponentProps}
+ */
+interface AppMenuProps extends BaseComponentProps {}
+
+/**
+ * The `AppMenu` component renders the main application menu. Facilitates
+ * navigation throughout the major sections of the application.
+ * @param {AppMenuProps} props - Component properties.
+ * @returns JSX
+ */
+const AppMenu = ({ className, testid = 'menu-app' }: AppMenuProps): JSX.Element => {
   return (
     <IonMenu
-      className="menu-app"
+      className={classNames('menu-app', className)}
       contentId="content-main"
-      data-testid="menu-app"
+      data-testid={testid}
       menuId="menu-app"
       side="end"
     >
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Menu</IonTitle>
+          <IonTitle data-testid={`${testid}-title`}>Menu</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
         <IonMenuToggle>
-          <IonItem routerLink="/tabs/home" lines="full">
+          <IonItem routerLink="/tabs/home" lines="full" data-testid={`${testid}-item-home`}>
             <IonIcon icon={home} className="icon" />
             <IonLabel>Home</IonLabel>
           </IonItem>
         </IonMenuToggle>
         <IonMenuToggle>
-          <IonItem routerLink="/tabs/users" lines="full">
+          <IonItem routerLink="/tabs/users" lines="full" data-testid={`${testid}-item-users`}>
             <IonIcon icon={people} className="icon" />
             <IonLabel>Users</IonLabel>
           </IonItem>

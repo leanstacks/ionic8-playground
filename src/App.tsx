@@ -38,7 +38,12 @@ import './theme/variables.css';
 
 setupIonicReact();
 
-const App: React.FC = () => (
+/**
+ * The application root module. The outermost component of the Ionic React
+ * application hierarchy. Declares application-wide providers.
+ * @returns JSX
+ */
+const App = (): JSX.Element => (
   <IonApp data-testid="app">
     <ConfigContextProvider>
       <QueryClientProvider client={queryClient}>

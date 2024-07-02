@@ -7,6 +7,14 @@ import {
   IonToolbar,
 } from '@ionic/react';
 
+/**
+ * Properties for the `Header` component.
+ * @param {boolean} [backButton] - Optional. Indicates the back button
+ * should be rendered.
+ * @param {string} [defaultHref] - Optional. The default back navigation
+ * href if there is no history in the route stack.
+ * @param {string} [title] - Optional. The header title.
+ */
 interface HeaderProps extends Pick<HTMLIonBackButtonElement, 'defaultHref'> {
   backButton?: boolean;
   title?: string;
@@ -14,20 +22,20 @@ interface HeaderProps extends Pick<HTMLIonBackButtonElement, 'defaultHref'> {
 
 const Header = ({ backButton = false, defaultHref, title }: HeaderProps): JSX.Element => {
   return (
-    <IonHeader>
+    <IonHeader data-testid="header-app">
       <IonToolbar>
         {backButton && (
           <IonButtons slot="start">
-            <IonBackButton defaultHref={defaultHref} />
+            <IonBackButton defaultHref={defaultHref} data-testid="header-app-button-back" />
           </IonButtons>
         )}
-        <IonTitle>{title}</IonTitle>
+        <IonTitle data-testid="header-app-title">{title}</IonTitle>
         <IonButtons slot="end">
           <IonMenuButton
             autoHide={false}
             menu="menu-app"
             className="ion-hide-md-down"
-            data-testid="menu-app"
+            data-testid="header-app-button-menu"
           ></IonMenuButton>
         </IonButtons>
       </IonToolbar>
