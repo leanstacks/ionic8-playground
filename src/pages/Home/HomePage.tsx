@@ -5,6 +5,11 @@ import Header from 'common/components/Header/Header';
 import UserSummaryCard from 'pages/Users/components/UserSummaryCard/UserSummaryCard';
 import WelcomeBlock from './components/WelcomeBlock/WelcomeBlock';
 
+/**
+ * The `HomePage` component renders the layout for the home page. It displays
+ * blocks and cards containing information in a responsive grid.
+ * @returns JSX
+ */
 const HomePage = (): JSX.Element => {
   return (
     <IonPage data-testid="page-home">

@@ -4,10 +4,18 @@ import { useParams } from 'react-router';
 import Header from 'common/components/Header/Header';
 import { useGetUser } from 'pages/Users/api/useGetUser';
 
+/**
+ * Router path parameters for the `UserDetailPage`.
+ * @param {string} userId - A user identifier.
+ */
 interface UserDetailPageRouteParams {
   userId: string;
 }
 
+/**
+ * The `UserDetailPage` component renders information about a single `User`.
+ * @returns JSX
+ */
 export const UserDetailPage = (): JSX.Element => {
   const { userId } = useParams<UserDetailPageRouteParams>();
   const { data: user } = useGetUser({ userId });

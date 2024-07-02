@@ -10,8 +10,18 @@ import {
 import './UserSummaryCard.scss';
 import { useGetUsers } from 'pages/Users/api/useGetUsers';
 
+/**
+ * Properties for the `UserSummaryCard` component.
+ */
 interface UserSummaryCardProps {}
 
+/**
+ * The `UserSummaryCard` component renders an `IonCard` containing summary
+ * information about the `User` data. Facilitates navigation to the user
+ * list  page.
+ * @param {UserSummaryCardProps} props - Component properties.
+ * @returns JSX
+ */
 const UserSummaryCard = ({}: UserSummaryCardProps): JSX.Element => {
   const { data: users } = useGetUsers();
 
