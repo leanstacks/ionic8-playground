@@ -2,7 +2,7 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 import { render, screen } from 'test/test-utils';
 
-import ConfigContextProvider from 'providers/ConfigProvider';
+import ConfigContextProvider from '../ConfigProvider';
 
 describe('ConfigProvider', () => {
   it('should render successfully', async () => {

@@ -3,7 +3,7 @@ import { renderHook as renderHookWithoutWrapper } from '@testing-library/react';
 
 import { renderHook, waitFor } from 'test/test-utils';
 
-import { useConfig } from 'hooks/useConfig';
+import { useConfig } from '../useConfig';
 
 describe('useConfig', () => {
   it('should return the context', async () => {

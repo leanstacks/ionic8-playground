@@ -1,12 +1,16 @@
 import { PropsWithChildren } from 'react';
 import { MemoryRouter } from 'react-router';
 
-import ConfigContextProvider from 'providers/ConfigProvider';
+import { queryClient } from 'test/query-client';
+import ConfigContextProvider from 'common/providers/ConfigProvider';
+import { QueryClientProvider } from '@tanstack/react-query';
 
 const WithAllProviders = ({ children }: PropsWithChildren): JSX.Element => {
   return (
     <ConfigContextProvider>
-      <MemoryRouter>{children}</MemoryRouter>
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>{children}</MemoryRouter>
+      </QueryClientProvider>
     </ConfigContextProvider>
   );
 };

@@ -1,10 +1,10 @@
-import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
+import { IonApp, setupIonicReact } from '@ionic/react';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
-import ConfigContextProvider from './providers/ConfigProvider';
-import HomePage from './pages/Home/HomePage';
-import NewItemPage from './pages/Items/NewItemPage';
+import ConfigContextProvider from './common/providers/ConfigProvider';
+import { queryClient } from 'common/utils/query-client';
+import AppRouter from 'common/components/Router/AppRouter';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -38,22 +38,18 @@ import './theme/variables.css';
 
 setupIonicReact();
 
-const App: React.FC = () => (
+/**
+ * The application root module. The outermost component of the Ionic React
+ * application hierarchy. Declares application-wide providers.
+ * @returns JSX
+ */
+const App = (): JSX.Element => (
   <IonApp data-testid="app">
     <ConfigContextProvider>
-      <IonReactRouter>
-        <IonRouterOutlet>
-          <Route exact path="/home">
-            <HomePage />
-          </Route>
-          <Route exact path="/new">
-            <NewItemPage />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/home" />
-          </Route>
-        </IonRouterOutlet>
-      </IonReactRouter>
+      <QueryClientProvider client={queryClient}>
+        <AppRouter />
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
     </ConfigContextProvider>
   </IonApp>
 );

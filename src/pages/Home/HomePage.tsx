@@ -1,57 +1,31 @@
-import {
-  IonBadge,
-  IonCheckbox,
-  IonContent,
-  IonFab,
-  IonFabButton,
-  IonHeader,
-  IonIcon,
-  IonItem,
-  IonList,
-  IonNote,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-} from '@ionic/react';
-import { add } from 'ionicons/icons';
-import { useHistory } from 'react-router';
+import { IonCol, IonContent, IonGrid, IonPage, IonRow } from '@ionic/react';
 
-import './HomePage.css';
+import './HomePage.scss';
+import Header from 'common/components/Header/Header';
+import UserSummaryCard from 'pages/Users/components/UserSummaryCard/UserSummaryCard';
+import WelcomeBlock from './components/WelcomeBlock/WelcomeBlock';
 
+/**
+ * The `HomePage` component renders the layout for the home page. It displays
+ * blocks and cards containing information in a responsive grid.
+ * @returns JSX
+ */
 const HomePage = (): JSX.Element => {
-  const history = useHistory();
-
   return (
     <IonPage data-testid="page-home">
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Home</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <Header title="Ionic Playground" />
+
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Home</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-
-        <IonList>
-          <IonItem>
-            <IonCheckbox labelPlacement="end" justify="start">
-              <h1>Create Idea</h1>
-              <IonNote>Run Idea by Joe</IonNote>
-            </IonCheckbox>
-            <IonBadge color="success" slot="end">
-              5 Days
-            </IonBadge>
-          </IonItem>
-        </IonList>
-
-        <IonFab vertical="bottom" horizontal="end" slot="fixed">
-          <IonFabButton onClick={() => history.push('/new')}>
-            <IonIcon icon={add} />
-          </IonFabButton>
-        </IonFab>
+        <IonGrid fixed>
+          <IonRow>
+            <IonCol sizeXs="2" sizeMd="1">
+              <WelcomeBlock className="block-welcome" />
+            </IonCol>
+            <IonCol sizeXs="2" sizeMd="1">
+              <UserSummaryCard />
+            </IonCol>
+          </IonRow>
+        </IonGrid>
       </IonContent>
     </IonPage>
   );
