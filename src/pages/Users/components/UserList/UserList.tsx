@@ -1,11 +1,15 @@
 import { IonList, IonListHeader } from '@ionic/react';
+import { informationCircle, warning } from 'ionicons/icons';
 import classNames from 'classnames';
+import isEmpty from 'lodash/isEmpty';
 
 import './UserList.scss';
 import { useGetUsers } from 'pages/Users/api/useGetUsers';
 import UserListItem from './UserListItem';
 import { BaseComponentProps } from 'common/components/types';
 import LoaderSpinner from 'common/components/Loader/LoaderSpinner';
+import MessageCard from 'common/components/Card/MessageCard';
+import CardRow from 'common/components/Card/CardRow';
 
 /**
  * Properties for the `UserList` component.
@@ -29,19 +33,53 @@ const UserList = ({
   showHeader = false,
   testid = 'list-user',
 }: UserListProps): JSX.Element => {
-  const { data: users, isLoading } = useGetUsers();
+  const { data: users, isError, isLoading } = useGetUsers();
 
+  const baseProps = {
+    className: classNames('list-user', className),
+    'data-testid': testid,
+  };
+
+  // Loading state
+  if (isLoading) {
+    return (
+      <div {...baseProps}>
+        <LoaderSpinner className="loader" testid={`${testid}-loader`} text="Loading users..." />
+      </div>
+    );
+  }
+
+  // Error state
+  if (isError) {
+    return (
+      <div {...baseProps}>
+        <CardRow className="row-message" testid={`${testid}-error`}>
+          <MessageCard
+            color="danger"
+            icon={warning}
+            title="Uh oh"
+            content="We are experiencing problems getting the list of users."
+          />
+        </CardRow>
+      </div>
+    );
+  }
+
+  // Empty state
+  if (isEmpty(users)) {
+    return (
+      <div {...baseProps}>
+        <CardRow className="row-message" testid={`${testid}-empty`}>
+          <MessageCard icon={informationCircle} title="No Data" content="No users found." />
+        </CardRow>
+      </div>
+    );
+  }
+
+  // Success state
   return (
-    <IonList className={classNames('list-user', className)} data-testid={testid}>
+    <IonList {...baseProps}>
       {showHeader && <IonListHeader data-testid={`${testid}-header`}>{header}</IonListHeader>}
-
-      {isLoading && (
-        <LoaderSpinner
-          className="loader"
-          data-testid={`${testid}-loader`}
-          text="Loading users..."
-        />
-      )}
 
       {users &&
         users.map((user, index) => (
