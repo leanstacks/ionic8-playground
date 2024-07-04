@@ -19,13 +19,13 @@ window.matchMedia =
     };
   };
 
-// Run before all test suites
+// Run before each test SUITE
 beforeAll(() => {
   // mock service worker start up
   server.listen();
 });
 
-// Run after every test
+// Run after each TEST
 afterEach(() => {
   // mock service worker reset handlers
   server.resetHandlers();
@@ -33,7 +33,7 @@ afterEach(() => {
   queryClient.clear();
 });
 
-// Run after all test suites
+// Run after each test SUITE
 afterAll(() => {
   // mock service worker shut down
   server.close();
