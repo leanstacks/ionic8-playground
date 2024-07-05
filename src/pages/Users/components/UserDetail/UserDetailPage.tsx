@@ -17,17 +17,20 @@ interface UserDetailPageRouteParams {
  * @returns JSX
  */
 export const UserDetailPage = (): JSX.Element => {
+  const testid = 'page-user-detail';
   const { userId } = useParams<UserDetailPageRouteParams>();
   const { data: user } = useGetUser({ userId });
+
+  //TODO: loading, error, not found states
 
   const headerTitle: string = user ? user.name : '';
 
   return (
-    <IonPage>
+    <IonPage data-testid={testid}>
       <Header backButton defaultHref="/users" title={headerTitle} />
 
       <IonContent className="ion-padding" fullscreen>
-        {user && <h1>{user.name}</h1>}
+        {user && <h1 data-testid={`${testid}-name`}>{user.name}</h1>}
       </IonContent>
     </IonPage>
   );
