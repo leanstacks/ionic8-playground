@@ -1,5 +1,4 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { userEvent } from '@testing-library/user-event';
 
 import { render, screen } from 'test/test-utils';
 import * as UseGetUsers from '../../../api/useGetUsers';
@@ -45,17 +44,5 @@ describe('UserSummaryCard', () => {
     // ASSERT
     expect(screen.getByTestId('card-user-summary')).toBeDefined();
     expect(screen.queryByTestId('card-user-summary-badge')).toBeNull();
-  });
-
-  it.skip('should navigate when clicked', async () => {
-    // ARRANGE
-    render(<UserSummaryCard />);
-    await screen.findByTestId('card-user-summary');
-
-    // ACT
-    await userEvent.click(screen.getByTestId('card-user-summary'));
-
-    // ASSERT
-    expect(screen.getByTestId('card-user-summary')).toBeDefined();
   });
 });
