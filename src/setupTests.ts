@@ -3,6 +3,10 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/vitest';
+import { afterAll, afterEach, beforeAll } from 'vitest';
+
+import { server } from 'test/mocks/server';
+import { queryClient } from 'test/query-client';
 
 // Mock matchmedia
 window.matchMedia =
@@ -14,3 +18,23 @@ window.matchMedia =
       removeListener: function () {},
     };
   };
+
+// Run before each test SUITE
+beforeAll(() => {
+  // mock service worker start up
+  server.listen();
+});
+
+// Run after each TEST
+afterEach(() => {
+  // mock service worker reset handlers
+  server.resetHandlers();
+  // react query clear cache
+  queryClient.clear();
+});
+
+// Run after each test SUITE
+afterAll(() => {
+  // mock service worker shut down
+  server.close();
+});

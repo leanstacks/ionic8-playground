@@ -9,8 +9,10 @@ import UserList from './UserList';
  * @returns JSX
  */
 export const UserListPage = (): JSX.Element => {
+  const testid = 'page-user-list';
+
   return (
-    <IonPage>
+    <IonPage data-testid={testid}>
       <Header title="Users" />
 
       <IonContent fullscreen>

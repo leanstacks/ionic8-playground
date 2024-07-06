@@ -22,17 +22,21 @@ interface UserListItemProps extends Pick<HTMLIonItemElement, 'lines'> {
  * @returns JSX
  */
 const UserListItem = ({ lines, user }: UserListItemProps): JSX.Element => {
+  const testid = `list-item-user-${user.id}`;
+
   return (
     <IonItem
       className="list-item-user"
-      data-testid={`list-item-user-${user.id}`}
+      data-testid={testid}
       routerLink={`/tabs/users/${user.id}`}
       lines={lines}
       detail
     >
       <IonLabel>
-        <div className="name">{user.name}</div>
-        <IonNote>{user.email}</IonNote>
+        <div className="name" data-testid={`${testid}-name`}>
+          {user.name}
+        </div>
+        <IonNote data-testid={`${testid}-email`}>{user.email}</IonNote>
       </IonLabel>
     </IonItem>
   );

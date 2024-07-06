@@ -1,0 +1,12 @@
+.card-message {
+  .title-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .icon {
+      font-size: 1.5rem;
+      margin-right: 0.5rem;
+    }
+  }
+}
