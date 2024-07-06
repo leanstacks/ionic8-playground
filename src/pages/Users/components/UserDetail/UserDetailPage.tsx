@@ -1,8 +1,11 @@
-import { IonContent, IonPage } from '@ionic/react';
+import { IonCol, IonContent, IonGrid, IonPage, IonRow } from '@ionic/react';
 import { useParams } from 'react-router';
 
+import './UserDetailPage.scss';
 import Header from 'common/components/Header/Header';
 import { useGetUser } from 'pages/Users/api/useGetUser';
+import UserSummary from './UserSummary';
+import CompanyDetail from './CompanyDetail';
 
 /**
  * Router path parameters for the `UserDetailPage`.
@@ -26,11 +29,25 @@ export const UserDetailPage = (): JSX.Element => {
   const headerTitle: string = user ? user.name : '';
 
   return (
-    <IonPage data-testid={testid}>
+    <IonPage className="page-user-detail" data-testid={testid}>
       <Header backButton defaultHref="/users" title={headerTitle} />
 
       <IonContent className="ion-padding" fullscreen>
-        {user && <h1 data-testid={`${testid}-name`}>{user.name}</h1>}
+        {user && (
+          <>
+            <UserSummary user={user} />
+            <IonGrid>
+              <IonRow>
+                <IonCol sizeXs="2" sizeMd="1">
+                  <CompanyDetail company={user.company} />
+                </IonCol>
+                <IonCol sizeXs="2" sizeMd="1">
+                  <CompanyDetail company={user.company} />
+                </IonCol>
+              </IonRow>
+            </IonGrid>
+          </>
+        )}
       </IonContent>
     </IonPage>
   );
