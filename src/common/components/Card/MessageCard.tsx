@@ -6,11 +6,11 @@ import {
   IonCardTitle,
   IonIcon,
 } from '@ionic/react';
+import { ReactNode } from 'react';
 import classNames from 'classnames';
 
 import './MessageCard.scss';
 import { BaseComponentProps } from '../types';
-import { ReactNode } from 'react';
 
 /**
  * Properties for the `MessageCard` component.

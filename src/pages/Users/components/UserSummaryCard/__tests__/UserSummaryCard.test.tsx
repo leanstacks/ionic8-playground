@@ -1,10 +1,11 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
+import { UseQueryResult } from '@tanstack/react-query';
 
 import { render, screen } from 'test/test-utils';
 import * as UseGetUsers from '../../../api/useGetUsers';
-import UserSummaryCard from '../UserSummaryCard';
-import { UseQueryResult } from '@tanstack/react-query';
 import { User } from 'common/models/user';
+
+import UserSummaryCard from '../UserSummaryCard';
 
 describe('UserSummaryCard', () => {
   afterEach(() => {
