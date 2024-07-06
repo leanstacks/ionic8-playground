@@ -6,6 +6,7 @@ import Header from 'common/components/Header/Header';
 import { useGetUser } from 'pages/Users/api/useGetUser';
 import UserSummary from './UserSummary';
 import CompanyDetail from './CompanyDetail';
+import AddressDetail from './AddressDetail';
 
 /**
  * Router path parameters for the `UserDetailPage`.
@@ -42,7 +43,7 @@ export const UserDetailPage = (): JSX.Element => {
                   <CompanyDetail company={user.company} />
                 </IonCol>
                 <IonCol sizeXs="2" sizeMd="1">
-                  <CompanyDetail company={user.company} />
+                  <AddressDetail address={user.address} />
                 </IonCol>
               </IonRow>
             </IonGrid>
