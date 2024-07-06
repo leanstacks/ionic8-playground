@@ -21,7 +21,7 @@ import { ReactNode } from 'react';
  * @see {@link HTMLIonCardElement}
  * @see {@link HTMLIonIconElement}
  */
-interface MessageCardProps
+export interface MessageCardProps
   extends BaseComponentProps,
     Pick<HTMLIonCardElement, 'color'>,
     Pick<HTMLIonIconElement, 'icon'> {
