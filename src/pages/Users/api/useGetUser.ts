@@ -7,7 +7,7 @@ import { QueryKey } from 'common/utils/constants';
 
 /**
  * Properties for the `useGetUser` API hook.
- * @param {string} userId - A `User` identifier.
+ * @param {string} [userId] - A `User` identifier.
  */
 interface UseGetUserProps {
   userId?: string;
