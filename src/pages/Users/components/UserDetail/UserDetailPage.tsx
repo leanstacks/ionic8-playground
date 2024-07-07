@@ -2,7 +2,7 @@ import { IonContent, IonPage } from '@ionic/react';
 import { useParams } from 'react-router';
 
 import Header from 'common/components/Header/Header';
-import { useGetUser } from 'pages/Users/api/useGetUser';
+import UserDetail from './UserDetail';
 
 /**
  * Router path parameters for the `UserDetailPage`.
@@ -19,18 +19,13 @@ interface UserDetailPageRouteParams {
 export const UserDetailPage = (): JSX.Element => {
   const testid = 'page-user-detail';
   const { userId } = useParams<UserDetailPageRouteParams>();
-  const { data: user } = useGetUser({ userId });
-
-  //TODO: loading, error, not found states
-
-  const headerTitle: string = user ? user.name : '';
 
   return (
-    <IonPage data-testid={testid}>
-      <Header backButton defaultHref="/users" title={headerTitle} />
+    <IonPage className="page-user-detail" data-testid={testid}>
+      <Header backButton defaultHref="/users" />
 
       <IonContent className="ion-padding" fullscreen>
-        {user && <h1 data-testid={`${testid}-name`}>{user.name}</h1>}
+        <UserDetail testid={`${testid}-user-detail`} userId={userId} />
       </IonContent>
     </IonPage>
   );

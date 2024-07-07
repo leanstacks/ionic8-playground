@@ -7,10 +7,10 @@ import { QueryKey } from 'common/utils/constants';
 
 /**
  * Properties for the `useGetUser` API hook.
- * @param {string} userId - A `User` identifier.
+ * @param {string} [userId] - A `User` identifier.
  */
 interface UseGetUserProps {
-  userId: string;
+  userId?: string;
 }
 
 /**
@@ -21,7 +21,7 @@ interface UseGetUserProps {
 export const useGetUser = ({ userId }: UseGetUserProps) => {
   const config = useConfig();
 
-  const getUser = async (): Promise<User | null> => {
+  const getUser = async (): Promise<User> => {
     const response = await axios.request({
       url: `${config.VITE_BASE_URL_API}/users/${userId}`,
     });

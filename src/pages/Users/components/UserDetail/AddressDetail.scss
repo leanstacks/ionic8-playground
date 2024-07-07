@@ -1,0 +1,30 @@
+.address-detail {
+  margin-bottom: 1rem;
+
+  .content {
+    > * {
+      line-height: 150%;
+    }
+
+    .primary {
+      font-weight: 700;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      column-gap: 0.5rem;
+
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.75rem;
+
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      border-bottom-color: var(--ion-color-light);
+
+      padding-bottom: 0.25rem;
+      margin-bottom: 0.25rem;
+    }
+  }
+}
