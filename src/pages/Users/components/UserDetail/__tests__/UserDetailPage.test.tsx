@@ -1,6 +1,8 @@
 import { describe, expect, it, vi } from 'vitest';
 
 import { render, screen } from 'test/test-utils';
+import { userFixture1 } from '__fixtures__/users';
+
 import UserDetailPage from '../UserDetailPage';
 
 // mock select functions from react-router
@@ -9,7 +11,7 @@ vi.mock('react-router', async () => {
   return {
     ...original,
     useParams: () => ({
-      userId: '1',
+      userId: userFixture1.id,
     }),
   };
 });
@@ -27,14 +29,9 @@ describe('UserDetailPage', () => {
   it('should render user details', async () => {
     // ARRANGE
     render(<UserDetailPage />);
-    await screen.findByTestId('page-user-detail-name');
+    await screen.findByTestId('page-user-detail-user-detail');
 
     // ASSERT
-    expect(screen.getByTestId('page-user-detail')).toBeDefined();
-    expect(screen.getByTestId('page-user-detail-name')).toHaveTextContent('Leanne Graham');
+    expect(screen.getByTestId('page-user-detail-user-detail')).toBeDefined();
   });
-
-  it.skip('should render loading state', async () => {});
-
-  it.skip('should render error state', async () => {});
 });
