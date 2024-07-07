@@ -55,7 +55,7 @@ const AddressDetail = ({
     // loading state
     return (
       <div {...baseProps}>
-        <div className="content">
+        <div className="content" data-testid={`${testid}-loader`}>
           <div className="header">
             <IonIcon icon={map} />
             <LoaderSkeleton animated heightStyle="1.5rem" widthStyle="10rem" />
