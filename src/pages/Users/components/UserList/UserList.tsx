@@ -1,11 +1,12 @@
-import { IonList, IonListHeader } from '@ionic/react';
+import { IonCol, IonGrid, IonList, IonListHeader, IonRow } from '@ionic/react';
 import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 
 import './UserList.scss';
+import { BaseComponentProps } from 'common/components/types';
 import { useGetUsers } from 'pages/Users/api/useGetUsers';
 import UserListItem from './UserListItem';
-import { BaseComponentProps } from 'common/components/types';
+import UserCard from './UserCard';
 import LoaderSpinner from 'common/components/Loader/LoaderSpinner';
 import CardRow from 'common/components/Card/CardRow';
 import ErrorCard from 'common/components/Card/ErrorCard';
@@ -72,19 +73,32 @@ const UserList = ({
   }
 
   // Success state
+  const { className: baseClassName, ...otherProps } = baseProps;
   return (
-    <IonList {...baseProps}>
-      {showHeader && <IonListHeader data-testid={`${testid}-header`}>{header}</IonListHeader>}
+    <>
+      <IonList className={classNames(baseClassName, 'ion-hide-md-up')} {...otherProps}>
+        {showHeader && <IonListHeader data-testid={`${testid}-header`}>{header}</IonListHeader>}
 
-      {users &&
-        users.map((user, index) => (
-          <UserListItem
-            key={user.id}
-            user={user}
-            lines={index === users.length - 1 ? 'none' : 'full'}
-          />
-        ))}
-    </IonList>
+        {users &&
+          users.map((user, index) => (
+            <UserListItem
+              key={user.id}
+              user={user}
+              lines={index === users.length - 1 ? 'none' : 'full'}
+            />
+          ))}
+      </IonList>
+      <IonGrid className={classNames(baseClassName, 'ion-hide-md-down')} {...otherProps}>
+        <IonRow>
+          {users &&
+            users.map((user) => (
+              <IonCol key={user.id} sizeXs="12" sizeMd="6" sizeXl="4">
+                <UserCard user={user} />
+              </IonCol>
+            ))}
+        </IonRow>
+      </IonGrid>
+    </>
   );
 };
 

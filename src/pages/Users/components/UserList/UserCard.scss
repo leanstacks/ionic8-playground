@@ -1,0 +1,17 @@
+.card-user {
+  .content {
+    .content-row {
+      display: flex;
+      align-items: center;
+      column-gap: 1rem;
+      row-gap: 0.25rem;
+
+      > * {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        text-wrap: nowrap;
+      }
+    }
+  }
+}

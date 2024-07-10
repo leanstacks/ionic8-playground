@@ -12,11 +12,11 @@ export const UserListPage = (): JSX.Element => {
   const testid = 'page-user-list';
 
   return (
-    <IonPage data-testid={testid}>
+    <IonPage className="page-user-list" data-testid={testid}>
       <Header title="Users" />
 
       <IonContent fullscreen>
-        <UserList className="user-list" />
+        <UserList />
       </IonContent>
     </IonPage>
   );
