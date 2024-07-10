@@ -1,4 +1,7 @@
 .list-item-user {
+  --inner-padding-bottom: 0.5rem;
+  --inner-padding-top: 0.5rem;
+
   .avatar {
     border-radius: 0.25rem;
 
@@ -14,7 +17,7 @@
     row-gap: 0.25rem;
 
     &.primary {
-      font-weight: 700;
+      font-weight: 500;
       line-height: 1.5rem;
     }
 
