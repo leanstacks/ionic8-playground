@@ -30,6 +30,6 @@ describe('AddressDetail', () => {
     await waitFor(() => expect(container).toBeDefined());
 
     // ASSERT
-    expect(screen.queryByTestId('user-summary')).toBeNull();
+    expect(screen.queryByTestId('address-detail')).toBeNull();
   });
 });
