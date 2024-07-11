@@ -10,10 +10,12 @@ import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 /**
  * Properties for the `AddressDetail` component.
  * @param {Address} [address] - An `Address` object.
+ * @param {boolean} [isLoading] - Indicates if the `user` is being loaded.
  * @see {@link BaseComponentProps}
  */
 interface AddressDetailProps extends BaseComponentProps {
   address?: Address;
+  isLoading?: boolean;
 }
 
 /**
@@ -23,17 +25,37 @@ interface AddressDetailProps extends BaseComponentProps {
  * If the `address` property is null or undefined, a loading state is rendered.
  *
  * @param {AddressDetailProps} props - Component properties.
- * @returns JSX
+ * @returns {JSX.Element | false} Returns JSX when loading or a user is
+ * provided, otherwise returns `false`.
  */
 const AddressDetail = ({
   address,
   className,
+  isLoading = false,
   testid = 'address-detail',
-}: AddressDetailProps): JSX.Element => {
+}: AddressDetailProps): JSX.Element | false => {
   const baseProps = {
     className: classNames('address-detail', className),
     'data-testid': testid,
   };
+
+  if (isLoading) {
+    // loading state
+    return (
+      <div {...baseProps}>
+        <div className="content" data-testid={`${testid}-loader`}>
+          <div className="header">
+            <IonIcon icon={map} />
+            <LoaderSkeleton animated heightStyle="1.5rem" widthStyle="10rem" />
+          </div>
+          <LoaderSkeleton animated heightStyle="1rem" widthStyle="20rem" />
+          <LoaderSkeleton animated heightStyle="1rem" widthStyle="20rem" />
+          <LoaderSkeleton animated heightStyle="1rem" widthStyle="20rem" />
+          <LoaderSkeleton animated heightStyle="1rem" widthStyle="20rem" />
+        </div>
+      </div>
+    );
+  }
 
   if (address) {
     // success state
@@ -51,23 +73,10 @@ const AddressDetail = ({
         </div>
       </div>
     );
-  } else {
-    // loading state
-    return (
-      <div {...baseProps}>
-        <div className="content" data-testid={`${testid}-loader`}>
-          <div className="header">
-            <IonIcon icon={map} />
-            <LoaderSkeleton animated heightStyle="1.5rem" widthStyle="10rem" />
-          </div>
-          <LoaderSkeleton animated heightStyle="1rem" widthStyle="20rem" />
-          <LoaderSkeleton animated heightStyle="1rem" widthStyle="20rem" />
-          <LoaderSkeleton animated heightStyle="1rem" widthStyle="20rem" />
-          <LoaderSkeleton animated heightStyle="1rem" widthStyle="20rem" />
-        </div>
-      </div>
-    );
   }
+
+  // not loading and no user
+  return false;
 };
 
 export default AddressDetail;
