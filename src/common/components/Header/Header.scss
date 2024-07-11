@@ -1,0 +1,23 @@
+.header-app {
+  .logo {
+    height: 2rem;
+    width: 2rem;
+
+    margin-left: 1rem;
+
+    border-radius: 0.25rem;
+  }
+
+  .nav-main {
+    justify-content: center;
+    column-gap: 0.5rem;
+
+    ion-button {
+      font-size: 1rem;
+
+      &:hover {
+        color: var(--ion-color-primary);
+      }
+    }
+  }
+}
