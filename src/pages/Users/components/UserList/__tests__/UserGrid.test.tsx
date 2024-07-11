@@ -4,27 +4,26 @@ import { UseQueryResult } from '@tanstack/react-query';
 import { render, screen } from 'test/test-utils';
 import * as UseGetUsers from 'pages/Users/api/useGetUsers';
 import { User } from 'common/models/user';
-import { usersFixture } from '__fixtures__/users';
-import UserList from '../UserList';
 
-describe('UserList', () => {
+import UserGrid from '../UserGrid';
+
+describe('UserGrid', () => {
   it('should render successfully', async () => {
     // ARRANGE
-    render(<UserList />);
-    await screen.findByTestId('list-user');
+    render(<UserGrid />);
+    await screen.findByTestId('grid-user');
 
     // ASSERT
-    expect(screen.getByTestId('list-user')).toBeDefined();
+    expect(screen.getByTestId('grid-user')).toBeDefined();
   });
 
-  it('should render list', async () => {
+  it('should render grid', async () => {
     // ARRANGE
-    render(<UserList />);
-    await screen.findByTestId('list-item-user-1');
+    render(<UserGrid />);
+    await screen.findByTestId('grid-user-card-user-1');
 
     // ASSERT
-    expect(screen.getByTestId('list-user')).toBeDefined();
-    expect(screen.getByTestId('list-user').childElementCount).toBe(usersFixture.length);
+    expect(screen.getByTestId('grid-user-card-user-1')).toBeDefined();
   });
 
   it('should render loading state', async () => {
@@ -35,11 +34,11 @@ describe('UserList', () => {
       isLoading: true,
       isError: false,
     } as unknown as UseQueryResult<User[], Error>);
-    render(<UserList />);
-    await screen.findByTestId('list-user-loader');
+    render(<UserGrid />);
+    await screen.findByTestId('grid-user-loader');
 
     // ASSERT
-    expect(screen.getByTestId('list-user-loader')).toBeDefined();
+    expect(screen.getByTestId('grid-user-loader')).toBeDefined();
   });
 
   it('should render error state', async () => {
@@ -50,11 +49,11 @@ describe('UserList', () => {
       isLoading: false,
       isError: true,
     } as unknown as UseQueryResult<User[], Error>);
-    render(<UserList />);
-    await screen.findByTestId('list-user-error');
+    render(<UserGrid />);
+    await screen.findByTestId('grid-user-error');
 
     // ASSERT
-    expect(screen.getByTestId('list-user-error')).toBeDefined();
+    expect(screen.getByTestId('grid-user-error')).toBeDefined();
   });
 
   it('should render empty state', async () => {
@@ -65,10 +64,10 @@ describe('UserList', () => {
       isLoading: false,
       isError: false,
     } as unknown as UseQueryResult<User[], Error>);
-    render(<UserList />);
-    await screen.findByTestId('list-user-empty');
+    render(<UserGrid />);
+    await screen.findByTestId('grid-user-empty');
 
     // ASSERT
-    expect(screen.getByTestId('list-user-empty')).toBeDefined();
+    expect(screen.getByTestId('grid-user-empty')).toBeDefined();
   });
 });
