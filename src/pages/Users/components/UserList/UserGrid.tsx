@@ -69,7 +69,7 @@ const UserGrid = ({ className, testid = 'grid-user' }: UserGridProps): JSX.Eleme
         {users &&
           users.map((user) => (
             <IonCol key={user.id} sizeXs="12" sizeMd="6" sizeXl="4">
-              <UserCard user={user} />
+              <UserCard user={user} testid={`${testid}-card-user-${user.id}`} />
             </IonCol>
           ))}
       </IonRow>

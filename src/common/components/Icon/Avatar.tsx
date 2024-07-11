@@ -45,9 +45,11 @@ const Avatar = ({ className, src, testid = 'avatar', value }: AvatarProps): JSX.
       title={trimmedValue}
     >
       {src ? (
-        <img className="image" src={src} alt={value} />
+        <img className="image" src={src} alt={value} data-testid={`${testid}-image`} />
       ) : (
-        <div className={classNames('initial', colorClass)}>{initial}</div>
+        <div className={classNames('initial', colorClass)} data-testid={`${testid}-initial`}>
+          {initial}
+        </div>
       )}
     </IonAvatar>
   );
