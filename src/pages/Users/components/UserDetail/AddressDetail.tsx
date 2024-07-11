@@ -22,7 +22,14 @@ interface AddressDetailProps extends BaseComponentProps {
  * The `AddressDetail` component renders a block which displays a single
  * `Address`.
  *
- * If the `address` property is null or undefined, a loading state is rendered.
+ * If `isLoading` is `true` the loading state is rendered.
+ *
+ * If `isLoading` is `false` and the `address` property is provided, the
+ * address attributes are rendered.
+ *
+ * If `isLoading` is `false` and the `address` property is empty, the
+ * component returns `false` so that the component remains in the React
+ * hierarchy, but does not render anything.
  *
  * @param {AddressDetailProps} props - Component properties.
  * @returns {JSX.Element | false} Returns JSX when loading or a user is

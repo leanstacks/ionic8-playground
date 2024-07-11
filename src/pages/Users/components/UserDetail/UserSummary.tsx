@@ -23,7 +23,14 @@ interface UserSummaryProps extends BaseComponentProps {
  * The `UserSummary` component renders a block containing summary information
  * about a single `User` including their name, email, phone, and website.
  *
- * If the supplied `user` is null or undefined, a loading state is rendered.
+ * If `isLoading` is `true` the loading state is rendered.
+ *
+ * If `isLoading` is `false` and the `user` property is provided, the
+ * user attributes are rendered.
+ *
+ * If `isLoading` is `false` and the `user` property is empty, the
+ * component returns `false` so that the component remains in the React
+ * hierarchy, but does not render anything.
  *
  * @param {UserSummaryProps} props - Component propertiers.
  * @returns {JSX.Element | false} Returns JSX when loading or a user is

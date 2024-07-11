@@ -22,7 +22,14 @@ interface CompanyDetailProps extends BaseComponentProps {
  * The `CompanyDetail` component renders a block which provides details about
  * a single `Company`.
  *
- * If the `company` property is null or undefined, a loading state is rendered.
+ * If `isLoading` is `true` the loading state is rendered.
+ *
+ * If `isLoading` is `false` and the `company` property is provided, the
+ * company attributes are rendered.
+ *
+ * If `isLoading` is `false` and the `company` property is empty, the
+ * component returns `false` so that the component remains in the React
+ * hierarchy, but does not render anything.
  *
  * @param {CompanyDetailProps} props - Component properties.
  * @returns {JSX.Element | false} Returns JSX when loading or a user is
