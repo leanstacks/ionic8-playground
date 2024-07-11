@@ -23,8 +23,8 @@ describe('UserList', () => {
     await screen.findByTestId('list-item-user-1');
 
     // ASSERT
-    expect(screen.getAllByTestId('list-user').length).toBe(2);
-    expect(screen.getAllByTestId('list-user')[0].childElementCount).toBe(usersFixture.length);
+    expect(screen.getByTestId('list-user')).toBeDefined();
+    expect(screen.getByTestId('list-user').childElementCount).toBe(usersFixture.length);
   });
 
   it('should render loading state', async () => {

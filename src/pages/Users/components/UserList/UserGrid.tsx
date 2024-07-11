@@ -1,42 +1,33 @@
-import { IonList, IonListHeader } from '@ionic/react';
+import { IonCol, IonGrid, IonRow } from '@ionic/react';
 import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 
-import './UserList.scss';
+import './UserGrid.scss';
 import { BaseComponentProps } from 'common/components/types';
 import { useGetUsers } from 'pages/Users/api/useGetUsers';
-import UserListItem from './UserListItem';
+import UserCard from './UserCard';
 import LoaderSpinner from 'common/components/Loader/LoaderSpinner';
 import CardRow from 'common/components/Card/CardRow';
 import ErrorCard from 'common/components/Card/ErrorCard';
 import EmptyCard from 'common/components/Card/EmptyCard';
 
 /**
- * Properties for the `UserList` component.
- * @param {string} [header] - Optional. The list header title. Default: `Users`.
- * @param {boolean} [showHeader] - Optional. Indicates if the header is shown. Default: `false`.
+ * Properties for the `UserGrid` component.
  */
-interface UserListProps extends BaseComponentProps {
-  header?: string;
-  showHeader?: boolean;
-}
+interface UserGridProps extends BaseComponentProps {}
 
 /**
- * The `UserList` component renders a list of `User` objects. Uses the `IonList`
+ * The `UserGrid` component renders a grid of `UserCard`s. Uses the `IonGrid`
  * component to provide base functionality.
- * @param {UserListProps} props - Component properties.
+ * @param {UserGridProps} props - Component properties.
  * @returns JSX
+ * @see {@link IonGrid}
  */
-const UserList = ({
-  className,
-  header = 'Users',
-  showHeader = false,
-  testid = 'list-user',
-}: UserListProps): JSX.Element => {
+const UserGrid = ({ className, testid = 'grid-user' }: UserGridProps): JSX.Element => {
   const { data: users, isError, isLoading } = useGetUsers();
 
   const baseProps = {
-    className: classNames('list-user', className),
+    className: classNames('grid-user', className),
     'data-testid': testid,
   };
 
@@ -73,19 +64,17 @@ const UserList = ({
 
   // Success state
   return (
-    <IonList {...baseProps}>
-      {showHeader && <IonListHeader data-testid={`${testid}-header`}>{header}</IonListHeader>}
-
-      {users &&
-        users.map((user, index) => (
-          <UserListItem
-            key={user.id}
-            user={user}
-            lines={index === users.length - 1 ? 'none' : 'full'}
-          />
-        ))}
-    </IonList>
+    <IonGrid {...baseProps}>
+      <IonRow>
+        {users &&
+          users.map((user) => (
+            <IonCol key={user.id} sizeXs="12" sizeMd="6" sizeXl="4">
+              <UserCard user={user} />
+            </IonCol>
+          ))}
+      </IonRow>
+    </IonGrid>
   );
 };
 
-export default UserList;
+export default UserGrid;
