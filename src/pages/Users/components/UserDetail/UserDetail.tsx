@@ -29,14 +29,14 @@ interface UserDetailProps extends BaseComponentProps {
  * error message is displayed.
  *
  * @param {UserDetailProps} props - Component properties.
- * @returns JSX
+ * @returns {JSX.Element} JSX
  */
 const UserDetail = ({
   className,
   testid = 'user-detail',
   userId,
 }: UserDetailProps): JSX.Element => {
-  const { data: user, isError } = useGetUser({ userId });
+  const { data: user, isError, isLoading } = useGetUser({ userId });
 
   const baseProps = {
     className: classNames('user-detail', className),
@@ -57,14 +57,22 @@ const UserDetail = ({
   // Success state
   return (
     <div {...baseProps}>
-      <UserSummary user={user} testid={`${testid}-user-summary`} />
+      <UserSummary isLoading={isLoading} user={user} testid={`${testid}-user-summary`} />
       <IonGrid>
         <IonRow>
-          <IonCol sizeXs="2" sizeMd="1">
-            <CompanyDetail company={user?.company} testid={`${testid}-company-detail`} />
+          <IonCol sizeXs="12" sizeMd="6">
+            <CompanyDetail
+              company={user?.company}
+              isLoading={isLoading}
+              testid={`${testid}-company-detail`}
+            />
           </IonCol>
-          <IonCol sizeXs="2" sizeMd="1">
-            <AddressDetail address={user?.address} testid={`${testid}-address-detail`} />
+          <IonCol sizeXs="12" sizeMd="6">
+            <AddressDetail
+              address={user?.address}
+              isLoading={isLoading}
+              testid={`${testid}-address-detail`}
+            />
           </IonCol>
         </IonRow>
       </IonGrid>
