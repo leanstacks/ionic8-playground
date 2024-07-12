@@ -47,8 +47,6 @@ const MessageCard = ({
   testid = 'card-message',
   title,
 }: MessageCardProps): JSX.Element => {
-  const hasHeader = title || subtitle;
-
   return (
     <IonCard className={classNames('card-message', className)} data-testid={testid} color={color}>
       {title && (

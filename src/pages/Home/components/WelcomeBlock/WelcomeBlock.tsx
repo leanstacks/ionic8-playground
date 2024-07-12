@@ -23,11 +23,11 @@ const WelcomeBlock = ({ className, testid = 'block-welcome' }: WelcomeBlockProps
         <div>
           Welcome to the Ionic playground project. This project demonstrates how to create a
           cross-platform application using the{' '}
-          <a href="https://ionic.io/" target="_blank">
+          <a href="https://ionic.io/" target="_blank" rel="noreferrer">
             Ionic
           </a>{' '}
           framework and{' '}
-          <a href="https://react.dev" target="_blank">
+          <a href="https://react.dev" target="_blank" rel="noreferrer">
             React
           </a>{' '}
           components.

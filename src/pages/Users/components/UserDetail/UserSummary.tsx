@@ -6,7 +6,6 @@ import './UserSummary.scss';
 import { BaseComponentProps } from 'common/components/types';
 import { User } from 'common/models/user';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
-import { boolean } from 'yup';
 
 /**
  * Properties for the `UserSummary` component.
