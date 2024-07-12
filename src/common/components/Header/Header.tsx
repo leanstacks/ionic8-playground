@@ -1,11 +1,18 @@
 import {
   IonBackButton,
+  IonButton,
   IonButtons,
+  IonCol,
   IonHeader,
   IonMenuButton,
+  IonNavLink,
+  IonRow,
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
+
+import './Header.scss';
+import logo from 'assets/logo_ls.png';
 
 /**
  * Properties for the `Header` component.
@@ -21,21 +28,31 @@ interface HeaderProps extends Pick<HTMLIonBackButtonElement, 'defaultHref'> {
 }
 
 const Header = ({ backButton = false, defaultHref, title }: HeaderProps): JSX.Element => {
+  const testid = 'header-app';
+
   return (
-    <IonHeader data-testid="header-app">
+    <IonHeader className="header-app" data-testid="header-app">
       <IonToolbar>
-        {backButton && (
-          <IonButtons slot="start">
-            <IonBackButton defaultHref={defaultHref} data-testid="header-app-button-back" />
-          </IonButtons>
-        )}
-        <IonTitle data-testid="header-app-title">{title}</IonTitle>
+        <IonButtons slot="start">
+          {backButton ? (
+            <IonBackButton defaultHref={defaultHref} data-testid={`${testid}-button-back`} />
+          ) : (
+            <img className="logo" src={logo} alt="Logo" data-testid={`${testid}-image-logo`} />
+          )}
+        </IonButtons>
+        <IonTitle className="ion-hide-md-up" data-testid={`${testid}-title`}>
+          {title}
+        </IonTitle>
+        <IonButtons className="nav-main ion-hide-md-down" data-testid={`${testid}-menu-row`}>
+          <IonButton routerLink="/tabs/home">Home</IonButton>
+          <IonButton routerLink="/tabs/users">Users</IonButton>
+        </IonButtons>
         <IonButtons slot="end">
           <IonMenuButton
             autoHide={false}
             menu="menu-app"
             className="ion-hide-md-down"
-            data-testid="header-app-button-menu"
+            data-testid={`${testid}-button-menu`}
           ></IonMenuButton>
         </IonButtons>
       </IonToolbar>
