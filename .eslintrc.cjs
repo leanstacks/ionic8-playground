@@ -21,4 +21,9 @@ module.exports = {
     'react/no-multi-comp': 'error',
     'react/react-in-jsx-scope': 'off',
   },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
 };
