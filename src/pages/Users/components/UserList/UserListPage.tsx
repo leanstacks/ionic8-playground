@@ -1,7 +1,10 @@
-import { IonContent, IonPage } from '@ionic/react';
+import { IonButton, IonContent, IonIcon, IonPage } from '@ionic/react';
+import { add } from 'ionicons/icons';
 
 import './UserListPage.scss';
 import Header from 'common/components/Header/Header';
+import Container from 'common/components/Content/Container';
+import PageHeader from 'common/components/Content/PageHeader';
 import UserList from './UserList';
 import UserGrid from './UserGrid';
 
@@ -14,11 +17,23 @@ export const UserListPage = (): JSX.Element => {
 
   return (
     <IonPage className="page-user-list" data-testid={testid}>
-      <Header title="Users" />
+      <Header />
 
-      <IonContent fullscreen>
-        <UserList className="ion-hide-md-up" />
-        <UserGrid className="ion-hide-md-down" />
+      <IonContent>
+        <Container fixed>
+          <PageHeader
+            title="Users"
+            buttons={
+              <>
+                <IonButton>
+                  <IonIcon slot="icon-only" icon={add} />
+                </IonButton>
+              </>
+            }
+          />
+          <UserList className="ion-hide-md-up" />
+          <UserGrid className="ion-hide-md-down" />
+        </Container>
       </IonContent>
     </IonPage>
   );
