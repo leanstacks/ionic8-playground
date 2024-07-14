@@ -6,7 +6,7 @@ import { BaseComponentProps } from 'common/components/types';
 import { useGetUser } from 'pages/Users/api/useGetUser';
 import CardRow from 'common/components/Card/CardRow';
 import ErrorCard from 'common/components/Card/ErrorCard';
-import UserSummary from './UserSummary';
+import ContactInfo from './ContactInfo';
 import CompanyDetail from './CompanyDetail';
 import AddressDetail from './AddressDetail';
 
@@ -57,17 +57,19 @@ const UserDetail = ({
   // Success state
   return (
     <div {...baseProps}>
-      <UserSummary isLoading={isLoading} user={user} testid={`${testid}-user-summary`} />
       <IonGrid>
         <IonRow>
-          <IonCol sizeXs="12" sizeMd="6">
+          <IonCol sizeXs="12" sizeMd="6" sizeXl="4">
+            <ContactInfo isLoading={isLoading} user={user} testid={`${testid}-user-summary`} />
+          </IonCol>
+          <IonCol sizeXs="12" sizeMd="6" sizeXl="4">
             <CompanyDetail
               company={user?.company}
               isLoading={isLoading}
               testid={`${testid}-company-detail`}
             />
           </IonCol>
-          <IonCol sizeXs="12" sizeMd="6">
+          <IonCol sizeXs="12" sizeMd="6" sizeXl="4">
             <AddressDetail
               address={user?.address}
               isLoading={isLoading}

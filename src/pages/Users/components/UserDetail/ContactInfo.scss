@@ -1,9 +1,13 @@
-.address-detail {
+.contact-info {
   margin-bottom: 1rem;
 
   .content {
-    .primary {
-      font-weight: 700;
+    > * {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      column-gap: 1rem;
+      row-gap: 0.25rem;
     }
 
     .header {
