@@ -5,23 +5,23 @@ import { userFixture1 } from '__fixtures__/users';
 
 import ContactInfo from '../ContactInfo';
 
-describe('UserSummary', () => {
+describe('ContactInfo', () => {
   it('should render successfully', async () => {
     // ARRANGE
     render(<ContactInfo user={userFixture1} />);
-    await screen.findByTestId('user-summary');
+    await screen.findByTestId('contact-info');
 
     // ASSERT
-    expect(screen.getByTestId('user-summary')).toBeDefined();
+    expect(screen.getByTestId('contact-info')).toBeDefined();
   });
 
   it('should render loading state', async () => {
     // ARRANGE
     render(<ContactInfo isLoading={true} />);
-    await screen.findByTestId('user-summary-loader');
+    await screen.findByTestId('contact-info-loader');
 
     // ASSERT
-    expect(screen.getByTestId('user-summary-loader')).toBeDefined();
+    expect(screen.getByTestId('contact-info-loader')).toBeDefined();
   });
 
   it('should render empty state', async () => {
@@ -30,6 +30,6 @@ describe('UserSummary', () => {
     await waitFor(() => expect(container).toBeDefined());
 
     // ASSERT
-    expect(screen.queryByTestId('user-summary')).toBeNull();
+    expect(screen.queryByTestId('contact-info')).toBeNull();
   });
 });
