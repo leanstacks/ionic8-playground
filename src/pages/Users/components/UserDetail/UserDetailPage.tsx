@@ -2,11 +2,14 @@ import { IonButton, IonContent, IonIcon, IonPage } from '@ionic/react';
 import { useParams } from 'react-router';
 import { create } from 'ionicons/icons';
 
+import classes from './UserDetailPage.module.scss';
 import { useGetUser } from 'pages/Users/api/useGetUser';
 import Header from 'common/components/Header/Header';
 import UserDetail from './UserDetail';
 import Container from 'common/components/Content/Container';
 import PageHeader from 'common/components/Content/PageHeader';
+import Avatar from 'common/components/Icon/Avatar';
+import classNames from 'classnames';
 
 /**
  * Router path parameters for the `UserDetailPage`.
@@ -26,14 +29,25 @@ export const UserDetailPage = (): JSX.Element => {
   const { data: user } = useGetUser({ userId });
 
   return (
-    <IonPage className="page-user-detail" data-testid={testid}>
+    <IonPage className={classes['page-user-detail']} data-testid={testid}>
       <Header backButton defaultHref="/tabs/users" title={user && user.name} />
 
       <IonContent className="ion-padding">
         <Container fixed>
           <PageHeader
-            className="ion-hide-md-down"
-            title={user ? user.name : 'User Detail'}
+            className={classNames('ion-hide-md-down', classes['page-header'])}
+            title={
+              user ? (
+                <>
+                  <div className={classes['title-block']}>
+                    <Avatar value={user.name} className={classes.avatar} />
+                    <div>{user.name}</div>
+                  </div>
+                </>
+              ) : (
+                'User Detail'
+              )
+            }
             buttons={
               <>
                 <IonButton title="Edit user">

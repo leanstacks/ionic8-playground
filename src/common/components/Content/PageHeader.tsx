@@ -7,12 +7,12 @@ import classes from './PageHeader.module.scss';
 
 /**
  * Properties for the `PageHeader` component.
- * @param {string} title - A title.
+ * @param {ReactNode} title - A title.
  * @param {ReactNode} [buttons] - One or more buttons.
  * @see {@link BaseComponentProps}
  */
 interface PageHeaderProps extends BaseComponentProps {
-  title: string;
+  title: ReactNode;
   buttons?: ReactNode;
 }
 
