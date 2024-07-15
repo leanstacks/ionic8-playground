@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import {
   IonBackButton,
   IonButton,
@@ -15,16 +16,19 @@ import logo from 'assets/logo_ls.png';
  * Properties for the `Header` component.
  * @param {boolean} [backButton] - Optional. Indicates the back button
  * should be rendered.
+ * @param {ReactNode} [buttons] - Optional. One or more buttons, specific
+ * to the page.
  * @param {string} [defaultHref] - Optional. The default back navigation
  * href if there is no history in the route stack.
  * @param {string} [title] - Optional. The header title.
  */
 interface HeaderProps extends Pick<HTMLIonBackButtonElement, 'defaultHref'> {
   backButton?: boolean;
+  buttons?: ReactNode;
   title?: string;
 }
 
-const Header = ({ backButton = false, defaultHref, title }: HeaderProps): JSX.Element => {
+const Header = ({ backButton = false, buttons, defaultHref, title }: HeaderProps): JSX.Element => {
   const testid = 'header-app';
 
   return (
@@ -51,6 +55,7 @@ const Header = ({ backButton = false, defaultHref, title }: HeaderProps): JSX.El
             className="ion-hide-md-down"
             data-testid={`${testid}-button-menu`}
           ></IonMenuButton>
+          {buttons}
         </IonButtons>
       </IonToolbar>
     </IonHeader>

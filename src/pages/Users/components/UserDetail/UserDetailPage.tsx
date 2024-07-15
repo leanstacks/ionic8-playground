@@ -30,7 +30,20 @@ export const UserDetailPage = (): JSX.Element => {
 
   return (
     <IonPage className={classes['page-user-detail']} data-testid={testid}>
-      <Header backButton defaultHref="/tabs/users" title={user && user.name} />
+      <Header
+        backButton
+        buttons={
+          <IonButton
+            title="Edit user"
+            className="ion-hide-md-up"
+            routerLink={`/tabs/users/${userId}/edit`}
+          >
+            <IonIcon slot="icon-only" icon={create} />
+          </IonButton>
+        }
+        defaultHref="/tabs/users"
+        title={user && user.name}
+      />
 
       <IonContent className="ion-padding">
         <Container fixed>
@@ -38,22 +51,18 @@ export const UserDetailPage = (): JSX.Element => {
             className={classNames('ion-hide-md-down', classes['page-header'])}
             title={
               user ? (
-                <>
-                  <div className={classes['title-block']}>
-                    <Avatar value={user.name} className={classes.avatar} />
-                    <div>{user.name}</div>
-                  </div>
-                </>
+                <div className={classes['title-block']}>
+                  <Avatar value={user.name} className={classes.avatar} />
+                  <div>{user.name}</div>
+                </div>
               ) : (
                 'User Detail'
               )
             }
             buttons={
-              <>
-                <IonButton title="Edit user">
-                  <IonIcon slot="icon-only" icon={create} />
-                </IonButton>
-              </>
+              <IonButton title="Edit user" routerLink={`/tabs/users/${userId}/edit`}>
+                <IonIcon slot="icon-only" icon={create} />
+              </IonButton>
             }
           />
 

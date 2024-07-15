@@ -56,8 +56,8 @@ const ContactInfo = ({
         <div className="content" data-testid={`${testid}-loader`}>
           {showHeader && (
             <div className="header">
-              <LoaderSkeleton animated widthStyle="2rem" heightStyle="1.5rem" />
-              <LoaderSkeleton animated widthStyle="20rem" heightStyle="1.5rem" />
+              <IonIcon icon={person} />
+              <LoaderSkeleton animated widthStyle="12rem" heightStyle="1.5rem" />
             </div>
           )}
           <LoaderSkeleton animated widthStyle="12rem" heightStyle="1rem" />
