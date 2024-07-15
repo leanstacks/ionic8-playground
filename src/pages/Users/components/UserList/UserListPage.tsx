@@ -1,5 +1,4 @@
-import { IonButton, IonContent, IonIcon, IonPage } from '@ionic/react';
-import { add } from 'ionicons/icons';
+import { IonContent, IonPage } from '@ionic/react';
 
 import './UserListPage.scss';
 import Header from 'common/components/Header/Header';
@@ -21,16 +20,7 @@ export const UserListPage = (): JSX.Element => {
 
       <IonContent>
         <Container fixed>
-          <PageHeader
-            title="Users"
-            buttons={
-              <>
-                <IonButton>
-                  <IonIcon slot="icon-only" icon={add} />
-                </IonButton>
-              </>
-            }
-          />
+          <PageHeader title="Users" />
           <UserList className="ion-hide-md-up" />
           <UserGrid className="ion-hide-md-down" />
         </Container>
