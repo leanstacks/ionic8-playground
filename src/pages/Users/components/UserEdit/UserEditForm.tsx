@@ -12,6 +12,7 @@ import Input from 'common/components/Input/Input';
 import { useUpdateUser } from 'pages/Users/api/useUpdateUser';
 import CardRow from 'common/components/Card/CardRow';
 import ErrorCard from 'common/components/Card/ErrorCard';
+import LoaderSpinner from 'common/components/Loader/LoaderSpinner';
 
 /**
  * Properties for the `UserEditForm` component.
@@ -57,7 +58,7 @@ const UserEditForm = ({
 }: UserEditFormProps): JSX.Element => {
   const router = useIonRouter();
   const [error, setError] = useState<string>('');
-  const { mutate: updateUser } = useUpdateUser();
+  const { mutate: updateUser, isPending } = useUpdateUser();
 
   const onCancel = () => {
     router.goBack();
@@ -160,7 +161,7 @@ const UserEditForm = ({
                 disabled={isSubmitting || !dirty}
                 data-testid={`${testid}-button-submit`}
               >
-                Save
+                {isPending ? <LoaderSpinner className="spinner-button-save" /> : 'Save'}
               </IonButton>
             </div>
           </Form>

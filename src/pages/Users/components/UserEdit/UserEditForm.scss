@@ -28,7 +28,14 @@
     display: flex;
 
     ion-button {
-      flex-grow: 1;
+      width: 100%;
+    }
+
+    .spinner-button-save {
+      ion-spinner {
+        height: 16px;
+        width: 16px;
+      }
     }
   }
 
