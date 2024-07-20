@@ -144,10 +144,16 @@ const UserEditForm = ({
                 fill="clear"
                 disabled={isSubmitting}
                 onClick={onCancel}
+                data-testid={`${testid}-button-cancel`}
               >
                 Cancel
               </IonButton>
-              <IonButton type="submit" color="primary" disabled={isSubmitting || !dirty}>
+              <IonButton
+                type="submit"
+                color="primary"
+                disabled={isSubmitting || !dirty}
+                data-testid={`${testid}-button-submit`}
+              >
                 Save
               </IonButton>
             </div>

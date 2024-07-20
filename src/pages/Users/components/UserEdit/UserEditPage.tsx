@@ -39,12 +39,12 @@ export const UserEditPage = (): JSX.Element => {
             className={classNames('ion-hide-md-down', classes['page-header'])}
             title={
               user ? (
-                <div className={classes['title-block']}>
+                <div className={classes['title-block']} data-testid={`${testid}-title`}>
                   <Avatar value={user.name} className={classes.avatar} />
                   <div>{user.name}</div>
                 </div>
               ) : (
-                <div className={classes['title-block']}>
+                <div className={classes['title-block']} data-testid={`${testid}-loader`}>
                   <LoaderSkeleton widthStyle="2rem" heightStyle="2rem" />
                   <LoaderSkeleton widthStyle="20rem" heightStyle="2rem" />
                 </div>
