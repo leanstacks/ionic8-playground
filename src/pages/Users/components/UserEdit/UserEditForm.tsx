@@ -10,6 +10,8 @@ import { BaseComponentProps } from 'common/components/types';
 import { User } from 'common/models/user';
 import Input from 'common/components/Input/Input';
 import { useUpdateUser } from 'pages/Users/api/useUpdateUser';
+import CardRow from 'common/components/Card/CardRow';
+import ErrorCard from 'common/components/Card/ErrorCard';
 
 /**
  * Properties for the `UserEditForm` component.
@@ -63,7 +65,11 @@ const UserEditForm = ({
 
   return (
     <div className={classNames('form-user-edit', className)} data-testid={testid}>
-      {error && <div>{error}</div>}
+      {error && (
+        <CardRow className="row-message" testid={`${testid}-error`}>
+          <ErrorCard content={`We are experiencing problems processing your request. ${error}`} />
+        </CardRow>
+      )}
       <Formik<UserEditFormValues>
         enableReinitialize={true}
         initialValues={{ user: user }}
