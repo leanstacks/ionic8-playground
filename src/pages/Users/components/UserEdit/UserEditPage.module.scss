@@ -1,0 +1,19 @@
+.page_user_edit {
+  .page_header {
+    .title_block {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      column-gap: 0.5rem;
+
+      .avatar {
+        border-radius: 0.25rem;
+
+        height: 2rem;
+        width: 2rem;
+
+        font-size: 1.5rem;
+      }
+    }
+  }
+}

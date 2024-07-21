@@ -1,0 +1,14 @@
+.page-header {
+  border-bottom-color: var(--ion-color-light);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+
+  padding: 0.25rem 0.5rem;
+
+  align-items: center;
+  justify-content: space-between;
+
+  .title {
+    font-size: 2rem;
+  }
+}

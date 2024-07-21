@@ -21,6 +21,7 @@ const AppRouter = (): JSX.Element => {
         <Route exact path="/">
           <Redirect to="/tabs" />
         </Route>
+        <Route render={() => <Redirect to="/tabs" />} />
       </IonRouterOutlet>
     </IonReactRouter>
   );

@@ -20,4 +20,15 @@ export const handlers = [
     }
     return new HttpResponse(null, { status: 404 });
   }),
+  http.put('https://jsonplaceholder.typicode.com/users/:userId', async ({ params, request }) => {
+    // update a user
+    const { userId } = params;
+    const user = find(usersFixture, { id: Number(userId) });
+    if (user) {
+      // return the request body as the response
+      const requestBody = await request.json();
+      return HttpResponse.json(requestBody);
+    }
+    return new HttpResponse(null, { status: 404 });
+  }),
 ];

@@ -1,4 +1,4 @@
-.company-detail {
+.contact-info {
   margin-bottom: 1rem;
 
   .header {
@@ -18,8 +18,12 @@
   }
 
   .content {
-    .primary {
-      font-weight: 700;
+    > * {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      column-gap: 1rem;
+      row-gap: 0.25rem;
     }
   }
 }

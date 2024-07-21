@@ -1,12 +1,9 @@
 .user-detail {
-  .user-summary {
-    margin-bottom: 2rem;
-  }
-
   ion-grid {
     --ion-grid-padding: 0;
     --ion-grid-column-padding: 0.25rem;
 
+    margin-top: 1rem;
     margin-bottom: 2rem;
   }
 }

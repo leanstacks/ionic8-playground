@@ -6,6 +6,7 @@ import AppMenu from '../Menu/AppMenu';
 import HomePage from 'pages/Home/HomePage';
 import UserDetailPage from 'pages/Users/components/UserDetail/UserDetailPage';
 import UserListPage from 'pages/Users/components/UserList/UserListPage';
+import UserEditPage from 'pages/Users/components/UserEdit/UserEditPage';
 
 /**
  * The `TabNavigation` component provides a router outlet for all of the
@@ -30,16 +31,19 @@ const TabNavigation = (): JSX.Element => {
       <IonTabs>
         <IonRouterOutlet id="content-main">
           <Redirect exact path="/tabs" to="/tabs/home" />
-          <Route path="/tabs/home">
+          <Route exact path="/tabs/home">
             <HomePage />
           </Route>
           <Route exact path="/tabs/users">
             <UserListPage />
           </Route>
-          <Route path="/tabs/users/:userId">
+          <Route exact path="/tabs/users/:userId">
             <UserDetailPage />
           </Route>
-          <Route exact path="/tabs">
+          <Route exact path="/tabs/users/:userId/edit">
+            <UserEditPage />
+          </Route>
+          <Route exact path="/">
             <Redirect to="/tabs/home" />
           </Route>
         </IonRouterOutlet>

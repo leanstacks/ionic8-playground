@@ -1,0 +1,49 @@
+.form-user-edit {
+  max-width: 45rem;
+
+  margin: 1rem 0;
+
+  section {
+    .section-heading {
+      align-items: center;
+      column-gap: 0.5rem;
+
+      padding-bottom: 0.25rem;
+      margin-bottom: 0.25rem;
+
+      font-size: 1.25rem;
+      font-weight: 700;
+
+      border-bottom-color: var(--ion-color-light);
+      border-bottom-style: solid;
+      border-bottom-width: 1px;
+    }
+  }
+
+  ion-input {
+    margin-bottom: 0.5rem;
+  }
+
+  .buttons {
+    display: flex;
+
+    ion-button {
+      width: 100%;
+    }
+
+    .spinner-button-save {
+      ion-spinner {
+        height: 16px;
+        width: 16px;
+      }
+    }
+  }
+
+  .row-message {
+    margin: 1rem 0;
+
+    &.row-card .wrapper {
+      width: 80% !important;
+    }
+  }
+}

@@ -1,26 +1,28 @@
 import { IonIcon } from '@ionic/react';
 import classNames from 'classnames';
-import { call, link, mail } from 'ionicons/icons';
+import { call, link, mail, person } from 'ionicons/icons';
 
-import './UserSummary.scss';
+import './ContactInfo.scss';
 import { BaseComponentProps } from 'common/components/types';
 import { User } from 'common/models/user';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 
 /**
- * Properties for the `UserSummary` component.
+ * Properties for the `ContactInfo` component.
  * @param {boolean} [isLoading] - Indicates if the `user` is being loaded.
+ * @param {boolean} [showHeader] - Indicates if the header should be rendered.
  * @param {User} [user] - A `User` object.
  * @see {@link BaseComponentProps}
  */
-interface UserSummaryProps extends BaseComponentProps {
+interface ContactInfoProps extends BaseComponentProps {
   isLoading?: boolean;
+  showHeader?: boolean;
   user?: User;
 }
 
 /**
- * The `UserSummary` component renders a block containing summary information
- * about a single `User` including their name, email, phone, and website.
+ * The `ContactInfo` component renders a block containing contact information
+ * about a single `User` including their email, phone, and website.
  *
  * If `isLoading` is `true` the loading state is rendered.
  *
@@ -31,18 +33,19 @@ interface UserSummaryProps extends BaseComponentProps {
  * component returns `false` so that the component remains in the React
  * hierarchy, but does not render anything.
  *
- * @param {UserSummaryProps} props - Component propertiers.
+ * @param {ContactInfoProps} props - Component properties.
  * @returns {JSX.Element | false} Returns JSX when loading or a user is
  * provided, otherwise returns `false`.
  */
-const UserSummary = ({
+const ContactInfo = ({
   className,
   isLoading = false,
-  testid = 'user-summary',
+  showHeader = true,
+  testid = 'contact-info',
   user,
-}: UserSummaryProps): JSX.Element | false => {
+}: ContactInfoProps): JSX.Element | false => {
   const baseProps = {
-    className: classNames('user-summary', className),
+    className: classNames('contact-info', className),
     'data-testid': testid,
   };
 
@@ -50,15 +53,16 @@ const UserSummary = ({
     // loading state
     return (
       <div {...baseProps}>
-        <div data-testid={`${testid}-loader`}>
-          <div style={{ marginBottom: '0.5rem' }}>
-            <LoaderSkeleton animated heightStyle="2rem" widthStyle="16rem" />
+        {showHeader && (
+          <div className="header">
+            <LoaderSkeleton animated widthStyle="1.5rem" heightStyle="1.5rem" />
+            <LoaderSkeleton animated widthStyle="12rem" heightStyle="1.5rem" />
           </div>
-          <div style={{ display: 'flex', columnGap: '1rem' }}>
-            <LoaderSkeleton animated widthStyle="12rem" />
-            <LoaderSkeleton animated widthStyle="12rem" />
-            <LoaderSkeleton animated widthStyle="12rem" />
-          </div>
+        )}
+        <div className="content" data-testid={`${testid}-loader`}>
+          <LoaderSkeleton animated widthStyle="20rem" heightStyle="1.25rem" />
+          <LoaderSkeleton animated widthStyle="20rem" heightStyle="1.25rem" />
+          <LoaderSkeleton animated widthStyle="20rem" heightStyle="1.25rem" />
         </div>
       </div>
     );
@@ -68,24 +72,31 @@ const UserSummary = ({
     // success state
     return (
       <div {...baseProps}>
-        <div className="content">
-          <div className="content-row primary">
-            <div className="name">{user.name}</div>
+        {showHeader && (
+          <div className="header">
+            <IonIcon icon={person} />
+            <div>Contact Info</div>
           </div>
-          <div className="content-row secondary">
+        )}
+        <div className="content">
+          {user.email && (
             <div>
               <IonIcon icon={mail} />
               <div>{user.email}</div>
             </div>
+          )}
+          {user.phone && (
             <div>
               <IonIcon icon={call} />
               <div>{user.phone}</div>
             </div>
+          )}
+          {user.website && (
             <div>
               <IonIcon icon={link} />
               <div>{user.website}</div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     );
@@ -95,4 +106,4 @@ const UserSummary = ({
   return false;
 };
 
-export default UserSummary;
+export default ContactInfo;
