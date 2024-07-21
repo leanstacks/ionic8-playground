@@ -29,7 +29,7 @@ const Input = ({ className, testid = 'input', ...props }: InputProps): JSX.Eleme
         className,
         { 'ion-touched': meta.touched },
         { 'ion-invalid': meta.error },
-        { 'ion-valid': !meta.error },
+        { 'ion-valid': meta.touched && !meta.error },
       )}
       onIonInput={async (e: CustomEvent<InputInputEventDetail>) =>
         await helpers.setValue(e.detail.value)
