@@ -50,15 +50,15 @@ const AddressDetail = ({
     // loading state
     return (
       <div {...baseProps}>
+        <div className="header">
+          <LoaderSkeleton animated heightStyle="1.5rem" widthStyle="1.5rem" />
+          <LoaderSkeleton animated heightStyle="1.5rem" widthStyle="10rem" />
+        </div>
         <div className="content" data-testid={`${testid}-loader`}>
-          <div className="header">
-            <IonIcon icon={map} />
-            <LoaderSkeleton animated heightStyle="1.5rem" widthStyle="10rem" />
-          </div>
-          <LoaderSkeleton animated heightStyle="1rem" widthStyle="20rem" />
-          <LoaderSkeleton animated heightStyle="1rem" widthStyle="20rem" />
-          <LoaderSkeleton animated heightStyle="1rem" widthStyle="20rem" />
-          <LoaderSkeleton animated heightStyle="1rem" widthStyle="20rem" />
+          <LoaderSkeleton animated heightStyle="1.25rem" widthStyle="20rem" />
+          <LoaderSkeleton animated heightStyle="1.25rem" widthStyle="20rem" />
+          <LoaderSkeleton animated heightStyle="1.25rem" widthStyle="20rem" />
+          <LoaderSkeleton animated heightStyle="1.25rem" widthStyle="20rem" />
         </div>
       </div>
     );
@@ -68,11 +68,11 @@ const AddressDetail = ({
     // success state
     return (
       <div {...baseProps}>
+        <div className="header">
+          <IonIcon icon={map} />
+          <div>Address</div>
+        </div>
         <div className="content">
-          <div className="header">
-            <IonIcon icon={map} />
-            <div>Address</div>
-          </div>
           <div>{address.street}</div>
           <div>{address.suite}</div>
           <div>{address.city}</div>
