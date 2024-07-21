@@ -53,16 +53,16 @@ const ContactInfo = ({
     // loading state
     return (
       <div {...baseProps}>
+        {showHeader && (
+          <div className="header">
+            <LoaderSkeleton animated widthStyle="1.5rem" heightStyle="1.5rem" />
+            <LoaderSkeleton animated widthStyle="12rem" heightStyle="1.5rem" />
+          </div>
+        )}
         <div className="content" data-testid={`${testid}-loader`}>
-          {showHeader && (
-            <div className="header">
-              <IonIcon icon={person} />
-              <LoaderSkeleton animated widthStyle="12rem" heightStyle="1.5rem" />
-            </div>
-          )}
-          <LoaderSkeleton animated widthStyle="12rem" heightStyle="1rem" />
-          <LoaderSkeleton animated widthStyle="12rem" heightStyle="1rem" />
-          <LoaderSkeleton animated widthStyle="12rem" heightStyle="1rem" />
+          <LoaderSkeleton animated widthStyle="20rem" heightStyle="1.25rem" />
+          <LoaderSkeleton animated widthStyle="20rem" heightStyle="1.25rem" />
+          <LoaderSkeleton animated widthStyle="20rem" heightStyle="1.25rem" />
         </div>
       </div>
     );
@@ -72,13 +72,13 @@ const ContactInfo = ({
     // success state
     return (
       <div {...baseProps}>
+        {showHeader && (
+          <div className="header">
+            <IonIcon icon={person} />
+            <div>Contact Info</div>
+          </div>
+        )}
         <div className="content">
-          {showHeader && (
-            <div className="header">
-              <IonIcon icon={person} />
-              <div>Contact Info</div>
-            </div>
-          )}
           {user.email && (
             <div>
               <IonIcon icon={mail} />
