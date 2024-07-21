@@ -1,10 +1,12 @@
-import { userFixture1 } from '__fixtures__/users';
-import { renderHook, waitFor } from 'test/test-utils';
 import { describe, expect, it } from 'vitest';
-import { useUpdateUser } from '../useUpdateUser';
+
+import { renderHook, waitFor } from 'test/test-utils';
 import { queryClient } from 'test/query-client';
 import { QueryKey } from 'common/utils/constants';
 import { User } from 'common/models/user';
+import { userFixture1 } from '__fixtures__/users';
+
+import { useUpdateUser } from '../useUpdateUser';
 
 describe('useUpdateUser', () => {
   it('should update user', async () => {
