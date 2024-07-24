@@ -1,7 +1,7 @@
 import { IonSpinner } from '@ionic/react';
 import classNames from 'classnames';
 
-import './LoaderSpinner.scss';
+import classes from './LoaderSpinner.module.scss';
 import { BaseComponentProps } from '../types';
 
 /**
@@ -28,9 +28,9 @@ const LoaderSpinner = ({
   text,
 }: LoaderSpinnerProps): JSX.Element => {
   return (
-    <div className={classNames('loader-spinner', className)} data-testid={testid}>
+    <div className={classNames(classes.loader_spinner, className)} data-testid={testid}>
       <IonSpinner></IonSpinner>
-      {text && <div className="text">{text}</div>}
+      {text && <div className={classes.text}>{text}</div>}
     </div>
   );
 };

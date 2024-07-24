@@ -9,7 +9,7 @@ import {
 import { ReactNode } from 'react';
 import classNames from 'classnames';
 
-import './MessageCard.scss';
+import classes from './MessageCard.module.scss';
 import { BaseComponentProps } from '../types';
 
 /**
@@ -48,19 +48,27 @@ const MessageCard = ({
   title,
 }: MessageCardProps): JSX.Element => {
   return (
-    <IonCard className={classNames('card-message', className)} data-testid={testid} color={color}>
+    <IonCard
+      className={classNames(classes.card_message, className)}
+      data-testid={testid}
+      color={color}
+    >
       {title && (
-        <IonCardHeader className="header">
-          <IonCardTitle className="title-block">
+        <IonCardHeader className={classes.header}>
+          <IonCardTitle className={classes.title_block}>
             {icon && (
-              <IonIcon icon={icon} className="icon" data-testid={`${testid}-icon`}></IonIcon>
+              <IonIcon
+                icon={icon}
+                className={classes.icon}
+                data-testid={`${testid}-icon`}
+              ></IonIcon>
             )}
-            <div className="title" data-testid={`${testid}-title`}>
+            <div className={classes.title} data-testid={`${testid}-title`}>
               {title}
             </div>
           </IonCardTitle>
           {subtitle && (
-            <IonCardSubtitle className="subtitle" data-testid={`${testid}-subtitle`}>
+            <IonCardSubtitle className={classes.subtitle} data-testid={`${testid}-subtitle`}>
               {subtitle}
             </IonCardSubtitle>
           )}
@@ -68,7 +76,7 @@ const MessageCard = ({
       )}
 
       {content && (
-        <IonCardContent className="content" data-testid={`${testid}-content`}>
+        <IonCardContent className={classes.content} data-testid={`${testid}-content`}>
           {content}
         </IonCardContent>
       )}

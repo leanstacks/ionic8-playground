@@ -8,8 +8,9 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
+import classNames from 'classnames';
 
-import './Header.scss';
+import classes from './Header.module.scss';
 import logo from 'assets/logo_ls.png';
 
 /**
@@ -32,19 +33,27 @@ const Header = ({ backButton = false, buttons, defaultHref, title }: HeaderProps
   const testid = 'header-app';
 
   return (
-    <IonHeader className="header-app" data-testid="header-app">
+    <IonHeader className={classes.header_app} data-testid="header-app">
       <IonToolbar>
         <IonButtons slot="start">
           {backButton ? (
             <IonBackButton defaultHref={defaultHref} data-testid={`${testid}-button-back`} />
           ) : (
-            <img className="logo" src={logo} alt="Logo" data-testid={`${testid}-image-logo`} />
+            <img
+              className={classes.logo}
+              src={logo}
+              alt="Logo"
+              data-testid={`${testid}-image-logo`}
+            />
           )}
         </IonButtons>
         <IonTitle className="ion-hide-md-up" data-testid={`${testid}-title`}>
           {title}
         </IonTitle>
-        <IonButtons className="nav-main ion-hide-md-down" data-testid={`${testid}-menu-row`}>
+        <IonButtons
+          className={classNames(classes.nav_main, 'ion-hide-md-down')}
+          data-testid={`${testid}-menu-row`}
+        >
           <IonButton routerLink="/tabs/home">Home</IonButton>
           <IonButton routerLink="/tabs/users">Users</IonButton>
         </IonButtons>

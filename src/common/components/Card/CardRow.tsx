@@ -2,7 +2,7 @@ import { IonRow } from '@ionic/react';
 import { PropsWithChildren } from 'react';
 import classNames from 'classnames';
 
-import './CardRow.scss';
+import classes from './CardRow.module.scss';
 import { BaseComponentProps } from '../types';
 
 /**
@@ -23,8 +23,8 @@ interface CardRowProps extends BaseComponentProps, PropsWithChildren {}
  */
 const CardRow = ({ children, className, testid = 'row-card' }: CardRowProps): JSX.Element => {
   return (
-    <IonRow className={classNames('row-card', className)} data-testid={testid}>
-      <div className="wrapper">{children}</div>
+    <IonRow className={classNames(classes.row_card, className)} data-testid={testid}>
+      <div className={classes.wrapper}>{children}</div>
     </IonRow>
   );
 };

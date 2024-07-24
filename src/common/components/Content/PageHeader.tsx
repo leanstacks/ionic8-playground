@@ -47,7 +47,7 @@ const PageHeader = ({
   title,
 }: PageHeaderProps): JSX.Element => {
   return (
-    <IonRow className={classNames(classes['page-header'], className)} data-testid={testid}>
+    <IonRow className={classNames(classes.page_header, className)} data-testid={testid}>
       <div className={classes.title} data-testid={`${testid}-title`}>
         {title}
       </div>

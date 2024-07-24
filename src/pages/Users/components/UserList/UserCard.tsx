@@ -2,7 +2,7 @@ import { IonCard, IonIcon } from '@ionic/react';
 import { mail } from 'ionicons/icons';
 import classNames from 'classnames';
 
-import './UserCard.scss';
+import classes from './UserCard.module.scss';
 import { BaseComponentProps } from 'common/components/types';
 import { User } from 'common/models/user';
 import Avatar from 'common/components/Icon/Avatar';
@@ -25,15 +25,15 @@ interface UserCardProps extends BaseComponentProps {
 const UserCard = ({ className, testid = 'card-user', user }: UserCardProps): JSX.Element => {
   return (
     <IonCard
-      className={classNames('card-user', className)}
+      className={classNames(classes.card_user, className)}
       routerLink={`/tabs/users/${user.id}`}
       data-testid={testid}
     >
-      <div className="layout">
-        <Avatar value={user.name} />
+      <div className={classes.layout}>
+        <Avatar className={classes.avatar} value={user.name} />
         <div>
-          <div className="header">{user.name}</div>
-          <div className="content-row">
+          <div className={classes.header}>{user.name}</div>
+          <div className={classes.content_row}>
             <div>
               <IonIcon icon={mail} />
               <div>{user.email}</div>

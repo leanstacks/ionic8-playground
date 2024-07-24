@@ -12,7 +12,7 @@ import {
 import { home, people } from 'ionicons/icons';
 import classNames from 'classnames';
 
-import './AppMenu.scss';
+import classes from './AppMenu.module.scss';
 import { BaseComponentProps } from '../types';
 
 /**
@@ -30,7 +30,7 @@ interface AppMenuProps extends BaseComponentProps {}
 const AppMenu = ({ className, testid = 'menu-app' }: AppMenuProps): JSX.Element => {
   return (
     <IonMenu
-      className={classNames('menu-app', className)}
+      className={classNames(classes.menu_app, className)}
       contentId="content-main"
       data-testid={testid}
       menuId="menu-app"
@@ -44,13 +44,13 @@ const AppMenu = ({ className, testid = 'menu-app' }: AppMenuProps): JSX.Element 
       <IonContent>
         <IonMenuToggle>
           <IonItem routerLink="/tabs/home" lines="full" data-testid={`${testid}-item-home`}>
-            <IonIcon icon={home} className="icon" />
+            <IonIcon icon={home} className={classes.icon} />
             <IonLabel>Home</IonLabel>
           </IonItem>
         </IonMenuToggle>
         <IonMenuToggle>
           <IonItem routerLink="/tabs/users" lines="full" data-testid={`${testid}-item-users`}>
-            <IonIcon icon={people} className="icon" />
+            <IonIcon icon={people} className={classes.icon} />
             <IonLabel>Users</IonLabel>
           </IonItem>
         </IonMenuToggle>

@@ -1,7 +1,7 @@
 import { IonAvatar } from '@ionic/react';
 import classNames from 'classnames';
 
-import './Avatar.scss';
+import classes from './Avatar.module.scss';
 import { BaseComponentProps } from '../types';
 
 /**
@@ -19,7 +19,14 @@ interface AvatarProps extends BaseComponentProps {
 /**
  * List of possible colors for generated Avatars.
  */
-const COLORS = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'];
+const COLORS = [
+  classes.primary,
+  classes.secondary,
+  classes.tertiary,
+  classes.success,
+  classes.warning,
+  classes.danger,
+];
 
 /**
  * The `Avatar` component renders an icon which uniquely represents a person or
@@ -40,14 +47,14 @@ const Avatar = ({ className, src, testid = 'avatar', value }: AvatarProps): JSX.
 
   return (
     <IonAvatar
-      className={classNames('avatar', className)}
+      className={classNames(classes.avatar, className)}
       data-testid={testid}
       title={trimmedValue}
     >
       {src ? (
-        <img className="image" src={src} alt={value} data-testid={`${testid}-image`} />
+        <img className={classes.image} src={src} alt={value} data-testid={`${testid}-image`} />
       ) : (
-        <div className={classNames('initial', colorClass)} data-testid={`${testid}-initial`}>
+        <div className={classNames(classes.initial, colorClass)} data-testid={`${testid}-initial`}>
           {initial}
         </div>
       )}

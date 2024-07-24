@@ -1,12 +1,16 @@
 .block {
   margin: 0.75rem;
-  .block-title {
+
+  .block_title {
     font-size: 1.25rem;
     font-weight: 500;
+
     margin-bottom: 0.5rem;
   }
-  .block-content {
+
+  .block_content {
     color: var(--ion-color-medium);
+
     margin-bottom: 0.5rem;
   }
 }
