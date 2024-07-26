@@ -8,7 +8,7 @@ import {
 } from '@ionic/react';
 import classNames from 'classnames';
 
-import './UserSummaryCard.scss';
+import classes from './UserSummaryCard.module.scss';
 import { useGetUsers } from 'pages/Users/api/useGetUsers';
 import { BaseComponentProps } from 'common/components/types';
 
@@ -35,14 +35,14 @@ const UserSummaryCard = ({
     <IonCard
       button
       routerLink="/tabs/users"
-      className={classNames('card-user-summary', className)}
+      className={classNames(classes.card_user_summary, className)}
       data-testid={testid}
     >
       <IonCardHeader>
         <IonCardTitle>
           Users
           {users && (
-            <IonBadge className="badge" data-testid={`${testid}-badge`}>
+            <IonBadge className={classes.badge} data-testid={`${testid}-badge`}>
               {users.length}
             </IonBadge>
           )}
