@@ -2,7 +2,7 @@ import { IonList, IonListHeader } from '@ionic/react';
 import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 
-import './UserList.scss';
+import classes from './UserList.module.scss';
 import { BaseComponentProps } from 'common/components/types';
 import { useGetUsers } from 'pages/Users/api/useGetUsers';
 import UserListItem from './UserListItem';
@@ -36,7 +36,7 @@ const UserList = ({
   const { data: users, isError, isLoading } = useGetUsers();
 
   const baseProps = {
-    className: classNames('list-user', className),
+    className: classNames(classes.list_user, className),
     'data-testid': testid,
   };
 
@@ -44,7 +44,11 @@ const UserList = ({
   if (isLoading) {
     return (
       <div {...baseProps}>
-        <LoaderSpinner className="loader" testid={`${testid}-loader`} text="Loading users..." />
+        <LoaderSpinner
+          className={classes.loader}
+          testid={`${testid}-loader`}
+          text="Loading users..."
+        />
       </div>
     );
   }
@@ -53,7 +57,7 @@ const UserList = ({
   if (isError) {
     return (
       <div {...baseProps}>
-        <CardRow className="row-message" testid={`${testid}-error`}>
+        <CardRow className={classes.row_message} testid={`${testid}-error`}>
           <ErrorCard content="We are experiencing problems getting the users." />
         </CardRow>
       </div>
@@ -64,7 +68,7 @@ const UserList = ({
   if (isEmpty(users)) {
     return (
       <div {...baseProps}>
-        <CardRow className="row-message" testid={`${testid}-empty`}>
+        <CardRow className={classes.row_message} testid={`${testid}-empty`}>
           <EmptyCard content="No users found." />
         </CardRow>
       </div>

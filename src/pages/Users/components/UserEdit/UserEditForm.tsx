@@ -5,7 +5,7 @@ import { Form, Formik } from 'formik';
 import { object, string } from 'yup';
 import classNames from 'classnames';
 
-import './UserEditForm.scss';
+import classes from './UserEditForm.module.scss';
 import { BaseComponentProps } from 'common/components/types';
 import { User } from 'common/models/user';
 import Input from 'common/components/Input/Input';
@@ -65,9 +65,9 @@ const UserEditForm = ({
   };
 
   return (
-    <div className={classNames('form-user-edit', className)} data-testid={testid}>
+    <div className={classNames(classes.form_user_edit, className)} data-testid={testid}>
       {error && (
-        <CardRow className="row-message" testid={`${testid}-error`}>
+        <CardRow className={classes.row_message} testid={`${testid}-error`}>
           <ErrorCard content={`We are experiencing problems processing your request. ${error}`} />
         </CardRow>
       )}
@@ -75,7 +75,6 @@ const UserEditForm = ({
         enableReinitialize={true}
         initialValues={{ user: user }}
         onSubmit={(values, { setSubmitting }) => {
-          console.log(`UserEditForm::onSubmit::${JSON.stringify(values)}`);
           setError('');
           updateUser(
             { user: { ...user, ...values.user } },
@@ -96,7 +95,7 @@ const UserEditForm = ({
         {({ dirty, isSubmitting }) => (
           <Form data-testid={`${testid}-form`}>
             <section>
-              <IonRow className="section-heading">
+              <IonRow className={classes.section_heading}>
                 <IonIcon icon={person} />
                 <div>Contact Info</div>
               </IonRow>
@@ -144,7 +143,7 @@ const UserEditForm = ({
               ></Input>
             </section>
 
-            <div className="buttons">
+            <div className={classes.buttons}>
               <IonButton
                 type="button"
                 color="secondary"
@@ -161,7 +160,7 @@ const UserEditForm = ({
                 disabled={isSubmitting || !dirty}
                 data-testid={`${testid}-button-submit`}
               >
-                {isPending ? <LoaderSpinner className="spinner-button-save" /> : 'Save'}
+                {isPending ? <LoaderSpinner className={classes.spinner_button_save} /> : 'Save'}
               </IonButton>
             </div>
           </Form>

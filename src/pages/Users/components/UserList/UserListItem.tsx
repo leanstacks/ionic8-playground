@@ -1,6 +1,7 @@
 import { IonIcon, IonItem, IonLabel } from '@ionic/react';
+import classNames from 'classnames';
 
-import './UserListItem.scss';
+import classes from './UserListItem.module.scss';
 import { User } from 'common/models/user';
 import Avatar from 'common/components/Icon/Avatar';
 import { mail } from 'ionicons/icons';
@@ -28,20 +29,21 @@ const UserListItem = ({ lines, user }: UserListItemProps): JSX.Element => {
 
   return (
     <IonItem
-      className="list-item-user"
+      className={classes.list_item_user}
       data-testid={testid}
       routerLink={`/tabs/users/${user.id}`}
       lines={lines}
       detail
     >
-      <Avatar value={user.name} />
+      <Avatar value={user.name} className={classes.avatar} />
       <IonLabel>
-        <div className="content-row primary">
-          <div className="name" data-testid={`${testid}-name`}>
-            {user.name}
-          </div>
+        <div
+          className={classNames(classes.content_row, classes.primary)}
+          data-testid={`${testid}-name`}
+        >
+          {user.name}
         </div>
-        <div className="content-row secondary">
+        <div className={classNames(classes.content_row, classes.secondary)}>
           <div>
             <IonIcon icon={mail} />
             <div data-testid={`${testid}-email`}>{user.email}</div>
