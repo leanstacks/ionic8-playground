@@ -1,7 +1,7 @@
 import { IonCol, IonGrid, IonRow } from '@ionic/react';
 import classNames from 'classnames';
 
-import './UserDetail.scss';
+import classes from './UserDetail.module.scss';
 import { BaseComponentProps } from 'common/components/types';
 import { useGetUser } from 'pages/Users/api/useGetUser';
 import CardRow from 'common/components/Card/CardRow';
@@ -39,7 +39,7 @@ const UserDetail = ({
   const { data: user, isError, isLoading } = useGetUser({ userId });
 
   const baseProps = {
-    className: classNames('user-detail', className),
+    className: classNames(classes.user_detail, className),
     'data-testid': testid,
   };
 
@@ -47,7 +47,7 @@ const UserDetail = ({
   if (isError) {
     return (
       <div {...baseProps}>
-        <CardRow className="row-message" testid={`${testid}-error`}>
+        <CardRow className={classes.row_message} testid={`${testid}-error`}>
           <ErrorCard content="We are experiencing problems getting the requested user information." />
         </CardRow>
       </div>

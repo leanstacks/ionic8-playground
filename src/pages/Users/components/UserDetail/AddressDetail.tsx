@@ -2,7 +2,7 @@ import { IonIcon } from '@ionic/react';
 import { map } from 'ionicons/icons';
 import classNames from 'classnames';
 
-import './AddressDetail.scss';
+import classes from './AddressDetail.module.scss';
 import { Address } from 'common/models/user';
 import { BaseComponentProps } from 'common/components/types';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
@@ -42,7 +42,7 @@ const AddressDetail = ({
   testid = 'address-detail',
 }: AddressDetailProps): JSX.Element | false => {
   const baseProps = {
-    className: classNames('address-detail', className),
+    className: classNames(classes.address_detail, className),
     'data-testid': testid,
   };
 
@@ -50,11 +50,11 @@ const AddressDetail = ({
     // loading state
     return (
       <div {...baseProps}>
-        <div className="header">
+        <div className={classes.header}>
           <LoaderSkeleton animated heightStyle="1.5rem" widthStyle="1.5rem" />
           <LoaderSkeleton animated heightStyle="1.5rem" widthStyle="10rem" />
         </div>
-        <div className="content" data-testid={`${testid}-loader`}>
+        <div className={classes.content} data-testid={`${testid}-loader`}>
           <LoaderSkeleton animated heightStyle="1.25rem" widthStyle="20rem" />
           <LoaderSkeleton animated heightStyle="1.25rem" widthStyle="20rem" />
           <LoaderSkeleton animated heightStyle="1.25rem" widthStyle="20rem" />
@@ -68,11 +68,11 @@ const AddressDetail = ({
     // success state
     return (
       <div {...baseProps}>
-        <div className="header">
+        <div className={classes.header}>
           <IonIcon icon={map} />
           <div>Address</div>
         </div>
-        <div className="content">
+        <div className={classes.content}>
           <div>{address.street}</div>
           <div>{address.suite}</div>
           <div>{address.city}</div>

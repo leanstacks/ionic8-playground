@@ -2,7 +2,7 @@ import { IonIcon } from '@ionic/react';
 import classNames from 'classnames';
 import { call, link, mail, person } from 'ionicons/icons';
 
-import './ContactInfo.scss';
+import classes from './ContactInfo.module.scss';
 import { BaseComponentProps } from 'common/components/types';
 import { User } from 'common/models/user';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
@@ -45,7 +45,7 @@ const ContactInfo = ({
   user,
 }: ContactInfoProps): JSX.Element | false => {
   const baseProps = {
-    className: classNames('contact-info', className),
+    className: classNames(classes.contact_info, className),
     'data-testid': testid,
   };
 
@@ -54,12 +54,12 @@ const ContactInfo = ({
     return (
       <div {...baseProps}>
         {showHeader && (
-          <div className="header">
+          <div className={classes.header}>
             <LoaderSkeleton animated widthStyle="1.5rem" heightStyle="1.5rem" />
             <LoaderSkeleton animated widthStyle="12rem" heightStyle="1.5rem" />
           </div>
         )}
-        <div className="content" data-testid={`${testid}-loader`}>
+        <div className={classes.content} data-testid={`${testid}-loader`}>
           <LoaderSkeleton animated widthStyle="20rem" heightStyle="1.25rem" />
           <LoaderSkeleton animated widthStyle="20rem" heightStyle="1.25rem" />
           <LoaderSkeleton animated widthStyle="20rem" heightStyle="1.25rem" />
@@ -73,12 +73,12 @@ const ContactInfo = ({
     return (
       <div {...baseProps}>
         {showHeader && (
-          <div className="header">
+          <div className={classes.header}>
             <IonIcon icon={person} />
             <div>Contact Info</div>
           </div>
         )}
-        <div className="content">
+        <div className={classes.content}>
           {user.email && (
             <div>
               <IonIcon icon={mail} />

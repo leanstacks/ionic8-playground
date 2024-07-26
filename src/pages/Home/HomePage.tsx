@@ -1,6 +1,6 @@
 import { IonCol, IonContent, IonGrid, IonPage, IonRow } from '@ionic/react';
 
-import './HomePage.scss';
+import classes from './HomePage.module.scss';
 import Header from 'common/components/Header/Header';
 import UserSummaryCard from 'pages/Users/components/UserSummaryCard/UserSummaryCard';
 import WelcomeBlock from './components/WelcomeBlock/WelcomeBlock';
@@ -12,7 +12,7 @@ import WelcomeBlock from './components/WelcomeBlock/WelcomeBlock';
  */
 const HomePage = (): JSX.Element => {
   return (
-    <IonPage className="page-home" data-testid="page-home">
+    <IonPage className={classes.page_home} data-testid="page-home">
       <Header title="Ionic Playground" />
 
       <IonContent fullscreen>

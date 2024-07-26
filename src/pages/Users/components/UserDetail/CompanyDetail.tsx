@@ -2,7 +2,7 @@ import { IonIcon } from '@ionic/react';
 import classNames from 'classnames';
 import { business } from 'ionicons/icons';
 
-import './CompanyDetail.scss';
+import classes from './CompanyDetail.module.scss';
 import { BaseComponentProps } from 'common/components/types';
 import { Company } from 'common/models/user';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
@@ -42,7 +42,7 @@ const CompanyDetail = ({
   testid = 'company-detail',
 }: CompanyDetailProps): JSX.Element | false => {
   const baseProps = {
-    className: classNames('company-detail', className),
+    className: classNames(classes.company_detail, className),
     'data-testid': testid,
   };
 
@@ -50,11 +50,11 @@ const CompanyDetail = ({
     // loading state
     return (
       <div {...baseProps}>
-        <div className="header">
+        <div className={classes.header}>
           <LoaderSkeleton animated heightStyle="1.5rem" widthStyle="1.5rem" />
           <LoaderSkeleton animated heightStyle="1.5rem" widthStyle="10rem" />
         </div>
-        <div className="content" data-testid={`${testid}-loader`}>
+        <div className={classes.content} data-testid={`${testid}-loader`}>
           <LoaderSkeleton animated heightStyle="1.25rem" widthStyle="20rem" />
           <LoaderSkeleton animated heightStyle="1.25rem" widthStyle="20rem" />
           <LoaderSkeleton animated heightStyle="1.25rem" widthStyle="20rem" />
@@ -67,12 +67,12 @@ const CompanyDetail = ({
     // success state
     return (
       <div {...baseProps}>
-        <div className="header">
+        <div className={classes.header}>
           <IonIcon icon={business} />
           <div>Company</div>
         </div>
-        <div className="content">
-          <div className="primary">{company.name}</div>
+        <div className={classes.content}>
+          <div className={classes.primary}>{company.name}</div>
           <div>{company.catchPhrase}</div>
           <div>{company.bs}</div>
         </div>
