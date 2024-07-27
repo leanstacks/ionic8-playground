@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react';
 import classNames from 'classnames';
 
 import { BaseComponentProps } from '../types';
-import classes from './Container.module.scss';
+import './Container.scss';
 
 /**
  * Properties for the `Container` component.
@@ -32,10 +32,7 @@ const Container = ({
   testid = 'container',
 }: ContainerProps): JSX.Element => {
   return (
-    <div
-      className={classNames(classes.container, { [classes.fixed]: fixed }, className)}
-      data-testid={testid}
-    >
+    <div className={classNames('container', { fixed: fixed }, className)} data-testid={testid}>
       {children}
     </div>
   );

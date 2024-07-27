@@ -3,8 +3,7 @@ import { IonButtons, IonRow } from '@ionic/react';
 import classNames from 'classnames';
 
 import { BaseComponentProps } from '../types';
-import classes from './PageHeader.module.scss';
-
+import './PageHeader.scss';
 /**
  * Properties for the `PageHeader` component.
  * @param {ReactNode} title - A title.
@@ -47,8 +46,8 @@ const PageHeader = ({
   title,
 }: PageHeaderProps): JSX.Element => {
   return (
-    <IonRow className={classNames(classes['page-header'], className)} data-testid={testid}>
-      <div className={classes.title} data-testid={`${testid}-title`}>
+    <IonRow className={classNames('page-header', className)} data-testid={testid}>
+      <div className={'title'} data-testid={`${testid}-title`}>
         {title}
       </div>
       {buttons && <IonButtons>{buttons}</IonButtons>}

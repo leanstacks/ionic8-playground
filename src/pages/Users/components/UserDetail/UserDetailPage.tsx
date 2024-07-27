@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import { create } from 'ionicons/icons';
 import classNames from 'classnames';
 
-import classes from './UserDetailPage.module.scss';
+import './UserDetailPage.scss';
 import { useGetUser } from 'pages/Users/api/useGetUser';
 import Header from 'common/components/Header/Header';
 import UserDetail from './UserDetail';
@@ -29,7 +29,7 @@ export const UserDetailPage = (): JSX.Element => {
   const { data: user } = useGetUser({ userId });
 
   return (
-    <IonPage className={classes.page_user_detail} data-testid={testid}>
+    <IonPage className={'page-user-detail'} data-testid={testid}>
       <Header
         backButton
         buttons={
@@ -48,11 +48,11 @@ export const UserDetailPage = (): JSX.Element => {
       <IonContent className="ion-padding">
         <Container fixed>
           <PageHeader
-            className={classNames('ion-hide-md-down', classes.page_header)}
+            className={classNames('ion-hide-md-down', 'page-header')}
             title={
               user ? (
-                <div className={classes.title_block}>
-                  <Avatar value={user.name} className={classes.avatar} />
+                <div className={'title-block'}>
+                  <Avatar value={user.name} />
                   <div>{user.name}</div>
                 </div>
               ) : (
