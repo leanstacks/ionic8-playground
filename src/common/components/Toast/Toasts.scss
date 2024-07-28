@@ -2,4 +2,9 @@
   // anchor point for rendering individual Toast components
   position: absolute;
   bottom: 64px;
+
+  // md
+  @media (min-width: 768px) {
+    bottom: 0;
+  }
 }
