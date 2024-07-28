@@ -13,6 +13,7 @@ import { useUpdateUser } from 'pages/Users/api/useUpdateUser';
 import CardRow from 'common/components/Card/CardRow';
 import ErrorCard from 'common/components/Card/ErrorCard';
 import LoaderSpinner from 'common/components/Loader/LoaderSpinner';
+import { useToasts } from 'common/hooks/useToasts';
 
 /**
  * Properties for the `UserEditForm` component.
@@ -59,6 +60,7 @@ const UserEditForm = ({
   const router = useIonRouter();
   const [error, setError] = useState<string>('');
   const { mutate: updateUser, isPending } = useUpdateUser();
+  const { createToast } = useToasts();
 
   const onCancel = () => {
     router.goBack();
@@ -80,8 +82,9 @@ const UserEditForm = ({
           updateUser(
             { user: { ...user, ...values.user } },
             {
-              onSuccess: () => {
+              onSuccess: (user) => {
                 setSubmitting(false);
+                createToast({ duration: 15000, message: `${user.name} updated` });
                 router.push(`/tabs/users/${user.id}`);
               },
               onError(error) {
