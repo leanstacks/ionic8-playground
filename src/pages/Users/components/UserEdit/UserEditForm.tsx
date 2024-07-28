@@ -84,8 +84,12 @@ const UserEditForm = ({
             {
               onSuccess: (user) => {
                 setSubmitting(false);
-                createToast({ duration: 15000, message: `${user.name} updated` });
-                router.push(`/tabs/users/${user.id}`);
+                createToast({ duration: 5000, message: `${user.name} updated` });
+                if (router.canGoBack()) {
+                  router.goBack();
+                } else {
+                  router.push(`/tabs/users/${user.id}`, 'back', 'replace');
+                }
               },
               onError(error) {
                 setError(error.message);
