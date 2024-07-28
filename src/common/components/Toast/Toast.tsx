@@ -2,7 +2,6 @@ import { IonToast, ToastButton } from '@ionic/react';
 import { useState } from 'react';
 import classNames from 'classnames';
 
-import './Toast.scss';
 import { BaseComponentProps } from '../types';
 import { ToastData } from 'common/providers/ToastProvider';
 
