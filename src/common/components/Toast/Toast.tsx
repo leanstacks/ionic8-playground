@@ -17,6 +17,9 @@ interface ToastProps extends BaseComponentProps {
   toast: ToastData;
 }
 
+/**
+ * A `ToastButton` to dismiss a toast.
+ */
 export const DismissButton: ToastButton = {
   role: 'cancel',
   text: 'Dismiss',
@@ -41,7 +44,7 @@ const Toast = ({ className, dismiss, testid = 'toast', toast }: ToastProps): JSX
 
   return (
     <IonToast
-      buttons={[DismissButton]}
+      buttons={toast.buttons}
       className={classNames('toast', className)}
       color="medium"
       data-testid={testid}

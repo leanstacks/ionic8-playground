@@ -8,12 +8,13 @@ import classNames from 'classnames';
 import './UserEditForm.scss';
 import { BaseComponentProps } from 'common/components/types';
 import { User } from 'common/models/user';
-import Input from 'common/components/Input/Input';
 import { useUpdateUser } from 'pages/Users/api/useUpdateUser';
+import { useToasts } from 'common/hooks/useToasts';
+import { DismissButton } from 'common/components/Toast/Toast';
+import Input from 'common/components/Input/Input';
 import CardRow from 'common/components/Card/CardRow';
 import ErrorCard from 'common/components/Card/ErrorCard';
 import LoaderSpinner from 'common/components/Loader/LoaderSpinner';
-import { useToasts } from 'common/hooks/useToasts';
 
 /**
  * Properties for the `UserEditForm` component.
@@ -84,7 +85,11 @@ const UserEditForm = ({
             {
               onSuccess: (user) => {
                 setSubmitting(false);
-                createToast({ duration: 5000, message: `${user.name} updated` });
+                createToast({
+                  buttons: [DismissButton],
+                  duration: 5000,
+                  message: `${user.name} updated`,
+                });
                 if (router.canGoBack()) {
                   router.goBack();
                 } else {

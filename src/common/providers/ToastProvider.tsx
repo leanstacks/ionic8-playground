@@ -1,13 +1,20 @@
-import React, { Dispatch, PropsWithChildren, useMemo, useReducer } from 'react';
+import { IonToast } from '@ionic/react';
+import React, {
+  ComponentPropsWithoutRef,
+  Dispatch,
+  PropsWithChildren,
+  useMemo,
+  useReducer,
+} from 'react';
 import { v4 as uuid } from 'uuid';
 
-export interface ToastData {
+export interface ToastData extends Pick<ComponentPropsWithoutRef<typeof IonToast>, 'buttons'> {
   id: string;
   message: string;
   duration: number;
 }
 
-export type CreateToastDTO = Pick<ToastData, 'message' | 'duration'>;
+export type CreateToastDTO = Omit<ToastData, 'id'>;
 
 export interface ToastContextValue {
   toasts: ToastData[];
@@ -50,13 +57,12 @@ const reducer = (state: ToastContextState, action: ToastContextAction): ToastCon
 };
 
 const actions = (dispatch: Dispatch<ToastContextAction>) => {
-  const createToast = ({ duration, message }: CreateToastDTO): void => {
+  const createToast = (toast: CreateToastDTO): void => {
     dispatch({
       type: ToastAction.Create,
       payload: {
         id: uuid(),
-        duration,
-        message,
+        ...toast,
       },
     });
   };
