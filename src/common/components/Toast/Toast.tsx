@@ -46,10 +46,11 @@ const Toast = ({ className, dismiss, testid = 'toast', toast }: ToastProps): JSX
     <IonToast
       buttons={toast.buttons}
       className={classNames('toast', className)}
-      color="medium"
+      color={toast.color ?? 'medium'}
       data-testid={testid}
       duration={toast.duration}
       isOpen={isOpen}
+      layout={toast.layout ?? 'baseline'}
       message={toast.message}
       positionAnchor="toasts"
       onDidDismiss={doDismiss}

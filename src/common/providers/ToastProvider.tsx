@@ -12,10 +12,13 @@ import { v4 as uuid } from 'uuid';
  * Describes the attributes of a single `Toast`.
  * @see {@link IonToast}
  */
-export interface ToastData extends Pick<ComponentPropsWithoutRef<typeof IonToast>, 'buttons'> {
+export interface ToastData
+  extends Pick<
+    ComponentPropsWithoutRef<typeof IonToast>,
+    'buttons' | 'color' | 'duration' | 'layout'
+  > {
   id: string;
   message: string;
-  duration: number;
 }
 
 /**
