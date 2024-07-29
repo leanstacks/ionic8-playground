@@ -8,8 +8,10 @@ import classNames from 'classnames';
 import './UserEditForm.scss';
 import { BaseComponentProps } from 'common/components/types';
 import { User } from 'common/models/user';
-import Input from 'common/components/Input/Input';
 import { useUpdateUser } from 'pages/Users/api/useUpdateUser';
+import { useToasts } from 'common/hooks/useToasts';
+import { DismissButton } from 'common/components/Toast/Toast';
+import Input from 'common/components/Input/Input';
 import CardRow from 'common/components/Card/CardRow';
 import ErrorCard from 'common/components/Card/ErrorCard';
 import LoaderSpinner from 'common/components/Loader/LoaderSpinner';
@@ -59,6 +61,7 @@ const UserEditForm = ({
   const router = useIonRouter();
   const [error, setError] = useState<string>('');
   const { mutate: updateUser, isPending } = useUpdateUser();
+  const { createToast } = useToasts();
 
   const onCancel = () => {
     router.goBack();
@@ -80,9 +83,18 @@ const UserEditForm = ({
           updateUser(
             { user: { ...user, ...values.user } },
             {
-              onSuccess: () => {
+              onSuccess: (user) => {
                 setSubmitting(false);
-                router.push(`/tabs/users/${user.id}`);
+                createToast({
+                  buttons: [DismissButton],
+                  duration: 5000,
+                  message: `${user.name} updated`,
+                });
+                if (router.canGoBack()) {
+                  router.goBack();
+                } else {
+                  router.push(`/tabs/users/${user.id}`, 'back', 'replace');
+                }
               },
               onError(error) {
                 setError(error.message);
