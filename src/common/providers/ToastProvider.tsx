@@ -15,7 +15,7 @@ import { v4 as uuid } from 'uuid';
 export interface ToastData
   extends Pick<
     ComponentPropsWithoutRef<typeof IonToast>,
-    'buttons' | 'color' | 'duration' | 'layout'
+    'buttons' | 'color' | 'duration' | 'layout' | 'position' | 'positionAnchor'
   > {
   id: string;
   message: string;

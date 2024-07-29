@@ -35,7 +35,7 @@ const Toasts = ({ className, testid = 'toasts' }: ToastsProps): JSX.Element => {
         <Toast
           dismiss={() => removeToast(toast.id)}
           key={toast.id}
-          toast={toast}
+          toast={{ ...toast, positionAnchor: 'toasts' }}
           testid={`toast-${toast.id}`}
         ></Toast>
       )}

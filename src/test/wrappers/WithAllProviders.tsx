@@ -5,7 +5,6 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from 'test/query-client';
 import ConfigContextProvider from 'common/providers/ConfigProvider';
 import ToastProvider from 'common/providers/ToastProvider';
-import Toasts from 'common/components/Toast/Toasts';
 
 const WithAllProviders = ({ children }: PropsWithChildren): JSX.Element => {
   return (
@@ -13,7 +12,6 @@ const WithAllProviders = ({ children }: PropsWithChildren): JSX.Element => {
       <QueryClientProvider client={queryClient}>
         <ToastProvider>
           <MemoryRouter>{children}</MemoryRouter>
-          <Toasts />
         </ToastProvider>
       </QueryClientProvider>
     </ConfigContextProvider>

@@ -51,7 +51,8 @@ const Toast = ({ className, dismiss, testid = 'toast', toast }: ToastProps): JSX
       isOpen={isOpen}
       layout={toast.layout ?? 'baseline'}
       message={toast.message}
-      positionAnchor="toasts"
+      position={toast.position ?? 'bottom'}
+      positionAnchor={toast.positionAnchor}
       onDidDismiss={doDismiss}
     ></IonToast>
   );
