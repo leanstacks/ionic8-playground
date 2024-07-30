@@ -6,7 +6,7 @@ import {
   IonCardTitle,
   IonIcon,
 } from '@ionic/react';
-import { ReactNode } from 'react';
+import { ComponentPropsWithoutRef, ReactNode } from 'react';
 import classNames from 'classnames';
 
 import './MessageCard.scss';
@@ -23,8 +23,8 @@ import { BaseComponentProps } from '../types';
  */
 export interface MessageCardProps
   extends BaseComponentProps,
-    Pick<HTMLIonCardElement, 'color'>,
-    Pick<HTMLIonIconElement, 'icon'> {
+    Pick<ComponentPropsWithoutRef<typeof IonCard>, 'color'>,
+    Pick<ComponentPropsWithoutRef<typeof IonIcon>, 'icon'> {
   content?: ReactNode;
   subtitle?: ReactNode;
   title?: ReactNode;
