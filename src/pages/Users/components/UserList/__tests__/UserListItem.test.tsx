@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { render, screen } from 'test/test-utils';
 import { userFixture1 } from '__fixtures__/users';
+
 import UserListItem from '../UserListItem';
 
 describe('UserListItem', () => {

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ComponentPropsWithoutRef, ReactNode } from 'react';
 import {
   IonBackButton,
   IonButton,
@@ -22,7 +22,7 @@ import logo from 'assets/logo_ls.png';
  * href if there is no history in the route stack.
  * @param {string} [title] - Optional. The header title.
  */
-interface HeaderProps extends Pick<HTMLIonBackButtonElement, 'defaultHref'> {
+interface HeaderProps extends Pick<ComponentPropsWithoutRef<typeof IonBackButton>, 'defaultHref'> {
   backButton?: boolean;
   buttons?: ReactNode;
   title?: string;
