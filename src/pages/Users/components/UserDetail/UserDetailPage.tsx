@@ -13,6 +13,7 @@ import { create, trash } from 'ionicons/icons';
 import classNames from 'classnames';
 
 import './UserDetailPage.scss';
+import { PropsWithTestId } from 'common/components/types';
 import { useGetUser } from 'pages/Users/api/useGetUser';
 import { useDeleteUser } from 'pages/Users/api/useDeleteUser';
 import { useToasts } from 'common/hooks/useToasts';
@@ -22,6 +23,12 @@ import UserDetail from './UserDetail';
 import Container from 'common/components/Content/Container';
 import PageHeader from 'common/components/Content/PageHeader';
 import Avatar from 'common/components/Icon/Avatar';
+
+/**
+ * Properties for the `UserDetailPage` component.
+ * @see {@link PropsWithTestId}
+ */
+interface UserDetailPageProps extends PropsWithTestId {}
 
 /**
  * Router path parameters for the `UserDetailPage`.
@@ -35,8 +42,9 @@ interface UserDetailPageRouteParams {
  * The `UserDetailPage` component renders information about a single `User`.
  * @returns JSX
  */
-export const UserDetailPage = (): JSX.Element => {
-  const testid = 'page-user-detail';
+export const UserDetailPage = ({
+  testid = 'page-user-detail',
+}: UserDetailPageProps): JSX.Element => {
   const { createToast } = useToasts();
   const { isPending: isDeleting, mutate: deleteUser } = useDeleteUser();
   const [showConfirmDelete, setShowConfirmDelete] = useState<boolean>(false);
@@ -78,6 +86,7 @@ export const UserDetailPage = (): JSX.Element => {
                 title="Edit user"
                 className="ion-hide-md-up"
                 routerLink={`/tabs/users/${userId}/edit`}
+                data-testid={`${testid}-header-button-edit`}
               >
                 <IonIcon slot="icon-only" icon={create} />
               </IonButton>
@@ -85,6 +94,7 @@ export const UserDetailPage = (): JSX.Element => {
                 title="Delete user"
                 className="ion-hide-md-up"
                 onClick={() => setShowConfirmDelete(true)}
+                data-testid={`${testid}-header-button-delete`}
               >
                 <IonIcon slot="icon-only" icon={trash} />
               </IonButton>
@@ -104,19 +114,27 @@ export const UserDetailPage = (): JSX.Element => {
               user ? (
                 <div className={'title-block'}>
                   <Avatar value={user.name} />
-                  <div>{user.name}</div>
+                  <div data-testid={`${testid}-page-header-title`}>{user.name}</div>
                 </div>
               ) : (
-                'User Detail'
+                <div data-testid={`${testid}-page-header-title`}>User Detail</div>
               )
             }
             buttons={
               user && (
                 <>
-                  <IonButton title="Edit user" routerLink={`/tabs/users/${userId}/edit`}>
+                  <IonButton
+                    title="Edit user"
+                    routerLink={`/tabs/users/${userId}/edit`}
+                    data-testid={`${testid}-page-header-button-edit`}
+                  >
                     <IonIcon slot="icon-only" icon={create} />
                   </IonButton>
-                  <IonButton title="Delete user" onClick={() => setShowConfirmDelete(true)}>
+                  <IonButton
+                    title="Delete user"
+                    onClick={() => setShowConfirmDelete(true)}
+                    data-testid={`${testid}-page-header-button-delete`}
+                  >
                     <IonIcon slot="icon-only" icon={trash} />
                   </IonButton>
                 </>
