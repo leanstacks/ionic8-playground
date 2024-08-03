@@ -31,4 +31,13 @@ export const handlers = [
     }
     return new HttpResponse(null, { status: 404 });
   }),
+  http.delete('https://jsonplaceholder.typicode.com/users/:userId', async ({ params }) => {
+    // delete a user
+    const { userId } = params;
+    const user = find(usersFixture, { id: Number(userId) });
+    if (user) {
+      return new HttpResponse(null, { status: 200 });
+    }
+    return new HttpResponse(null, { status: 404 });
+  }),
 ];
