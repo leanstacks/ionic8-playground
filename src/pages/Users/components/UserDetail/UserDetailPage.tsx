@@ -1,5 +1,4 @@
 import {
-  IonAlert,
   IonButton,
   IonContent,
   IonIcon,
@@ -15,7 +14,6 @@ import classNames from 'classnames';
 import './UserDetailPage.scss';
 import { PropsWithTestId } from 'common/components/types';
 import { useGetUser } from 'pages/Users/api/useGetUser';
-import { useDeleteUser } from 'pages/Users/api/useDeleteUser';
 import { useToasts } from 'common/hooks/useToasts';
 import { DismissButton } from 'common/components/Toast/Toast';
 import Header from 'common/components/Header/Header';
@@ -23,6 +21,7 @@ import UserDetail from './UserDetail';
 import Container from 'common/components/Content/Container';
 import PageHeader from 'common/components/Content/PageHeader';
 import Avatar from 'common/components/Icon/Avatar';
+import UserDeleteAlert from '../UserDelete/UserDeleteAlert';
 
 /**
  * Properties for the `UserDetailPage` component.
@@ -45,35 +44,12 @@ interface UserDetailPageRouteParams {
 export const UserDetailPage = ({
   testid = 'page-user-detail',
 }: UserDetailPageProps): JSX.Element => {
+  const router = useIonRouter();
   const { createToast } = useToasts();
-  const { isPending: isDeleting, mutate: deleteUser } = useDeleteUser();
+  const [isDeleting, setIsDeleting] = useState<boolean>(false);
   const [showConfirmDelete, setShowConfirmDelete] = useState<boolean>(false);
   const { userId } = useParams<UserDetailPageRouteParams>();
-  const router = useIonRouter();
   const { data: user } = useGetUser({ userId });
-
-  const doDeleteUser = (userId?: number) => {
-    if (userId) {
-      deleteUser(
-        { id: userId },
-        {
-          onSuccess: () => {
-            setShowConfirmDelete(false);
-            createToast({
-              buttons: [DismissButton],
-              duration: 5000,
-              message: `${user?.name} deleted`,
-            });
-            router.goBack();
-          },
-          onError: () => {
-            setShowConfirmDelete(false);
-            //TODO: display delete user error state
-          },
-        },
-      );
-    }
-  };
 
   return (
     <IonPage className={'page-user-detail'} data-testid={testid}>
@@ -144,35 +120,27 @@ export const UserDetailPage = ({
 
           <UserDetail testid={`${testid}-user-detail`} userId={userId} />
 
-          <IonAlert
-            buttons={[
-              {
-                handler: () => {
-                  setShowConfirmDelete(false);
-                },
-                htmlAttributes: {
-                  disabled: isDeleting,
-                },
-                text: 'Cancel',
-              },
-              {
-                handler: () => {
-                  doDeleteUser(user?.id);
-                  return false;
-                },
-                htmlAttributes: { disabled: isDeleting },
-                text: 'Delete',
-              },
-            ]}
-            className="alert-delete"
-            header={isDeleting ? 'Deleting...' : 'Are you sure?'}
-            isOpen={showConfirmDelete}
-            message={
-              isDeleting
-                ? `Deleting ${user?.name} in progress.`
-                : `Deleting ${user?.name} is permanent.`
-            }
-          />
+          {user && (
+            <UserDeleteAlert
+              isOpen={showConfirmDelete}
+              isPending={setIsDeleting}
+              onCancel={() => setShowConfirmDelete(false)}
+              onError={() => {
+                setShowConfirmDelete(false);
+                //TODO: handle delete user error
+              }}
+              onSuccess={() => {
+                setShowConfirmDelete(false);
+                createToast({
+                  buttons: [DismissButton],
+                  duration: 5000,
+                  message: `${user?.name} deleted`,
+                });
+                router.goBack();
+              }}
+              user={user}
+            />
+          )}
         </Container>
       </IonContent>
     </IonPage>
