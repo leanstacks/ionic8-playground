@@ -2,6 +2,7 @@ import { IonAlert } from '@ionic/react';
 import { ComponentPropsWithoutRef } from 'react';
 import classNames from 'classnames';
 
+import './UserDeleteAlert.scss';
 import { BaseComponentProps } from 'common/components/types';
 import { User } from 'common/models/user';
 import { useDeleteUser } from 'pages/Users/api/useDeleteUser';
