@@ -32,7 +32,7 @@ interface HeaderProps extends Pick<ComponentPropsWithoutRef<typeof IonBackButton
 
 const Header = ({ backButton = false, buttons, defaultHref, title }: HeaderProps): JSX.Element => {
   const testid = 'header-app';
-  const { isActive: isActiveProgressBar, progressBarProps } = useProgress();
+  const { isActive: isActiveProgressBar, progressBar } = useProgress();
   console.log(`Header::isActiveProgressBar::${isActiveProgressBar}`);
 
   return (
@@ -62,7 +62,7 @@ const Header = ({ backButton = false, buttons, defaultHref, title }: HeaderProps
           {buttons}
         </IonButtons>
 
-        {isActiveProgressBar && <IonProgressBar {...progressBarProps} />}
+        {isActiveProgressBar && <IonProgressBar {...progressBar} />}
       </IonToolbar>
     </IonHeader>
   );

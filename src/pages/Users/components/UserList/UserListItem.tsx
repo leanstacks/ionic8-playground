@@ -14,11 +14,11 @@ import classNames from 'classnames';
 import './UserListItem.scss';
 import { BaseComponentProps } from 'common/components/types';
 import { useToasts } from 'common/hooks/useToasts';
+import { useProgress } from 'common/hooks/useProgress';
 import { DismissButton } from 'common/components/Toast/Toast';
 import { User } from 'common/models/user';
 import Avatar from 'common/components/Icon/Avatar';
 import UserDeleteAlert from '../UserDelete/UserDeleteAlert';
-import { useProgress } from 'common/hooks/useProgress';
 
 /**
  * Properties for the `UserListItem` component.
@@ -43,7 +43,7 @@ interface UserListItemProps
 const UserListItem = ({ className, lines, testid, user }: UserListItemProps): JSX.Element => {
   const testIdentifier = testid ?? `list-item-user-${user.id}`;
   const [showConfirmDelete, setShowConfirmDelete] = useState<boolean>(false);
-  const { setIsActive } = useProgress();
+  const { setProgress } = useProgress();
   const { createToast } = useToasts();
   const router = useIonRouter();
   const ionSlidingRef = useRef<HTMLIonItemSlidingElement>(null);
@@ -90,7 +90,7 @@ const UserListItem = ({ className, lines, testid, user }: UserListItemProps): JS
 
       <UserDeleteAlert
         isOpen={showConfirmDelete}
-        isPending={setIsActive}
+        isPending={(isPending) => setProgress(isPending, { color: 'danger' })}
         onCancel={() => setShowConfirmDelete(false)}
         onError={() => {
           setShowConfirmDelete(false);

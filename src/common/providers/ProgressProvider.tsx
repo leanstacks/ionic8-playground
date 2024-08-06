@@ -9,49 +9,52 @@ interface ProgressBarProps
 
 type ProgressRenderFn = (progress: ProgressContextValue) => JSX.Element;
 
-interface ProgressProviderProps extends ProgressBarProps {
+interface ProgressProviderProps {
   children: ProgressRenderFn | ReactNode;
 }
 
 export interface ProgressContextValue {
   isActive: boolean;
-  progressBarProps: ProgressBarProps;
+  progressBar: ProgressBarProps;
   setIsActive: (isActive: boolean) => void;
-  setBuffer: (buffer: number) => void;
-  setValue: (value: number) => void;
+  setProgressBar: (props: ProgressBarProps) => void;
+  setProgress: (isActive: boolean, options?: ProgressBarProps) => void;
 }
+
+const DEFAULT_PROGRESS_BAR: ProgressBarProps = {
+  type: 'indeterminate',
+};
 
 const DEFAULT_PROGRESS: ProgressContextValue = {
   isActive: false,
-  progressBarProps: {
-    type: 'indeterminate',
-  },
+  progressBar: DEFAULT_PROGRESS_BAR,
   setIsActive: () => {},
-  setBuffer: () => {},
-  setValue: () => {},
+  setProgressBar: () => {},
+  setProgress: () => {},
 };
 
 export const ProgressContext = createContext<ProgressContextValue | null>(DEFAULT_PROGRESS);
 
-const ProgressProvider = ({
-  children,
-  ...progressBarProps
-}: ProgressProviderProps): JSX.Element => {
+const ProgressProvider = ({ children }: ProgressProviderProps): JSX.Element => {
   const [isActive, setIsActive] = useState<boolean>(false);
-  const [buffer, setBuffer] = useState<number>(progressBarProps.buffer ?? 1);
-  const [value, setValue] = useState<number>(progressBarProps.value ?? 0);
-  console.log(`ProgressProvider::isActive::${isActive}`);
+  const [progressBar, setProgressBar] = useState<ProgressBarProps>(DEFAULT_PROGRESS_BAR);
+  console.log(
+    `ProgressProvider::isActive::${isActive}::progressBar::${JSON.stringify(progressBar)}`,
+  );
+
+  const setProgress = (isActive: boolean, options?: ProgressBarProps): void => {
+    setIsActive(isActive);
+    setProgressBar({ ...DEFAULT_PROGRESS_BAR, ...options });
+  };
 
   const contextValue: ProgressContextValue = {
     isActive,
-    progressBarProps: {
-      ...progressBarProps,
-      buffer,
-      value,
+    progressBar: {
+      ...progressBar,
     },
     setIsActive,
-    setBuffer,
-    setValue,
+    setProgressBar,
+    setProgress,
   };
   console.log(`ProgressProvider::context::${JSON.stringify(contextValue)}`);
 

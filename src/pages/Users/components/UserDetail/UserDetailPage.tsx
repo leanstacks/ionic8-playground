@@ -39,7 +39,6 @@ export const UserDetailPage = ({
   testid = 'page-user-detail',
 }: UserDetailPageProps): JSX.Element => {
   const router = useIonRouter();
-  // const { setIsActive } = useProgress();
   const { createToast } = useToasts();
   const [showConfirmDelete, setShowConfirmDelete] = useState<boolean>(false);
   const { userId } = useParams<UserDetailPageRouteParams>();
@@ -47,8 +46,8 @@ export const UserDetailPage = ({
 
   return (
     <IonPage className={'page-user-detail'} data-testid={testid}>
-      <ProgressProvider type="indeterminate" color="danger">
-        {({ setIsActive }) => (
+      <ProgressProvider>
+        {({ setProgress }) => (
           <>
             <Header
               backButton
@@ -119,7 +118,7 @@ export const UserDetailPage = ({
                 {user && (
                   <UserDeleteAlert
                     isOpen={showConfirmDelete}
-                    isPending={setIsActive}
+                    isPending={(isPending) => setProgress(isPending, { color: 'danger' })}
                     onCancel={() => setShowConfirmDelete(false)}
                     onError={() => {
                       setShowConfirmDelete(false);

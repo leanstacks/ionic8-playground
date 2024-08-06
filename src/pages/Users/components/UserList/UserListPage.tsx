@@ -17,7 +17,7 @@ export const UserListPage = (): JSX.Element => {
 
   return (
     <IonPage className="page-user-list" data-testid={testid}>
-      <ProgressProvider type="indeterminate">
+      <ProgressProvider>
         <Header />
 
         <IonContent>
