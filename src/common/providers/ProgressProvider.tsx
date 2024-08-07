@@ -1,18 +1,35 @@
 import { IonProgressBar } from '@ionic/react';
 import { ComponentPropsWithoutRef, createContext, ReactNode, useState } from 'react';
 
+/**
+ * Select properties from `IonProgressBar` which control how the progress bar
+ * is rendered.
+ */
 interface ProgressBarProps
   extends Pick<
     ComponentPropsWithoutRef<typeof IonProgressBar>,
     'buffer' | 'color' | 'reversed' | 'type' | 'value'
   > {}
 
+/**
+ * The `ProgressProvider` render props function type.
+ */
 type ProgressRenderFn = (progress: ProgressContextValue) => JSX.Element;
 
+/**
+ * Properties for the `ProgressProvider` component.
+ * @param {ProgressRenderFn | ReactNode} children - A render props function
+ * or `ReactNode`.
+ * @see {@link ProgressRenderFn}
+ * @see {@link ReactNode}
+ */
 interface ProgressProviderProps {
   children: ProgressRenderFn | ReactNode;
 }
 
+/**
+ * The `value` provided  by the `ProgressContext`.
+ */
 export interface ProgressContextValue {
   isActive: boolean;
   progressBar: ProgressBarProps;
@@ -21,10 +38,16 @@ export interface ProgressContextValue {
   setProgress: (isActive: boolean, options?: ProgressBarProps) => void;
 }
 
+/**
+ * Default `ProgressBarProps` value for the `ProgressContext`.
+ */
 const DEFAULT_PROGRESS_BAR: ProgressBarProps = {
   type: 'indeterminate',
 };
 
+/**
+ * Default value for the `ProgressContext`.
+ */
 const DEFAULT_PROGRESS: ProgressContextValue = {
   isActive: false,
   progressBar: DEFAULT_PROGRESS_BAR,
@@ -33,14 +56,20 @@ const DEFAULT_PROGRESS: ProgressContextValue = {
   setProgress: () => {},
 };
 
+/**
+ * The `ProgressContext` instance.
+ */
 export const ProgressContext = createContext<ProgressContextValue | null>(DEFAULT_PROGRESS);
 
+/**
+ * The `ProgessProvider` component creates and provides access to the
+ * `ProgressContext` value.
+ * @param {ProgressProviderProps} props - Component properties.
+ * @returns {JSX.Element} JSX
+ */
 const ProgressProvider = ({ children }: ProgressProviderProps): JSX.Element => {
   const [isActive, setIsActive] = useState<boolean>(false);
   const [progressBar, setProgressBar] = useState<ProgressBarProps>(DEFAULT_PROGRESS_BAR);
-  console.log(
-    `ProgressProvider::isActive::${isActive}::progressBar::${JSON.stringify(progressBar)}`,
-  );
 
   const setProgress = (isActive: boolean, options?: ProgressBarProps): void => {
     setIsActive(isActive);
@@ -56,7 +85,6 @@ const ProgressProvider = ({ children }: ProgressProviderProps): JSX.Element => {
     setProgressBar,
     setProgress,
   };
-  console.log(`ProgressProvider::context::${JSON.stringify(contextValue)}`);
 
   const isRenderFunction = typeof children === 'function';
   return (
