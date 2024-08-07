@@ -79,6 +79,7 @@ const UserDeleteAlert = ({
           },
           htmlAttributes: {
             disabled: isDeleting,
+            'data-testid': `${testid}-button-cancel`,
           },
           text: 'Cancel',
         },
@@ -87,7 +88,7 @@ const UserDeleteAlert = ({
             doDeleteUser();
             return false;
           },
-          htmlAttributes: { disabled: isDeleting },
+          htmlAttributes: { disabled: isDeleting, 'data-testid': `${testid}-button-delete` },
           text: 'Delete',
         },
       ]}
