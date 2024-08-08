@@ -35,7 +35,7 @@ export interface ProgressContextValue {
   progressBar: ProgressBarProps;
   setIsActive: (isActive: boolean) => void;
   setProgressBar: (props: ProgressBarProps) => void;
-  setProgress: (isActive: boolean, options?: ProgressBarProps) => void;
+  setProgress: (isActive: boolean, props?: ProgressBarProps) => void;
 }
 
 /**
@@ -71,9 +71,9 @@ const ProgressProvider = ({ children }: ProgressProviderProps): JSX.Element => {
   const [isActive, setIsActive] = useState<boolean>(false);
   const [progressBar, setProgressBar] = useState<ProgressBarProps>(DEFAULT_PROGRESS_BAR);
 
-  const setProgress = (isActive: boolean, options?: ProgressBarProps): void => {
+  const setProgress = (isActive: boolean, props?: ProgressBarProps): void => {
     setIsActive(isActive);
-    setProgressBar({ ...DEFAULT_PROGRESS_BAR, ...options });
+    setProgressBar({ ...DEFAULT_PROGRESS_BAR, ...props });
   };
 
   const contextValue: ProgressContextValue = {
