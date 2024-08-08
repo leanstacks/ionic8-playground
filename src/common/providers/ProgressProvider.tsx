@@ -59,7 +59,7 @@ const DEFAULT_PROGRESS: ProgressContextValue = {
 /**
  * The `ProgressContext` instance.
  */
-export const ProgressContext = createContext<ProgressContextValue | null>(DEFAULT_PROGRESS);
+export const ProgressContext = createContext<ProgressContextValue>(DEFAULT_PROGRESS);
 
 /**
  * The `ProgessProvider` component creates and provides access to the
