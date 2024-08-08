@@ -4,6 +4,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import ConfigContextProvider from './common/providers/ConfigProvider';
 import { queryClient } from 'common/utils/query-client';
+import AxiosProvider from 'common/providers/AxiosProvider';
 import ToastProvider from 'common/providers/ToastProvider';
 import Toasts from 'common/components/Toast/Toasts';
 import AppRouter from 'common/components/Router/AppRouter';
@@ -21,11 +22,13 @@ const App = (): JSX.Element => (
   <IonApp data-testid="app">
     <ConfigContextProvider>
       <QueryClientProvider client={queryClient}>
-        <ToastProvider>
-          <AppRouter />
-          <Toasts />
-          <ReactQueryDevtools initialIsOpen={false} />
-        </ToastProvider>
+        <AxiosProvider>
+          <ToastProvider>
+            <AppRouter />
+            <Toasts />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </ToastProvider>
+        </AxiosProvider>
       </QueryClientProvider>
     </ConfigContextProvider>
   </IonApp>

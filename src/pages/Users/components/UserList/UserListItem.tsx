@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef, useRef } from 'react';
+import { ComponentPropsWithRef, useRef, useState } from 'react';
 import {
   IonIcon,
   IonItem,
@@ -8,13 +8,17 @@ import {
   IonLabel,
   useIonRouter,
 } from '@ionic/react';
-import { create, mail } from 'ionicons/icons';
+import { create, mail, trash } from 'ionicons/icons';
 import classNames from 'classnames';
 
 import './UserListItem.scss';
 import { BaseComponentProps } from 'common/components/types';
+import { useToasts } from 'common/hooks/useToasts';
+import { useProgress } from 'common/hooks/useProgress';
+import { DismissButton } from 'common/components/Toast/Toast';
 import { User } from 'common/models/user';
 import Avatar from 'common/components/Icon/Avatar';
+import UserDeleteAlert from '../UserDelete/UserDeleteAlert';
 
 /**
  * Properties for the `UserListItem` component.
@@ -38,6 +42,9 @@ interface UserListItemProps
  */
 const UserListItem = ({ className, lines, testid, user }: UserListItemProps): JSX.Element => {
   const testIdentifier = testid ?? `list-item-user-${user.id}`;
+  const [showConfirmDelete, setShowConfirmDelete] = useState<boolean>(false);
+  const { setProgress } = useProgress();
+  const { createToast } = useToasts();
   const router = useIonRouter();
   const ionSlidingRef = useRef<HTMLIonItemSlidingElement>(null);
 
@@ -75,7 +82,30 @@ const UserListItem = ({ className, lines, testid, user }: UserListItemProps): JS
           <IonIcon icon={create} slot="start" />
           Edit
         </IonItemOption>
+        <IonItemOption color="danger" onClick={() => setShowConfirmDelete(true)}>
+          <IonIcon icon={trash} slot="start" />
+          Delete
+        </IonItemOption>
       </IonItemOptions>
+
+      <UserDeleteAlert
+        isOpen={showConfirmDelete}
+        isPending={(isPending) => setProgress(isPending, { color: 'danger' })}
+        onCancel={() => setShowConfirmDelete(false)}
+        onError={() => {
+          setShowConfirmDelete(false);
+          //TODO: handle delete user error
+        }}
+        onSuccess={() => {
+          setShowConfirmDelete(false);
+          createToast({
+            buttons: [DismissButton],
+            duration: 5000,
+            message: `${user?.name} deleted`,
+          });
+        }}
+        user={user}
+      />
     </IonItemSliding>
   );
 };

@@ -5,12 +5,14 @@ import {
   IonButtons,
   IonHeader,
   IonMenuButton,
+  IonProgressBar,
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
 
 import './Header.scss';
 import logo from 'assets/logo_ls.png';
+import { useProgress } from 'common/hooks/useProgress';
 
 /**
  * Properties for the `Header` component.
@@ -30,6 +32,7 @@ interface HeaderProps extends Pick<ComponentPropsWithoutRef<typeof IonBackButton
 
 const Header = ({ backButton = false, buttons, defaultHref, title }: HeaderProps): JSX.Element => {
   const testid = 'header-app';
+  const { isActive: isActiveProgressBar, progressBar } = useProgress();
 
   return (
     <IonHeader className="header-app" data-testid="header-app">
@@ -57,6 +60,8 @@ const Header = ({ backButton = false, buttons, defaultHref, title }: HeaderProps
           ></IonMenuButton>
           {buttons}
         </IonButtons>
+
+        {isActiveProgressBar && <IonProgressBar {...progressBar} />}
       </IonToolbar>
     </IonHeader>
   );

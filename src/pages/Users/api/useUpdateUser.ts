@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import axios from 'axios';
 import reject from 'lodash/reject';
 
+import { useAxios } from 'common/hooks/useAxios';
 import { useConfig } from 'common/hooks/useConfig';
 import { User } from 'common/models/user';
 import { QueryKey } from 'common/utils/constants';
@@ -23,6 +23,7 @@ export type UpdateUserVariables = {
  * @returns Returns a `UseMutationResult`.
  */
 export const useUpdateUser = () => {
+  const axios = useAxios();
   const queryClient = useQueryClient();
   const config = useConfig();
 

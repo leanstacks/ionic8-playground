@@ -20,6 +20,7 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'react/no-multi-comp': 'error',
     'react/react-in-jsx-scope': 'off',
+    '@typescript-eslint/no-empty-object-type': ['error', { allowWithName: 'Props$' }],
   },
   settings: {
     react: {
