@@ -1,6 +1,17 @@
-import { IonCol, IonContent, IonGrid, IonPage, IonRow } from '@ionic/react';
+import {
+  IonCol,
+  IonContent,
+  IonGrid,
+  IonPage,
+  IonRefresher,
+  IonRefresherContent,
+  IonRow,
+  RefresherEventDetail,
+} from '@ionic/react';
+import { useQueryClient } from '@tanstack/react-query';
 
 import './HomePage.scss';
+import { QueryKey } from 'common/utils/constants';
 import Header from 'common/components/Header/Header';
 import UserSummaryCard from 'pages/Users/components/UserSummaryCard/UserSummaryCard';
 import WelcomeBlock from './components/WelcomeBlock/WelcomeBlock';
@@ -11,11 +22,22 @@ import WelcomeBlock from './components/WelcomeBlock/WelcomeBlock';
  * @returns JSX
  */
 const HomePage = (): JSX.Element => {
+  const queryClient = useQueryClient();
+
+  const handleRefresh = async (event: CustomEvent<RefresherEventDetail>) => {
+    await queryClient.refetchQueries({ queryKey: [QueryKey.Users], exact: true });
+    event.detail.complete();
+  };
+
   return (
     <IonPage className="page-home" data-testid="page-home">
       <Header title="Ionic Playground" />
 
       <IonContent fullscreen>
+        <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
+          <IonRefresherContent></IonRefresherContent>
+        </IonRefresher>
+
         <IonGrid fixed>
           <IonRow>
             <IonCol sizeXs="2" sizeMd="1">
