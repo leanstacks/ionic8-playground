@@ -4,6 +4,7 @@ import { Redirect, Route } from 'react-router';
 
 import TabNavigation from './TabNavigation';
 import SignInPage from 'pages/Auth/SignIn/SignInPage';
+import PrivateOutlet from './PrivateOutlet';
 
 /**
  * The application router.  This is the main router for the Ionic React
@@ -18,8 +19,15 @@ const AppRouter = (): JSX.Element => {
   return (
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route path="/tabs" render={() => <TabNavigation />} />
-        <Route path="/auth/signin" render={() => <SignInPage />} />
+        <Route
+          path="/tabs"
+          render={() => (
+            <PrivateOutlet>
+              <TabNavigation />
+            </PrivateOutlet>
+          )}
+        />
+        <Route exact path="/auth/signin" render={() => <SignInPage />} />
         <Route exact path="/">
           <Redirect to="/tabs" />
         </Route>
