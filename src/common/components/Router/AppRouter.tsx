@@ -2,9 +2,10 @@ import { IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router';
 
+import PrivateOutlet from './PrivateOutlet';
 import TabNavigation from './TabNavigation';
 import SignInPage from 'pages/Auth/SignIn/SignInPage';
-import PrivateOutlet from './PrivateOutlet';
+import SignOutPage from 'pages/Auth/SignOut/SignOutPage';
 
 /**
  * The application router.  This is the main router for the Ionic React
@@ -28,6 +29,7 @@ const AppRouter = (): JSX.Element => {
           )}
         />
         <Route exact path="/auth/signin" render={() => <SignInPage />} />
+        <Route exact path="/auth/signout" render={() => <SignOutPage />} />
         <Route exact path="/">
           <Redirect to="/tabs" />
         </Route>

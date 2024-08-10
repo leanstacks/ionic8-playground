@@ -11,8 +11,10 @@ import {
 } from '@ionic/react';
 
 import './Header.scss';
+import { PropsWithTestId } from '../types';
 import logo from 'assets/logo_ls.png';
 import { useProgress } from 'common/hooks/useProgress';
+import { useAuth } from 'common/hooks/useAuth';
 
 /**
  * Properties for the `Header` component.
@@ -24,14 +26,22 @@ import { useProgress } from 'common/hooks/useProgress';
  * href if there is no history in the route stack.
  * @param {string} [title] - Optional. The header title.
  */
-interface HeaderProps extends Pick<ComponentPropsWithoutRef<typeof IonBackButton>, 'defaultHref'> {
+interface HeaderProps
+  extends PropsWithTestId,
+    Pick<ComponentPropsWithoutRef<typeof IonBackButton>, 'defaultHref'> {
   backButton?: boolean;
   buttons?: ReactNode;
   title?: string;
 }
 
-const Header = ({ backButton = false, buttons, defaultHref, title }: HeaderProps): JSX.Element => {
-  const testid = 'header-app';
+const Header = ({
+  backButton = false,
+  buttons,
+  defaultHref,
+  testid = 'header-app',
+  title,
+}: HeaderProps): JSX.Element => {
+  const { isAuthenticated } = useAuth();
   const { isActive: isActiveProgressBar, progressBar } = useProgress();
 
   return (
@@ -48,16 +58,22 @@ const Header = ({ backButton = false, buttons, defaultHref, title }: HeaderProps
           {title}
         </IonTitle>
         <IonButtons className="nav-main ion-hide-md-down" data-testid={`${testid}-menu-row`}>
-          <IonButton routerLink="/tabs/home">Home</IonButton>
-          <IonButton routerLink="/tabs/users">Users</IonButton>
+          {isAuthenticated && (
+            <>
+              <IonButton routerLink="/tabs/home">Home</IonButton>
+              <IonButton routerLink="/tabs/users">Users</IonButton>
+            </>
+          )}
         </IonButtons>
         <IonButtons slot="end">
-          <IonMenuButton
-            autoHide={false}
-            menu="menu-app"
-            className="ion-hide-md-down"
-            data-testid={`${testid}-button-menu`}
-          ></IonMenuButton>
+          {isAuthenticated && (
+            <IonMenuButton
+              autoHide={false}
+              menu="menu-app"
+              className="ion-hide-md-down"
+              data-testid={`${testid}-button-menu`}
+            ></IonMenuButton>
+          )}
           {buttons}
         </IonButtons>
 
