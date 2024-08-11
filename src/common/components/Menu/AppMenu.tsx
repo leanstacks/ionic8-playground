@@ -6,6 +6,7 @@ import {
   IonLabel,
   IonMenu,
   IonMenuToggle,
+  IonRow,
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
@@ -15,6 +16,8 @@ import classNames from 'classnames';
 import './AppMenu.scss';
 import { BaseComponentProps } from '../types';
 import { useAuth } from 'common/hooks/useAuth';
+import { useGetCurrentUser } from 'common/api/useGetCurrentUser';
+import Avatar from '../Icon/Avatar';
 
 /**
  * Properties for the `AppMenu` component.
@@ -30,6 +33,9 @@ interface AppMenuProps extends BaseComponentProps {}
  */
 const AppMenu = ({ className, testid = 'menu-app' }: AppMenuProps): JSX.Element => {
   const { isAuthenticated } = useAuth();
+  const { data: currentUser } = useGetCurrentUser();
+
+  const showUserHeader = isAuthenticated && !!currentUser;
 
   return (
     <IonMenu
@@ -41,7 +47,16 @@ const AppMenu = ({ className, testid = 'menu-app' }: AppMenuProps): JSX.Element 
     >
       <IonHeader>
         <IonToolbar>
-          <IonTitle data-testid={`${testid}-title`}>Menu</IonTitle>
+          <IonTitle data-testid={`${testid}-title`}>
+            {showUserHeader ? (
+              <IonRow className="ion-align-items-center">
+                <Avatar value={currentUser.name} />
+                <div>{currentUser.name}</div>
+              </IonRow>
+            ) : (
+              <>Menu</>
+            )}
+          </IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
