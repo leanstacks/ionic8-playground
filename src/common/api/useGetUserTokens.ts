@@ -39,5 +39,6 @@ export const useGetUserTokens = () => {
     queryKey: [QueryKey.UserTokens],
     queryFn: () => getUserTokens(),
     retry: 0,
+    refetchInterval: 60000,
   });
 };
