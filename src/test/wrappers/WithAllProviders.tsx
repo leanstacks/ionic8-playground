@@ -6,16 +6,19 @@ import { queryClient } from 'test/query-client';
 import ConfigContextProvider from 'common/providers/ConfigProvider';
 import ToastProvider from 'common/providers/ToastProvider';
 import AxiosProvider from 'common/providers/AxiosProvider';
+import AuthProvider from 'common/providers/AuthProvider';
 
 const WithAllProviders = ({ children }: PropsWithChildren): JSX.Element => {
   return (
     <ConfigContextProvider>
       <QueryClientProvider client={queryClient}>
-        <AxiosProvider>
-          <ToastProvider>
-            <MemoryRouter>{children}</MemoryRouter>
-          </ToastProvider>
-        </AxiosProvider>
+        <AuthProvider>
+          <AxiosProvider>
+            <ToastProvider>
+              <MemoryRouter>{children}</MemoryRouter>
+            </ToastProvider>
+          </AxiosProvider>
+        </AuthProvider>
       </QueryClientProvider>
     </ConfigContextProvider>
   );

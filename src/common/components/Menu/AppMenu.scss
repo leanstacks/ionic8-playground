@@ -1,4 +1,31 @@
 .menu-app {
+  ion-title {
+    font-size: 1rem;
+
+    ion-row {
+      column-gap: 0.5rem;
+
+      > * {
+        min-width: 0;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .avatar {
+        flex-shrink: 0;
+
+        height: 1.75rem;
+        width: 1.75rem;
+
+        font-size: 1.25rem;
+
+        border-radius: 0.25rem;
+      }
+    }
+  }
+
   .icon {
     margin-right: 1rem;
   }

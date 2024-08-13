@@ -1,5 +1,5 @@
 import { IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
-import { home, people } from 'ionicons/icons';
+import { home, people, personCircle } from 'ionicons/icons';
 import { Redirect, Route } from 'react-router';
 
 import AppMenu from '../Menu/AppMenu';
@@ -7,6 +7,7 @@ import HomePage from 'pages/Home/HomePage';
 import UserDetailPage from 'pages/Users/components/UserDetail/UserDetailPage';
 import UserListPage from 'pages/Users/components/UserList/UserListPage';
 import UserEditPage from 'pages/Users/components/UserEdit/UserEditPage';
+import AccountPage from 'pages/Account/AccountPage';
 
 /**
  * The `TabNavigation` component provides a router outlet for all of the
@@ -43,6 +44,9 @@ const TabNavigation = (): JSX.Element => {
           <Route exact path="/tabs/users/:userId/edit">
             <UserEditPage />
           </Route>
+          <Route exact path="/tabs/account">
+            <AccountPage />
+          </Route>
           <Route exact path="/">
             <Redirect to="/tabs/home" />
           </Route>
@@ -56,6 +60,10 @@ const TabNavigation = (): JSX.Element => {
           <IonTabButton tab="users" href="/tabs/users">
             <IonIcon icon={people} />
             <IonLabel>Users</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="account" href="/tabs/account">
+            <IonIcon icon={personCircle} />
+            <IonLabel>Account</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>

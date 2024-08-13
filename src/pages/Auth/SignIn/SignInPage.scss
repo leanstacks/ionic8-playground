@@ -1,0 +1,11 @@
+.page-signin {
+  .container {
+    &.fixed {
+      max-width: 576px;
+    }
+
+    .form-signin {
+      margin: 2rem 0;
+    }
+  }
+}

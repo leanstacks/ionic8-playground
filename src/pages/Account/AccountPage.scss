@@ -1,0 +1,17 @@
+.page-account {
+  ion-list {
+    background-color: transparent;
+
+    ion-list-header {
+      ion-label {
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+    }
+
+    ion-item {
+      --background: transparent;
+    }
+  }
+}

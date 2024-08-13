@@ -78,7 +78,6 @@ const UserEditForm = ({
         enableReinitialize={true}
         initialValues={{ user: user }}
         onSubmit={(values, { setSubmitting }) => {
-          console.log(`UserEditForm::onSubmit::${JSON.stringify(values)}`);
           setError('');
           updateUser(
             { user: { ...user, ...values.user } },
