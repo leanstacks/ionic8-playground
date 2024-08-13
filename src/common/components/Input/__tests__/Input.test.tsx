@@ -32,7 +32,7 @@ describe('Input', () => {
         </Form>
       </Formik>,
     );
-    await screen.findByTestId('input');
+    await screen.findByLabelText('Test Field');
 
     // ACT
     await userEvent.type(screen.getByLabelText('Test Field'), value);

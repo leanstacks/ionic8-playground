@@ -29,9 +29,11 @@ describe('Toasts', () => {
   it('should render toasts', async () => {
     // ARRANGE
     render(<Toasts />);
-    await screen.findByTestId(`toast-${toastFixture1.id}`);
+    // NOTE: Ionic renders a 'template' toast in addition to the displayed
+    //       toast so we must use findAll/getAll
+    await screen.findAllByTestId(`toast-${toastFixture1.id}`);
 
     // ASSERT
-    expect(screen.getByTestId(`toast-${toastFixture1.id}`)).toBeDefined();
+    expect(screen.getAllByTestId(`toast-${toastFixture1.id}`)).toBeDefined();
   });
 });
