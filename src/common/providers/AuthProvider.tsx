@@ -42,7 +42,6 @@ const AuthProvider = ({ children }: PropsWithChildren): JSX.Element => {
     userTokens: userTokens,
     refetchUserTokens,
   };
-  console.log(`AuthProvider::value::${JSON.stringify(value)}`);
 
   const isReady = !isPending;
 

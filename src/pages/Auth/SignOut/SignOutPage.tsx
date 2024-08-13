@@ -17,7 +17,6 @@ const SignOutPage = ({ testid = 'page-signout' }: PropsWithTestId): JSX.Element 
   const { mutate: signOut } = useSignOut();
 
   useEffect(() => {
-    console.log('SignOutPage::useEffect');
     signOut(undefined, {
       onSuccess: () => {
         router.push('/auth/signin', 'forward', 'replace');
