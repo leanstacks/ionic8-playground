@@ -1,9 +1,9 @@
 import { describe, expect, it, vi } from 'vitest';
 
 import { renderHook, waitFor } from 'test/test-utils';
+import storage from 'common/utils/storage';
 
 import { useSignOut } from '../useSignOut';
-import storage from 'common/utils/storage';
 
 describe('useSignOut', () => {
   it('should render hook sucessufully', async () => {
