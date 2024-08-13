@@ -4,6 +4,16 @@ A playground project for Ionic 8 with React.
 
 [![CI](https://github.com/mwarman/ionic8-playground/actions/workflows/ci.yml/badge.svg)](https://github.com/mwarman/ionic8-playground/actions/workflows/ci.yml)
 
+## Helpful Hints
+
+### Data
+
+This project's API integration uses the simulated REST endpoints made available by [JSON Placeholder](https://jsonplaceholder.typicode.com/).
+
+### Authentication
+
+When running the application, you may sign in with any of the JSON Placeholder [Users](https://jsonplaceholder.typicode.com/users). Simply enter the _Username_ value from any user in the API and use any value for the _Password_. For example, try username `Bret` and password `abc123`.
+
 ## About
 
 This project was bootstrapped with the [Ionic CLI](https://ionicframework.com/docs/cli/commands/start).
