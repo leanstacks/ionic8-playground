@@ -10,7 +10,7 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
-import { home, logOut, people } from 'ionicons/icons';
+import { home, logOut, people, personCircle } from 'ionicons/icons';
 import classNames from 'classnames';
 
 import './AppMenu.scss';
@@ -72,6 +72,16 @@ const AppMenu = ({ className, testid = 'menu-app' }: AppMenuProps): JSX.Element 
               <IonItem routerLink="/tabs/users" lines="full" data-testid={`${testid}-item-users`}>
                 <IonIcon icon={people} className="icon" />
                 <IonLabel>Users</IonLabel>
+              </IonItem>
+            </IonMenuToggle>
+            <IonMenuToggle>
+              <IonItem
+                routerLink="/tabs/account"
+                lines="full"
+                data-testid={`${testid}-item-account`}
+              >
+                <IonIcon icon={personCircle} className="icon" />
+                <IonLabel>Account</IonLabel>
               </IonItem>
             </IonMenuToggle>
             <IonMenuToggle>
