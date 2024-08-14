@@ -1,6 +1,5 @@
-import { informationCircle } from 'ionicons/icons';
-
 import MessageCard, { MessageCardProps } from './MessageCard';
+import { IconName } from '../Icon/Icon';
 
 /**
  * Properties for the `EmptyCard` component.
@@ -16,7 +15,7 @@ interface EmptyCardProps extends MessageCardProps {}
  * @returns JSX
  */
 const EmptyCard = ({
-  icon = informationCircle,
+  icon = IconName.CircleInfo,
   testid = 'card-empty',
   title = 'No data',
   ...cardProps

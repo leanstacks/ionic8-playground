@@ -4,13 +4,13 @@ import {
   IonCardHeader,
   IonCardSubtitle,
   IonCardTitle,
-  IonIcon,
 } from '@ionic/react';
 import { ComponentPropsWithoutRef, ReactNode } from 'react';
 import classNames from 'classnames';
 
 import './MessageCard.scss';
 import { BaseComponentProps } from '../types';
+import Icon, { IconProps } from '../Icon/Icon';
 
 /**
  * Properties for the `MessageCard` component.
@@ -24,7 +24,7 @@ import { BaseComponentProps } from '../types';
 export interface MessageCardProps
   extends BaseComponentProps,
     Pick<ComponentPropsWithoutRef<typeof IonCard>, 'color'>,
-    Pick<ComponentPropsWithoutRef<typeof IonIcon>, 'icon'> {
+    Partial<Pick<IconProps, 'icon'>> {
   content?: ReactNode;
   subtitle?: ReactNode;
   title?: ReactNode;
@@ -52,9 +52,7 @@ const MessageCard = ({
       {title && (
         <IonCardHeader className="header">
           <IonCardTitle className="title-block">
-            {icon && (
-              <IonIcon icon={icon} className="icon" data-testid={`${testid}-icon`}></IonIcon>
-            )}
+            {icon && <Icon icon={icon} data-testid={`${testid}-icon`} />}
             <div className="title" data-testid={`${testid}-title`}>
               {title}
             </div>

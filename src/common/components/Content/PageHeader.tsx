@@ -29,7 +29,7 @@ interface PageHeaderProps extends BaseComponentProps {
  *   buttons={
  *     <>
  *       <IonButton>
- *         <IonIcon slot="icon-only" icon={add} />
+ *         <Icon icon={IconName.Users} />
  *       </IonButton>
  *     </>
  *   }

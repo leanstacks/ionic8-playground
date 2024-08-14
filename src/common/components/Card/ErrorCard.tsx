@@ -1,6 +1,5 @@
-import { warning } from 'ionicons/icons';
-
 import MessageCard, { MessageCardProps } from './MessageCard';
+import { IconName } from '../Icon/Icon';
 
 /**
  * Properties for the `ErrorCard` component.
@@ -16,7 +15,7 @@ interface ErrorCardProps extends MessageCardProps {}
  */
 const ErrorCard = ({
   color = 'danger',
-  icon = warning,
+  icon = IconName.TriangleExclamation,
   testid = 'card-error',
   title = 'Uh oh',
   ...cardProps

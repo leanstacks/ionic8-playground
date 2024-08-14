@@ -1,11 +1,11 @@
-import { IonCard, IonIcon } from '@ionic/react';
-import { mail } from 'ionicons/icons';
+import { IonCard } from '@ionic/react';
 import classNames from 'classnames';
 
 import './UserCard.scss';
 import { BaseComponentProps } from 'common/components/types';
 import { User } from 'common/models/user';
 import Avatar from 'common/components/Icon/Avatar';
+import Icon, { IconName } from 'common/components/Icon/Icon';
 
 /**
  * Properties for the `UserCard` component.
@@ -35,7 +35,7 @@ const UserCard = ({ className, testid = 'card-user', user }: UserCardProps): JSX
           <div className="header">{user.name}</div>
           <div className="content-row">
             <div>
-              <IonIcon icon={mail} />
+              <Icon icon={IconName.Envelope} />
               <div>{user.email}</div>
             </div>
           </div>

@@ -1,8 +1,9 @@
-import { IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
-import { home, people, personCircle } from 'ionicons/icons';
+import { IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
 import { Redirect, Route } from 'react-router';
 
+import './TabNavigation.scss';
 import AppMenu from '../Menu/AppMenu';
+import Icon, { IconName } from '../Icon/Icon';
 import HomePage from 'pages/Home/HomePage';
 import UserDetailPage from 'pages/Users/components/UserDetail/UserDetailPage';
 import UserListPage from 'pages/Users/components/UserList/UserListPage';
@@ -29,7 +30,7 @@ const TabNavigation = (): JSX.Element => {
     <>
       <AppMenu />
 
-      <IonTabs>
+      <IonTabs className="tab-navigation">
         <IonRouterOutlet id="content-main">
           <Redirect exact path="/tabs" to="/tabs/home" />
           <Route exact path="/tabs/home">
@@ -54,15 +55,15 @@ const TabNavigation = (): JSX.Element => {
 
         <IonTabBar slot="bottom" className="ion-hide-md-up">
           <IonTabButton tab="home" href="/tabs/home">
-            <IonIcon icon={home} />
+            <Icon icon={IconName.House} size="xl" fixedWidth />
             <IonLabel>Home</IonLabel>
           </IonTabButton>
           <IonTabButton tab="users" href="/tabs/users">
-            <IonIcon icon={people} />
+            <Icon icon={IconName.Users} size="xl" fixedWidth />
             <IonLabel>Users</IonLabel>
           </IonTabButton>
           <IonTabButton tab="account" href="/tabs/account">
-            <IonIcon icon={personCircle} />
+            <Icon icon={IconName.UserGear} size="xl" fixedWidth />
             <IonLabel>Account</IonLabel>
           </IonTabButton>
         </IonTabBar>

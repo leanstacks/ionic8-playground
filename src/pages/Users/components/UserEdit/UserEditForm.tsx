@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { IonButton, IonIcon, IonRow, useIonRouter } from '@ionic/react';
-import { person } from 'ionicons/icons';
+import { IonButton, IonRow, useIonRouter } from '@ionic/react';
 import { Form, Formik } from 'formik';
 import { object, string } from 'yup';
 import classNames from 'classnames';
@@ -15,6 +14,7 @@ import Input from 'common/components/Input/Input';
 import CardRow from 'common/components/Card/CardRow';
 import ErrorCard from 'common/components/Card/ErrorCard';
 import LoaderSpinner from 'common/components/Loader/LoaderSpinner';
+import Icon, { IconName } from 'common/components/Icon/Icon';
 
 /**
  * Properties for the `UserEditForm` component.
@@ -108,7 +108,7 @@ const UserEditForm = ({
           <Form data-testid={`${testid}-form`}>
             <section>
               <IonRow className="section-heading">
-                <IonIcon icon={person} />
+                <Icon icon={IconName.User} />
                 <div>Contact Info</div>
               </IonRow>
               <Input

@@ -1,6 +1,5 @@
 import { ComponentPropsWithRef, useRef, useState } from 'react';
 import {
-  IonIcon,
   IonItem,
   IonItemOption,
   IonItemOptions,
@@ -8,7 +7,6 @@ import {
   IonLabel,
   useIonRouter,
 } from '@ionic/react';
-import { create, mail, trash } from 'ionicons/icons';
 import classNames from 'classnames';
 
 import './UserListItem.scss';
@@ -18,6 +16,7 @@ import { useProgress } from 'common/hooks/useProgress';
 import { DismissButton } from 'common/components/Toast/Toast';
 import { User } from 'common/models/user';
 import Avatar from 'common/components/Icon/Avatar';
+import Icon, { IconName } from 'common/components/Icon/Icon';
 import UserDeleteAlert from '../UserDelete/UserDeleteAlert';
 
 /**
@@ -54,13 +53,12 @@ const UserListItem = ({ className, lines, testid, user }: UserListItemProps): JS
   };
 
   return (
-    <IonItemSliding ref={ionSlidingRef} data-testid={testIdentifier}>
-      <IonItem
-        className={classNames('list-item-user', className)}
-        routerLink={`/tabs/users/${user.id}`}
-        lines={lines}
-        detail
-      >
+    <IonItemSliding
+      ref={ionSlidingRef}
+      className={classNames('list-item-user', className)}
+      data-testid={testIdentifier}
+    >
+      <IonItem routerLink={`/tabs/users/${user.id}`} lines={lines} detail>
         <Avatar value={user.name} />
         <IonLabel>
           <div className="content-row primary">
@@ -70,7 +68,7 @@ const UserListItem = ({ className, lines, testid, user }: UserListItemProps): JS
           </div>
           <div className="content-row secondary">
             <div>
-              <IonIcon icon={mail} />
+              <Icon icon={IconName.Envelope} />
               <div data-testid={`${testIdentifier}-email`}>{user.email}</div>
             </div>
           </div>
@@ -79,11 +77,11 @@ const UserListItem = ({ className, lines, testid, user }: UserListItemProps): JS
 
       <IonItemOptions>
         <IonItemOption onClick={() => doEdit()}>
-          <IonIcon icon={create} slot="start" />
+          <Icon icon={IconName.PenToSquare} />
           Edit
         </IonItemOption>
         <IonItemOption color="danger" onClick={() => setShowConfirmDelete(true)}>
-          <IonIcon icon={trash} slot="start" />
+          <Icon icon={IconName.Trash} />
           Delete
         </IonItemOption>
       </IonItemOptions>

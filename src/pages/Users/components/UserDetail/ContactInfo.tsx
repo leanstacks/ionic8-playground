@@ -1,11 +1,10 @@
-import { IonIcon } from '@ionic/react';
 import classNames from 'classnames';
-import { call, link, mail, person } from 'ionicons/icons';
 
 import './ContactInfo.scss';
 import { BaseComponentProps } from 'common/components/types';
 import { User } from 'common/models/user';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
+import Icon, { IconName } from 'common/components/Icon/Icon';
 
 /**
  * Properties for the `ContactInfo` component.
@@ -74,26 +73,26 @@ const ContactInfo = ({
       <div {...baseProps}>
         {showHeader && (
           <div className="header">
-            <IonIcon icon={person} />
+            <Icon icon={IconName.User} />
             <div>Contact Info</div>
           </div>
         )}
         <div className="content">
           {user.email && (
             <div>
-              <IonIcon icon={mail} />
+              <Icon icon={IconName.Envelope} />
               <div>{user.email}</div>
             </div>
           )}
           {user.phone && (
             <div>
-              <IonIcon icon={call} />
+              <Icon icon={IconName.Phone} />
               <div>{user.phone}</div>
             </div>
           )}
           {user.website && (
             <div>
-              <IonIcon icon={link} />
+              <Icon icon={IconName.Link} />
               <div>{user.website}</div>
             </div>
           )}

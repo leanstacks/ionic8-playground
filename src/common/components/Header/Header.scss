@@ -16,4 +16,13 @@
       font-size: 1rem;
     }
   }
+
+  ion-buttons[slot='end'] {
+    ion-button {
+      height: 3rem;
+      width: 3rem;
+
+      margin: 0;
+    }
+  }
 }

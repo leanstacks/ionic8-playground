@@ -1,11 +1,10 @@
-import { IonIcon } from '@ionic/react';
 import classNames from 'classnames';
-import { business } from 'ionicons/icons';
 
 import './CompanyDetail.scss';
 import { BaseComponentProps } from 'common/components/types';
 import { Company } from 'common/models/user';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
+import Icon, { IconName } from 'common/components/Icon/Icon';
 
 /**
  * Properties for the `CompanyDetail` component.
@@ -68,7 +67,7 @@ const CompanyDetail = ({
     return (
       <div {...baseProps}>
         <div className="header">
-          <IonIcon icon={business} />
+          <Icon icon={IconName.Building} />
           <div>Company</div>
         </div>
         <div className="content">

@@ -11,4 +11,13 @@
   .title {
     font-size: 2rem;
   }
+
+  ion-buttons {
+    ion-button {
+      height: 3rem;
+      width: 3rem;
+
+      margin: 0;
+    }
+  }
 }
