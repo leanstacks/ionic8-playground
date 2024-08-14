@@ -17,9 +17,9 @@ import {
   faUserGear,
   faUsers,
 } from '@fortawesome/free-solid-svg-icons';
+import classNames from 'classnames';
 
 import { BaseComponentProps } from '../types';
-import classNames from 'classnames';
 
 /**
  * Properties for the `Icon` component.
@@ -55,7 +55,7 @@ export enum IconName {
 /**
  * A key/value mapping of every icon used in the application.
  */
-const icons: Record<string, IconProp> = {
+const icons: Record<IconName, IconProp> = {
   building: faBuilding,
   circle_info: faCircleInfo,
   envelope: faEnvelope,
