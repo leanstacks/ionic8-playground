@@ -1,7 +1,6 @@
-import { IonButton, IonContent, IonIcon, IonPage, useIonRouter } from '@ionic/react';
+import { IonButton, IonContent, IonPage, useIonRouter } from '@ionic/react';
 import { useState } from 'react';
 import { useParams } from 'react-router';
-import { create, trash } from 'ionicons/icons';
 import classNames from 'classnames';
 
 import './UserDetailPage.scss';
@@ -11,6 +10,7 @@ import { useToasts } from 'common/hooks/useToasts';
 import { DismissButton } from 'common/components/Toast/Toast';
 import ProgressProvider from 'common/providers/ProgressProvider';
 import Header from 'common/components/Header/Header';
+import Icon, { IconName } from 'common/components/Icon/Icon';
 import UserDetail from './UserDetail';
 import Container from 'common/components/Content/Container';
 import PageHeader from 'common/components/Content/PageHeader';
@@ -56,19 +56,21 @@ export const UserDetailPage = ({
                   <>
                     <IonButton
                       title="Edit user"
+                      shape="round"
                       className="ion-hide-md-up"
                       routerLink={`/tabs/users/${userId}/edit`}
                       data-testid={`${testid}-header-button-edit`}
                     >
-                      <IonIcon slot="icon-only" icon={create} />
+                      <Icon icon={IconName.PenToSquare} size="xl" />
                     </IonButton>
                     <IonButton
                       title="Delete user"
+                      shape="round"
                       className="ion-hide-md-up"
                       onClick={() => setShowConfirmDelete(true)}
                       data-testid={`${testid}-header-button-delete`}
                     >
-                      <IonIcon slot="icon-only" icon={trash} />
+                      <Icon icon={IconName.Trash} size="xl" />
                     </IonButton>
                   </>
                 )
@@ -96,17 +98,19 @@ export const UserDetailPage = ({
                       <>
                         <IonButton
                           title="Edit user"
+                          shape="round"
                           routerLink={`/tabs/users/${userId}/edit`}
                           data-testid={`${testid}-page-header-button-edit`}
                         >
-                          <IonIcon slot="icon-only" icon={create} />
+                          <Icon icon={IconName.PenToSquare} size="xl" />
                         </IonButton>
                         <IonButton
                           title="Delete user"
+                          shape="round"
                           onClick={() => setShowConfirmDelete(true)}
                           data-testid={`${testid}-page-header-button-delete`}
                         >
-                          <IonIcon slot="icon-only" icon={trash} />
+                          <Icon icon={IconName.Trash} size="xl" />
                         </IonButton>
                       </>
                     )

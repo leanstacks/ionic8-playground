@@ -1,11 +1,10 @@
-import { IonIcon } from '@ionic/react';
-import { map } from 'ionicons/icons';
 import classNames from 'classnames';
 
 import './AddressDetail.scss';
 import { Address } from 'common/models/user';
 import { BaseComponentProps } from 'common/components/types';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
+import Icon, { IconName } from 'common/components/Icon/Icon';
 
 /**
  * Properties for the `AddressDetail` component.
@@ -69,7 +68,7 @@ const AddressDetail = ({
     return (
       <div {...baseProps}>
         <div className="header">
-          <IonIcon icon={map} />
+          <Icon icon={IconName.MapLocationDot} />
           <div>Address</div>
         </div>
         <div className="content">

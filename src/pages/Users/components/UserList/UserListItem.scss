@@ -1,35 +1,43 @@
 .list-item-user {
-  --inner-padding-bottom: 0.5rem;
-  --inner-padding-top: 0.5rem;
+  ion-item {
+    --inner-padding-bottom: 0.5rem;
+    --inner-padding-top: 0.5rem;
 
-  .avatar {
-    border-radius: 0.25rem;
+    .avatar {
+      border-radius: 0.25rem;
 
-    font-size: 1.5rem;
+      font-size: 1.5rem;
 
-    margin-right: 1rem;
-  }
-
-  .content-row {
-    display: flex;
-    align-items: center;
-    column-gap: 1rem;
-    row-gap: 0.25rem;
-
-    &.primary {
-      font-weight: 500;
+      margin-right: 1rem;
     }
 
-    &.secondary {
-      font-size: 0.85rem;
-      color: var(--ion-color-medium);
-    }
-
-    > * {
+    .content-row {
       display: flex;
       align-items: center;
-      gap: 0.25rem;
-      text-wrap: nowrap;
+      column-gap: 1rem;
+      row-gap: 0.25rem;
+
+      &.primary {
+        font-weight: 500;
+      }
+
+      &.secondary {
+        font-size: 0.85rem;
+        color: var(--ion-color-medium);
+      }
+
+      > * {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        text-wrap: nowrap;
+      }
+    }
+  }
+
+  ion-item-option {
+    .icon {
+      margin-right: 0.375rem;
     }
   }
 }
