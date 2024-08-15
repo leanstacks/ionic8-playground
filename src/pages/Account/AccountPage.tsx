@@ -1,4 +1,5 @@
 import { IonContent, IonItem, IonLabel, IonList, IonListHeader, IonPage } from '@ionic/react';
+import dayjs from 'dayjs';
 
 import './AccountPage.scss';
 import { PropsWithTestId } from 'common/components/types';
@@ -15,7 +16,9 @@ import Container from 'common/components/Content/Container';
 const AccountPage = ({ testid = 'page-account' }: PropsWithTestId): JSX.Element => {
   const config = useConfig();
 
-  const version = `${config.VITE_BUILD_TS}.${config.VITE_BUILD_COMMIT_SHA}`;
+  const versionTs = dayjs(config.VITE_BUILD_TS).format('YY.MM.DD.hhmm');
+  const sha = config.VITE_BUILD_COMMIT_SHA.substring(0, 7);
+  const version = `${versionTs}.${sha}`;
 
   return (
     <IonPage className="page-account" data-testid={testid}>
@@ -41,7 +44,7 @@ const AccountPage = ({ testid = 'page-account' }: PropsWithTestId): JSX.Element 
             </IonListHeader>
             <IonList>
               <IonItem>
-                <IonLabel>Version {version}</IonLabel>
+                <IonLabel color="medium">Version {version}</IonLabel>
               </IonItem>
             </IonList>
           </IonList>
