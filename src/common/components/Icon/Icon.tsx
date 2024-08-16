@@ -20,6 +20,7 @@ import {
 import classNames from 'classnames';
 
 import { BaseComponentProps } from '../types';
+import { IonText } from '@ionic/react';
 
 /**
  * Properties for the `Icon` component.
@@ -28,7 +29,8 @@ import { BaseComponentProps } from '../types';
  */
 export interface IconProps
   extends BaseComponentProps,
-    Omit<ComponentPropsWithoutRef<typeof FontAwesomeIcon>, 'icon'> {
+    Omit<ComponentPropsWithoutRef<typeof FontAwesomeIcon>, 'color' | 'icon'>,
+    Pick<ComponentPropsWithoutRef<typeof IonText>, 'color'> {
   icon: IconName;
 }
 
@@ -79,15 +81,23 @@ const icons: Record<IconName, IconProp> = {
  * @returns {JSX.Element} JSX
  * @see {@link FontAwesomeIcon}
  */
-const Icon = ({ className, icon, testid = 'icon', ...iconProps }: IconProps): JSX.Element => {
+const Icon = ({
+  className,
+  color,
+  icon,
+  testid = 'icon',
+  ...iconProps
+}: IconProps): JSX.Element => {
   const faIcon = icons[icon];
   return (
-    <FontAwesomeIcon
-      className={classNames('icon', className)}
-      icon={faIcon}
-      {...iconProps}
-      data-testid={testid}
-    />
+    <IonText color={color}>
+      <FontAwesomeIcon
+        className={classNames('icon', className)}
+        icon={faIcon}
+        {...iconProps}
+        data-testid={testid}
+      />
+    </IonText>
   );
 };
 
