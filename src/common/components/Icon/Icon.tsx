@@ -1,4 +1,5 @@
 import { ComponentPropsWithoutRef } from 'react';
+import { IonText } from '@ionic/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import {
@@ -20,7 +21,6 @@ import {
 import classNames from 'classnames';
 
 import { BaseComponentProps } from '../types';
-import { IonText } from '@ionic/react';
 
 /**
  * Properties for the `Icon` component.
@@ -90,12 +90,12 @@ const Icon = ({
 }: IconProps): JSX.Element => {
   const faIcon = icons[icon];
   return (
-    <IonText color={color}>
+    <IonText color={color} data-testid={testid}>
       <FontAwesomeIcon
         className={classNames('icon', className)}
         icon={faIcon}
         {...iconProps}
-        data-testid={testid}
+        data-testid={`${testid}-icon`}
       />
     </IonText>
   );

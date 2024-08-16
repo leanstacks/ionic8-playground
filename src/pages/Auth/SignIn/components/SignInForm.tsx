@@ -92,7 +92,7 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
               autoFocus
               autocomplete="off"
               data-testid={`${testid}-field-username`}
-            ></Input>
+            />
             <Input
               type="password"
               name="password"
@@ -103,7 +103,7 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
               autoFocus
               autocomplete="off"
               data-testid={`${testid}-field-password`}
-            ></Input>
+            />
 
             <IonButton
               type="submit"

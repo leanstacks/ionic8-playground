@@ -25,10 +25,8 @@
     margin: 1rem 0;
 
     &.row-card {
-      @media (min-width: 576px) {
-        .wrapper {
-          width: 100% !important;
-        }
+      .wrapper {
+        width: 100% !important;
       }
     }
   }
