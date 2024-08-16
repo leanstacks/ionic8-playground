@@ -1,4 +1,4 @@
-import { IonButton, useIonRouter } from '@ionic/react';
+import { IonButton, IonContent, IonPopover, IonRow, useIonRouter } from '@ionic/react';
 import { useState } from 'react';
 import classNames from 'classnames';
 import { Form, Formik } from 'formik';
@@ -11,6 +11,7 @@ import { useProgress } from 'common/hooks/useProgress';
 import Input from 'common/components/Input/Input';
 import CardRow from 'common/components/Card/CardRow';
 import ErrorCard from 'common/components/Card/ErrorCard';
+import Icon, { IconName } from 'common/components/Icon/Icon';
 
 /**
  * Properties for the `SignInForm` component.
@@ -77,7 +78,11 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
       >
         {({ dirty, isSubmitting }) => (
           <Form data-testid={`${testid}-form`}>
-            <div className="heading">Sign In</div>
+            <IonRow className="heading ion-text-uppercase">
+              <div>Sign In</div>
+              <Icon id="signinInfo" icon={IconName.CircleInfo} color="secondary" />
+            </IonRow>
+
             <Input
               name="username"
               label="Username"
@@ -87,7 +92,7 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
               autoFocus
               autocomplete="off"
               data-testid={`${testid}-field-username`}
-            />
+            ></Input>
             <Input
               type="password"
               name="password"
@@ -98,17 +103,36 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
               autoFocus
               autocomplete="off"
               data-testid={`${testid}-field-password`}
-            />
+            ></Input>
 
             <IonButton
               type="submit"
               color="primary"
+              className="button-submit"
               expand="block"
               disabled={isSubmitting || !dirty}
               data-testid={`${testid}-button-submit`}
             >
               Sign In
             </IonButton>
+
+            <IonPopover trigger="signinInfo" triggerAction="hover" className="form-signin-popover">
+              <IonContent class="ion-padding">
+                <p>
+                  This example application uses{' '}
+                  <a
+                    href="https://jsonplaceholder.typicode.com/users"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    JSONPlaceholder data
+                  </a>
+                  . Try a username like <span className="inline-code">Bret</span> or{' '}
+                  <span className="inline-code">Samantha</span>.
+                </p>
+                <p>You may use any value as the password.</p>
+              </IonContent>
+            </IonPopover>
           </Form>
         )}
       </Formik>

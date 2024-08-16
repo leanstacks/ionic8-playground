@@ -1,7 +1,9 @@
 .form-signin {
-  .heading {
+  ion-row.heading {
     font-size: 1.25rem;
     font-weight: 700;
+
+    gap: 0.75rem;
 
     padding-bottom: 0.25rem;
     margin-bottom: 0.25rem;
@@ -15,7 +17,7 @@
     margin-bottom: 0.5rem;
   }
 
-  ion-button {
+  ion-button.button-submit {
     margin-top: 2rem;
   }
 
@@ -25,9 +27,17 @@
     &.row-card {
       @media (min-width: 576px) {
         .wrapper {
-          width: 80% !important;
+          width: 100% !important;
         }
       }
     }
+  }
+}
+
+.form-signin-popover {
+  .inline-code {
+    font-family: monospace;
+    font-size: 1rem;
+    color: var(--ion-color-medium);
   }
 }
