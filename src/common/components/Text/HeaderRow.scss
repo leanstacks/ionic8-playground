@@ -1,0 +1,14 @@
+.row-header {
+  font-size: 1.25rem;
+  font-weight: 500;
+
+  gap: 0.75rem;
+
+  padding-bottom: 0.25rem;
+
+  &.bordered {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: var(--ion-color-light);
+  }
+}
