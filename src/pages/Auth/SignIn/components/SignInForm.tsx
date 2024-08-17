@@ -1,4 +1,4 @@
-import { IonButton, IonContent, IonPopover, IonRow, useIonRouter } from '@ionic/react';
+import { IonButton, IonContent, IonPopover, useIonRouter } from '@ionic/react';
 import { useState } from 'react';
 import classNames from 'classnames';
 import { Form, Formik } from 'formik';
@@ -12,6 +12,7 @@ import Input from 'common/components/Input/Input';
 import CardRow from 'common/components/Card/CardRow';
 import ErrorCard from 'common/components/Card/ErrorCard';
 import Icon, { IconName } from 'common/components/Icon/Icon';
+import HeaderRow from 'common/components/Text/HeaderRow';
 
 /**
  * Properties for the `SignInForm` component.
@@ -78,10 +79,10 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
       >
         {({ dirty, isSubmitting }) => (
           <Form data-testid={`${testid}-form`}>
-            <IonRow className="heading ion-text-uppercase">
+            <HeaderRow border>
               <div>Sign In</div>
               <Icon id="signinInfo" icon={IconName.CircleInfo} color="secondary" />
-            </IonRow>
+            </HeaderRow>
 
             <Input
               name="username"

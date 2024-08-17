@@ -1,16 +1,6 @@
 .form-signin {
-  ion-row.heading {
-    font-size: 1.25rem;
-    font-weight: 700;
-
-    gap: 0.75rem;
-
-    padding-bottom: 0.25rem;
+  .row-header {
     margin-bottom: 0.25rem;
-
-    border-bottom-color: var(--ion-color-light);
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
   }
 
   ion-input {
