@@ -11,4 +11,8 @@
     border-bottom-style: solid;
     border-bottom-color: var(--ion-color-light);
   }
+
+  &.inset {
+    padding-inline: 0.5rem;
+  }
 }

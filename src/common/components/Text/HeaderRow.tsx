@@ -5,13 +5,15 @@ import classNames from 'classnames';
 import './HeaderRow.scss';
 import { BaseComponentProps } from '../types';
 
-interface HeaderProps extends BaseComponentProps, ComponentPropsWithoutRef<typeof IonRow> {
+export interface HeaderProps extends BaseComponentProps, ComponentPropsWithoutRef<typeof IonRow> {
   border?: boolean;
+  inset?: boolean;
 }
 
 const HeaderRow = ({
   border = false,
   className,
+  inset = false,
   testid = 'row-header',
   ...rowProps
 }: HeaderProps): JSX.Element => {
@@ -20,6 +22,7 @@ const HeaderRow = ({
       className={classNames(
         'row-header ion-align-items-center ion-text-uppercase',
         { bordered: border },
+        { inset: inset },
         className,
       )}
       data-testid={testid}
