@@ -1,15 +1,13 @@
 import classNames from 'classnames';
 
 import './PageHeader.scss';
-import HeaderRow, { HeaderProps } from '../Text/HeaderRow';
+import HeaderRow, { HeaderRowProps } from '../Text/HeaderRow';
 
 /**
  * Properties for the `PageHeader` component.
- * @param {ReactNode} title - A title.
- * @param {ReactNode} [buttons] - One or more buttons.
- * @see {@link BaseComponentProps}
+ * @see {@link HeaderRowProps}
  */
-interface PageHeaderProps extends HeaderProps {}
+interface PageHeaderProps extends HeaderRowProps {}
 
 /**
  * The `PageHeader` component displays a block intended for the top of a page.
@@ -20,16 +18,10 @@ interface PageHeaderProps extends HeaderProps {}
  *
  * Example:
  * ```
- * <PageHeader
- *   title="Users"
- *   buttons={
- *     <>
- *       <IonButton>
- *         <Icon icon={IconName.Users} />
- *       </IonButton>
- *     </>
- *   }
- * />
+ * <PageHeader border inset className="ion-hide-md-down">
+ *   <Avatar value={user.name} />
+ *   <IonText data-testid={`${testid}-title`}>{user.name}</IonText>
+ * </PageHeader>
  * ```
  *
  * @param {PageHeaderProps} props - Component properties.
