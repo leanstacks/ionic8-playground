@@ -70,7 +70,7 @@ const UserEditForm = ({
 
   return (
     <div className={classNames('form-user-edit', className)} data-testid={testid}>
-      {!error && (
+      {error && (
         <CardRow className="row-message" testid={`${testid}-error`}>
           <ErrorCard content={`We are experiencing problems processing your request. ${error}`} />
         </CardRow>
