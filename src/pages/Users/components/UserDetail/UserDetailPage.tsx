@@ -1,7 +1,6 @@
-import { IonButton, IonContent, IonPage, useIonRouter } from '@ionic/react';
+import { IonButton, IonButtons, IonContent, IonPage, IonText, useIonRouter } from '@ionic/react';
 import { useState } from 'react';
 import { useParams } from 'react-router';
-import classNames from 'classnames';
 
 import './UserDetailPage.scss';
 import { PropsWithTestId } from 'common/components/types';
@@ -10,6 +9,7 @@ import { useToasts } from 'common/hooks/useToasts';
 import { DismissButton } from 'common/components/Toast/Toast';
 import ProgressProvider from 'common/providers/ProgressProvider';
 import Header from 'common/components/Header/Header';
+import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 import Icon, { IconName } from 'common/components/Icon/Icon';
 import UserDetail from './UserDetail';
 import Container from 'common/components/Content/Container';
@@ -81,41 +81,37 @@ export const UserDetailPage = ({
 
             <IonContent className="ion-padding">
               <Container fixed>
-                <PageHeader
-                  className={classNames('ion-hide-md-down', 'page-header')}
-                  title={
-                    user ? (
-                      <div className={'title-block'}>
-                        <Avatar value={user.name} />
-                        <div data-testid={`${testid}-page-header-title`}>{user.name}</div>
-                      </div>
-                    ) : (
-                      <div data-testid={`${testid}-page-header-title`}>User Detail</div>
-                    )
-                  }
-                  buttons={
-                    user && (
-                      <>
-                        <IonButton
-                          title="Edit user"
-                          shape="round"
-                          routerLink={`/tabs/users/${userId}/edit`}
-                          data-testid={`${testid}-page-header-button-edit`}
-                        >
-                          <Icon icon={IconName.PenToSquare} size="xl" />
-                        </IonButton>
-                        <IonButton
-                          title="Delete user"
-                          shape="round"
-                          onClick={() => setShowConfirmDelete(true)}
-                          data-testid={`${testid}-page-header-button-delete`}
-                        >
-                          <Icon icon={IconName.Trash} size="xl" />
-                        </IonButton>
-                      </>
-                    )
-                  }
-                />
+                {user ? (
+                  <PageHeader className="ion-hide-md-down" inset border>
+                    <Avatar value={user.name} />
+                    <IonText data-testid={`${testid}-page-header-title`}>{user.name}</IonText>
+                    <IonButtons>
+                      <IonButton
+                        title="Edit user"
+                        shape="round"
+                        routerLink={`/tabs/users/${userId}/edit`}
+                        data-testid={`${testid}-page-header-button-edit`}
+                      >
+                        <Icon icon={IconName.PenToSquare} size="xl" />
+                      </IonButton>
+                      <IonButton
+                        title="Delete user"
+                        shape="round"
+                        onClick={() => setShowConfirmDelete(true)}
+                        data-testid={`${testid}-page-header-button-delete`}
+                      >
+                        <Icon icon={IconName.Trash} size="xl" />
+                      </IonButton>
+                    </IonButtons>
+                  </PageHeader>
+                ) : (
+                  <LoaderSkeleton
+                    animated
+                    widthStyle="100%"
+                    heightStyle="3rem"
+                    className="ion-hide-md-down"
+                  />
+                )}
 
                 <UserDetail testid={`${testid}-user-detail`} userId={userId} />
 
