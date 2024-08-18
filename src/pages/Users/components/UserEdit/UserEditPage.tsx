@@ -1,4 +1,4 @@
-import { IonContent, IonPage } from '@ionic/react';
+import { IonContent, IonPage, IonText } from '@ionic/react';
 import { useParams } from 'react-router';
 
 import './UserEditPage.scss';
@@ -34,24 +34,18 @@ export const UserEditPage = (): JSX.Element => {
 
       <IonContent className="ion-padding">
         <Container fixed>
-          <PageHeader
-            className="ion-hide-md-down"
-            title={
-              user ? (
-                <div className="title-block" data-testid={`${testid}-title`}>
-                  <Avatar value={user.name} />
-                  <div>{user.name}</div>
-                </div>
-              ) : (
-                <div className="title-block" data-testid={`${testid}-loader`}>
-                  <LoaderSkeleton animated widthStyle="2rem" heightStyle="2rem" />
-                  <LoaderSkeleton animated widthStyle="20rem" heightStyle="2rem" />
-                </div>
-              )
-            }
-          />
+          {user ? (
+            <>
+              <PageHeader border inset className="ion-hide-md-down">
+                <Avatar value={user.name} />
+                <IonText>{user.name}</IonText>
+              </PageHeader>
 
-          {user && <UserEditForm user={user} />}
+              <UserEditForm user={user} />
+            </>
+          ) : (
+            <LoaderSkeleton animated widthStyle="100%" heightStyle="3rem" />
+          )}
         </Container>
       </IonContent>
     </IonPage>
