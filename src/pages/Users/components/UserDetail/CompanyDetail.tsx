@@ -5,6 +5,7 @@ import { BaseComponentProps } from 'common/components/types';
 import { Company } from 'common/models/user';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 import Icon, { IconName } from 'common/components/Icon/Icon';
+import HeaderRow from 'common/components/Text/HeaderRow';
 
 /**
  * Properties for the `CompanyDetail` component.
@@ -66,10 +67,10 @@ const CompanyDetail = ({
     // success state
     return (
       <div {...baseProps}>
-        <div className="header">
+        <HeaderRow border>
           <Icon icon={IconName.Building} />
           <div>Company</div>
-        </div>
+        </HeaderRow>
         <div className="content">
           <div className="primary">{company.name}</div>
           <div>{company.catchPhrase}</div>
