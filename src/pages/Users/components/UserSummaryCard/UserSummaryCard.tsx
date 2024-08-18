@@ -39,7 +39,7 @@ const UserSummaryCard = ({
       data-testid={testid}
     >
       <IonCardHeader>
-        <IonCardTitle>
+        <IonCardTitle className="ion-text-uppercase">
           Users
           {users && (
             <IonBadge className="badge" data-testid={`${testid}-badge`}>
