@@ -32,7 +32,7 @@ export const UserListPage = (): JSX.Element => {
   return (
     <IonPage className="page-user-list" data-testid={testid}>
       <ProgressProvider>
-        <Header />
+        <Header title="Users" />
 
         <IonContent>
           <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
@@ -40,7 +40,9 @@ export const UserListPage = (): JSX.Element => {
           </IonRefresher>
 
           <Container fixed>
-            <PageHeader title="Users" />
+            <PageHeader border inset className="ion-hide-md-down">
+              Users
+            </PageHeader>
             <UserList className="ion-hide-md-up" />
             <UserGrid className="ion-hide-md-down" />
           </Container>
