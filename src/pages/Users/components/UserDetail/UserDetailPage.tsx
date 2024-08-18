@@ -110,6 +110,7 @@ export const UserDetailPage = ({
                     widthStyle="100%"
                     heightStyle="3rem"
                     className="ion-hide-md-down"
+                    testid={`${testid}-loader`}
                   />
                 )}
 

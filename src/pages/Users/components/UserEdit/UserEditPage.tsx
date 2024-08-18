@@ -38,13 +38,18 @@ export const UserEditPage = (): JSX.Element => {
             <>
               <PageHeader border inset className="ion-hide-md-down">
                 <Avatar value={user.name} />
-                <IonText>{user.name}</IonText>
+                <IonText data-testid={`${testid}-title`}>{user.name}</IonText>
               </PageHeader>
 
               <UserEditForm user={user} />
             </>
           ) : (
-            <LoaderSkeleton animated widthStyle="100%" heightStyle="3rem" />
+            <LoaderSkeleton
+              animated
+              widthStyle="100%"
+              heightStyle="3rem"
+              testid={`${testid}-loader`}
+            />
           )}
         </Container>
       </IonContent>
