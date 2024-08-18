@@ -1,23 +1,42 @@
 .page-header {
-  border-bottom-color: var(--ion-color-light);
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
+  &.row-header {
+    font-size: 1.5rem;
 
-  padding: 0.25rem 0.5rem;
+    ion-buttons {
+      margin-left: auto;
 
-  align-items: center;
-  justify-content: space-between;
+      ion-button {
+        height: 3rem;
+        width: 3rem;
 
-  .title {
-    font-size: 2rem;
-  }
-
-  ion-buttons {
-    ion-button {
-      height: 3rem;
-      width: 3rem;
-
-      margin: 0;
+        margin: 0;
+      }
     }
   }
 }
+
+// .page-header {
+//   border-bottom-color: var(--ion-color-light);
+//   border-bottom-style: solid;
+//   border-bottom-width: 1px;
+
+//   padding: 0.25rem 0.5rem;
+
+//   align-items: center;
+//   justify-content: space-between;
+
+//   .title {
+//     font-size: 1.5rem;
+//     font-weight: 500;
+//     text-transform: uppercase;
+//   }
+
+//   ion-buttons {
+//     ion-button {
+//       height: 3rem;
+//       width: 3rem;
+
+//       margin: 0;
+//     }
+//   }
+// }

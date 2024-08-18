@@ -1,19 +1,15 @@
-import { ReactNode } from 'react';
-import { IonButtons, IonRow } from '@ionic/react';
 import classNames from 'classnames';
 
-import { BaseComponentProps } from '../types';
 import './PageHeader.scss';
+import HeaderRow, { HeaderProps } from '../Text/HeaderRow';
+
 /**
  * Properties for the `PageHeader` component.
  * @param {ReactNode} title - A title.
  * @param {ReactNode} [buttons] - One or more buttons.
  * @see {@link BaseComponentProps}
  */
-interface PageHeaderProps extends BaseComponentProps {
-  title: ReactNode;
-  buttons?: ReactNode;
-}
+interface PageHeaderProps extends HeaderProps {}
 
 /**
  * The `PageHeader` component displays a block intended for the top of a page.
@@ -40,18 +36,12 @@ interface PageHeaderProps extends BaseComponentProps {
  * @returns {JSX.Element} Returns JSX.
  */
 const PageHeader = ({
-  buttons,
   className,
   testid = 'page-header',
-  title,
+  ...props
 }: PageHeaderProps): JSX.Element => {
   return (
-    <IonRow className={classNames('page-header', className)} data-testid={testid}>
-      <div className={'title'} data-testid={`${testid}-title`}>
-        {title}
-      </div>
-      {buttons && <IonButtons>{buttons}</IonButtons>}
-    </IonRow>
+    <HeaderRow className={classNames('page-header', className)} data-testid={testid} {...props} />
   );
 };
 
