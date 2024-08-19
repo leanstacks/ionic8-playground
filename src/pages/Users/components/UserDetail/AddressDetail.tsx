@@ -5,6 +5,7 @@ import { Address } from 'common/models/user';
 import { BaseComponentProps } from 'common/components/types';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 import Icon, { IconName } from 'common/components/Icon/Icon';
+import HeaderRow from 'common/components/Text/HeaderRow';
 
 /**
  * Properties for the `AddressDetail` component.
@@ -67,10 +68,10 @@ const AddressDetail = ({
     // success state
     return (
       <div {...baseProps}>
-        <div className="header">
+        <HeaderRow border>
           <Icon icon={IconName.MapLocationDot} />
           <div>Address</div>
-        </div>
+        </HeaderRow>
         <div className="content">
           <div>{address.street}</div>
           <div>{address.suite}</div>

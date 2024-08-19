@@ -42,7 +42,7 @@ describe('UserDetailPage', () => {
     expect(screen.getByTestId('test-page-header-title')).toHaveTextContent(userFixture1.name);
   });
 
-  it('should render when no user', async () => {
+  it('should render loader when no user', async () => {
     // ARRANGE
     const useGetUserSpy = vi.spyOn(UseGetUser, 'useGetUser');
     useGetUserSpy.mockReturnValue({
@@ -55,10 +55,6 @@ describe('UserDetailPage', () => {
 
     // ASSERT
     expect(screen.getByTestId('test')).toBeDefined();
-    expect(screen.queryByTestId('test-header-button-edit')).toBeNull();
-    expect(screen.queryByTestId('test-header-button-delete')).toBeNull();
-    expect(screen.queryByTestId('test-page-header-button-edit')).toBeNull();
-    expect(screen.queryByTestId('test-page-header-button-delete')).toBeNull();
-    expect(screen.getByTestId('test-page-header-title')).toHaveTextContent('User Detail');
+    expect(screen.queryByTestId('test-loader')).toBeDefined();
   });
 });

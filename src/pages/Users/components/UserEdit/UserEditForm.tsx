@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { IonButton, IonRow, useIonRouter } from '@ionic/react';
+import { IonButton, useIonRouter } from '@ionic/react';
 import { Form, Formik } from 'formik';
 import { object, string } from 'yup';
 import classNames from 'classnames';
@@ -15,6 +15,7 @@ import CardRow from 'common/components/Card/CardRow';
 import ErrorCard from 'common/components/Card/ErrorCard';
 import LoaderSpinner from 'common/components/Loader/LoaderSpinner';
 import Icon, { IconName } from 'common/components/Icon/Icon';
+import HeaderRow from 'common/components/Text/HeaderRow';
 
 /**
  * Properties for the `UserEditForm` component.
@@ -106,54 +107,52 @@ const UserEditForm = ({
       >
         {({ dirty, isSubmitting }) => (
           <Form data-testid={`${testid}-form`}>
-            <section>
-              <IonRow className="section-heading">
-                <Icon icon={IconName.User} />
-                <div>Contact Info</div>
-              </IonRow>
-              <Input
-                name="user.name"
-                label="Name"
-                labelPlacement="stacked"
-                disabled={isSubmitting}
-                required
-                autoFocus
-                data-testid={`${testid}-field-name`}
-              ></Input>
-              <Input
-                name="user.username"
-                label="Username"
-                labelPlacement="stacked"
-                disabled={isSubmitting}
-                minlength={8}
-                maxlength={30}
-                data-testid={`${testid}-field-username`}
-              ></Input>
-              <Input
-                name="user.email"
-                type="email"
-                label="Email"
-                labelPlacement="stacked"
-                disabled={isSubmitting}
-                required
-                data-testid={`${testid}-field-email`}
-              ></Input>
-              <Input
-                name="user.phone"
-                label="Phone"
-                labelPlacement="stacked"
-                disabled={isSubmitting}
-                required
-                data-testid={`${testid}-field-phone`}
-              ></Input>
-              <Input
-                name="user.website"
-                label="Website"
-                labelPlacement="stacked"
-                disabled={isSubmitting}
-                data-testid={`${testid}-field-website`}
-              ></Input>
-            </section>
+            <HeaderRow border>
+              <Icon icon={IconName.User} />
+              <div>Contact Info</div>
+            </HeaderRow>
+            <Input
+              name="user.name"
+              label="Name"
+              labelPlacement="stacked"
+              disabled={isSubmitting}
+              required
+              autoFocus
+              data-testid={`${testid}-field-name`}
+            ></Input>
+            <Input
+              name="user.username"
+              label="Username"
+              labelPlacement="stacked"
+              disabled={isSubmitting}
+              minlength={8}
+              maxlength={30}
+              data-testid={`${testid}-field-username`}
+            ></Input>
+            <Input
+              name="user.email"
+              type="email"
+              label="Email"
+              labelPlacement="stacked"
+              disabled={isSubmitting}
+              required
+              data-testid={`${testid}-field-email`}
+            ></Input>
+            <Input
+              name="user.phone"
+              label="Phone"
+              labelPlacement="stacked"
+              disabled={isSubmitting}
+              required
+              data-testid={`${testid}-field-phone`}
+            ></Input>
+            <Input
+              name="user.website"
+              label="Website"
+              labelPlacement="stacked"
+              disabled={isSubmitting}
+              data-testid={`${testid}-field-website`}
+            ></Input>
 
             <div className="buttons">
               <IonButton

@@ -5,6 +5,7 @@ import { BaseComponentProps } from 'common/components/types';
 import { User } from 'common/models/user';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 import Icon, { IconName } from 'common/components/Icon/Icon';
+import HeaderRow from 'common/components/Text/HeaderRow';
 
 /**
  * Properties for the `ContactInfo` component.
@@ -72,10 +73,10 @@ const ContactInfo = ({
     return (
       <div {...baseProps}>
         {showHeader && (
-          <div className="header">
+          <HeaderRow border>
             <Icon icon={IconName.User} />
             <div>Contact Info</div>
-          </div>
+          </HeaderRow>
         )}
         <div className="content">
           {user.email && (
