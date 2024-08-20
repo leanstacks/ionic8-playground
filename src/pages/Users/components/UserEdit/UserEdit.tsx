@@ -73,6 +73,7 @@ const UserEdit = ({ className, user, testid = 'user-edit' }: UserEditFormProps):
                   },
                 );
               }}
+              testid={`${testid}-form`}
             />
           </IonCol>
         </IonRow>
