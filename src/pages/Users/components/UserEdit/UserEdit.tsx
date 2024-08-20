@@ -6,6 +6,7 @@ import './UserEdit.scss';
 import { BaseComponentProps } from 'common/components/types';
 import { User } from 'common/models/user';
 import { useUpdateUser } from 'pages/Users/api/useUpdateUser';
+import { useProgress } from 'common/hooks/useProgress';
 import { useToasts } from 'common/hooks/useToasts';
 import { DismissButton } from 'common/components/Toast/Toast';
 import CardRow from 'common/components/Card/CardRow';
@@ -30,6 +31,7 @@ const UserEdit = ({ className, user, testid = 'user-edit' }: UserEditFormProps):
   const [error, setError] = useState<string>('');
   const { mutate: updateUser } = useUpdateUser();
   const { createToast } = useToasts();
+  const { setProgress } = useProgress();
 
   const onCancel = () => {
     router.goBack();
@@ -49,6 +51,7 @@ const UserEdit = ({ className, user, testid = 'user-edit' }: UserEditFormProps):
               user={user}
               onCancel={onCancel}
               onSubmit={(values, { setSubmitting }) => {
+                setProgress(true);
                 setError('');
                 updateUser(
                   { user: { ...user, ...values } },
@@ -67,6 +70,7 @@ const UserEdit = ({ className, user, testid = 'user-edit' }: UserEditFormProps):
                       }
                     },
                     onError(error) {
+                      setProgress(false);
                       setError(error.message);
                       setSubmitting(false);
                     },

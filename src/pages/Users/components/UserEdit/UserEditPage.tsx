@@ -9,6 +9,7 @@ import PageHeader from 'common/components/Content/PageHeader';
 import Avatar from 'common/components/Icon/Avatar';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 import UserEdit from './UserEdit';
+import ProgressProvider from 'common/providers/ProgressProvider';
 
 /**
  * Router path parameters for the `UserEditPage`.
@@ -30,29 +31,31 @@ export const UserEditPage = (): JSX.Element => {
 
   return (
     <IonPage className={'page-user-edit'} data-testid={testid}>
-      <Header backButton defaultHref="/tabs/users" title={user && user.name} />
+      <ProgressProvider>
+        <Header backButton defaultHref="/tabs/users" title={user && user.name} />
 
-      <IonContent className="ion-padding">
-        <Container fixed>
-          {user ? (
-            <>
-              <PageHeader border inset className="ion-hide-md-down">
-                <Avatar value={user.name} />
-                <IonText data-testid={`${testid}-title`}>{user.name}</IonText>
-              </PageHeader>
+        <IonContent className="ion-padding">
+          <Container fixed>
+            {user ? (
+              <>
+                <PageHeader border inset className="ion-hide-md-down">
+                  <Avatar value={user.name} />
+                  <IonText data-testid={`${testid}-title`}>{user.name}</IonText>
+                </PageHeader>
 
-              <UserEdit user={user} />
-            </>
-          ) : (
-            <LoaderSkeleton
-              animated
-              widthStyle="100%"
-              heightStyle="3rem"
-              testid={`${testid}-loader`}
-            />
-          )}
-        </Container>
-      </IonContent>
+                <UserEdit user={user} />
+              </>
+            ) : (
+              <LoaderSkeleton
+                animated
+                widthStyle="100%"
+                heightStyle="3rem"
+                testid={`${testid}-loader`}
+              />
+            )}
+          </Container>
+        </IonContent>
+      </ProgressProvider>
     </IonPage>
   );
 };
