@@ -17,7 +17,7 @@ import PageHeader from 'common/components/Content/PageHeader';
 import UserList from './UserList';
 import UserGrid from './UserGrid';
 import ProgressProvider from 'common/providers/ProgressProvider';
-import UserAddFab from '../UserAdd/components/UserAddFab';
+import UserAddFab from '../UserAdd/UserAddFab';
 import Icon, { IconName } from 'common/components/Icon/Icon';
 
 /**

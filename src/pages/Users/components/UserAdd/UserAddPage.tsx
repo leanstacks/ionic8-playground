@@ -6,6 +6,7 @@ import ProgressProvider from 'common/providers/ProgressProvider';
 import PageHeader from 'common/components/Content/PageHeader';
 import Header from 'common/components/Header/Header';
 import Container from 'common/components/Content/Container';
+import UserAdd from './UserAdd';
 
 /**
  * The `UserAddPage` component renders a page layout containing a form to
@@ -18,11 +19,13 @@ const UserAddPage = ({ testid = 'page-user-add' }: PropsWithTestId): JSX.Element
     <IonPage className="page-user-add" data-testid={testid}>
       <ProgressProvider>
         <Header backButton defaultHref="/tabs/users" title="Add User" />
-        <IonContent fullscreen>
+        <IonContent className="ion-padding">
           <Container fixed>
             <PageHeader border inset className="ion-hide-md-down">
               Add User
             </PageHeader>
+
+            <UserAdd />
           </Container>
         </IonContent>
       </ProgressProvider>

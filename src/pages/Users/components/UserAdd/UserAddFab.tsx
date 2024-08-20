@@ -16,10 +16,10 @@ interface UserAddFabProps extends BaseComponentProps {}
  * @param {UserAddFabProps} props - Component properties.
  * @returns {JSX.Element} JSX
  */
-const UserAddFab = ({ className, testid = 'fab-user-create' }: UserAddFabProps): JSX.Element => {
+const UserAddFab = ({ className, testid = 'fab-user-add' }: UserAddFabProps): JSX.Element => {
   return (
     <IonFab
-      className={classNames('fab-user-create', className)}
+      className={classNames('fab-user-add', className)}
       data-testid={testid}
       slot="fixed"
       vertical="bottom"

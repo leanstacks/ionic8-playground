@@ -1,5 +1,5 @@
 import { IonRow } from '@ionic/react';
-import { PropsWithChildren } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 import classNames from 'classnames';
 
 import './CardRow.scss';
@@ -8,9 +8,9 @@ import { BaseComponentProps } from '../types';
 /**
  * Properties for the `CardRow` component.
  * @see {@link BaseComponentProps}
- * @see {@link PropsWithChildren}
+ * @see {@link IonRow}
  */
-interface CardRowProps extends BaseComponentProps, PropsWithChildren {}
+interface CardRowProps extends BaseComponentProps, ComponentPropsWithoutRef<typeof IonRow> {}
 
 /**
  * The `CardRow` component displays an `IonCard` (or other Card component)
@@ -21,9 +21,14 @@ interface CardRowProps extends BaseComponentProps, PropsWithChildren {}
  * @param {CardRowProps} props - Component properties.
  * @returns JSX
  */
-const CardRow = ({ children, className, testid = 'row-card' }: CardRowProps): JSX.Element => {
+const CardRow = ({
+  children,
+  className,
+  testid = 'row-card',
+  ...rowProps
+}: CardRowProps): JSX.Element => {
   return (
-    <IonRow className={classNames('row-card', className)} data-testid={testid}>
+    <IonRow className={classNames('row-card', className)} data-testid={testid} {...rowProps}>
       <div className="wrapper">{children}</div>
     </IonRow>
   );

@@ -1,60 +1,46 @@
-import { useState } from 'react';
 import { IonCol, IonGrid, IonRow, useIonRouter } from '@ionic/react';
+import { useState } from 'react';
 import classNames from 'classnames';
 
-import './UserEdit.scss';
 import { BaseComponentProps } from 'common/components/types';
-import { User } from 'common/models/user';
-import { useUpdateUser } from 'pages/Users/api/useUpdateUser';
+import { useCreateUser } from 'pages/Users/api/useCreateUser';
 import { useProgress } from 'common/hooks/useProgress';
 import { useToasts } from 'common/hooks/useToasts';
 import { DismissButton } from 'common/components/Toast/Toast';
-import CardRow from 'common/components/Card/CardRow';
 import ErrorCard from 'common/components/Card/ErrorCard';
 import UserForm from '../UserForm/UserForm';
 
-/**
- * Properties for the `UserEdit` component.
- * @see {@link BaseComponentProps}
- */
-interface UserEditProps extends BaseComponentProps {
-  user: User;
-}
-
-/**
- * The `UserEdit` component renders a Formik form for editing a `User`.
- * @param {UserEditProps} props - Component properties.
- * @returns {JSX.Element} JSX
- */
-const UserEdit = ({ className, user, testid = 'user-edit' }: UserEditProps): JSX.Element => {
-  const router = useIonRouter();
+const UserAdd = ({ className, testid = 'user-add' }: BaseComponentProps): JSX.Element => {
   const [error, setError] = useState<string>('');
-  const { mutate: updateUser } = useUpdateUser();
-  const { createToast } = useToasts();
+  const router = useIonRouter();
+  const { mutate: createUser } = useCreateUser();
   const { setProgress } = useProgress();
+  const { createToast } = useToasts();
 
   const onCancel = () => {
     router.goBack();
   };
 
   return (
-    <div className={classNames('user-edit', className)} data-testid={testid}>
-      {error && (
-        <CardRow className="row-message" testid={`${testid}-error`}>
-          <ErrorCard content={`We are experiencing problems processing your request. ${error}`} />
-        </CardRow>
-      )}
+    <div className={classNames('user-add', className)} data-testid={testid}>
       <IonGrid>
         <IonRow>
           <IonCol size="12" sizeMd="10" sizeLg="8" sizeXl="6">
+            {error && (
+              <ErrorCard
+                content={`We are experiencing problems processing your request. ${error}`}
+                className="ion-margin-bottom"
+                testid={`${testid}-error`}
+              />
+            )}
+
             <UserForm
-              user={user}
               onCancel={onCancel}
               onSubmit={(values, { setSubmitting }) => {
                 setProgress(true);
                 setError('');
-                updateUser(
-                  { user: { ...user, ...values } },
+                createUser(
+                  { user: values },
                   {
                     onSuccess: (user) => {
                       setProgress(false);
@@ -62,13 +48,9 @@ const UserEdit = ({ className, user, testid = 'user-edit' }: UserEditProps): JSX
                       createToast({
                         buttons: [DismissButton],
                         duration: 5000,
-                        message: `${user.name} updated`,
+                        message: `${user.name} created`,
                       });
-                      if (router.canGoBack()) {
-                        router.goBack();
-                      } else {
-                        router.push(`/tabs/users/${user.id}`, 'back', 'replace');
-                      }
+                      router.push(`/tabs/users/${user.id}`, 'forward', 'replace');
                     },
                     onError(error) {
                       setProgress(false);
@@ -87,4 +69,4 @@ const UserEdit = ({ className, user, testid = 'user-edit' }: UserEditProps): JSX
   );
 };
 
-export default UserEdit;
+export default UserAdd;
