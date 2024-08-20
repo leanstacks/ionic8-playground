@@ -4,12 +4,12 @@ import userEvent from '@testing-library/user-event';
 import { render, screen } from 'test/test-utils';
 import { userFixture1 } from '__fixtures__/users';
 
-import UserEditForm from '../UserEditForm';
+import UserEdit from '../UserEdit';
 
 describe('UserEditForm', () => {
   it('should render successfully', async () => {
     // ARRANGE
-    render(<UserEditForm user={userFixture1} />);
+    render(<UserEdit user={userFixture1} />);
     await screen.findByTestId('form-user-edit');
 
     // ASSERT
@@ -18,7 +18,7 @@ describe('UserEditForm', () => {
 
   it('should submit form', async () => {
     // ARRANGE
-    render(<UserEditForm user={userFixture1} testid="form" />);
+    render(<UserEdit user={userFixture1} testid="form" />);
     await screen.findByTestId('form');
 
     // ACT

@@ -8,7 +8,7 @@ import Container from 'common/components/Content/Container';
 import PageHeader from 'common/components/Content/PageHeader';
 import Avatar from 'common/components/Icon/Avatar';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
-import UserEditForm from './UserEditForm';
+import UserEdit from './UserEdit';
 
 /**
  * Router path parameters for the `UserEditPage`.
@@ -41,7 +41,7 @@ export const UserEditPage = (): JSX.Element => {
                 <IonText data-testid={`${testid}-title`}>{user.name}</IonText>
               </PageHeader>
 
-              <UserEditForm user={user} />
+              <UserEdit user={user} />
             </>
           ) : (
             <LoaderSkeleton
