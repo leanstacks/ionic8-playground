@@ -5,6 +5,9 @@ import { useConfig } from 'common/hooks/useConfig';
 import { User } from 'common/models/user';
 import { QueryKey } from 'common/utils/constants';
 
+/**
+ * Describes the properties of a `User` needed to create a new `User`.
+ */
 export type CreateUserDTO = Pick<User, 'email' | 'name' | 'phone' | 'username' | 'website'>;
 
 /**
