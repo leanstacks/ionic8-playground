@@ -9,7 +9,6 @@ import { BaseComponentProps } from 'common/components/types';
 import { useSignIn } from '../api/useSignIn';
 import { useProgress } from 'common/hooks/useProgress';
 import Input from 'common/components/Input/Input';
-import CardRow from 'common/components/Card/CardRow';
 import ErrorCard from 'common/components/Card/ErrorCard';
 import Icon, { IconName } from 'common/components/Icon/Icon';
 import HeaderRow from 'common/components/Text/HeaderRow';
@@ -51,9 +50,11 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
   return (
     <div className={classNames('form-signin', className)} data-testid={testid}>
       {error && (
-        <CardRow className="row-message" testid={`${testid}-error`}>
-          <ErrorCard content={`We were unable verify your credentials. Please try again.`} />
-        </CardRow>
+        <ErrorCard
+          content={`We were unable verify your credentials. Please try again. ${error}`}
+          className="ion-margin-bottom"
+          testid={`${testid}-error`}
+        />
       )}
 
       <Formik<SignInFormValues>

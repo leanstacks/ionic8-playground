@@ -2,14 +2,12 @@ import { useState } from 'react';
 import { IonCol, IonGrid, IonRow, useIonRouter } from '@ionic/react';
 import classNames from 'classnames';
 
-import './UserEdit.scss';
 import { BaseComponentProps } from 'common/components/types';
 import { User } from 'common/models/user';
 import { useUpdateUser } from 'pages/Users/api/useUpdateUser';
 import { useProgress } from 'common/hooks/useProgress';
 import { useToasts } from 'common/hooks/useToasts';
 import { DismissButton } from 'common/components/Toast/Toast';
-import CardRow from 'common/components/Card/CardRow';
 import ErrorCard from 'common/components/Card/ErrorCard';
 import UserForm from '../UserForm/UserForm';
 
@@ -39,14 +37,17 @@ const UserEdit = ({ className, user, testid = 'user-edit' }: UserEditProps): JSX
 
   return (
     <div className={classNames('user-edit', className)} data-testid={testid}>
-      {error && (
-        <CardRow className="row-message" testid={`${testid}-error`}>
-          <ErrorCard content={`We are experiencing problems processing your request. ${error}`} />
-        </CardRow>
-      )}
       <IonGrid>
         <IonRow>
           <IonCol size="12" sizeMd="10" sizeLg="8" sizeXl="6">
+            {error && (
+              <ErrorCard
+                content={`We are experiencing problems processing your request. ${error}`}
+                className="ion-margin-bottom"
+                testid={`${testid}-error`}
+              />
+            )}
+
             <UserForm
               user={user}
               onCancel={onCancel}

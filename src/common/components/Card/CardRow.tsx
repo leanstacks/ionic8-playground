@@ -1,16 +1,15 @@
-import { IonRow } from '@ionic/react';
+import { IonCol, IonGrid, IonRow } from '@ionic/react';
 import { ComponentPropsWithoutRef } from 'react';
 import classNames from 'classnames';
 
-import './CardRow.scss';
 import { BaseComponentProps } from '../types';
 
 /**
  * Properties for the `CardRow` component.
  * @see {@link BaseComponentProps}
- * @see {@link IonRow}
+ * @see {@link IonCol}
  */
-interface CardRowProps extends BaseComponentProps, ComponentPropsWithoutRef<typeof IonRow> {}
+interface CardRowProps extends BaseComponentProps, ComponentPropsWithoutRef<typeof IonCol> {}
 
 /**
  * The `CardRow` component displays an `IonCard` (or other Card component)
@@ -22,15 +21,26 @@ interface CardRowProps extends BaseComponentProps, ComponentPropsWithoutRef<type
  * @returns JSX
  */
 const CardRow = ({
-  children,
   className,
   testid = 'row-card',
-  ...rowProps
+  sizeMd = '8',
+  offsetMd = '2',
+  sizeLg = '6',
+  offsetLg = '3',
+  ...colProps
 }: CardRowProps): JSX.Element => {
   return (
-    <IonRow className={classNames('row-card', className)} data-testid={testid} {...rowProps}>
-      <div className="wrapper">{children}</div>
-    </IonRow>
+    <IonGrid className={classNames('row-card', className)} data-testid={testid}>
+      <IonRow>
+        <IonCol
+          sizeMd={sizeMd}
+          offsetMd={offsetMd}
+          sizeLg={sizeLg}
+          offsetLg={offsetLg}
+          {...colProps}
+        />
+      </IonRow>
+    </IonGrid>
   );
 };
 
