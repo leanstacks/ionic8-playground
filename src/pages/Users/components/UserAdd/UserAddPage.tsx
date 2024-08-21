@@ -1,6 +1,5 @@
 import { IonContent, IonPage } from '@ionic/react';
 
-import './UserAddPage.scss';
 import { PropsWithTestId } from 'common/components/types';
 import ProgressProvider from 'common/providers/ProgressProvider';
 import PageHeader from 'common/components/Content/PageHeader';
@@ -21,7 +20,7 @@ const UserAddPage = ({ testid = 'page-user-add' }: PropsWithTestId): JSX.Element
         <Header backButton defaultHref="/tabs/users" title="Add User" />
         <IonContent className="ion-padding">
           <Container fixed>
-            <PageHeader border inset className="ion-hide-md-down">
+            <PageHeader border inset className="ion-margin-top ion-hide-md-down">
               Add User
             </PageHeader>
 
