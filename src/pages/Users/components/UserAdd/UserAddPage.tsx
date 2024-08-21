@@ -20,7 +20,7 @@ const UserAddPage = ({ testid = 'page-user-add' }: PropsWithTestId): JSX.Element
         <Header backButton defaultHref="/tabs/users" title="Add User" />
         <IonContent className="ion-padding">
           <Container fixed>
-            <PageHeader border inset className="ion-margin-top ion-hide-md-down">
+            <PageHeader border inset className="ion-hide-md-down">
               Add User
             </PageHeader>
 
