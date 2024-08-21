@@ -28,7 +28,7 @@ const App = (): JSX.Element => (
             <ToastProvider>
               <AppRouter />
               <Toasts />
-              <ReactQueryDevtools initialIsOpen={false} />
+              <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-left" />
             </ToastProvider>
           </AxiosProvider>
         </AuthProvider>

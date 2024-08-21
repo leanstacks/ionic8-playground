@@ -7,7 +7,7 @@ import { User } from 'common/models/user';
 import { QueryKey } from 'common/utils/constants';
 
 /**
- * The`useUpdateUser` mutation function variables.
+ * The `useUpdateUser` mutation function variables.
  * @param {User} user - The updated `User` object.
  */
 export type UpdateUserVariables = {
@@ -15,7 +15,7 @@ export type UpdateUserVariables = {
 };
 
 /**
- * An API hook which updates a single `user`. Returns a `UseMutationResult`
+ * An API hook which updates a single `User`. Returns a `UseMutationResult`
  * object whose `mutate` attribute is a function to udate a `User`.
  *
  * When successful, the hook updates the cached `User` query data.

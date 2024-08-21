@@ -1,4 +1,6 @@
 import {
+  IonButton,
+  IonButtons,
   IonContent,
   IonPage,
   IonRefresher,
@@ -15,6 +17,8 @@ import PageHeader from 'common/components/Content/PageHeader';
 import UserList from './UserList';
 import UserGrid from './UserGrid';
 import ProgressProvider from 'common/providers/ProgressProvider';
+import UserAddFab from '../UserAdd/UserAddFab';
+import Icon, { IconName } from 'common/components/Icon/Icon';
 
 /**
  * The `UserListPage` component renders a list of all `User` objects.
@@ -41,11 +45,22 @@ export const UserListPage = (): JSX.Element => {
 
           <Container fixed>
             <PageHeader border inset className="ion-hide-md-down">
-              Users
+              <div>Users</div>
+              <IonButtons>
+                <IonButton
+                  shape="round"
+                  routerLink="/tabs/users/add"
+                  title="Add user"
+                  data-testid={`${testid}-page-header-button-create`}
+                >
+                  <Icon icon={IconName.Plus} size="xl" />
+                </IonButton>
+              </IonButtons>
             </PageHeader>
             <UserList className="ion-hide-md-up" />
             <UserGrid className="ion-hide-md-down" />
           </Container>
+          <UserAddFab className="ion-hide-md-up" />
         </IonContent>
       </ProgressProvider>
     </IonPage>
