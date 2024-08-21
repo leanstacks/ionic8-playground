@@ -10,6 +10,11 @@ import { DismissButton } from 'common/components/Toast/Toast';
 import ErrorCard from 'common/components/Card/ErrorCard';
 import UserForm from '../UserForm/UserForm';
 
+/**
+ * The `UserAdd` component renders a Formik form for creating a `User`.
+ * @param {BaseComponentProps} props - Component properties.
+ * @returns {JSX.Element} JSX
+ */
 const UserAdd = ({ className, testid = 'user-add' }: BaseComponentProps): JSX.Element => {
   const [error, setError] = useState<string>('');
   const router = useIonRouter();
