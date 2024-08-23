@@ -4,12 +4,26 @@ import { User } from 'common/models/user';
 import { QueryKey, StorageKey } from 'common/utils/constants';
 import storage from 'common/utils/storage';
 
+/**
+ * The `Profile` object. This is a contrived type for demonstration purposes.
+ */
 export type Profile = Pick<User, 'email' | 'name' | 'phone' | 'username' | 'website'>;
 
+/**
+ * The `useUpdateProfile` mutatation function variables.
+ * @param {Profile} profile - The updated `Profile` object.
+ */
 export type UpdateProfileVariables = {
   profile: Profile;
 };
 
+/**
+ * An API hook which updates a single `Profile`. Returns a `UseMutationResult`
+ * object whose `mutate` attribute is a function to update a `Profile`.
+ *
+ * When successful, the hook updates the cached `Profile` query data.
+ * @returns Returns a `UseMutationResult`.
+ */
 export const useUpdateProfile = () => {
   const queryClient = useQueryClient();
 

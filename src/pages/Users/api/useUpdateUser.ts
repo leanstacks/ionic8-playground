@@ -16,7 +16,7 @@ export type UpdateUserVariables = {
 
 /**
  * An API hook which updates a single `User`. Returns a `UseMutationResult`
- * object whose `mutate` attribute is a function to udate a `User`.
+ * object whose `mutate` attribute is a function to update a `User`.
  *
  * When successful, the hook updates the cached `User` query data.
  *
