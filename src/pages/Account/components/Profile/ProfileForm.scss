@@ -1,0 +1,9 @@
+.form-profile {
+  .row-buttons {
+    &.row-buttons-block {
+      ion-button {
+        flex-grow: 1;
+      }
+    }
+  }
+}

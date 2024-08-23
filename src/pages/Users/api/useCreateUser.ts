@@ -55,7 +55,7 @@ export const useCreateUser = () => {
         cachedUsers ? [...cachedUsers, data] : [data],
       );
       queryClient.setQueryData<User>([QueryKey.Users, userId], data);
-      // you may [also|instead] choose to invalidate certaincached queries, triggering refetch
+      // you may [also|instead] choose to invalidate certain cached queries, triggering refetch
       // queryClient.invalidateQueries({ queryKey: [QueryKey.Users], exact: true });
       // queryClient.invalidateQueries({ queryKey: [QueryKey.Users, userId] });
     },
