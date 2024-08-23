@@ -1,5 +1,5 @@
-import { IonButton, IonRow, useIonRouter } from '@ionic/react';
-import { useState } from 'react';
+import { IonButton, IonRow, useIonRouter, useIonViewDidEnter } from '@ionic/react';
+import { useRef, useState } from 'react';
 import { Form, Formik } from 'formik';
 import { object, string } from 'yup';
 import classNames from 'classnames';
@@ -7,12 +7,12 @@ import classNames from 'classnames';
 import './ProfileForm.scss';
 import { BaseComponentProps } from 'common/components/types';
 import { User } from 'common/models/user';
-import ErrorCard from 'common/components/Card/ErrorCard';
-import Input from 'common/components/Input/Input';
 import { useProgress } from 'common/hooks/useProgress';
 import { useUpdateProfile } from 'pages/Account/api/useUpdateProfile';
 import { useToasts } from 'common/hooks/useToasts';
 import { DismissButton } from 'common/components/Toast/Toast';
+import ErrorCard from 'common/components/Card/ErrorCard';
+import Input from 'common/components/Input/Input';
 
 /**
  * Profile form values.
@@ -53,11 +53,16 @@ const ProfileForm = ({
   testid = 'form-profile',
   user,
 }: ProfileFormProps): JSX.Element => {
+  const focusInput = useRef<HTMLIonInputElement>(null);
   const [error, setError] = useState<string>('');
   const { mutate: updateProfile } = useUpdateProfile();
   const router = useIonRouter();
   const { setProgress } = useProgress();
   const { createToast } = useToasts();
+
+  useIonViewDidEnter(() => {
+    focusInput.current?.setFocus();
+  });
 
   const onCancel = () => {
     router.goBack();
@@ -116,6 +121,7 @@ const ProfileForm = ({
               labelPlacement="stacked"
               disabled={isSubmitting}
               autocomplete="off"
+              ref={focusInput}
               data-testid={`${testid}-field-name`}
             />
             <Input

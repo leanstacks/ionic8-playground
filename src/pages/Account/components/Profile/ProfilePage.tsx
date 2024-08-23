@@ -26,7 +26,7 @@ const ProfilePage = ({ testid = 'page-profile' }: PropsWithTestId): JSX.Element 
               <>
                 <PageHeader border inset>
                   <Avatar value={user.name} />
-                  <div>{user.name}</div>
+                  <div>Profile</div>
                 </PageHeader>
 
                 <IonGrid>
