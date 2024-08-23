@@ -2,16 +2,18 @@ import { IonCol, IonContent, IonGrid, IonPage, IonRow } from '@ionic/react';
 
 import './ProfilePage.scss';
 import { PropsWithTestId } from 'common/components/types';
+import { useGetCurrentUser } from 'common/api/useGetCurrentUser';
 import ProgressProvider from 'common/providers/ProgressProvider';
 import Container from 'common/components/Content/Container';
+import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 import PageHeader from 'common/components/Content/PageHeader';
 import Header from 'common/components/Header/Header';
-import { useGetCurrentUser } from 'common/api/useGetCurrentUser';
-import Avatar from 'common/components/Icon/Avatar';
 import ProfileForm from './ProfileForm';
+import ErrorCard from 'common/components/Card/ErrorCard';
+import CardRow from 'common/components/Card/CardRow';
 
 const ProfilePage = ({ testid = 'page-profile' }: PropsWithTestId): JSX.Element => {
-  const { data: user, isLoading } = useGetCurrentUser();
+  const { data: user, isError, isLoading } = useGetCurrentUser();
 
   return (
     <IonPage className="page-profile" data-testid={testid}>
@@ -20,12 +22,26 @@ const ProfilePage = ({ testid = 'page-profile' }: PropsWithTestId): JSX.Element 
 
         <IonContent className="ion-padding">
           <Container fixed>
-            {isLoading && <div>Loading State</div>}
+            {isLoading && (
+              <div data-testid={`${testid}-loading`}>
+                <LoaderSkeleton animated heightStyle="3rem" className="ion-margin-bottom" />
+                <LoaderSkeleton animated heightStyle="20rem" />
+              </div>
+            )}
+
+            {isError && (
+              <CardRow>
+                <ErrorCard
+                  content={`We are unable to retrieve your profile details at this time.`}
+                  className="ion-margin-bottom"
+                  testid={`${testid}-error`}
+                />
+              </CardRow>
+            )}
 
             {user && (
               <>
                 <PageHeader border inset>
-                  <Avatar value={user.name} />
                   <div>Profile</div>
                 </PageHeader>
 
@@ -38,8 +54,6 @@ const ProfilePage = ({ testid = 'page-profile' }: PropsWithTestId): JSX.Element 
                 </IonGrid>
               </>
             )}
-
-            {!user && <div>Not found state</div>}
           </Container>
         </IonContent>
       </ProgressProvider>
