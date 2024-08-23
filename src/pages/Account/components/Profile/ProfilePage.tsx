@@ -1,6 +1,5 @@
 import { IonCol, IonContent, IonGrid, IonPage, IonRow } from '@ionic/react';
 
-import './ProfilePage.scss';
 import { PropsWithTestId } from 'common/components/types';
 import { useGetCurrentUser } from 'common/api/useGetCurrentUser';
 import ProgressProvider from 'common/providers/ProgressProvider';
