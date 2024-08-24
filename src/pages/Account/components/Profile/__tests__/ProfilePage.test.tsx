@@ -1,12 +1,12 @@
 import { describe, expect, it, vi } from 'vitest';
+import { UseQueryResult } from '@tanstack/react-query';
 
 import { render, screen } from 'test/test-utils';
+import { User } from 'common/models/user';
+import { userFixture1 } from '__fixtures__/users';
 import * as UseGetCurrentUser from 'common/api/useGetCurrentUser';
 
 import ProfilePage from '../ProfilePage';
-import { UseQueryResult } from '@tanstack/react-query';
-import { User } from 'common/models/user';
-import { userFixture1 } from '__fixtures__/users';
 
 describe('ProfilePage', () => {
   const useGetCurrentUserSpy = vi.spyOn(UseGetCurrentUser, 'useGetCurrentUser');
