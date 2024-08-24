@@ -1,4 +1,4 @@
-import { IonButton, IonRow, useIonRouter, useIonViewDidEnter } from '@ionic/react';
+import { IonButton, useIonRouter, useIonViewDidEnter } from '@ionic/react';
 import { useRef, useState } from 'react';
 import { Form, Formik } from 'formik';
 import { object, string } from 'yup';
@@ -13,6 +13,7 @@ import { useToasts } from 'common/hooks/useToasts';
 import { DismissButton } from 'common/components/Toast/Toast';
 import ErrorCard from 'common/components/Card/ErrorCard';
 import Input from 'common/components/Input/Input';
+import ButtonRow from 'common/components/Button/ButtonRow';
 
 /**
  * Profile form values.
@@ -160,7 +161,7 @@ const ProfileForm = ({
               data-testid={`${testid}-field-website`}
             />
 
-            <IonRow className="row-buttons row-buttons-block ion-margin-top">
+            <ButtonRow className="ion-margin-top" expand="block">
               <IonButton
                 type="button"
                 color="secondary"
@@ -179,7 +180,7 @@ const ProfileForm = ({
               >
                 Save
               </IonButton>
-            </IonRow>
+            </ButtonRow>
           </Form>
         )}
       </Formik>
