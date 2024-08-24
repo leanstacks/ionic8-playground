@@ -30,7 +30,7 @@ const AccountPage = ({ testid = 'page-account' }: PropsWithTestId): JSX.Element 
             <IonListHeader>
               <IonLabel>Account</IonLabel>
             </IonListHeader>
-            <IonItem lines="full">
+            <IonItem lines="full" routerLink="/tabs/account/profile">
               <IonLabel>Profile</IonLabel>
             </IonItem>
             <IonItem lines="full" routerLink="/auth/signout">
