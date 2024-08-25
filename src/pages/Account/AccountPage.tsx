@@ -1,4 +1,14 @@
-import { IonContent, IonItem, IonLabel, IonList, IonListHeader, IonPage } from '@ionic/react';
+import {
+  IonContent,
+  IonHeader,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonListHeader,
+  IonMenu,
+  IonPage,
+  IonSplitPane,
+} from '@ionic/react';
 import dayjs from 'dayjs';
 
 import './AccountPage.scss';
@@ -24,44 +34,85 @@ const AccountPage = ({ testid = 'page-account' }: PropsWithTestId): JSX.Element 
     <IonPage className="page-account" data-testid={testid}>
       <Header title="My Account" />
 
-      <IonContent fullscreen>
-        <Container fixed>
-          <IonList>
-            <IonListHeader>
-              <IonLabel>Account</IonLabel>
-            </IonListHeader>
-            <IonItem lines="full" routerLink="/tabs/account/profile">
-              <IonLabel>Profile</IonLabel>
-            </IonItem>
-            <IonItem lines="full" routerLink="/auth/signout">
-              <IonLabel>Sign Out</IonLabel>
-            </IonItem>
-          </IonList>
-
-          <IonList>
-            <IonListHeader>
-              <IonLabel>Settings</IonLabel>
-            </IonListHeader>
+      <IonSplitPane when="md" contentId="account-pane">
+        <IonMenu contentId="account-pane">
+          <IonContent className="ion-padding">
             <IonList>
-              <IonItem>
-                <IonLabel color="medium">Version {version}</IonLabel>
+              <IonListHeader>
+                <IonLabel>Account</IonLabel>
+              </IonListHeader>
+              <IonItem lines="full" routerLink="/tabs/account/profile">
+                <IonLabel>Profile</IonLabel>
+              </IonItem>
+              <IonItem lines="full" routerLink="/auth/signout">
+                <IonLabel>Sign Out</IonLabel>
               </IonItem>
             </IonList>
-          </IonList>
 
-          <IonList>
-            <IonListHeader>
-              <IonLabel>Legal</IonLabel>
-            </IonListHeader>
-            <IonItem lines="full">
-              <IonLabel>Privacy policy</IonLabel>
-            </IonItem>
-            <IonItem lines="full">
-              <IonLabel>Terms and conditions</IonLabel>
-            </IonItem>
-          </IonList>
-        </Container>
-      </IonContent>
+            <IonList>
+              <IonListHeader>
+                <IonLabel>Settings</IonLabel>
+              </IonListHeader>
+              <IonList>
+                <IonItem>
+                  <IonLabel color="medium">Version {version}</IonLabel>
+                </IonItem>
+              </IonList>
+            </IonList>
+
+            <IonList>
+              <IonListHeader>
+                <IonLabel>Legal</IonLabel>
+              </IonListHeader>
+              <IonItem lines="full">
+                <IonLabel>Privacy policy</IonLabel>
+              </IonItem>
+              <IonItem lines="full">
+                <IonLabel>Terms and conditions</IonLabel>
+              </IonItem>
+            </IonList>
+          </IonContent>
+        </IonMenu>
+
+        <div className="ion-page" id="account-pane">
+          <IonContent>
+            <IonList>
+              <IonListHeader>
+                <IonLabel>Account</IonLabel>
+              </IonListHeader>
+              <IonItem lines="full" routerLink="/tabs/account/profile">
+                <IonLabel>Profile</IonLabel>
+              </IonItem>
+              <IonItem lines="full" routerLink="/auth/signout">
+                <IonLabel>Sign Out</IonLabel>
+              </IonItem>
+            </IonList>
+
+            <IonList>
+              <IonListHeader>
+                <IonLabel>Settings</IonLabel>
+              </IonListHeader>
+              <IonList>
+                <IonItem>
+                  <IonLabel color="medium">Version {version}</IonLabel>
+                </IonItem>
+              </IonList>
+            </IonList>
+
+            <IonList>
+              <IonListHeader>
+                <IonLabel>Legal</IonLabel>
+              </IonListHeader>
+              <IonItem lines="full">
+                <IonLabel>Privacy policy</IonLabel>
+              </IonItem>
+              <IonItem lines="full">
+                <IonLabel>Terms and conditions</IonLabel>
+              </IonItem>
+            </IonList>
+          </IonContent>
+        </div>
+      </IonSplitPane>
     </IonPage>
   );
 };

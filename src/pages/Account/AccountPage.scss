@@ -1,4 +1,10 @@
 .page-account {
+  ion-split-pane {
+    margin-top: 3.5rem;
+
+    --border: transparent;
+  }
+
   ion-list {
     background-color: transparent;
 
