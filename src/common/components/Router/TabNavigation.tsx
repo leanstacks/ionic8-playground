@@ -50,12 +50,12 @@ const TabNavigation = (): JSX.Element => {
           <Route exact path="/tabs/users/add">
             <UserAddPage />
           </Route>
-          <Route exact path="/tabs/account">
+          <Route path="/tabs/account">
             <AccountPage />
           </Route>
-          <Route exact path="/tabs/account/profile">
+          {/* <Route exact path="/tabs/account/profile">
             <ProfilePage />
-          </Route>
+          </Route> */}
           <Route exact path="/">
             <Redirect to="/tabs/home" />
           </Route>
