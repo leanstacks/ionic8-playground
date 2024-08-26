@@ -30,7 +30,7 @@ const UserCard = ({ className, testid = 'card-user', user }: UserCardProps): JSX
       data-testid={testid}
     >
       <div className="layout">
-        <Avatar value={user.name} />
+        <Avatar value={user.name} size="large" />
         <div>
           <div className="header">{user.name}</div>
           <div className="content-row">
