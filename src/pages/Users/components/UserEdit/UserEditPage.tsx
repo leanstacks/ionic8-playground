@@ -1,7 +1,6 @@
 import { IonContent, IonPage, IonText } from '@ionic/react';
 import { useParams } from 'react-router';
 
-import './UserEditPage.scss';
 import { useGetUser } from 'pages/Users/api/useGetUser';
 import Header from 'common/components/Header/Header';
 import Container from 'common/components/Content/Container';
@@ -39,7 +38,7 @@ export const UserEditPage = (): JSX.Element => {
             {user ? (
               <>
                 <PageHeader border inset className="ion-hide-md-down">
-                  <Avatar value={user.name} />
+                  <Avatar value={user.name} size="large" />
                   <IonText data-testid={`${testid}-title`}>{user.name}</IonText>
                 </PageHeader>
 

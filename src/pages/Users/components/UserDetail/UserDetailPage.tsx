@@ -2,7 +2,6 @@ import { IonButton, IonButtons, IonContent, IonPage, IonText, useIonRouter } fro
 import { useState } from 'react';
 import { useParams } from 'react-router';
 
-import './UserDetailPage.scss';
 import { PropsWithTestId } from 'common/components/types';
 import { useGetUser } from 'pages/Users/api/useGetUser';
 import { useToasts } from 'common/hooks/useToasts';
@@ -83,7 +82,7 @@ export const UserDetailPage = ({
               <Container fixed>
                 {user ? (
                   <PageHeader className="ion-hide-md-down" inset border>
-                    <Avatar value={user.name} />
+                    <Avatar value={user.name} size="large" />
                     <IonText data-testid={`${testid}-page-header-title`}>{user.name}</IonText>
                     <IonButtons>
                       <IonButton

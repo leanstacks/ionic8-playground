@@ -59,7 +59,7 @@ const UserListItem = ({ className, lines, testid, user }: UserListItemProps): JS
       data-testid={testIdentifier}
     >
       <IonItem routerLink={`/tabs/users/${user.id}`} lines={lines} detail>
-        <Avatar value={user.name} />
+        <Avatar value={user.name} size="large" />
         <IonLabel>
           <div className="content-row primary">
             <div className="name" data-testid={`${testIdentifier}-name`}>

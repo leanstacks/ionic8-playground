@@ -5,13 +5,27 @@ import './Avatar.scss';
 import { BaseComponentProps } from '../types';
 
 /**
+ * The Avatar shape values.
+ */
+type AvatarShape = 'round' | 'rounded' | 'square';
+
+/**
+ * The Avatar size values.
+ */
+type AvatarSize = 'small' | 'default' | 'large';
+
+/**
  * Properties for the `Avatar` component.
+ * @param {AvatarShape} [shape] - Optional. The avatar shape. Default: `rounded`.
+ * @param {AvatarSize} [size] - Optional. The avatar size. Default: `default`.
  * @param {string} [src] - Optional. An image source.
  * @param {string} value - Generated Avatar value.
  * @see {@link BaseComponentProps}
  * @see {@link IonAvatar}
  */
 interface AvatarProps extends BaseComponentProps {
+  shape?: AvatarShape;
+  size?: AvatarSize;
   src?: string;
   value: string;
 }
@@ -32,7 +46,14 @@ const COLORS = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'dange
  * @param {AvatarProps} props - Component properties.
  * @returns JSX
  */
-const Avatar = ({ className, src, testid = 'avatar', value }: AvatarProps): JSX.Element => {
+const Avatar = ({
+  className,
+  shape = 'rounded',
+  size = 'default',
+  src,
+  testid = 'avatar',
+  value,
+}: AvatarProps): JSX.Element => {
   const trimmedValue = value.trim();
   const initial = trimmedValue ? trimmedValue.charAt(0) : '?';
 
@@ -40,7 +61,14 @@ const Avatar = ({ className, src, testid = 'avatar', value }: AvatarProps): JSX.
 
   return (
     <IonAvatar
-      className={classNames('avatar', className)}
+      className={classNames(
+        'avatar',
+        { 'avatar-round': shape === 'round' },
+        { 'avatar-square': shape === 'square' },
+        { 'avatar-small': size === 'small' },
+        { 'avatar-large': size === 'large' },
+        className,
+      )}
       data-testid={testid}
       title={trimmedValue}
     >
