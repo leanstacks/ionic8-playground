@@ -5,15 +5,27 @@ import './Avatar.scss';
 import { BaseComponentProps } from '../types';
 
 /**
+ * The Avatar shape values.
+ */
+type AvatarShape = 'round' | 'rounded' | 'square';
+
+/**
+ * The Avatar size values.
+ */
+type AvatarSize = 'small' | 'default' | 'large';
+
+/**
  * Properties for the `Avatar` component.
+ * @param {AvatarShape} [shape] - Optional. The avatar shape. Default: `rounded`.
+ * @param {AvatarSize} [size] - Optional. The avatar size. Default: `default`.
  * @param {string} [src] - Optional. An image source.
  * @param {string} value - Generated Avatar value.
  * @see {@link BaseComponentProps}
  * @see {@link IonAvatar}
  */
 interface AvatarProps extends BaseComponentProps {
-  shape?: 'round' | 'rounded' | 'square';
-  size?: 'default' | 'large' | 'small';
+  shape?: AvatarShape;
+  size?: AvatarSize;
   src?: string;
   value: string;
 }

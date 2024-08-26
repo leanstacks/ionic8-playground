@@ -45,4 +45,64 @@ describe('Avatar', () => {
     // ASSERT
     expect(screen.getByTestId('avatar-image')).toBeDefined();
   });
+
+  it('should render small size', async () => {
+    // ARRANGE
+    render(<Avatar value={valueFixture} size="small" />);
+    await screen.findByTestId('avatar');
+
+    // ASSERT
+    expect(screen.getByTestId('avatar')).toHaveClass('avatar-small');
+    expect(screen.getByTestId('avatar')).not.toHaveClass('avatar-large');
+  });
+
+  it('should render large size', async () => {
+    // ARRANGE
+    render(<Avatar value={valueFixture} size="large" />);
+    await screen.findByTestId('avatar');
+
+    // ASSERT
+    expect(screen.getByTestId('avatar')).not.toHaveClass('avatar-small');
+    expect(screen.getByTestId('avatar')).toHaveClass('avatar-large');
+  });
+
+  it('should render default size', async () => {
+    // ARRANGE
+    render(<Avatar value={valueFixture} />);
+    await screen.findByTestId('avatar');
+
+    // ASSERT
+    expect(screen.getByTestId('avatar')).not.toHaveClass('avatar-small');
+    expect(screen.getByTestId('avatar')).not.toHaveClass('avatar-large');
+  });
+
+  it('should render round shape', async () => {
+    // ARRANGE
+    render(<Avatar value={valueFixture} shape="round" />);
+    await screen.findByTestId('avatar');
+
+    // ASSERT
+    expect(screen.getByTestId('avatar')).toHaveClass('avatar-round');
+    expect(screen.getByTestId('avatar')).not.toHaveClass('avatar-square');
+  });
+
+  it('should render square shape', async () => {
+    // ARRANGE
+    render(<Avatar value={valueFixture} shape="square" />);
+    await screen.findByTestId('avatar');
+
+    // ASSERT
+    expect(screen.getByTestId('avatar')).not.toHaveClass('avatar-round');
+    expect(screen.getByTestId('avatar')).toHaveClass('avatar-square');
+  });
+
+  it('should render default shape', async () => {
+    // ARRANGE
+    render(<Avatar value={valueFixture} />);
+    await screen.findByTestId('avatar');
+
+    // ASSERT
+    expect(screen.getByTestId('avatar')).not.toHaveClass('avatar-round');
+    expect(screen.getByTestId('avatar')).not.toHaveClass('avatar-square');
+  });
 });
