@@ -1,11 +1,22 @@
-import { IonContent, IonItem, IonLabel, IonList, IonListHeader, IonPage } from '@ionic/react';
+import {
+  IonCol,
+  IonContent,
+  IonGrid,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonListHeader,
+  IonPage,
+  IonRow,
+} from '@ionic/react';
 import dayjs from 'dayjs';
 
 import './AccountPage.scss';
 import { PropsWithTestId } from 'common/components/types';
 import { useConfig } from 'common/hooks/useConfig';
+import ProgressProvider from 'common/providers/ProgressProvider';
 import Header from 'common/components/Header/Header';
-import Container from 'common/components/Content/Container';
+import SettingsForm from './components/Settings/SettingsForm';
 
 /**
  * The `AccountPage` component renders a list of account related items which
@@ -22,46 +33,58 @@ const AccountPage = ({ testid = 'page-account' }: PropsWithTestId): JSX.Element 
 
   return (
     <IonPage className="page-account" data-testid={testid}>
-      <Header title="My Account" />
+      <ProgressProvider>
+        <Header title="My Account" />
 
-      <IonContent fullscreen>
-        <Container fixed>
-          <IonList>
-            <IonListHeader>
-              <IonLabel>Account</IonLabel>
-            </IonListHeader>
-            <IonItem lines="full" routerLink="/tabs/account/profile">
-              <IonLabel>Profile</IonLabel>
-            </IonItem>
-            <IonItem lines="full" routerLink="/auth/signout">
-              <IonLabel>Sign Out</IonLabel>
-            </IonItem>
-          </IonList>
+        <IonContent>
+          <IonGrid fixed>
+            <IonRow>
+              <IonCol size="12" sizeLg="6">
+                <IonList>
+                  <IonListHeader>
+                    <IonLabel>Account</IonLabel>
+                  </IonListHeader>
+                  <IonItem lines="full" routerLink="/tabs/account/profile">
+                    <IonLabel>Profile</IonLabel>
+                  </IonItem>
+                  <IonItem lines="full" routerLink="/auth/signout">
+                    <IonLabel>Sign Out</IonLabel>
+                  </IonItem>
+                </IonList>
+              </IonCol>
 
-          <IonList>
-            <IonListHeader>
-              <IonLabel>Settings</IonLabel>
-            </IonListHeader>
-            <IonList>
-              <IonItem>
-                <IonLabel color="medium">Version {version}</IonLabel>
-              </IonItem>
-            </IonList>
-          </IonList>
+              <IonCol size="12" sizeLg="6">
+                <SettingsForm />
+              </IonCol>
 
-          <IonList>
-            <IonListHeader>
-              <IonLabel>Legal</IonLabel>
-            </IonListHeader>
-            <IonItem lines="full">
-              <IonLabel>Privacy policy</IonLabel>
-            </IonItem>
-            <IonItem lines="full">
-              <IonLabel>Terms and conditions</IonLabel>
-            </IonItem>
-          </IonList>
-        </Container>
-      </IonContent>
+              <IonCol size="12" sizeLg="6">
+                <IonList>
+                  <IonListHeader>
+                    <IonLabel>Legal</IonLabel>
+                  </IonListHeader>
+                  <IonItem lines="full">
+                    <IonLabel>Privacy policy</IonLabel>
+                  </IonItem>
+                  <IonItem lines="full">
+                    <IonLabel>Terms and conditions</IonLabel>
+                  </IonItem>
+                </IonList>
+              </IonCol>
+
+              <IonCol size="12" sizeLg="6">
+                <IonList>
+                  <IonListHeader>
+                    <IonLabel>About</IonLabel>
+                  </IonListHeader>
+                  <IonItem lines="full">
+                    <IonLabel>Version {version}</IonLabel>
+                  </IonItem>
+                </IonList>
+              </IonCol>
+            </IonRow>
+          </IonGrid>
+        </IonContent>
+      </ProgressProvider>
     </IonPage>
   );
 };
