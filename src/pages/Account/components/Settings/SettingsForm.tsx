@@ -13,12 +13,24 @@ import { DismissButton } from 'common/components/Toast/Toast';
 import ToggleInput from 'common/components/Input/ToggleInput';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 
+/**
+ * Settings form values.
+ * @see {@link Settings}
+ */
 type SettingsFormValues = Pick<Settings, 'allowNotifications'>;
 
+/**
+ * Settings form validation schema.
+ */
 const validationSchema = object<SettingsFormValues>({
   allowNotifications: boolean(),
 });
 
+/**
+ * The `SettingsForm` component renders a Formik form to edit user settings.
+ * @param {BaseComponentProps} props - Component properties.
+ * @returns {JSX.Element} JSX
+ */
 const SettingsForm = ({
   className,
   testid = 'form-settings',
