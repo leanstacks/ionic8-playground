@@ -1,23 +1,23 @@
-import { ToggleChangeEventDetail, ToggleCustomEvent } from '@ionic/react';
+import { IonToggle, ToggleChangeEventDetail, ToggleCustomEvent } from '@ionic/react';
+import { ComponentPropsWithoutRef } from 'react';
 import { useField } from 'formik';
 import classNames from 'classnames';
 
 import { PropsWithTestId } from '../types';
-import Toggle, { ToggleProps } from '../Toggle/Toggle';
 
 /**
  * Properties for the `ToggleInput` component.
  * @param {string} name - The field `name` attribute value.
  * @see {@link PropsWithTestId}
- * @see {@link ToggleProps}
+ * @see {@link IonToggle}
  */
-interface ToggleInputProps extends PropsWithTestId, ToggleProps {
+interface ToggleInputProps extends PropsWithTestId, ComponentPropsWithoutRef<typeof IonToggle> {
   name: string;
 }
 
 /**
- * The `ToggleInput` component renders a standardized `Toggle` (`IonToggle`)
- * which is integrated with Formik.
+ * The `ToggleInput` component renders a standardized `IonToggle` which is
+ * integrated with Formik.
  *
  * @param {ToggleInputProps} props - Component properties.
  * @returns {JSX.Element} JSX
@@ -38,11 +38,11 @@ const ToggleInput = ({
   };
 
   return (
-    <Toggle
+    <IonToggle
       className={classNames('input-toggle', className)}
       checked={field.value}
       onIonChange={onChange}
-      testid={testid}
+      data-testid={testid}
       {...toggleProps}
     />
   );
