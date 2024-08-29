@@ -42,14 +42,16 @@ const SettingsForm = ({
 
   if (isLoading) {
     return (
-      <IonList className={classNames('form-settings', className)} data-testid={testid}>
-        <IonListHeader>
-          <IonLabel>Settings</IonLabel>
-        </IonListHeader>
-        <IonItem lines="full">
-          <LoaderSkeleton animated heightStyle="1.5rem" />
-        </IonItem>
-      </IonList>
+      <div className={classNames('form-settings', className)} data-testid={`${testid}-loading`}>
+        <IonList>
+          <IonListHeader>
+            <IonLabel>Settings</IonLabel>
+          </IonListHeader>
+          <IonItem lines="full">
+            <LoaderSkeleton animated heightStyle="1.5rem" />
+          </IonItem>
+        </IonList>
+      </div>
     );
   }
 
@@ -87,11 +89,10 @@ const SettingsForm = ({
           );
         }}
         validationSchema={validationSchema}
-        data-testid={testid}
       >
         {({ isSubmitting, submitForm }) => (
-          <Form>
-            <IonList className={classNames('form-settings', className)}>
+          <Form data-testid={testid} className={classNames('form-settings', className)}>
+            <IonList>
               <IonListHeader>
                 <IonLabel>Settings</IonLabel>
               </IonListHeader>
