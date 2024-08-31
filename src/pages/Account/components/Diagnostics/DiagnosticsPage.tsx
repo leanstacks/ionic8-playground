@@ -5,6 +5,7 @@ import Header from 'common/components/Header/Header';
 import PageHeader from 'common/components/Content/PageHeader';
 import AppDiagnostics from './AppDiagnostics';
 import PlatformDiagnostics from './PlatformDiagnostics';
+import BuildDiagnostics from './BuildDiagnostics';
 
 /**
  * The `DiagnosticsPage` renders a layout of components that display information
@@ -35,6 +36,10 @@ const DiagnosticsPage = ({ testid = 'page-diagnostics' }: PropsWithTestId): JSX.
 
             <IonCol size="12" sizeLg="6">
               <PlatformDiagnostics />
+            </IonCol>
+
+            <IonCol size="12" sizeLg="6">
+              <BuildDiagnostics />
             </IonCol>
           </IonRow>
         </IonGrid>
