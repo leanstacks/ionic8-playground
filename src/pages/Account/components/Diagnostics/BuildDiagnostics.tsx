@@ -36,7 +36,7 @@ const BuildDiagnostics = ({
       </IonItem>
       <IonItem className="text-sm">
         <IonLabel className="font-medium ion-margin-end">SHA</IonLabel>
-        <IonText>{config.VITE_BUILD_COMMIT_SHA}</IonText>
+        <IonText className="break-all">{config.VITE_BUILD_COMMIT_SHA}</IonText>
       </IonItem>
       <IonItem className="text-sm">
         <IonLabel className="font-medium ion-margin-end">Workflow</IonLabel>
