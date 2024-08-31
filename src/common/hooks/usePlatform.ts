@@ -24,9 +24,7 @@ type Platform = {
  */
 export const usePlatform = (): Platform => {
   const isNativePlatform = Capacitor.isNativePlatform();
-  console.log(`usePlatform::isNativePlatform::${isNativePlatform}`);
   const platforms = getPlatforms();
-  console.log(`usePlatform::platforms::${platforms}`);
 
   return {
     isNativePlatform,
