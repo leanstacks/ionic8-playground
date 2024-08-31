@@ -1,0 +1,11 @@
+.ls-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  justify-content: end;
+  align-items: center;
+
+  ion-badge {
+    min-width: auto;
+  }
+}

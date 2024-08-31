@@ -1,10 +1,10 @@
 import { IonBadge, IonItem, IonLabel, IonListHeader } from '@ionic/react';
 import classNames from 'classnames';
 
-import './PlatformDiagnostics.scss';
 import { BaseComponentProps } from 'common/components/types';
 import { usePlatform } from 'common/hooks/usePlatform';
 import List from 'common/components/List/List';
+import Badges from 'common/components/Badge/Badges';
 
 /**
  * The `PlatformDiagnostics` component displays application diagnostic information
@@ -31,13 +31,13 @@ const PlatformDiagnostics = ({
       </IonItem>
       <IonItem className="text-sm">
         <IonLabel class="font-medium ion-margin-end">Platforms</IonLabel>
-        <div className="badges">
+        <Badges>
           {platforms.map((platform) => (
             <IonBadge key={platform} color="medium">
               {platform}
             </IonBadge>
           ))}
-        </div>
+        </Badges>
       </IonItem>
     </List>
   );
