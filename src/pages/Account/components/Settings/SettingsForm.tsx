@@ -1,4 +1,4 @@
-import { IonItem, IonLabel, IonList, IonListHeader } from '@ionic/react';
+import { IonItem, IonLabel, IonListHeader } from '@ionic/react';
 import classNames from 'classnames';
 import { Form, Formik } from 'formik';
 import { boolean, object } from 'yup';
@@ -12,6 +12,7 @@ import { useToasts } from 'common/hooks/useToasts';
 import { DismissButton } from 'common/components/Toast/Toast';
 import ToggleInput from 'common/components/Input/ToggleInput';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
+import List from 'common/components/List/List';
 
 /**
  * Settings form values.
@@ -43,14 +44,15 @@ const SettingsForm = ({
   if (isLoading) {
     return (
       <div className={classNames('form-settings', className)} data-testid={`${testid}-loading`}>
-        <IonList>
+        <List>
           <IonListHeader>
             <IonLabel>Settings</IonLabel>
           </IonListHeader>
-          <IonItem lines="full">
+
+          <IonItem>
             <LoaderSkeleton animated heightStyle="1.5rem" />
           </IonItem>
-        </IonList>
+        </List>
       </div>
     );
   }
@@ -92,11 +94,12 @@ const SettingsForm = ({
       >
         {({ isSubmitting, submitForm }) => (
           <Form data-testid={testid} className={classNames('form-settings', className)}>
-            <IonList>
+            <List>
               <IonListHeader>
                 <IonLabel>Settings</IonLabel>
               </IonListHeader>
-              <IonItem lines="full">
+
+              <IonItem className="text-sm font-medium">
                 <ToggleInput
                   name="allowNotifications"
                   disabled={isSubmitting}
@@ -106,7 +109,7 @@ const SettingsForm = ({
                   Notifications
                 </ToggleInput>
               </IonItem>
-            </IonList>
+            </List>
           </Form>
         )}
       </Formik>
