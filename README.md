@@ -14,6 +14,10 @@ This project's API integration uses the simulated REST endpoints made available 
 
 When running the application, you may sign in with any of the JSON Placeholder [Users](https://jsonplaceholder.typicode.com/users). Simply enter the _Username_ value from any user in the API and use any value for the _Password_. For example, try username `Bret` and password `abc123`.
 
+### Diagnostics
+
+Many applications, particularly mobile applications, have a hidden page which displays content useful for troubleshooting and support. To access the diagnostics page, go to the _Account_ page. Locate the _About_ section and click or tap the _Version_ item 7 times.
+
 ## About
 
 This project was bootstrapped with the [Ionic CLI](https://ionicframework.com/docs/cli/commands/start).
