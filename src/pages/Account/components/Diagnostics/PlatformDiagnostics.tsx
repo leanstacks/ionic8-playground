@@ -27,13 +27,19 @@ const PlatformDiagnostics = ({
       </IonListHeader>
       <IonItem className="text-sm">
         <IonLabel className="font-medium ion-margin-end">Native</IonLabel>
-        {isNativePlatform ? <IonBadge>YES</IonBadge> : <IonBadge color="medium">NO</IonBadge>}
+        {isNativePlatform ? (
+          <IonBadge data-testid={`${testid}-is-native`}>YES</IonBadge>
+        ) : (
+          <IonBadge color="medium" data-testid={`${testid}-not-native`}>
+            NO
+          </IonBadge>
+        )}
       </IonItem>
       <IonItem className="text-sm">
         <IonLabel class="font-medium ion-margin-end">Platforms</IonLabel>
-        <Badges>
+        <Badges data-testid={`${testid}-platforms`}>
           {platforms.map((platform) => (
-            <IonBadge key={platform} color="medium">
+            <IonBadge key={platform} color="medium" data-testid={`${testid}-platform`}>
               {platform}
             </IonBadge>
           ))}
