@@ -4,21 +4,21 @@ import {
   IonGrid,
   IonItem,
   IonLabel,
-  IonList,
   IonListHeader,
   IonPage,
   IonRow,
+  IonText,
   useIonRouter,
 } from '@ionic/react';
 import { useState } from 'react';
 import dayjs from 'dayjs';
 
-import './AccountPage.scss';
 import { PropsWithTestId } from 'common/components/types';
 import { useConfig } from 'common/hooks/useConfig';
 import ProgressProvider from 'common/providers/ProgressProvider';
 import Header from 'common/components/Header/Header';
 import SettingsForm from './components/Settings/SettingsForm';
+import List from 'common/components/List/List';
 
 /**
  * The `AccountPage` component renders a list of account related items which
@@ -53,17 +53,18 @@ const AccountPage = ({ testid = 'page-account' }: PropsWithTestId): JSX.Element 
           <IonGrid fixed>
             <IonRow>
               <IonCol size="12" sizeLg="6">
-                <IonList>
+                <List>
                   <IonListHeader>
                     <IonLabel>Account</IonLabel>
                   </IonListHeader>
-                  <IonItem detail lines="full" routerLink="/tabs/account/profile">
-                    <IonLabel>Profile</IonLabel>
+
+                  <IonItem className="text-sm" detail routerLink="/tabs/account/profile">
+                    <IonLabel className="font-medium ion-margin-end">Profile</IonLabel>
                   </IonItem>
-                  <IonItem detail lines="full" routerLink="/auth/signout">
-                    <IonLabel>Sign Out</IonLabel>
+                  <IonItem className="text-sm" detail routerLink="/auth/signout">
+                    <IonLabel className="font-medium ion-margin-end">Sign Out</IonLabel>
                   </IonItem>
-                </IonList>
+                </List>
               </IonCol>
 
               <IonCol size="12" sizeLg="6">
@@ -71,28 +72,31 @@ const AccountPage = ({ testid = 'page-account' }: PropsWithTestId): JSX.Element 
               </IonCol>
 
               <IonCol size="12" sizeLg="6">
-                <IonList>
+                <List>
                   <IonListHeader>
                     <IonLabel>Legal</IonLabel>
                   </IonListHeader>
-                  <IonItem lines="full">
-                    <IonLabel>Privacy policy</IonLabel>
+
+                  <IonItem className="text-sm">
+                    <IonLabel className="font-medium">Privacy policy</IonLabel>
                   </IonItem>
-                  <IonItem lines="full">
-                    <IonLabel>Terms and conditions</IonLabel>
+                  <IonItem className="text-sm">
+                    <IonLabel className="font-medium">Terms and conditions</IonLabel>
                   </IonItem>
-                </IonList>
+                </List>
               </IonCol>
 
               <IonCol size="12" sizeLg="6">
-                <IonList>
+                <List>
                   <IonListHeader>
                     <IonLabel>About</IonLabel>
                   </IonListHeader>
-                  <IonItem lines="full" onClick={() => onDiagnosticsClick()}>
-                    <IonLabel>Version {version}</IonLabel>
+
+                  <IonItem className="text-sm" onClick={() => onDiagnosticsClick()}>
+                    <IonLabel className="font-medium ion-margin-end">Version</IonLabel>
+                    <IonText>{version}</IonText>
                   </IonItem>
-                </IonList>
+                </List>
               </IonCol>
             </IonRow>
           </IonGrid>
