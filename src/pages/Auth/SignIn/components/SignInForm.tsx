@@ -1,5 +1,5 @@
-import { IonButton, IonContent, IonPopover, useIonRouter } from '@ionic/react';
-import { useState } from 'react';
+import { IonButton, IonContent, IonPopover, useIonRouter, useIonViewDidEnter } from '@ionic/react';
+import { useRef, useState } from 'react';
 import classNames from 'classnames';
 import { Form, Formik } from 'formik';
 import { object, string } from 'yup';
@@ -42,10 +42,15 @@ const validationSchema = object<SignInFormValues>({
  * @returns {JSX.Element} JSX
  */
 const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX.Element => {
+  const focusInput = useRef<HTMLIonInputElement>(null);
   const [error, setError] = useState<string>('');
   const { setIsActive: setShowProgress } = useProgress();
   const router = useIonRouter();
   const { mutate: signIn } = useSignIn();
+
+  useIonViewDidEnter(() => {
+    focusInput.current?.setFocus();
+  });
 
   return (
     <div className={classNames('form-signin', className)} data-testid={testid}>
@@ -91,8 +96,8 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
               labelPlacement="stacked"
               disabled={isSubmitting}
               maxlength={30}
-              autoFocus
               autocomplete="off"
+              ref={focusInput}
               data-testid={`${testid}-field-username`}
             />
             <Input
