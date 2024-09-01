@@ -28,19 +28,23 @@ const BuildDiagnostics = ({
 
       <IonItem className="text-sm">
         <IonLabel className="font-medium ion-margin-end">Environment</IonLabel>
-        <IonText>{config.VITE_BUILD_ENV_CODE}</IonText>
+        <IonText data-testid={`${testid}-env`}>{config.VITE_BUILD_ENV_CODE}</IonText>
       </IonItem>
       <IonItem className="text-sm">
         <IonLabel className="font-medium ion-margin-end">Time</IonLabel>
-        <IonText>{dayjs(config.VITE_BUILD_TS).format('YYYY-MM-DD HH:mm:ss Z')}</IonText>
+        <IonText data-testid={`${testid}-time`}>
+          {dayjs(config.VITE_BUILD_TS).format('YYYY-MM-DD HH:mm:ss Z')}
+        </IonText>
       </IonItem>
       <IonItem className="text-sm">
         <IonLabel className="font-medium ion-margin-end">SHA</IonLabel>
-        <IonText className="break-all">{config.VITE_BUILD_COMMIT_SHA}</IonText>
+        <IonText className="break-all" data-testid={`${testid}-sha`}>
+          {config.VITE_BUILD_COMMIT_SHA}
+        </IonText>
       </IonItem>
       <IonItem className="text-sm">
         <IonLabel className="font-medium ion-margin-end">Workflow</IonLabel>
-        <IonText>
+        <IonText data-testid={`${testid}-workflow`}>
           {config.VITE_BUILD_WORKFLOW_NAME} {config.VITE_BUILD_WORKFLOW_RUN_NUMBER}.
           {config.VITE_BUILD_WORKFLOW_RUN_ATTEMPT}
         </IonText>
