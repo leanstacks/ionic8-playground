@@ -4,6 +4,7 @@ import { Settings } from 'common/models/settings';
  * React Query cache keys.
  */
 export enum QueryKey {
+  AppInfo = 'AppInfo',
   Settings = 'Settings',
   Users = 'Users',
   UserTokens = 'UserTokens',

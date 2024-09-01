@@ -8,6 +8,9 @@ import { afterAll, afterEach, beforeAll } from 'vitest';
 import { server } from 'test/mocks/server';
 import { queryClient } from 'test/query-client';
 
+// Tests always run in this timezone
+process.env.TZ = 'UTC';
+
 // Mock matchmedia
 window.matchMedia =
   window.matchMedia ||

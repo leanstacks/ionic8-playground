@@ -8,7 +8,9 @@ import {
   IonListHeader,
   IonPage,
   IonRow,
+  useIonRouter,
 } from '@ionic/react';
+import { useState } from 'react';
 import dayjs from 'dayjs';
 
 import './AccountPage.scss';
@@ -25,11 +27,22 @@ import SettingsForm from './components/Settings/SettingsForm';
  * @returns {JSX.Element} JSX
  */
 const AccountPage = ({ testid = 'page-account' }: PropsWithTestId): JSX.Element => {
+  const [diagnosticsCount, setDiagnosticsCount] = useState<number>(0);
   const config = useConfig();
+  const router = useIonRouter();
 
   const versionTs = dayjs(config.VITE_BUILD_TS).format('YY.MM.DD.hhmm');
   const sha = config.VITE_BUILD_COMMIT_SHA.substring(0, 7);
   const version = `${versionTs}.${sha}`;
+
+  const onDiagnosticsClick = () => {
+    if (diagnosticsCount >= 6) {
+      setDiagnosticsCount(0);
+      router.push('/tabs/account/diagnostics');
+    } else {
+      setDiagnosticsCount((value) => value + 1);
+    }
+  };
 
   return (
     <IonPage className="page-account" data-testid={testid}>
@@ -44,10 +57,10 @@ const AccountPage = ({ testid = 'page-account' }: PropsWithTestId): JSX.Element 
                   <IonListHeader>
                     <IonLabel>Account</IonLabel>
                   </IonListHeader>
-                  <IonItem lines="full" routerLink="/tabs/account/profile">
+                  <IonItem detail lines="full" routerLink="/tabs/account/profile">
                     <IonLabel>Profile</IonLabel>
                   </IonItem>
-                  <IonItem lines="full" routerLink="/auth/signout">
+                  <IonItem detail lines="full" routerLink="/auth/signout">
                     <IonLabel>Sign Out</IonLabel>
                   </IonItem>
                 </IonList>
@@ -76,7 +89,7 @@ const AccountPage = ({ testid = 'page-account' }: PropsWithTestId): JSX.Element 
                   <IonListHeader>
                     <IonLabel>About</IonLabel>
                   </IonListHeader>
-                  <IonItem lines="full">
+                  <IonItem lines="full" onClick={() => onDiagnosticsClick()}>
                     <IonLabel>Version {version}</IonLabel>
                   </IonItem>
                 </IonList>
