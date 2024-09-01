@@ -22,7 +22,7 @@ describe('BuildDiagnostics', () => {
     // ASSERT
     expect(screen.getByTestId('build')).toBeDefined();
     expect(screen.getByTestId('build-env')).toHaveTextContent('test');
-    expect(screen.getByTestId('build-time')).toHaveTextContent('1969-12-31 19:00:00 -05:00');
+    expect(screen.getByTestId('build-time')).toHaveTextContent('1970-01-01 00:00:00 +00:00');
     expect(screen.getByTestId('build-sha')).toHaveTextContent('test');
     expect(screen.getByTestId('build-workflow')).toHaveTextContent('test 1.1');
   });
