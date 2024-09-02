@@ -101,7 +101,6 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
               name="username"
               label="Username"
               labelPlacement="stacked"
-              disabled={isSubmitting}
               maxlength={30}
               autocomplete="off"
               ref={focusInput}
@@ -112,9 +111,7 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
               name="password"
               label="Password"
               labelPlacement="stacked"
-              disabled={isSubmitting}
               maxlength={30}
-              autoFocus
               autocomplete="off"
               data-testid={`${testid}-field-password`}
             >
