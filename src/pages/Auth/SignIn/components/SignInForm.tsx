@@ -1,4 +1,11 @@
-import { IonButton, IonContent, IonPopover, useIonRouter, useIonViewDidEnter } from '@ionic/react';
+import {
+  IonButton,
+  IonContent,
+  IonInputPasswordToggle,
+  IonPopover,
+  useIonRouter,
+  useIonViewDidEnter,
+} from '@ionic/react';
 import { useRef, useState } from 'react';
 import classNames from 'classnames';
 import { Form, Formik } from 'formik';
@@ -110,7 +117,9 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
               autoFocus
               autocomplete="off"
               data-testid={`${testid}-field-password`}
-            />
+            >
+              <IonInputPasswordToggle slot="end"></IonInputPasswordToggle>
+            </Input>
 
             <IonButton
               type="submit"
