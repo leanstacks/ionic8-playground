@@ -14,6 +14,7 @@ import ToggleInput from 'common/components/Input/ToggleInput';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 import List from 'common/components/List/List';
 import RangeInput from 'common/components/Input/RangeInput';
+import Icon, { IconName } from 'common/components/Icon/Icon';
 
 /**
  * Settings form values.
@@ -124,7 +125,10 @@ const SettingsForm = ({
                   disabled={isSubmitting}
                   onIonChange={() => submitForm()}
                   testid={`${testid}-field-brightness`}
-                />
+                >
+                  <Icon icon={IconName.Minus} slot="start" />
+                  <Icon icon={IconName.Plus} slot="end" />
+                </RangeInput>
               </IonItem>
             </List>
           </Form>

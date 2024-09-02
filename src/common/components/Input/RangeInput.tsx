@@ -5,10 +5,23 @@ import classNames from 'classnames';
 
 import { PropsWithTestId } from '../types';
 
+/**
+ * Properties for the `RangeInput` component.
+ * @param {string} name - The field `name` attribute value.
+ * @see {@link PropsWithTestId}
+ * @see {@link IonRange}
+ */
 interface RangeInputProps extends PropsWithTestId, ComponentPropsWithoutRef<typeof IonRange> {
   name: string;
 }
 
+/**
+ * The `RangeInput` component renders a standardized `IonRange` which is
+ * integrated with Formik.
+ *
+ * @param {RangeInputProps} props - Component properties.
+ * @returns {JSX.Element} JSX
+ */
 const RangeInput = ({
   className,
   name,
