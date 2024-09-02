@@ -1,7 +1,7 @@
 import { IonItem, IonLabel, IonListHeader } from '@ionic/react';
 import classNames from 'classnames';
 import { Form, Formik } from 'formik';
-import { boolean, object } from 'yup';
+import { boolean, number, object } from 'yup';
 
 import { useGetSettings } from 'common/api/useGetSettings';
 import { BaseComponentProps } from 'common/components/types';
@@ -13,18 +13,20 @@ import { DismissButton } from 'common/components/Toast/Toast';
 import ToggleInput from 'common/components/Input/ToggleInput';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 import List from 'common/components/List/List';
+import RangeInput from 'common/components/Input/RangeInput';
 
 /**
  * Settings form values.
  * @see {@link Settings}
  */
-type SettingsFormValues = Pick<Settings, 'allowNotifications'>;
+type SettingsFormValues = Pick<Settings, 'allowNotifications' | 'brightness'>;
 
 /**
  * Settings form validation schema.
  */
 const validationSchema = object<SettingsFormValues>({
   allowNotifications: boolean(),
+  brightness: number().min(0).max(100),
 });
 
 /**
@@ -52,6 +54,9 @@ const SettingsForm = ({
           <IonItem>
             <LoaderSkeleton animated heightStyle="1.5rem" />
           </IonItem>
+          <IonItem>
+            <LoaderSkeleton animated heightStyle="1.5rem" />
+          </IonItem>
         </List>
       </div>
     );
@@ -63,6 +68,7 @@ const SettingsForm = ({
         enableReinitialize={true}
         initialValues={{
           allowNotifications: settings.allowNotifications,
+          brightness: settings.brightness,
         }}
         onSubmit={(values, { setSubmitting }) => {
           setProgress(true);
@@ -108,6 +114,17 @@ const SettingsForm = ({
                 >
                   Notifications
                 </ToggleInput>
+              </IonItem>
+
+              <IonItem className="text-sm font-medium">
+                <RangeInput
+                  name="brightness"
+                  label="Brightness"
+                  labelPlacement="start"
+                  disabled={isSubmitting}
+                  onIonChange={() => submitForm()}
+                  testid={`${testid}-field-brightness`}
+                />
               </IonItem>
             </List>
           </Form>
