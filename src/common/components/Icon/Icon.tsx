@@ -91,7 +91,7 @@ const Icon = ({
   className,
   color,
   icon,
-  slot,
+  slot = '',
   testid = 'icon',
   ...iconProps
 }: IconProps): JSX.Element => {
