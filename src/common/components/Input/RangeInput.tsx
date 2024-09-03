@@ -34,7 +34,12 @@ const RangeInput = ({
 
   const onChange = async (e: RangeCustomEvent) => {
     await helpers.setValue(e.detail.value as number);
-    onIonChange?.(e);
+    // add artificial delay to ensure Formik context `values` are updated
+    // before proceeding; in rare instances where a form is submitted
+    // from a field change event, the delay is needed
+    setTimeout(() => {
+      onIonChange?.(e);
+    }, 100);
   };
 
   return (
