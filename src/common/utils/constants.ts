@@ -24,4 +24,5 @@ export enum StorageKey {
  */
 export const DEFAULT_SETTINGS: Settings = {
   allowNotifications: true,
+  brightness: 50,
 };

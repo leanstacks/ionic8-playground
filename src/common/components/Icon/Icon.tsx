@@ -9,6 +9,7 @@ import {
   faHouse,
   faLink,
   faMapLocationDot,
+  faMinus,
   faPenToSquare,
   faPhone,
   faPlus,
@@ -31,7 +32,7 @@ import { BaseComponentProps } from '../types';
 export interface IconProps
   extends BaseComponentProps,
     Omit<ComponentPropsWithoutRef<typeof FontAwesomeIcon>, 'color' | 'icon'>,
-    Pick<ComponentPropsWithoutRef<typeof IonText>, 'color'> {
+    Pick<ComponentPropsWithoutRef<typeof IonText>, 'color' | 'slot'> {
   icon: IconName;
 }
 
@@ -45,6 +46,7 @@ export enum IconName {
   House = 'house',
   Link = 'link',
   MapLocationDot = 'map_location_dot',
+  Minus = 'minus',
   PenToSquare = 'pen_to_square',
   Phone = 'phone',
   Plus = 'plus',
@@ -66,6 +68,7 @@ const icons: Record<IconName, IconProp> = {
   house: faHouse,
   link: faLink,
   map_location_dot: faMapLocationDot,
+  minus: faMinus,
   pen_to_square: faPenToSquare,
   phone: faPhone,
   plus: faPlus,
@@ -88,12 +91,13 @@ const Icon = ({
   className,
   color,
   icon,
+  slot = '',
   testid = 'icon',
   ...iconProps
 }: IconProps): JSX.Element => {
   const faIcon = icons[icon];
   return (
-    <IonText color={color} data-testid={testid}>
+    <IonText color={color} slot={slot} data-testid={testid}>
       <FontAwesomeIcon
         className={classNames('icon', className)}
         icon={faIcon}
