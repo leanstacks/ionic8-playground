@@ -4,4 +4,5 @@
 export type Settings = {
   allowNotifications: boolean;
   brightness: number;
+  language: string;
 };

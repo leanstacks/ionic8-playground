@@ -25,4 +25,23 @@ export enum StorageKey {
 export const DEFAULT_SETTINGS: Settings = {
   allowNotifications: true,
   brightness: 50,
+  language: 'en',
 };
+
+/**
+ * Available languages.
+ */
+export const LANGUAGES = [
+  {
+    code: 'en',
+    value: 'English',
+  },
+  {
+    code: 'es',
+    value: 'Spanish',
+  },
+  {
+    code: 'fr',
+    value: 'French',
+  },
+];

@@ -1,11 +1,14 @@
-import { IonItem, IonLabel, IonListHeader } from '@ionic/react';
+import { IonItem, IonLabel, IonListHeader, IonSelectOption } from '@ionic/react';
 import classNames from 'classnames';
 import { Form, Formik } from 'formik';
-import { boolean, number, object } from 'yup';
+import { boolean, number, object, string } from 'yup';
+import orderBy from 'lodash/orderBy';
+import map from 'lodash/map';
 
-import { useGetSettings } from 'common/api/useGetSettings';
 import { BaseComponentProps } from 'common/components/types';
+import { LANGUAGES } from 'common/utils/constants';
 import { Settings } from 'common/models/settings';
+import { useGetSettings } from 'common/api/useGetSettings';
 import { useUpdateSettings } from 'common/api/useUpdateSettings';
 import { useProgress } from 'common/hooks/useProgress';
 import { useToasts } from 'common/hooks/useToasts';
@@ -15,12 +18,13 @@ import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 import List from 'common/components/List/List';
 import RangeInput from 'common/components/Input/RangeInput';
 import Icon, { IconName } from 'common/components/Icon/Icon';
+import SelectInput from 'common/components/Input/SelectInput';
 
 /**
  * Settings form values.
  * @see {@link Settings}
  */
-type SettingsFormValues = Pick<Settings, 'allowNotifications' | 'brightness'>;
+type SettingsFormValues = Pick<Settings, 'allowNotifications' | 'brightness' | 'language'>;
 
 /**
  * Settings form validation schema.
@@ -28,6 +32,7 @@ type SettingsFormValues = Pick<Settings, 'allowNotifications' | 'brightness'>;
 const validationSchema = object<SettingsFormValues>({
   allowNotifications: boolean(),
   brightness: number().min(0).max(100),
+  language: string().oneOf(map(LANGUAGES, 'code')),
 });
 
 /**
@@ -70,6 +75,7 @@ const SettingsForm = ({
         initialValues={{
           allowNotifications: settings.allowNotifications,
           brightness: settings.brightness,
+          language: settings.language,
         }}
         onSubmit={(values, { setSubmitting }) => {
           setProgress(true);
@@ -129,6 +135,23 @@ const SettingsForm = ({
                   <Icon icon={IconName.Minus} slot="start" />
                   <Icon icon={IconName.Plus} slot="end" />
                 </RangeInput>
+              </IonItem>
+
+              <IonItem className="text-sm font-medium">
+                <SelectInput
+                  name="language"
+                  label="Language"
+                  interface="popover"
+                  disabled={isSubmitting}
+                  onIonChange={() => submitForm()}
+                  testid={`${testid}-field-language`}
+                >
+                  {orderBy(LANGUAGES, ['value']).map((language) => (
+                    <IonSelectOption key={language.code} value={language.code}>
+                      {language.value}
+                    </IonSelectOption>
+                  ))}
+                </SelectInput>
               </IonItem>
             </List>
           </Form>
