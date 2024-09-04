@@ -11,6 +11,10 @@
   }
 
   .ls-input-select-error {
-    padding-bottom: 0.5rem;
+    padding: 0.375rem 0 0.375rem 0;
+
+    border-top-color: var(--ion-color-danger);
+    border-top-width: 1px;
+    border-top-style: solid;
   }
 }
