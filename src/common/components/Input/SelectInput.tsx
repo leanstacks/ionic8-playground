@@ -1,8 +1,9 @@
-import { IonSelect, SelectCustomEvent } from '@ionic/react';
+import { IonSelect, IonText, SelectCustomEvent } from '@ionic/react';
 import { ComponentPropsWithoutRef } from 'react';
 import { useField } from 'formik';
 import classNames from 'classnames';
 
+import './SelectInput.scss';
 import { PropsWithTestId } from '../types';
 
 /**
@@ -34,25 +35,31 @@ const SelectInput = ({
   const [field, meta, helpers] = useField(name);
 
   const onChange = async (e: SelectCustomEvent) => {
-    console.log(`SelectInput::onChange::${e.detail.value}`);
     await helpers.setValue(e.detail.value);
     onIonChange?.(e);
   };
 
   return (
-    <IonSelect
-      className={classNames(
-        'ls-input-select',
-        className,
-        { 'ion-touched': meta.touched },
-        { 'ion-invalid': meta.error },
-        { 'ion-valid': meta.touched && !meta.error },
+    <div className="ls-input-select-wrapper">
+      <IonSelect
+        className={classNames(
+          'ls-input-select',
+          className,
+          { 'ion-touched': meta.touched },
+          { 'ion-invalid': meta.error },
+          { 'ion-valid': meta.touched && !meta.error },
+        )}
+        onIonChange={onChange}
+        data-testid={testid}
+        {...field}
+        {...selectProps}
+      ></IonSelect>
+      {meta.error && (
+        <IonText color="danger" className="ls-input-select-error text-xs font-normal">
+          {meta.error}
+        </IonText>
       )}
-      onIonChange={onChange}
-      data-testid={testid}
-      {...field}
-      {...selectProps}
-    />
+    </div>
   );
 };
 
