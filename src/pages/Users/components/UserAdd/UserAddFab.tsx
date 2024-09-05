@@ -1,14 +1,17 @@
+import { ComponentPropsWithoutRef } from 'react';
 import { IonFab, IonFabButton } from '@ionic/react';
 import classNames from 'classnames';
 
 import './UserAddFab.scss';
-import { BaseComponentProps } from 'common/components/types';
+import { PropsWithTestId } from 'common/components/types';
 import Icon, { IconName } from 'common/components/Icon/Icon';
 
 /**
  * Properties for the `UserAddFab` component.
+ * @see {@link PropsWithTestId}
+ * @see {@link IonFab}
  */
-interface UserAddFabProps extends BaseComponentProps {}
+interface UserAddFabProps extends PropsWithTestId, ComponentPropsWithoutRef<typeof IonFab> {}
 
 /**
  * The `UserAddFab` renders an Ionic Floating Action Button, or FAB.
@@ -16,16 +19,24 @@ interface UserAddFabProps extends BaseComponentProps {}
  * @param {UserAddFabProps} props - Component properties.
  * @returns {JSX.Element} JSX
  */
-const UserAddFab = ({ className, testid = 'fab-user-add' }: UserAddFabProps): JSX.Element => {
+const UserAddFab = ({
+  className,
+  horizontal = 'end',
+  slot = 'fixed',
+  testid = 'fab-user-add',
+  vertical = 'bottom',
+  ...fabProps
+}: UserAddFabProps): JSX.Element => {
   return (
     <IonFab
-      className={classNames('fab-user-add', className)}
+      className={classNames('ls-fab-user-add', className)}
       data-testid={testid}
-      slot="fixed"
-      vertical="bottom"
-      horizontal="end"
+      slot={slot}
+      vertical={vertical}
+      horizontal={horizontal}
+      {...fabProps}
     >
-      <IonFabButton routerLink="/tabs/users/add">
+      <IonFabButton>
         <Icon icon={IconName.Plus} />
       </IonFabButton>
     </IonFab>

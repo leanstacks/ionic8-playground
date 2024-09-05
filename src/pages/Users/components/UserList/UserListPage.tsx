@@ -19,12 +19,15 @@ import UserGrid from './UserGrid';
 import ProgressProvider from 'common/providers/ProgressProvider';
 import UserAddFab from '../UserAdd/UserAddFab';
 import Icon, { IconName } from 'common/components/Icon/Icon';
+import UserAddModal from '../UserAdd/UserAddModal';
+import { useState } from 'react';
 
 /**
  * The `UserListPage` component renders a list of all `User` objects.
  * @returns JSX
  */
 export const UserListPage = (): JSX.Element => {
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
   const testid = 'page-user-list';
   const queryClient = useQueryClient();
 
@@ -49,8 +52,8 @@ export const UserListPage = (): JSX.Element => {
               <IonButtons>
                 <IonButton
                   shape="round"
-                  routerLink="/tabs/users/add"
                   title="Add user"
+                  onClick={() => setIsOpenModal(true)}
                   data-testid={`${testid}-page-header-button-create`}
                 >
                   <Icon icon={IconName.Plus} size="xl" />
@@ -60,7 +63,8 @@ export const UserListPage = (): JSX.Element => {
             <UserList className="ion-hide-md-up" />
             <UserGrid className="ion-hide-md-down" />
           </Container>
-          <UserAddFab className="ion-hide-md-up" />
+          <UserAddFab className="ion-hide-md-up" onClick={() => setIsOpenModal(true)} />
+          <UserAddModal isOpen={isOpenModal} setIsOpen={setIsOpenModal} />
         </IonContent>
       </ProgressProvider>
     </IonPage>
