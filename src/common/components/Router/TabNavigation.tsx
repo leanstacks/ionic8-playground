@@ -8,7 +8,6 @@ import HomePage from 'pages/Home/HomePage';
 import UserDetailPage from 'pages/Users/components/UserDetail/UserDetailPage';
 import UserListPage from 'pages/Users/components/UserList/UserListPage';
 import UserEditPage from 'pages/Users/components/UserEdit/UserEditPage';
-import UserAddPage from 'pages/Users/components/UserAdd/UserAddPage';
 import AccountPage from 'pages/Account/AccountPage';
 import ProfilePage from 'pages/Account/components/Profile/ProfilePage';
 import DiagnosticsPage from 'pages/Account/components/Diagnostics/DiagnosticsPage';
@@ -47,9 +46,6 @@ const TabNavigation = (): JSX.Element => {
           </Route>
           <Route exact path="/tabs/users/:userId/edit">
             <UserEditPage />
-          </Route>
-          <Route exact path="/tabs/users/add">
-            <UserAddPage />
           </Route>
           <Route exact path="/tabs/account">
             <AccountPage />
