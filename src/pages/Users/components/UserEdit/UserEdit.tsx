@@ -31,10 +31,6 @@ const UserEdit = ({ className, user, testid = 'user-edit' }: UserEditProps): JSX
   const { createToast } = useToasts();
   const { setProgress } = useProgress();
 
-  const onCancel = () => {
-    router.goBack();
-  };
-
   return (
     <div className={classNames('user-edit', className)} data-testid={testid}>
       <IonGrid>
@@ -50,7 +46,6 @@ const UserEdit = ({ className, user, testid = 'user-edit' }: UserEditProps): JSX
 
             <UserForm
               user={user}
-              onCancel={onCancel}
               onSubmit={(values, { setSubmitting }) => {
                 setProgress(true);
                 setError('');
