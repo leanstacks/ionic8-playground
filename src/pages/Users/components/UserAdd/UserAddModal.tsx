@@ -6,6 +6,7 @@ import {
   IonContent,
   IonHeader,
   IonModal,
+  IonProgressBar,
   IonTitle,
   IonToolbar,
   useIonRouter,
@@ -33,7 +34,7 @@ const UserAddModal = ({
 }: UserAddModalProps): JSX.Element => {
   const [error, setError] = useState<string>('');
   const router = useIonRouter();
-  const { setProgress } = useProgress();
+  const { isActive: isActiveProgressBar, progressBar, setProgress } = useProgress();
   const { createToast } = useToasts();
   const { mutate: createUser } = useCreateUser();
 
@@ -47,11 +48,14 @@ const UserAddModal = ({
       <IonHeader>
         <IonToolbar>
           <IonTitle>Add User</IonTitle>
+
           <IonButtons slot="end">
             <IonButton onClick={() => setIsOpen(false)}>
               <Icon icon={IconName.Xmark} />
             </IonButton>
           </IonButtons>
+
+          {isActiveProgressBar && <IonProgressBar className="ion-hide-md-up" {...progressBar} />}
         </IonToolbar>
       </IonHeader>
       <IonContent class="ion-padding">
