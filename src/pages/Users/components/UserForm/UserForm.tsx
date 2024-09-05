@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { IonButton } from '@ionic/react';
 import { Form, Formik, FormikHelpers } from 'formik';
 import { object, string } from 'yup';
@@ -52,6 +53,12 @@ const UserForm = ({
   user,
   testid = 'form-user',
 }: UserFormProps): JSX.Element => {
+  const focusInput = useRef<HTMLIonInputElement>(null);
+
+  useEffect(() => {
+    focusInput.current?.setFocus();
+  }, []);
+
   return (
     <div className={classNames('form-user', className)} data-testid={testid}>
       <Formik<UserFormValues>
@@ -74,7 +81,7 @@ const UserForm = ({
               labelPlacement="stacked"
               disabled={isSubmitting}
               required
-              autoFocus
+              ref={focusInput}
               data-testid={`${testid}-field-name`}
             ></Input>
             <Input
