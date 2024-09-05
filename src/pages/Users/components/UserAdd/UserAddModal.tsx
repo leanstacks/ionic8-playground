@@ -67,7 +67,6 @@ const UserAddModal = ({
           />
         )}
         <UserForm
-          onCancel={() => setIsOpen(false)}
           onSubmit={(values, { setSubmitting }) => {
             setProgress(true);
             setError('');

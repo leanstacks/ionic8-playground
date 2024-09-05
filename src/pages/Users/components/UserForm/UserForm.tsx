@@ -21,7 +21,6 @@ type UserFormValues = Pick<User, 'email' | 'name' | 'phone' | 'username' | 'webs
  * @see {@link BaseComponentProps}
  */
 interface UserFormProps extends BaseComponentProps {
-  onCancel: () => void;
   onSubmit: (values: UserFormValues, helpers: FormikHelpers<UserFormValues>) => void;
   user?: User;
 }
@@ -48,7 +47,6 @@ const validationSchema = object<UserFormValues>({
  */
 const UserForm = ({
   className,
-  onCancel,
   onSubmit,
   user,
   testid = 'form-user',
@@ -118,26 +116,16 @@ const UserForm = ({
               data-testid={`${testid}-field-website`}
             ></Input>
 
-            <div className="buttons">
-              <IonButton
-                type="button"
-                color="secondary"
-                fill="clear"
-                disabled={isSubmitting}
-                onClick={onCancel}
-                data-testid={`${testid}-button-cancel`}
-              >
-                Cancel
-              </IonButton>
-              <IonButton
-                type="submit"
-                color="primary"
-                disabled={isSubmitting || !dirty}
-                data-testid={`${testid}-button-submit`}
-              >
-                Save
-              </IonButton>
-            </div>
+            <IonButton
+              type="submit"
+              color="primary"
+              className="ion-margin-top"
+              expand="block"
+              disabled={isSubmitting || !dirty}
+              data-testid={`${testid}-button-submit`}
+            >
+              Save
+            </IonButton>
           </Form>
         )}
       </Formik>
