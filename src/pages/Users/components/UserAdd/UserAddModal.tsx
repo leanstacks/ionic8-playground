@@ -27,9 +27,9 @@ interface UserAddModalProps extends PropsWithTestId, ComponentPropsWithoutRef<ty
 }
 
 const UserAddModal = ({
-  testid = 'modal-user-add',
-  setIsOpen,
   onIonModalDidDismiss,
+  setIsOpen,
+  testid = 'modal-user-add',
   ...modalProps
 }: UserAddModalProps): JSX.Element => {
   const [error, setError] = useState<string>('');
@@ -50,7 +50,7 @@ const UserAddModal = ({
           <IonTitle>Add User</IonTitle>
 
           <IonButtons slot="end">
-            <IonButton onClick={() => setIsOpen(false)}>
+            <IonButton onClick={() => setIsOpen(false)} data-testid={`${testid}-button-close`}>
               <Icon icon={IconName.Xmark} />
             </IonButton>
           </IonButtons>
