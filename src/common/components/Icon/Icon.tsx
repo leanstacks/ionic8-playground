@@ -19,6 +19,7 @@ import {
   faUser,
   faUserGear,
   faUsers,
+  faXmark,
 } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames';
 
@@ -56,6 +57,7 @@ export enum IconName {
   User = 'user',
   Users = 'users',
   UserGear = 'user_gear',
+  Xmark = 'xmark',
 }
 
 /**
@@ -78,6 +80,7 @@ const icons: Record<IconName, IconProp> = {
   user_gear: faUserGear,
   user: faUser,
   users: faUsers,
+  xmark: faXmark,
 };
 
 /**

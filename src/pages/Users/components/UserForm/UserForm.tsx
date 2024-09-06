@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { IonButton } from '@ionic/react';
 import { Form, Formik, FormikHelpers } from 'formik';
 import { object, string } from 'yup';
@@ -20,7 +21,6 @@ type UserFormValues = Pick<User, 'email' | 'name' | 'phone' | 'username' | 'webs
  * @see {@link BaseComponentProps}
  */
 interface UserFormProps extends BaseComponentProps {
-  onCancel: () => void;
   onSubmit: (values: UserFormValues, helpers: FormikHelpers<UserFormValues>) => void;
   user?: User;
 }
@@ -47,11 +47,16 @@ const validationSchema = object<UserFormValues>({
  */
 const UserForm = ({
   className,
-  onCancel,
   onSubmit,
   user,
   testid = 'form-user',
 }: UserFormProps): JSX.Element => {
+  const focusInput = useRef<HTMLIonInputElement>(null);
+
+  useEffect(() => {
+    focusInput.current?.setFocus();
+  }, []);
+
   return (
     <div className={classNames('form-user', className)} data-testid={testid}>
       <Formik<UserFormValues>
@@ -74,7 +79,7 @@ const UserForm = ({
               labelPlacement="stacked"
               disabled={isSubmitting}
               required
-              autoFocus
+              ref={focusInput}
               data-testid={`${testid}-field-name`}
             ></Input>
             <Input
@@ -111,26 +116,16 @@ const UserForm = ({
               data-testid={`${testid}-field-website`}
             ></Input>
 
-            <div className="buttons">
-              <IonButton
-                type="button"
-                color="secondary"
-                fill="clear"
-                disabled={isSubmitting}
-                onClick={onCancel}
-                data-testid={`${testid}-button-cancel`}
-              >
-                Cancel
-              </IonButton>
-              <IonButton
-                type="submit"
-                color="primary"
-                disabled={isSubmitting || !dirty}
-                data-testid={`${testid}-button-submit`}
-              >
-                Save
-              </IonButton>
-            </div>
+            <IonButton
+              type="submit"
+              color="primary"
+              className="ion-margin-top"
+              expand="block"
+              disabled={isSubmitting || !dirty}
+              data-testid={`${testid}-button-submit`}
+            >
+              Save
+            </IonButton>
           </Form>
         )}
       </Formik>

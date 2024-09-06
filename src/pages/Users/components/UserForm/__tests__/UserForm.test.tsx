@@ -9,9 +9,8 @@ import UserForm from '../UserForm';
 describe('UserForm', () => {
   it('should render successfully', async () => {
     // ARRANGE
-    const mockOnCancel = vi.fn();
     const mockOnSubmit = vi.fn();
-    render(<UserForm user={userFixture1} onCancel={mockOnCancel} onSubmit={mockOnSubmit} />);
+    render(<UserForm user={userFixture1} onSubmit={mockOnSubmit} />);
     await screen.findByTestId('form-user');
 
     // ASSERT
@@ -20,9 +19,8 @@ describe('UserForm', () => {
 
   it('should submit form', async () => {
     // ARRANGE
-    const mockOnCancel = vi.fn();
     const mockOnSubmit = vi.fn();
-    render(<UserForm onCancel={mockOnCancel} onSubmit={mockOnSubmit} />);
+    render(<UserForm onSubmit={mockOnSubmit} />);
     await screen.findByTestId('form-user');
 
     // ACT
