@@ -7,9 +7,11 @@ import {
   IonRefresherContent,
   RefresherEventDetail,
 } from '@ionic/react';
+import { useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 
 import './UserListPage.scss';
+import { PropsWithTestId } from 'common/components/types';
 import { QueryKey } from 'common/utils/constants';
 import Header from 'common/components/Header/Header';
 import Container from 'common/components/Content/Container';
@@ -20,15 +22,13 @@ import ProgressProvider from 'common/providers/ProgressProvider';
 import UserAddFab from '../UserAdd/UserAddFab';
 import Icon, { IconName } from 'common/components/Icon/Icon';
 import UserAddModal from '../UserAdd/UserAddModal';
-import { useState } from 'react';
 
 /**
  * The `UserListPage` component renders a list of all `User` objects.
  * @returns JSX
  */
-export const UserListPage = (): JSX.Element => {
+export const UserListPage = ({ testid = 'page-user-list' }: PropsWithTestId): JSX.Element => {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
-  const testid = 'page-user-list';
   const queryClient = useQueryClient();
 
   const handleRefresh = async (event: CustomEvent<RefresherEventDetail>) => {

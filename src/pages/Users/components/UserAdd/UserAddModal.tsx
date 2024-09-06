@@ -22,10 +22,24 @@ import Icon, { IconName } from 'common/components/Icon/Icon';
 import UserForm from '../UserForm/UserForm';
 import ErrorCard from 'common/components/Card/ErrorCard';
 
+/**
+ * Properties for the `UserAddModal` component.
+ * @param {function} setIsOpen - A setter function which accepts a `boolean` that
+ * indicates if the modal should be open (`true`) or closed (`false`).
+ * @see {@link PropsWithTestId}
+ * @see {@link IonModal}
+ */
 interface UserAddModalProps extends PropsWithTestId, ComponentPropsWithoutRef<typeof IonModal> {
   setIsOpen: (isOpen: boolean) => void;
 }
 
+/**
+ * The `UserAddModal` component renders an `IonModal` containing a Formik
+ * form to create a new `User`.
+ *
+ * @param {UserAddModalProps} props - Component properties.
+ * @returns {JSX.Element} JSX
+ */
 const UserAddModal = ({
   onIonModalDidDismiss,
   setIsOpen,
