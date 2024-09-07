@@ -130,7 +130,7 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
             </IonButton>
 
             <IonPopover trigger="signinInfo" triggerAction="hover" className="form-signin-popover">
-              <IonContent class="ion-padding">
+              <IonContent className="ion-padding">
                 <p>
                   This example application uses{' '}
                   <a

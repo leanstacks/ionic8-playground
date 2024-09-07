@@ -72,7 +72,7 @@ const UserAddModal = ({
           {isActiveProgressBar && <IonProgressBar className="ion-hide-md-up" {...progressBar} />}
         </IonToolbar>
       </IonHeader>
-      <IonContent class="ion-padding">
+      <IonContent className="ion-padding">
         {error && (
           <ErrorCard
             content={`We are experiencing problems processing your request. ${error}`}
