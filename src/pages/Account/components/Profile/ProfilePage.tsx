@@ -11,6 +11,13 @@ import ProfileForm from './ProfileForm';
 import ErrorCard from 'common/components/Card/ErrorCard';
 import CardRow from 'common/components/Card/CardRow';
 
+/**
+ * The `ProfilePage` component renders the page layout for the user profile
+ * management page.
+ *
+ * @param {PropsWithTestId} props - Component properties.
+ * @returns {JSX.Element} JSX
+ */
 const ProfilePage = ({ testid = 'page-profile' }: PropsWithTestId): JSX.Element => {
   const { data: profile, isError, isLoading } = useGetProfile();
 
