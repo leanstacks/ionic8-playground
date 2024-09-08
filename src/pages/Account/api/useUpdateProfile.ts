@@ -1,13 +1,8 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { User } from 'common/models/user';
+import { Profile } from 'common/models/profile';
 import { QueryKey, StorageKey } from 'common/utils/constants';
 import storage from 'common/utils/storage';
-
-/**
- * The `Profile` object. This is a contrived type for demonstration purposes.
- */
-export type Profile = Pick<User, 'email' | 'name' | 'phone' | 'username' | 'website'>;
 
 /**
  * The `useUpdateProfile` mutatation function variables.
@@ -27,18 +22,14 @@ export type UpdateProfileVariables = {
 export const useUpdateProfile = () => {
   const queryClient = useQueryClient();
 
-  const updateProfile = ({ profile }: UpdateProfileVariables): Promise<User> => {
+  const updateProfile = ({ profile }: UpdateProfileVariables): Promise<Profile> => {
     return new Promise((resolve, reject) => {
       try {
-        const storedProfile = storage.getItem(StorageKey.User);
-        if (storedProfile) {
-          const currentProfile: User = JSON.parse(storedProfile);
-          const updatedProfile: User = { ...currentProfile, ...profile };
-          storage.setItem(StorageKey.User, JSON.stringify(updatedProfile));
-          return resolve(updatedProfile);
-        } else {
-          return reject(new Error('Profile not found.'));
-        }
+        const storedProfile = storage.getItem(StorageKey.UserProfile) ?? '{}';
+        const currentProfile: Profile = JSON.parse(storedProfile);
+        const updatedProfile: Profile = { ...currentProfile, ...profile };
+        storage.setItem(StorageKey.UserProfile, JSON.stringify(updatedProfile));
+        return resolve(updatedProfile);
       } catch (err) {
         return reject(err);
       }
@@ -49,9 +40,9 @@ export const useUpdateProfile = () => {
     mutationFn: updateProfile,
     onSuccess: (data) => {
       // update cached query data
-      queryClient.setQueryData<User>([QueryKey.Users, 'current'], data);
+      queryClient.setQueryData<Profile>([QueryKey.UserProfile], data);
       // you may [also|instead] choose to invalidate certain cached queries, triggering refetch
-      // queryClient.invalidateQueries({ queryKey: [QueryKey.Users, 'current'] });
+      // queryClient.invalidateQueries({ queryKey: [QueryKey.UserProfile] });
     },
   });
 };
