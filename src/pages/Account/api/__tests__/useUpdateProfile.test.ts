@@ -1,7 +1,7 @@
 import { afterAll, describe, expect, it, vi } from 'vitest';
 
 import { renderHook, waitFor } from 'test/test-utils';
-import { userFixture1 } from '__fixtures__/users';
+import { profileFixture1 } from '__fixtures__/profiles';
 import storage from 'common/utils/storage';
 import { StorageKey } from 'common/utils/constants';
 
@@ -13,19 +13,19 @@ describe('useUpdateProfile', () => {
   });
 
   afterAll(() => {
-    storage.removeItem(StorageKey.User);
+    storage.removeItem(StorageKey.UserProfile);
   });
 
   it('should update profile', async () => {
     // ARRANGE
     let isSuccess = false;
-    storage.setItem(StorageKey.User, JSON.stringify(userFixture1));
+    storage.setItem(StorageKey.UserProfile, JSON.stringify(profileFixture1));
     const { result } = renderHook(() => useUpdateProfile());
     await waitFor(() => expect(result.current).not.toBeNull());
 
     // ACT
     result.current.mutate(
-      { profile: userFixture1 },
+      { profile: profileFixture1 },
       {
         onSuccess: () => {
           isSuccess = true;
@@ -38,17 +38,17 @@ describe('useUpdateProfile', () => {
     expect(isSuccess).toBe(true);
   });
 
-  it('should error when no stored profile', async () => {
+  it('should create profile when no existing profile', async () => {
     // ARRANGE
     let isSuccess = false;
     let isError = false;
-    storage.removeItem(StorageKey.User);
+    storage.removeItem(StorageKey.UserProfile);
     const { result } = renderHook(() => useUpdateProfile());
     await waitFor(() => expect(result.current).not.toBeNull());
 
     // ACT
     result.current.mutate(
-      { profile: userFixture1 },
+      { profile: profileFixture1 },
       {
         onSuccess: () => {
           isSuccess = true;
@@ -58,11 +58,12 @@ describe('useUpdateProfile', () => {
         },
       },
     );
-    await waitFor(() => expect(result.current.isError).toBe(true));
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
     // ASSERT
-    expect(isSuccess).toBe(false);
-    expect(isError).toBe(true);
+    expect(isSuccess).toBe(true);
+    expect(isError).toBe(false);
+    expect(result.current.data).toEqual(profileFixture1);
   });
 
   it('should error when an error is caught in mutation function', async () => {
@@ -78,7 +79,7 @@ describe('useUpdateProfile', () => {
 
     // ACT
     result.current.mutate(
-      { profile: userFixture1 },
+      { profile: profileFixture1 },
       {
         onSuccess: () => {
           isSuccess = true;
