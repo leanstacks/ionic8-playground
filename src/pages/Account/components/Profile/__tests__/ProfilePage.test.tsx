@@ -2,23 +2,23 @@ import { describe, expect, it, vi } from 'vitest';
 import { UseQueryResult } from '@tanstack/react-query';
 
 import { render, screen } from 'test/test-utils';
-import { User } from 'common/models/user';
-import { userFixture1 } from '__fixtures__/users';
-import * as UseGetCurrentUser from 'common/api/useGetCurrentUser';
+import { profileFixture1 } from '__fixtures__/profiles';
+import { Profile } from 'common/models/profile';
+import * as UseGetProfile from 'pages/Account/api/useGetProfile';
 
 import ProfilePage from '../ProfilePage';
 
 describe('ProfilePage', () => {
-  const useGetCurrentUserSpy = vi.spyOn(UseGetCurrentUser, 'useGetCurrentUser');
+  const useGetProfileSpy = vi.spyOn(UseGetProfile, 'useGetProfile');
 
   it('should render successfully', async () => {
     // ARRANGE
-    useGetCurrentUserSpy.mockReturnValueOnce({
-      data: userFixture1,
+    useGetProfileSpy.mockReturnValueOnce({
+      data: profileFixture1,
       isLoading: false,
       isError: false,
       isSuccess: true,
-    } as unknown as UseQueryResult<User, Error>);
+    } as unknown as UseQueryResult<Profile, Error>);
     render(<ProfilePage />);
     await screen.findByTestId('page-profile');
 
@@ -28,8 +28,8 @@ describe('ProfilePage', () => {
 
   it('should render loading state', async () => {
     // ARRANGE
-    useGetCurrentUserSpy.mockReturnValueOnce({ isLoading: true } as unknown as UseQueryResult<
-      User,
+    useGetProfileSpy.mockReturnValueOnce({ isLoading: true } as unknown as UseQueryResult<
+      Profile,
       Error
     >);
     render(<ProfilePage />);
@@ -41,14 +41,29 @@ describe('ProfilePage', () => {
 
   it('should render error state', async () => {
     // ARRANGE
-    useGetCurrentUserSpy.mockReturnValueOnce({
+    useGetProfileSpy.mockReturnValueOnce({
       isError: true,
       isLoading: false,
-    } as unknown as UseQueryResult<User, Error>);
+    } as unknown as UseQueryResult<Profile, Error>);
     render(<ProfilePage />);
     await screen.findByTestId('page-profile-error');
 
     // ASSERT
     expect(screen.getByTestId('page-profile-error')).toBeDefined();
+  });
+
+  it('should render profile', async () => {
+    // ARRANGE
+    useGetProfileSpy.mockReturnValueOnce({
+      data: profileFixture1,
+      isLoading: false,
+      isError: false,
+      isSuccess: true,
+    } as unknown as UseQueryResult<Profile, Error>);
+    render(<ProfilePage />);
+    await screen.findByTestId('form-profile');
+
+    // ASSERT
+    expect(screen.getByTestId('form-profile')).toBeDefined();
   });
 });
