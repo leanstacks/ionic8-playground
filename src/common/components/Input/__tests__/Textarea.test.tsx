@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import userEvent from '@testing-library/user-event';
+import { TextareaCustomEvent } from '@ionic/react';
 import { Form, Formik } from 'formik';
+import { object, string } from 'yup';
 
 import { render, screen } from 'test/test-utils';
 
 import Textarea from '../Textarea';
-import { TextareaCustomEvent } from '@ionic/react';
-import { object, string } from 'yup';
 
 describe('Textarea', () => {
   it('should render successfully', async () => {

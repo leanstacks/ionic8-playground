@@ -1,9 +1,9 @@
 import { IonTextarea, TextareaCustomEvent } from '@ionic/react';
 import { ComponentPropsWithoutRef, forwardRef } from 'react';
+import { useField } from 'formik';
 import classNames from 'classnames';
 
 import { PropsWithTestId } from '../types';
-import { useField } from 'formik';
 
 /**
  * Properties for the `Textarea` component.
