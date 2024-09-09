@@ -36,7 +36,7 @@ const PlatformDiagnostics = ({
         )}
       </IonItem>
       <IonItem className="text-sm">
-        <IonLabel class="font-medium ion-margin-end">Platforms</IonLabel>
+        <IonLabel className="font-medium ion-margin-end">Platforms</IonLabel>
         <Badges data-testid={`${testid}-platforms`}>
           {platforms.map((platform) => (
             <IonBadge key={platform} color="medium" data-testid={`${testid}-platform`}>

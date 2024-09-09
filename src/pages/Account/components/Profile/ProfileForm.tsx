@@ -6,7 +6,7 @@ import classNames from 'classnames';
 
 import './ProfileForm.scss';
 import { BaseComponentProps } from 'common/components/types';
-import { User } from 'common/models/user';
+import { Profile } from 'common/models/profile';
 import { useProgress } from 'common/hooks/useProgress';
 import { useUpdateProfile } from 'pages/Account/api/useUpdateProfile';
 import { useToasts } from 'common/hooks/useToasts';
@@ -14,12 +14,13 @@ import { DismissButton } from 'common/components/Toast/Toast';
 import ErrorCard from 'common/components/Card/ErrorCard';
 import Input from 'common/components/Input/Input';
 import ButtonRow from 'common/components/Button/ButtonRow';
+import Textarea from 'common/components/Input/Textarea';
 
 /**
  * Profile form values.
  * @see {@link User}
  */
-type ProfileFormValues = Pick<User, 'email' | 'name' | 'phone' | 'username' | 'website'>;
+type ProfileFormValues = Profile;
 
 /**
  * Properties for the `ProfileForm` component.
@@ -27,7 +28,7 @@ type ProfileFormValues = Pick<User, 'email' | 'name' | 'phone' | 'username' | 'w
  * @see {@link BaseComponentProps}
  */
 interface ProfileFormProps extends BaseComponentProps {
-  user: User;
+  profile: Profile;
 }
 
 /**
@@ -35,13 +36,8 @@ interface ProfileFormProps extends BaseComponentProps {
  */
 const validationSchema = object<ProfileFormValues>({
   name: string().required('Required. '),
-  username: string()
-    .required('Required. ')
-    .min(8, 'Must be at least 8 characters. ')
-    .max(30, 'Must be at most 30 characters. '),
   email: string().required('Required. ').email('Must be an email address. '),
-  phone: string().required('Required. '),
-  website: string().url('Must be a URL. '),
+  bio: string().max(500, 'Must be 500 characters or less. '),
 });
 
 /**
@@ -52,7 +48,7 @@ const validationSchema = object<ProfileFormValues>({
 const ProfileForm = ({
   className,
   testid = 'form-profile',
-  user,
+  profile,
 }: ProfileFormProps): JSX.Element => {
   const focusInput = useRef<HTMLIonInputElement>(null);
   const [error, setError] = useState<string>('');
@@ -82,11 +78,9 @@ const ProfileForm = ({
       <Formik<ProfileFormValues>
         enableReinitialize={true}
         initialValues={{
-          email: user.email,
-          name: user.name,
-          phone: user.phone,
-          username: user.username,
-          website: user.website,
+          email: profile.email,
+          name: profile.name,
+          bio: profile.bio,
         }}
         onSubmit={(values, { setSubmitting }) => {
           setProgress(true);
@@ -126,16 +120,6 @@ const ProfileForm = ({
               data-testid={`${testid}-field-name`}
             />
             <Input
-              name="username"
-              label="Username"
-              labelPlacement="stacked"
-              disabled={isSubmitting}
-              autocomplete="off"
-              minlength={8}
-              maxlength={30}
-              data-testid={`${testid}-field-username`}
-            />
-            <Input
               name="email"
               type="email"
               label="Email"
@@ -144,21 +128,15 @@ const ProfileForm = ({
               autocomplete="off"
               data-testid={`${testid}-field-email`}
             />
-            <Input
-              name="phone"
-              label="Phone"
+            <Textarea
+              name="bio"
+              label="Bio"
               labelPlacement="stacked"
+              autoGrow
+              counter
+              maxlength={500}
               disabled={isSubmitting}
-              autocomplete="off"
-              data-testid={`${testid}-field-phone`}
-            />
-            <Input
-              name="website"
-              label="Website"
-              labelPlacement="stacked"
-              disabled={isSubmitting}
-              autocomplete="off"
-              data-testid={`${testid}-field-website`}
+              data-testid={`${testid}-field-bio`}
             />
 
             <ButtonRow className="ion-margin-top" expand="block">

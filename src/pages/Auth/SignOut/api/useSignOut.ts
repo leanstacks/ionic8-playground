@@ -23,6 +23,7 @@ export const useSignOut = () => {
       try {
         storage.removeItem(StorageKey.UserTokens);
         storage.removeItem(StorageKey.User);
+        storage.removeItem(StorageKey.UserProfile);
         resolve();
       } catch (err) {
         reject(err);
@@ -35,6 +36,7 @@ export const useSignOut = () => {
     onSuccess: () => {
       queryClient.resetQueries({ queryKey: [QueryKey.UserTokens] });
       queryClient.resetQueries({ queryKey: [QueryKey.Users] });
+      queryClient.resetQueries({ queryKey: [QueryKey.UserProfile] });
     },
   });
 };

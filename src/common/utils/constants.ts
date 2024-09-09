@@ -6,6 +6,7 @@ import { Settings } from 'common/models/settings';
 export enum QueryKey {
   AppInfo = 'AppInfo',
   Settings = 'Settings',
+  UserProfile = 'UserProfile',
   Users = 'Users',
   UserTokens = 'UserTokens',
 }
@@ -15,6 +16,7 @@ export enum QueryKey {
  */
 export enum StorageKey {
   Settings = 'ionic-playground.settings',
+  UserProfile = 'ionic-playground.user-profile',
   User = 'ionic-playground.user',
   UserTokens = 'ionic-playground.user-tokens',
 }
