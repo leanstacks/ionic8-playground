@@ -10,6 +10,14 @@ import storage from 'common/utils/storage';
  * @returns Returns a `UserQueryResult` with `Profile` data.
  */
 export const useGetProfile = () => {
+  /**
+   * Gets a [user] `Profile` from local storage.
+   *
+   * If there is no stored profile, initializes a new profile using
+   * attributes from the currently authenticated `User`.
+   *
+   * @returns {Promise<Profile>} A Promise which resolves to a `Profile`.
+   */
   const getProfile = async (): Promise<Profile> => {
     return new Promise((resolve, reject) => {
       try {

@@ -26,8 +26,21 @@ interface TextareaProps
  * @returns {JSX.Element} JSX
  */
 const Textarea = forwardRef<HTMLIonTextareaElement, TextareaProps>(
-  ({ className, testid = 'textarea', ...textareaProps }: TextareaProps, ref): JSX.Element => {
+  (
+    { className, onIonInput, testid = 'textarea', ...textareaProps }: TextareaProps,
+    ref,
+  ): JSX.Element => {
     const [field, meta, helpers] = useField(textareaProps.name);
+
+    /**
+     * Handle changes to the textarea's value. Updates the Formik field state.
+     * Calls the supplied `onIonInput` props function if one was provided.
+     * @param {TextareaCustomEvent} e - The event.
+     */
+    const onInput = async (e: TextareaCustomEvent) => {
+      await helpers.setValue(e.detail.value);
+      onIonInput?.(e);
+    };
 
     return (
       <IonTextarea
@@ -38,9 +51,7 @@ const Textarea = forwardRef<HTMLIonTextareaElement, TextareaProps>(
           { 'ion-invalid': meta.error },
           { 'ion-valid': meta.touched && !meta.error },
         )}
-        onIonInput={async (e: TextareaCustomEvent) => {
-          await helpers.setValue(e.detail.value);
-        }}
+        onIonInput={onInput}
         data-testid={testid}
         {...field}
         {...textareaProps}
