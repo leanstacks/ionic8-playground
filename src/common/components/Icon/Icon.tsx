@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import {
   faBuilding,
+  faCalendar,
   faCircleInfo,
   faEnvelope,
   faHouse,
@@ -42,6 +43,7 @@ export interface IconProps
  */
 export enum IconName {
   Building = 'building',
+  Calendar = 'calendar',
   CircleInfo = 'circle_info',
   Envelope = 'envelope',
   House = 'house',
@@ -65,6 +67,7 @@ export enum IconName {
  */
 const icons: Record<IconName, IconProp> = {
   building: faBuilding,
+  calendar: faCalendar,
   circle_info: faCircleInfo,
   envelope: faEnvelope,
   house: faHouse,
