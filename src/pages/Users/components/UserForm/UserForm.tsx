@@ -78,7 +78,6 @@ const UserForm = ({
               label="Name"
               labelPlacement="stacked"
               disabled={isSubmitting}
-              required
               ref={focusInput}
               data-testid={`${testid}-field-name`}
             ></Input>
@@ -87,7 +86,6 @@ const UserForm = ({
               label="Username"
               labelPlacement="stacked"
               disabled={isSubmitting}
-              minlength={8}
               maxlength={30}
               data-testid={`${testid}-field-username`}
             ></Input>
@@ -97,7 +95,6 @@ const UserForm = ({
               label="Email"
               labelPlacement="stacked"
               disabled={isSubmitting}
-              required
               data-testid={`${testid}-field-email`}
             ></Input>
             <Input
@@ -105,7 +102,6 @@ const UserForm = ({
               label="Phone"
               labelPlacement="stacked"
               disabled={isSubmitting}
-              required
               data-testid={`${testid}-field-phone`}
             ></Input>
             <Input
