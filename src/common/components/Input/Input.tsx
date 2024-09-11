@@ -29,6 +29,7 @@ interface InputProps
 const Input = forwardRef<HTMLIonInputElement, InputProps>(
   ({ className, testid = 'input', ...props }: InputProps, ref): JSX.Element => {
     const [field, meta, helpers] = useField(props.name);
+    const errorText: string | undefined = meta.touched ? meta.error : undefined;
 
     return (
       <IonInput
@@ -44,7 +45,7 @@ const Input = forwardRef<HTMLIonInputElement, InputProps>(
         data-testid={testid}
         {...field}
         {...props}
-        errorText={meta.error}
+        errorText={errorText}
         ref={ref}
       ></IonInput>
     );
