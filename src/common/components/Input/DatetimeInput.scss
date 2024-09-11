@@ -1,0 +1,12 @@
+ion-input.ls-datetime-input {
+  input {
+    cursor: pointer;
+  }
+}
+
+ion-modal.ls-datetime-modal {
+  --height: fit-content;
+  --width: fit-content;
+
+  --border-radius: 0.5rem;
+}
