@@ -15,6 +15,11 @@ const DEFAULT_FORMAT_DATE: Intl.DateTimeFormatOptions = {
   year: 'numeric',
 };
 
+const DEFAULT_FORMAT_TIME: Intl.DateTimeFormatOptions = {
+  hour: 'numeric',
+  minute: '2-digit',
+};
+
 type DatetimeValue = string | string[] | null;
 
 interface DatetimeInputProps
@@ -76,6 +81,18 @@ const DatetimeInput = ({
     return '';
   };
 
+  const formatTime = (dateStr: DatetimeValue): string => {
+    if (dateStr) {
+      if (Array.isArray(dateStr)) {
+        // TODO format array of values
+        return 'array';
+      } else {
+        return new Intl.DateTimeFormat(undefined, DEFAULT_FORMAT_TIME).format(new Date(dateStr));
+      }
+    }
+    return '';
+  };
+
   const getLocalDatetime = (value: DatetimeValue | undefined): DatetimeValue => {
     if (value) {
       if (Array.isArray(value)) {
@@ -102,7 +119,7 @@ const DatetimeInput = ({
       data-testid={testid}
       label={label}
       labelPlacement={labelPlacement}
-      value={formatDate(field.value)}
+      value={`${formatDate(field.value)} ${formatTime(field.value)}`}
       onFocus={() => setIsOpen(true)}
       errorText={errorText}
       readonly
