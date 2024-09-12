@@ -5,4 +5,5 @@ import { User } from './user';
  */
 export type Profile = Pick<User, 'email' | 'name'> & {
   bio?: string;
+  dateOfBirth?: string;
 };

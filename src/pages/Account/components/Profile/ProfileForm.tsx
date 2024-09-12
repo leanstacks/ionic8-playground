@@ -15,6 +15,7 @@ import ErrorCard from 'common/components/Card/ErrorCard';
 import Input from 'common/components/Input/Input';
 import ButtonRow from 'common/components/Button/ButtonRow';
 import Textarea from 'common/components/Input/Textarea';
+import DatetimeInput from 'common/components/Input/DatetimeInput';
 
 /**
  * Profile form values.
@@ -38,6 +39,7 @@ const validationSchema = object<ProfileFormValues>({
   name: string().required('Required. '),
   email: string().required('Required. ').email('Must be an email address. '),
   bio: string().max(500, 'Must be 500 characters or less. '),
+  dateOfBirth: string().required('Required. ').datetime({ allowOffset: true }),
 });
 
 /**
@@ -81,6 +83,7 @@ const ProfileForm = ({
           email: profile.email,
           name: profile.name,
           bio: profile.bio,
+          dateOfBirth: profile.dateOfBirth,
         }}
         onSubmit={(values, { setSubmitting }) => {
           setProgress(true);
@@ -119,6 +122,7 @@ const ProfileForm = ({
               ref={focusInput}
               data-testid={`${testid}-field-name`}
             />
+
             <Input
               name="email"
               type="email"
@@ -128,6 +132,7 @@ const ProfileForm = ({
               autocomplete="off"
               data-testid={`${testid}-field-email`}
             />
+
             <Textarea
               name="bio"
               label="Bio"
@@ -137,6 +142,18 @@ const ProfileForm = ({
               maxlength={500}
               disabled={isSubmitting}
               data-testid={`${testid}-field-bio`}
+            />
+
+            <DatetimeInput
+              name="dateOfBirth"
+              label="Birthday"
+              labelPlacement="stacked"
+              disabled={isSubmitting}
+              presentation="date-time"
+              showClearButton
+              showDefaultButtons
+              showDefaultTitle
+              testid={`${testid}-field-dateofbirth`}
             />
 
             <ButtonRow className="ion-margin-top" expand="block">
