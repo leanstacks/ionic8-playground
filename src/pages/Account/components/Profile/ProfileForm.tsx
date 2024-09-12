@@ -149,14 +149,14 @@ const ProfileForm = ({
               label="Birthday"
               labelPlacement="stacked"
               disabled={isSubmitting}
-              presentation="date-time"
+              presentation="date"
               showClearButton
               showDefaultButtons
               showDefaultTitle
               testid={`${testid}-field-dateofbirth`}
             />
 
-            <ButtonRow className="ion-margin-top" expand="block">
+            <ButtonRow expand="block">
               <IonButton
                 type="button"
                 color="secondary"

@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, useState } from 'react';
+import { ComponentPropsWithoutRef, useMemo, useState } from 'react';
 import { DatetimeCustomEvent, IonButton, IonDatetime, IonInput, IonModal } from '@ionic/react';
 import { useField } from 'formik';
 import classNames from 'classnames';
@@ -69,35 +69,10 @@ const DatetimeInput = ({
     setIsOpen(false);
   };
 
-  const formatDate = (dateStr: DatetimeValue): string => {
-    if (dateStr) {
-      if (Array.isArray(dateStr)) {
-        // TODO format array of values
-        return 'array';
-      } else {
-        return new Intl.DateTimeFormat(undefined, DEFAULT_FORMAT_DATE).format(new Date(dateStr));
-      }
-    }
-    return '';
-  };
-
-  const formatTime = (dateStr: DatetimeValue): string => {
-    if (dateStr) {
-      if (Array.isArray(dateStr)) {
-        // TODO format array of values
-        return 'array';
-      } else {
-        return new Intl.DateTimeFormat(undefined, DEFAULT_FORMAT_TIME).format(new Date(dateStr));
-      }
-    }
-    return '';
-  };
-
   const getLocalDatetime = (value: DatetimeValue | undefined): DatetimeValue => {
     if (value) {
       if (Array.isArray(value)) {
-        // TODO format array value
-        return '';
+        return value.map((val) => dayjs(val).format('YYYY-MM-DD[T]HH:mm'));
       } else {
         return dayjs(value).format('YYYY-MM-DD[T]HH:mm');
       }
@@ -105,6 +80,57 @@ const DatetimeInput = ({
       return null;
     }
   };
+
+  const formattedValue = useMemo(() => {
+    if (field.value) {
+      const dateOptions: Intl.DateTimeFormatOptions =
+        datetimeProps.formatOptions?.date ?? DEFAULT_FORMAT_DATE;
+      const timeOptions: Intl.DateTimeFormatOptions =
+        datetimeProps.formatOptions?.time ?? DEFAULT_FORMAT_TIME;
+
+      switch (datetimeProps.presentation) {
+        case 'date': {
+          return `${new Intl.DateTimeFormat(undefined, dateOptions).format(new Date(field.value))}`;
+        }
+        case 'month': {
+          const options: Intl.DateTimeFormatOptions = {
+            month: datetimeProps.formatOptions?.date?.month ?? 'long',
+          };
+          return `${new Intl.DateTimeFormat(undefined, options).format(new Date(field.value))}`;
+        }
+        case 'month-year': {
+          const options: Intl.DateTimeFormatOptions = {
+            month: datetimeProps.formatOptions?.date?.month ?? 'long',
+            year: datetimeProps.formatOptions?.date?.year ?? 'numeric',
+          };
+          return `${new Intl.DateTimeFormat(undefined, options).format(new Date(field.value))}`;
+        }
+        case 'time': {
+          return `${new Intl.DateTimeFormat(undefined, timeOptions).format(new Date(field.value))}`;
+        }
+        case 'time-date': {
+          return `${new Intl.DateTimeFormat(undefined, timeOptions).format(
+            new Date(field.value),
+          )} ${new Intl.DateTimeFormat(undefined, dateOptions).format(new Date(field.value))}`;
+        }
+        case 'year': {
+          const options: Intl.DateTimeFormatOptions = {
+            year: datetimeProps.formatOptions?.date?.year ?? 'numeric',
+          };
+          return `${new Intl.DateTimeFormat(undefined, options).format(new Date(field.value))}`;
+        }
+        case 'date-time':
+        default: {
+          return `${new Intl.DateTimeFormat(undefined, dateOptions).format(
+            new Date(field.value),
+          )} ${new Intl.DateTimeFormat(undefined, timeOptions).format(new Date(field.value))}`;
+        }
+      }
+    } else {
+      return '';
+    }
+  }, [datetimeProps.presentation, datetimeProps.formatOptions, field.value]);
+  console.log(`formattedValue::${formattedValue}`);
 
   return (
     <IonInput
@@ -119,7 +145,7 @@ const DatetimeInput = ({
       data-testid={testid}
       label={label}
       labelPlacement={labelPlacement}
-      value={`${formatDate(field.value)} ${formatTime(field.value)}`}
+      value={formattedValue}
       onFocus={() => setIsOpen(true)}
       errorText={errorText}
       readonly
