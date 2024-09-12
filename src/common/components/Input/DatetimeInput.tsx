@@ -2,12 +2,12 @@ import { ComponentPropsWithoutRef, useState } from 'react';
 import { DatetimeCustomEvent, IonButton, IonDatetime, IonInput, IonModal } from '@ionic/react';
 import { useField } from 'formik';
 import classNames from 'classnames';
+import dayjs from 'dayjs';
 
 import './DatetimeInput.scss';
 import { PropsWithTestId } from '../types';
 import Input from './Input';
 import Icon, { IconName } from '../Icon/Icon';
-import dayjs from 'dayjs';
 
 const DEFAULT_FORMAT_DATE: Intl.DateTimeFormatOptions = {
   month: 'short',
@@ -36,26 +36,31 @@ const DatetimeInput = ({
 
   const errorText: string | undefined = meta.touched ? meta.error : undefined;
 
-  console.log(`meta::${JSON.stringify(meta)}`);
+  console.log(`DatetimeInput::field::meta::${JSON.stringify(meta)}`);
 
   const onChange = async (e: DatetimeCustomEvent) => {
     console.log(`DatetimeInput::onChange::value::${e.detail.value}`);
-    helpers.setTouched(true);
     const value = e.detail.value;
     if (value) {
       if (Array.isArray(value)) {
         setInternalValue(value.map((val) => dayjs(val).toISOString()));
+        await helpers.setValue(
+          value.map((val) => dayjs(val).toISOString()),
+          true,
+        );
       } else {
         setInternalValue(dayjs(value).toISOString());
+        await helpers.setValue(dayjs(value).toISOString(), true);
       }
     } else {
       setInternalValue(undefined);
+      await helpers.setValue(undefined, true);
     }
   };
 
   const onDidDismiss = async () => {
     console.log(`DatetimeInput::onDidDismiss::value::${internalValue}`);
-    await helpers.setValue(internalValue);
+    await helpers.setTouched(true, true);
     setIsOpen(false);
   };
 
