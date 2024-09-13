@@ -134,7 +134,6 @@ const DatetimeInput = ({
 
   return (
     <IonInput
-      name="placeholder"
       className={classNames(
         'ls-datetime-input',
         className,
@@ -144,35 +143,35 @@ const DatetimeInput = ({
       )}
       data-testid={testid}
       disabled={datetimeProps.disabled}
+      errorText={errorText}
       label={label}
       labelPlacement={labelPlacement}
-      value={formattedValue}
       onFocus={() => setIsOpen(true)}
-      errorText={errorText}
       readonly
+      value={formattedValue}
     >
       <IonButton
         aria-hidden="true"
+        data-testid={`${testid}-button-calendar`}
+        disabled={datetimeProps.disabled}
         fill="clear"
         onClick={() => setIsOpen(true)}
         slot="end"
-        disabled={datetimeProps.disabled}
-        data-testid={`${testid}-button-calendar`}
       >
         <Icon icon={IconName.Calendar} />
       </IonButton>
 
       <IonModal
         className="ls-datetime-modal"
+        data-testid={`${testid}-modal`}
         isOpen={isOpen}
         onIonModalDidDismiss={onDidDismiss}
-        data-testid={`${testid}-modal`}
       >
         <IonDatetime
-          onIonChange={onChange}
           {...datetimeProps}
-          value={getLocalDatetime(internalValue)}
           data-testid={`${testid}-datetime`}
+          onIonChange={onChange}
+          value={getLocalDatetime(internalValue)}
         ></IonDatetime>
       </IonModal>
     </IonInput>
