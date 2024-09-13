@@ -143,6 +143,7 @@ const DatetimeInput = ({
         { 'ion-valid': meta.touched && !meta.error },
       )}
       data-testid={testid}
+      disabled={datetimeProps.disabled}
       label={label}
       labelPlacement={labelPlacement}
       value={formattedValue}
@@ -155,6 +156,7 @@ const DatetimeInput = ({
         fill="clear"
         onClick={() => setIsOpen(true)}
         slot="end"
+        disabled={datetimeProps.disabled}
         data-testid={`${testid}-button-calendar`}
       >
         <Icon icon={IconName.Calendar} />
