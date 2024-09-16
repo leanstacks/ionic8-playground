@@ -1,8 +1,9 @@
 import { IonButton, useIonRouter, useIonViewDidEnter } from '@ionic/react';
 import { useRef, useState } from 'react';
 import { Form, Formik } from 'formik';
-import { object, string } from 'yup';
+import { date, object, string } from 'yup';
 import classNames from 'classnames';
+import dayjs from 'dayjs';
 
 import './ProfileForm.scss';
 import { BaseComponentProps } from 'common/components/types';
@@ -39,7 +40,7 @@ const validationSchema = object<ProfileFormValues>({
   name: string().required('Required. '),
   email: string().required('Required. ').email('Must be an email address. '),
   bio: string().max(500, 'Must be 500 characters or less. '),
-  dateOfBirth: string().required('Required. ').datetime({ allowOffset: true }),
+  dateOfBirth: date().required('Required. '),
 });
 
 /**
@@ -111,7 +112,7 @@ const ProfileForm = ({
         }}
         validationSchema={validationSchema}
       >
-        {({ dirty, isSubmitting }) => (
+        {({ dirty, isValid, isSubmitting }) => (
           <Form>
             <Input
               name="name"
@@ -149,6 +150,7 @@ const ProfileForm = ({
               label="Birthday"
               labelPlacement="stacked"
               disabled={isSubmitting}
+              formatValue={(val) => dayjs(val).format('YYYY-MM-DD')}
               presentation="date"
               showClearButton
               showDefaultButtons
@@ -170,7 +172,7 @@ const ProfileForm = ({
               <IonButton
                 type="submit"
                 color="primary"
-                disabled={isSubmitting || !dirty}
+                disabled={isSubmitting || !dirty || !isValid}
                 data-testid={`${testid}-button-submit`}
               >
                 Save

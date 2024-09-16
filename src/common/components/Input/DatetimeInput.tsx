@@ -9,27 +9,51 @@ import { PropsWithTestId } from '../types';
 import Input from './Input';
 import Icon, { IconName } from '../Icon/Icon';
 
+/**
+ * Default `IonDatetime` `formatOptions` for the date. May be overridden by
+ * supplying a `formatOptions` property.
+ * @see {@link IonDatetime}
+ */
 const DEFAULT_FORMAT_DATE: Intl.DateTimeFormatOptions = {
   month: 'short',
   day: 'numeric',
   year: 'numeric',
 };
 
+/**
+ * Default `IonDatetime` `formatOptions` for the time. May be overridden by
+ * supplying a `formatOptions` property.
+ * @see {@link IonDatetime}
+ */
 const DEFAULT_FORMAT_TIME: Intl.DateTimeFormatOptions = {
   hour: 'numeric',
   minute: '2-digit',
 };
 
-type DatetimeValue = string | string[] | null;
+/**
+ * `DatetimeValue` represents the possible raw values from `IonDatetime`.
+ */
+export type DatetimeValue = string | string[] | null;
 
+/**
+ * Properties for the `DatetimeInput` component.
+ * @param {function} formatValue - Optional. A function which accepts the raw
+ * `IonDatetime` value and formats it for the Formik field value.
+ * @see {@link PropsWithTestId}
+ * @see {@link IonDatetime}
+ * @see {@link IonInput}
+ */
 interface DatetimeInputProps
   extends PropsWithTestId,
     Pick<ComponentPropsWithoutRef<typeof Input>, 'label' | 'labelPlacement'>,
     Omit<ComponentPropsWithoutRef<typeof IonDatetime>, 'name'>,
-    Required<Pick<ComponentPropsWithoutRef<typeof IonDatetime>, 'name'>> {}
+    Required<Pick<ComponentPropsWithoutRef<typeof IonDatetime>, 'name'>> {
+  formatValue?: (value?: string | null) => string;
+}
 
 const DatetimeInput = ({
   className,
+  formatValue,
   label,
   labelPlacement,
   testid = 'input-datetime',
@@ -43,19 +67,23 @@ const DatetimeInput = ({
 
   console.log(`DatetimeInput::field::meta::${JSON.stringify(meta)}`);
 
+  const formatDatetime = (value?: string | null): string => {
+    return formatValue ? formatValue(value) : dayjs(value).toISOString();
+  };
+
   const onChange = async (e: DatetimeCustomEvent) => {
     console.log(`DatetimeInput::onChange::value::${e.detail.value}`);
     const value = e.detail.value;
     if (value) {
       if (Array.isArray(value)) {
-        setInternalValue(value.map((val) => dayjs(val).toISOString()));
+        setInternalValue(value.map((val) => formatDatetime(val)));
         await helpers.setValue(
-          value.map((val) => dayjs(val).toISOString()),
+          value.map((val) => formatDatetime(val)),
           true,
         );
       } else {
-        setInternalValue(dayjs(value).toISOString());
-        await helpers.setValue(dayjs(value).toISOString(), true);
+        setInternalValue(formatDatetime(value));
+        await helpers.setValue(formatDatetime(value), true);
       }
     } else {
       setInternalValue(undefined);
