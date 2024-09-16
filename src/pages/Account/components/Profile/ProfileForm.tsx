@@ -3,7 +3,6 @@ import { useRef, useState } from 'react';
 import { Form, Formik } from 'formik';
 import { date, object, string } from 'yup';
 import classNames from 'classnames';
-import dayjs from 'dayjs';
 
 import './ProfileForm.scss';
 import { BaseComponentProps } from 'common/components/types';
@@ -16,7 +15,7 @@ import ErrorCard from 'common/components/Card/ErrorCard';
 import Input from 'common/components/Input/Input';
 import ButtonRow from 'common/components/Button/ButtonRow';
 import Textarea from 'common/components/Input/Textarea';
-import DatetimeInput from 'common/components/Input/DatetimeInput';
+import DateInput from 'common/components/Input/DateInput';
 
 /**
  * Profile form values.
@@ -112,7 +111,7 @@ const ProfileForm = ({
         }}
         validationSchema={validationSchema}
       >
-        {({ dirty, isValid, isSubmitting }) => (
+        {({ dirty, isSubmitting }) => (
           <Form>
             <Input
               name="name"
@@ -145,13 +144,11 @@ const ProfileForm = ({
               data-testid={`${testid}-field-bio`}
             />
 
-            <DatetimeInput
+            <DateInput
               name="dateOfBirth"
               label="Birthday"
               labelPlacement="stacked"
               disabled={isSubmitting}
-              formatValue={(val) => dayjs(val).format('YYYY-MM-DD')}
-              presentation="date"
               showClearButton
               showDefaultButtons
               showDefaultTitle
@@ -172,7 +169,7 @@ const ProfileForm = ({
               <IonButton
                 type="submit"
                 color="primary"
-                disabled={isSubmitting || !dirty || !isValid}
+                disabled={isSubmitting || !dirty}
                 data-testid={`${testid}-button-submit`}
               >
                 Save
