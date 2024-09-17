@@ -36,7 +36,7 @@ const DEFAULT_FORMAT_TIME: Intl.DateTimeFormatOptions = {
  * `DatetimeValue` describes the possible types of an `IonDatetime` whose `presentation`
  * is 'date-time'.
  */
-export type DatetimeValue = string | null;
+type DatetimeValue = string | null;
 
 /**
  * Properties for the `DatetimeInput` component.
@@ -52,6 +52,17 @@ interface DatetimeInputProps
     Omit<ComponentPropsWithoutRef<typeof IonDatetime>, 'multiple' | 'name' | 'presentation'>,
     Required<Pick<ComponentPropsWithoutRef<typeof IonDatetime>, 'name'>> {}
 
+/**
+ * The `DatetimeInput` component renders an `IonDatetime` which is integrated with
+ * Formik. The form field value is displayed in an `IonInput`. When that input
+ * is clicked, an `IonDatetime` is presented within an `IonModal`.
+ *
+ * Use this component when you need to collect a date and time, a timestamp,
+ * value within a form. The value will be set as an ISO8601 timestamp.
+ *
+ * @param {DateInputProps} props - Component properties.
+ * @returns {JSX.Element} JSX
+ */
 const DatetimeInput = ({
   className,
   label,
@@ -60,7 +71,7 @@ const DatetimeInput = ({
   testid = 'input-datetime',
   ...datetimeProps
 }: DatetimeInputProps): JSX.Element => {
-  const [field, meta, helpers] = useField(datetimeProps.name);
+  const [field, meta, helpers] = useField<DatetimeValue>(datetimeProps.name);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   // populate error text only if the field has been touched and has an error
@@ -91,7 +102,7 @@ const DatetimeInput = ({
   };
 
   // format the value to display in the IonInput
-  const formattedValue = useMemo(() => {
+  const inputValue = useMemo(() => {
     if (field.value) {
       const date = new Intl.DateTimeFormat(
         undefined,
@@ -130,7 +141,7 @@ const DatetimeInput = ({
         labelPlacement={labelPlacement}
         onFocus={() => setIsOpen(true)}
         readonly
-        value={formattedValue}
+        value={inputValue}
       >
         <IonButton
           aria-hidden="true"

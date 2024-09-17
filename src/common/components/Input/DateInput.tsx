@@ -25,7 +25,7 @@ const DEFAULT_FORMAT_DATE: Intl.DateTimeFormatOptions = {
  * `DateValue` describes the possible types of an `IonDatetime` whose `presentation`
  * is 'date'.
  */
-export type DateValue = string | null;
+type DateValue = string | null;
 
 /**
  * Properties for the `DateInput` component.
@@ -41,6 +41,17 @@ interface DateInputProps
     Omit<ComponentPropsWithoutRef<typeof IonDatetime>, 'multiple' | 'name' | 'presentation'>,
     Required<Pick<ComponentPropsWithoutRef<typeof IonDatetime>, 'name'>> {}
 
+/**
+ * The `DateInput` component renders an `IonDatetime` which is integrated with
+ * Formik. The form field value is displayed in an `IonInput`. When that input
+ * is clicked, an `IonDatetime` is presented within an `IonModal`.
+ *
+ * Use this component when you need to collect a date value within a form. The
+ * date value will be set as an ISO8601 date, e.g. YYYY-MM-DD
+ *
+ * @param {DateInputProps} props - Component properties.
+ * @returns {JSX.Element} JSX
+ */
 const DateInput = ({
   className,
   label,
@@ -49,7 +60,7 @@ const DateInput = ({
   testid = 'input-date',
   ...datetimeProps
 }: DateInputProps): JSX.Element => {
-  const [field, meta, helpers] = useField(datetimeProps.name);
+  const [field, meta, helpers] = useField<DateValue>(datetimeProps.name);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   // populate error text only if the field has been touched and has an error
