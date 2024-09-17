@@ -51,7 +51,6 @@ const DateInput = ({
 }: DateInputProps): JSX.Element => {
   const [field, meta, helpers] = useField(datetimeProps.name);
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [internalValue, setInternalValue] = useState<DateValue | undefined>(field.value);
 
   // populate error text only if the field has been touched and has an error
   const errorText: string | undefined = meta.touched ? meta.error : undefined;
@@ -64,11 +63,9 @@ const DateInput = ({
     const value = e.detail.value as DateValue;
     if (value) {
       const isoDate = dayjs(value).format('YYYY-MM-DD');
-      setInternalValue(isoDate);
       await helpers.setValue(isoDate, true);
     } else {
-      setInternalValue(undefined);
-      await helpers.setValue(undefined, true);
+      await helpers.setValue(null, true);
     }
     datetimeProps.onIonChange?.(e);
   };
@@ -83,7 +80,8 @@ const DateInput = ({
   };
 
   // format the value to display in the IonInput
-  const formattedValue = useMemo(() => {
+  // use UTC so that local timezone offset does not change the date
+  const inputValue = useMemo(() => {
     if (field.value) {
       const dateOptions: Intl.DateTimeFormatOptions = {
         ...(datetimeProps.formatOptions?.date ?? DEFAULT_FORMAT_DATE),
@@ -95,6 +93,11 @@ const DateInput = ({
       return '';
     }
   }, [datetimeProps.formatOptions, field.value]);
+
+  // format the value for the IonDatetime. it must be a local ISO date or null/undefined
+  const datetimeValue = useMemo(() => {
+    return field.value ? dayjs(field.value).format('YYYY-MM-DD[T]HH:mm') : null;
+  }, [field.value]);
 
   return (
     <>
@@ -113,7 +116,7 @@ const DateInput = ({
         labelPlacement={labelPlacement}
         onFocus={() => setIsOpen(true)}
         readonly
-        value={formattedValue}
+        value={inputValue}
       >
         <IonButton
           aria-hidden="true"
@@ -139,7 +142,7 @@ const DateInput = ({
           multiple={false}
           onIonChange={onChange}
           presentation="date"
-          value={internalValue}
+          value={datetimeValue}
         ></IonDatetime>
       </IonModal>
     </>

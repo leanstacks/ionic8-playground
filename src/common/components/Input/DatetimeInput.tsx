@@ -62,7 +62,6 @@ const DatetimeInput = ({
 }: DatetimeInputProps): JSX.Element => {
   const [field, meta, helpers] = useField(datetimeProps.name);
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [internalValue, setInternalValue] = useState<DatetimeValue | undefined>(field.value);
 
   // populate error text only if the field has been touched and has an error
   const errorText: string | undefined = meta.touched ? meta.error : undefined;
@@ -75,11 +74,9 @@ const DatetimeInput = ({
     const value = e.detail.value as DatetimeValue;
     if (value) {
       const isoDate = dayjs(value).toISOString();
-      setInternalValue(isoDate);
       await helpers.setValue(isoDate, true);
     } else {
-      setInternalValue(undefined);
-      await helpers.setValue(undefined, true);
+      await helpers.setValue(null, true);
     }
     datetimeProps.onIonChange?.(e);
   };
@@ -91,15 +88,6 @@ const DatetimeInput = ({
     await helpers.setTouched(true, true);
     setIsOpen(false);
     onIonModalDidDismiss?.(e);
-  };
-
-  const toLocalDate = (value?: DatetimeValue): string | undefined => {
-    if (value) {
-      const localDate = dayjs(value).format('YYYY-MM-DD[T]HH:mm');
-      return localDate;
-    } else {
-      return undefined;
-    }
   };
 
   // format the value to display in the IonInput
@@ -119,6 +107,11 @@ const DatetimeInput = ({
       return '';
     }
   }, [datetimeProps.formatOptions, field.value]);
+
+  // format the value for the IonDatetime. it must be a local ISO date or null/undefined
+  const datetimeValue = useMemo(() => {
+    return field.value ? dayjs(field.value).format('YYYY-MM-DD[T]HH:mm') : null;
+  }, [field.value]);
 
   return (
     <>
@@ -163,7 +156,7 @@ const DatetimeInput = ({
           multiple={false}
           onIonChange={onChange}
           presentation="date-time"
-          value={toLocalDate(internalValue)}
+          value={datetimeValue}
         ></IonDatetime>
       </IonModal>
     </>
