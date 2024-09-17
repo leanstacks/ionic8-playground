@@ -1,4 +1,5 @@
 import { ComponentPropsWithoutRef, useMemo, useState } from 'react';
+import { ModalCustomEvent } from '@ionic/core';
 import { DatetimeCustomEvent, IonButton, IonDatetime, IonInput, IonModal } from '@ionic/react';
 import { useField } from 'formik';
 import classNames from 'classnames';
@@ -6,12 +7,12 @@ import dayjs from 'dayjs';
 
 import './DatetimeInput.scss';
 import { PropsWithTestId } from '../types';
-import Input from './Input';
 import Icon, { IconName } from '../Icon/Icon';
 
 /**
  * Default `IonDatetime` `formatOptions` for the date. May be overridden by
- * supplying a `formatOptions` property.
+ * supplying a `formatOptions` property. Controls how the date is displayed
+ * in the form input.
  * @see {@link IonDatetime}
  */
 const DEFAULT_FORMAT_DATE: Intl.DateTimeFormatOptions = {
@@ -22,7 +23,8 @@ const DEFAULT_FORMAT_DATE: Intl.DateTimeFormatOptions = {
 
 /**
  * Default `IonDatetime` `formatOptions` for the time. May be overridden by
- * supplying a `formatOptions` property.
+ * supplying a `formatOptions` property. Controls how the time is displayed
+ * in the form input.
  * @see {@link IonDatetime}
  */
 const DEFAULT_FORMAT_TIME: Intl.DateTimeFormatOptions = {
@@ -31,31 +33,30 @@ const DEFAULT_FORMAT_TIME: Intl.DateTimeFormatOptions = {
 };
 
 /**
- * `DatetimeValue` represents the possible raw values from `IonDatetime`.
+ * `DatetimeValue` describes the possible types of an `IonDatetime` whose `presentation`
+ * is 'date-time'.
  */
-export type DatetimeValue = string | string[] | null;
+export type DatetimeValue = string | null;
 
 /**
  * Properties for the `DatetimeInput` component.
- * @param {function} formatValue - Optional. A function which accepts the raw
- * `IonDatetime` value and formats it for the Formik field value.
  * @see {@link PropsWithTestId}
  * @see {@link IonDatetime}
  * @see {@link IonInput}
+ * @see {@link IonModal}
  */
 interface DatetimeInputProps
   extends PropsWithTestId,
-    Pick<ComponentPropsWithoutRef<typeof Input>, 'label' | 'labelPlacement'>,
-    Omit<ComponentPropsWithoutRef<typeof IonDatetime>, 'name'>,
-    Required<Pick<ComponentPropsWithoutRef<typeof IonDatetime>, 'name'>> {
-  formatValue?: (value?: string | null) => string;
-}
+    Pick<ComponentPropsWithoutRef<typeof IonInput>, 'label' | 'labelPlacement'>,
+    Pick<ComponentPropsWithoutRef<typeof IonModal>, 'onIonModalDidDismiss'>,
+    Omit<ComponentPropsWithoutRef<typeof IonDatetime>, 'multiple' | 'name' | 'presentation'>,
+    Required<Pick<ComponentPropsWithoutRef<typeof IonDatetime>, 'name'>> {}
 
 const DatetimeInput = ({
   className,
-  formatValue,
   label,
   labelPlacement,
+  onIonModalDidDismiss,
   testid = 'input-datetime',
   ...datetimeProps
 }: DatetimeInputProps): JSX.Element => {
@@ -63,131 +64,92 @@ const DatetimeInput = ({
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [internalValue, setInternalValue] = useState<DatetimeValue | undefined>(field.value);
 
+  // populate error text only if the field has been touched and has an error
   const errorText: string | undefined = meta.touched ? meta.error : undefined;
 
-  console.log(`DatetimeInput::field::meta::${JSON.stringify(meta)}`);
-
-  const formatDatetime = (value?: string | null): string => {
-    return formatValue ? formatValue(value) : dayjs(value).toISOString();
-  };
-
-  const onChange = async (e: DatetimeCustomEvent) => {
-    console.log(`DatetimeInput::onChange::value::${e.detail.value}`);
-    const value = e.detail.value;
+  /**
+   * Handle change events emitted by `IonDatetime`.
+   * @param {DatetimeCustomEvent} e - The event.
+   */
+  const onChange = async (e: DatetimeCustomEvent): Promise<void> => {
+    const value = e.detail.value as DatetimeValue;
     if (value) {
-      if (Array.isArray(value)) {
-        setInternalValue(value.map((val) => formatDatetime(val)));
-        await helpers.setValue(
-          value.map((val) => formatDatetime(val)),
-          true,
-        );
-      } else {
-        setInternalValue(formatDatetime(value));
-        await helpers.setValue(formatDatetime(value), true);
-      }
+      const isoDate = dayjs(value).toISOString();
+      setInternalValue(isoDate);
+      await helpers.setValue(isoDate, true);
     } else {
       setInternalValue(undefined);
       await helpers.setValue(undefined, true);
     }
+    datetimeProps.onIonChange?.(e);
   };
 
-  const onDidDismiss = async () => {
-    console.log(`DatetimeInput::onDidDismiss::value::${internalValue}`);
+  /**
+   * Handle 'did dismiss' events emitted by `IonModal`.
+   */
+  const onDidDismiss = async (e: ModalCustomEvent): Promise<void> => {
     await helpers.setTouched(true, true);
     setIsOpen(false);
+    onIonModalDidDismiss?.(e);
   };
 
-  const getLocalDatetime = (value: DatetimeValue | undefined): DatetimeValue => {
+  const toLocalDate = (value?: DatetimeValue): string | undefined => {
     if (value) {
-      if (Array.isArray(value)) {
-        return value.map((val) => dayjs(val).format('YYYY-MM-DD[T]HH:mm'));
-      } else {
-        return dayjs(value).format('YYYY-MM-DD[T]HH:mm');
-      }
+      const localDate = dayjs(value).format('YYYY-MM-DD[T]HH:mm');
+      return localDate;
     } else {
-      return null;
+      return undefined;
     }
   };
 
+  // format the value to display in the IonInput
   const formattedValue = useMemo(() => {
     if (field.value) {
-      const dateOptions: Intl.DateTimeFormatOptions =
-        datetimeProps.formatOptions?.date ?? DEFAULT_FORMAT_DATE;
-      const timeOptions: Intl.DateTimeFormatOptions =
-        datetimeProps.formatOptions?.time ?? DEFAULT_FORMAT_TIME;
+      const date = new Intl.DateTimeFormat(
+        undefined,
+        datetimeProps.formatOptions?.date ?? DEFAULT_FORMAT_DATE,
+      ).format(new Date(field.value));
+      const time = new Intl.DateTimeFormat(
+        undefined,
+        datetimeProps.formatOptions?.time ?? DEFAULT_FORMAT_TIME,
+      ).format(new Date(field.value));
 
-      switch (datetimeProps.presentation) {
-        case 'date': {
-          return `${new Intl.DateTimeFormat(undefined, dateOptions).format(new Date(field.value))}`;
-        }
-        case 'month': {
-          const options: Intl.DateTimeFormatOptions = {
-            month: datetimeProps.formatOptions?.date?.month ?? 'long',
-          };
-          return `${new Intl.DateTimeFormat(undefined, options).format(new Date(field.value))}`;
-        }
-        case 'month-year': {
-          const options: Intl.DateTimeFormatOptions = {
-            month: datetimeProps.formatOptions?.date?.month ?? 'long',
-            year: datetimeProps.formatOptions?.date?.year ?? 'numeric',
-          };
-          return `${new Intl.DateTimeFormat(undefined, options).format(new Date(field.value))}`;
-        }
-        case 'time': {
-          return `${new Intl.DateTimeFormat(undefined, timeOptions).format(new Date(field.value))}`;
-        }
-        case 'time-date': {
-          return `${new Intl.DateTimeFormat(undefined, timeOptions).format(
-            new Date(field.value),
-          )} ${new Intl.DateTimeFormat(undefined, dateOptions).format(new Date(field.value))}`;
-        }
-        case 'year': {
-          const options: Intl.DateTimeFormatOptions = {
-            year: datetimeProps.formatOptions?.date?.year ?? 'numeric',
-          };
-          return `${new Intl.DateTimeFormat(undefined, options).format(new Date(field.value))}`;
-        }
-        case 'date-time':
-        default: {
-          return `${new Intl.DateTimeFormat(undefined, dateOptions).format(
-            new Date(field.value),
-          )} ${new Intl.DateTimeFormat(undefined, timeOptions).format(new Date(field.value))}`;
-        }
-      }
+      return `${date} ${time}`;
     } else {
       return '';
     }
-  }, [datetimeProps.presentation, datetimeProps.formatOptions, field.value]);
-  console.log(`formattedValue::${formattedValue}`);
+  }, [datetimeProps.formatOptions, field.value]);
 
   return (
-    <IonInput
-      className={classNames(
-        'ls-datetime-input',
-        className,
-        { 'ion-touched': meta.touched },
-        { 'ion-invalid': meta.error },
-        { 'ion-valid': meta.touched && !meta.error },
-      )}
-      data-testid={testid}
-      disabled={datetimeProps.disabled}
-      errorText={errorText}
-      label={label}
-      labelPlacement={labelPlacement}
-      onFocus={() => setIsOpen(true)}
-      readonly
-      value={formattedValue}
-    >
-      <IonButton
-        aria-hidden="true"
-        data-testid={`${testid}-button-calendar`}
+    <>
+      <IonInput
+        className={classNames(
+          'ls-datetime-input',
+          className,
+          { 'ion-touched': meta.touched },
+          { 'ion-invalid': meta.error },
+          { 'ion-valid': meta.touched && !meta.error },
+        )}
+        data-testid={testid}
         disabled={datetimeProps.disabled}
-        fill="clear"
-        onClick={() => setIsOpen(true)}
-        slot="end"
+        errorText={errorText}
+        label={label}
+        labelPlacement={labelPlacement}
+        onFocus={() => setIsOpen(true)}
+        readonly
+        value={formattedValue}
       >
-        <Icon icon={IconName.Calendar} />
-      </IonButton>
+        <IonButton
+          aria-hidden="true"
+          data-testid={`${testid}-button-calendar`}
+          disabled={datetimeProps.disabled}
+          fill="clear"
+          onClick={() => setIsOpen(true)}
+          slot="end"
+        >
+          <Icon icon={IconName.Calendar} />
+        </IonButton>
+      </IonInput>
 
       <IonModal
         className="ls-datetime-modal"
@@ -198,11 +160,13 @@ const DatetimeInput = ({
         <IonDatetime
           {...datetimeProps}
           data-testid={`${testid}-datetime`}
+          multiple={false}
           onIonChange={onChange}
-          value={getLocalDatetime(internalValue)}
+          presentation="date-time"
+          value={toLocalDate(internalValue)}
         ></IonDatetime>
       </IonModal>
-    </IonInput>
+    </>
   );
 };
 
