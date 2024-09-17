@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
+import userEvent from '@testing-library/user-event';
 import { Form, Formik } from 'formik';
 
 import { render, screen } from 'test/test-utils';
 
 import DatetimeInput from '../DatetimeInput';
-import userEvent from '@testing-library/user-event';
 
 describe('DatetimeInput', () => {
   it('should render successfully', async () => {
