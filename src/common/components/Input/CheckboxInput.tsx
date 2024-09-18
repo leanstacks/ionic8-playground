@@ -58,12 +58,6 @@ const CheckboxInput = ({
       } else {
         await helpers.setValue(meta.value.filter((val) => val !== e.detail.value));
       }
-    } else {
-      if (e.detail.checked) {
-        await helpers.setValue(e.detail.value);
-      } else {
-        await helpers.setValue(undefined);
-      }
     }
     onIonChange?.(e);
   };
