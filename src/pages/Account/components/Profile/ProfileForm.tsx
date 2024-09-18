@@ -1,7 +1,7 @@
 import { IonButton, useIonRouter, useIonViewDidEnter } from '@ionic/react';
 import { useRef, useState } from 'react';
 import { Form, Formik } from 'formik';
-import { object, string } from 'yup';
+import { date, object, string } from 'yup';
 import classNames from 'classnames';
 
 import './ProfileForm.scss';
@@ -15,6 +15,7 @@ import ErrorCard from 'common/components/Card/ErrorCard';
 import Input from 'common/components/Input/Input';
 import ButtonRow from 'common/components/Button/ButtonRow';
 import Textarea from 'common/components/Input/Textarea';
+import DateInput from 'common/components/Input/DateInput';
 
 /**
  * Profile form values.
@@ -38,6 +39,7 @@ const validationSchema = object<ProfileFormValues>({
   name: string().required('Required. '),
   email: string().required('Required. ').email('Must be an email address. '),
   bio: string().max(500, 'Must be 500 characters or less. '),
+  dateOfBirth: date().required('Required. '),
 });
 
 /**
@@ -81,6 +83,7 @@ const ProfileForm = ({
           email: profile.email,
           name: profile.name,
           bio: profile.bio,
+          dateOfBirth: profile.dateOfBirth,
         }}
         onSubmit={(values, { setSubmitting }) => {
           setProgress(true);
@@ -119,6 +122,7 @@ const ProfileForm = ({
               ref={focusInput}
               data-testid={`${testid}-field-name`}
             />
+
             <Input
               name="email"
               type="email"
@@ -128,6 +132,7 @@ const ProfileForm = ({
               autocomplete="off"
               data-testid={`${testid}-field-email`}
             />
+
             <Textarea
               name="bio"
               label="Bio"
@@ -139,7 +144,18 @@ const ProfileForm = ({
               data-testid={`${testid}-field-bio`}
             />
 
-            <ButtonRow className="ion-margin-top" expand="block">
+            <DateInput
+              name="dateOfBirth"
+              label="Birthday"
+              labelPlacement="stacked"
+              disabled={isSubmitting}
+              showClearButton
+              showDefaultButtons
+              showDefaultTitle
+              testid={`${testid}-field-dateofbirth`}
+            />
+
+            <ButtonRow expand="block">
               <IonButton
                 type="button"
                 color="secondary"

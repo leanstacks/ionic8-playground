@@ -1,5 +1,10 @@
 .form-profile {
-  ion-input {
+  ion-input,
+  ion-textarea {
     margin-bottom: 0.5rem;
+  }
+
+  .button-row {
+    margin-top: 2rem;
   }
 }
