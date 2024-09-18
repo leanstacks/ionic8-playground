@@ -20,6 +20,14 @@ interface CheckboxInputProps
  * The `CheckboxInput` component renders a standardized `IonCheckbox` which is
  * integrated with Formik.
  *
+ * CheckboxInput supports two types of field values: `boolean` and `string[]`.
+ *
+ * To create a `boolean` field, use a single `CheckboxInput` within a form and
+ * do not use the `value` prop.
+ *
+ * To create a `string[]` field, use one to many `CheckboxInput` within a form
+ * with the same `name` and a unique `value` property.s
+ *
  * @param {CheckboxInputProps} props - Component properties.
  * @returns {JSX.Element} JSX
  */
@@ -28,17 +36,35 @@ const CheckboxInput = ({
   name,
   onIonChange,
   testid = 'ls-input-checkbox',
+  value,
   ...checkboxProps
 }: CheckboxInputProps): JSX.Element => {
-  /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
-  const [field, meta, helpers] = useField<boolean>(name);
+  const [field, meta, helpers] = useField({
+    name,
+    type: 'checkbox',
+    value,
+  });
 
   /**
-   * Handles changes to the `checked` property as a result of a user action.
+   * Handles changes to the field value as a result of a user action.
    * @param {CheckboxCustomEvent} e - The event.
    */
   const onChange = async (e: CheckboxCustomEvent): Promise<void> => {
-    await helpers.setValue(e.detail.checked);
+    if (typeof meta.value === 'boolean') {
+      await helpers.setValue(e.detail.checked);
+    } else if (Array.isArray(meta.value)) {
+      if (e.detail.checked) {
+        await helpers.setValue([...meta.value, e.detail.value]);
+      } else {
+        await helpers.setValue(meta.value.filter((val) => val !== e.detail.value));
+      }
+    } else {
+      if (e.detail.checked) {
+        await helpers.setValue(e.detail.value);
+      } else {
+        await helpers.setValue(undefined);
+      }
+    }
     onIonChange?.(e);
   };
 

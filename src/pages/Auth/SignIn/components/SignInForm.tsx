@@ -9,16 +9,20 @@ import {
 import { useRef, useState } from 'react';
 import classNames from 'classnames';
 import { Form, Formik } from 'formik';
-import { object, string } from 'yup';
+import { boolean, object, string } from 'yup';
 
 import './SignInForm.scss';
 import { BaseComponentProps } from 'common/components/types';
+import { RememberMe } from 'common/models/auth';
+import storage from 'common/utils/storage';
+import { StorageKey } from 'common/utils/constants';
 import { useSignIn } from '../api/useSignIn';
 import { useProgress } from 'common/hooks/useProgress';
 import Input from 'common/components/Input/Input';
 import ErrorCard from 'common/components/Card/ErrorCard';
 import Icon, { IconName } from 'common/components/Icon/Icon';
 import HeaderRow from 'common/components/Text/HeaderRow';
+import CheckboxInput from 'common/components/Input/CheckboxInput';
 
 /**
  * Properties for the `SignInForm` component.
@@ -33,6 +37,7 @@ interface SignInFormProps extends BaseComponentProps {}
 interface SignInFormValues {
   username: string;
   password: string;
+  rememberMe: boolean;
 }
 
 /**
@@ -41,6 +46,7 @@ interface SignInFormValues {
 const validationSchema = object<SignInFormValues>({
   username: string().required('Required. '),
   password: string().required('Required. '),
+  rememberMe: boolean().default(false),
 });
 
 /**
@@ -54,6 +60,9 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
   const { setIsActive: setShowProgress } = useProgress();
   const router = useIonRouter();
   const { mutate: signIn } = useSignIn();
+
+  // remember me details
+  const rememberMe = storage.getJsonItem<RememberMe>(StorageKey.RememberMe);
 
   useIonViewDidEnter(() => {
     focusInput.current?.setFocus();
@@ -71,12 +80,23 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
 
       <Formik<SignInFormValues>
         enableReinitialize={true}
-        initialValues={{ username: '', password: '' }}
+        initialValues={{
+          username: rememberMe?.username ?? '',
+          password: '',
+          rememberMe: !!rememberMe,
+        }}
         onSubmit={(values, { setSubmitting }) => {
           setError('');
           setShowProgress(true);
           signIn(values.username, {
             onSuccess: () => {
+              if (values.rememberMe) {
+                storage.setJsonItem<RememberMe>(StorageKey.RememberMe, {
+                  username: values.username,
+                });
+              } else {
+                storage.removeItem(StorageKey.RememberMe);
+              }
               router.push('/tabs', 'forward', 'replace');
             },
             onError: (err: Error) => {
@@ -117,6 +137,10 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
             >
               <IonInputPasswordToggle slot="end"></IonInputPasswordToggle>
             </Input>
+
+            <CheckboxInput name="rememberMe" testid={`${testid}-field-rememberme`}>
+              Remember me
+            </CheckboxInput>
 
             <IonButton
               type="submit"

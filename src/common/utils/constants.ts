@@ -15,6 +15,7 @@ export enum QueryKey {
  * Local storage keys.
  */
 export enum StorageKey {
+  RememberMe = 'ionic-playground.remember-me',
   Settings = 'ionic-playground.settings',
   UserProfile = 'ionic-playground.user-profile',
   User = 'ionic-playground.user',
