@@ -9,3 +9,10 @@ export type UserTokens = {
   expires_in: number;
   expires_at: string;
 };
+
+/**
+ * The `RememberMe` type. Saved sign in attributes.
+ */
+export type RememberMe = {
+  username: string;
+};
