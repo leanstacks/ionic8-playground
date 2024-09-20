@@ -26,7 +26,7 @@ interface CheckboxInputProps
  * do not use the `value` prop.
  *
  * To create a `string[]` field, use one to many `CheckboxInput` within a form
- * with the same `name` and a unique `value` property.s
+ * with the same `name` and a unique `value` property.
  *
  * @param {CheckboxInputProps} props - Component properties.
  * @returns {JSX.Element} JSX
