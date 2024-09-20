@@ -1,4 +1,4 @@
-import { IonItem, IonLabel, IonListHeader, IonSelectOption } from '@ionic/react';
+import { IonItem, IonLabel, IonListHeader, IonRadio, IonSelectOption } from '@ionic/react';
 import classNames from 'classnames';
 import { Form, Formik } from 'formik';
 import { boolean, number, object, string } from 'yup';
@@ -19,12 +19,16 @@ import List from 'common/components/List/List';
 import RangeInput from 'common/components/Input/RangeInput';
 import Icon, { IconName } from 'common/components/Icon/Icon';
 import SelectInput from 'common/components/Input/SelectInput';
+import RadioGroupInput from 'common/components/Input/RadioGroupInput';
 
 /**
  * Settings form values.
  * @see {@link Settings}
  */
-type SettingsFormValues = Pick<Settings, 'allowNotifications' | 'brightness' | 'language'>;
+type SettingsFormValues = Pick<
+  Settings,
+  'allowNotifications' | 'brightness' | 'fontSize' | 'language'
+>;
 
 /**
  * Settings form validation schema.
@@ -32,6 +36,9 @@ type SettingsFormValues = Pick<Settings, 'allowNotifications' | 'brightness' | '
 const validationSchema = object<SettingsFormValues>({
   allowNotifications: boolean(),
   brightness: number().min(0).max(100),
+  fontSize: string()
+    .required('Required. ')
+    .oneOf(['smaller', 'default', 'larger'], 'Font size must be one of: ${values} '),
   language: string().oneOf(map(LANGUAGES, 'code')),
 });
 
@@ -63,6 +70,9 @@ const SettingsForm = ({
           <IonItem>
             <LoaderSkeleton animated heightStyle="1.5rem" />
           </IonItem>
+          <IonItem>
+            <LoaderSkeleton animated heightStyle="1.5rem" />
+          </IonItem>
         </List>
       </div>
     );
@@ -75,6 +85,7 @@ const SettingsForm = ({
         initialValues={{
           allowNotifications: settings.allowNotifications,
           brightness: settings.brightness,
+          fontSize: settings.fontSize,
           language: settings.language,
         }}
         onSubmit={(values, { setSubmitting }) => {
@@ -152,6 +163,28 @@ const SettingsForm = ({
                     </IonSelectOption>
                   ))}
                 </SelectInput>
+              </IonItem>
+
+              <IonItem lines="none" className="text-sm font-medium">
+                <IonLabel>Font Size</IonLabel>
+              </IonItem>
+
+              <IonItem className="text-sm">
+                <RadioGroupInput
+                  name="fontSize"
+                  onIonChange={() => submitForm()}
+                  testid={`${testid}-field-fontSize`}
+                >
+                  <IonRadio disabled={isSubmitting} value="smaller">
+                    Smaller
+                  </IonRadio>
+                  <IonRadio disabled={isSubmitting} value="default">
+                    Default
+                  </IonRadio>
+                  <IonRadio disabled={isSubmitting} value="larger">
+                    Larger
+                  </IonRadio>
+                </RadioGroupInput>
               </IonItem>
             </List>
           </Form>
