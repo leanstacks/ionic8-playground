@@ -6,11 +6,26 @@ import classNames from 'classnames';
 import './RadioGroupInput.scss';
 import { PropsWithTestId } from '../types';
 
+/**
+ * Properties for the `RadioGroupInput` component.
+ * @see {@link PropsWithTestId}
+ * @see {@link IonRadioGroup}
+ */
 interface RadioGroupInputProps
   extends PropsWithTestId,
     Omit<ComponentPropsWithoutRef<typeof IonRadioGroup>, 'name'>,
     Required<Pick<ComponentPropsWithoutRef<typeof IonRadioGroup>, 'name'>> {}
 
+/**
+ * The `RadioGroupInput` component renders a standardized `IonRadioGroup` which
+ * is integrated with Formik.
+ *
+ * Use one to many `IonRadio` components as the `children` to specify the
+ * available options.
+ *
+ * @param {RadioGroupInputProps} props - Component properties.
+ * @returns {JSX.Element} JSX
+ */
 const RadioGroupInput = ({
   className,
   name,
@@ -20,10 +35,14 @@ const RadioGroupInput = ({
 }: RadioGroupInputProps): JSX.Element => {
   const [field, meta, helpers] = useField({ name });
 
-  const onChange = async (e: RadioGroupCustomEvent) => {
-    await helpers.setValue(e.detail.value);
+  /**
+   * Handles changes to the field value as a result of user action.
+   * @param {RadioGroupCustomEvent} event - The event
+   */
+  const onChange = async (event: RadioGroupCustomEvent) => {
+    await helpers.setValue(event.detail.value);
     await helpers.setTouched(true);
-    onIonChange?.(e);
+    onIonChange?.(event);
   };
 
   return (
