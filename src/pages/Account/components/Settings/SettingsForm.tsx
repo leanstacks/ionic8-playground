@@ -5,6 +5,7 @@ import { boolean, number, object, string } from 'yup';
 import orderBy from 'lodash/orderBy';
 import map from 'lodash/map';
 
+import './SettingsForm.scss';
 import { BaseComponentProps } from 'common/components/types';
 import { LANGUAGES } from 'common/utils/constants';
 import { Settings } from 'common/models/settings';
@@ -117,7 +118,7 @@ const SettingsForm = ({
         validationSchema={validationSchema}
       >
         {({ isSubmitting, submitForm }) => (
-          <Form data-testid={testid} className={classNames('form-settings', className)}>
+          <Form data-testid={testid} className={classNames('ls-form-settings', className)}>
             <List>
               <IonListHeader>
                 <IonLabel>Settings</IonLabel>
@@ -169,19 +170,20 @@ const SettingsForm = ({
                 <IonLabel>Font Size</IonLabel>
               </IonItem>
 
-              <IonItem className="text-sm">
+              <IonItem>
                 <RadioGroupInput
+                  className="ls-field-fontSize"
                   name="fontSize"
                   onIonChange={() => submitForm()}
                   testid={`${testid}-field-fontSize`}
                 >
-                  <IonRadio disabled={isSubmitting} value="smaller">
+                  <IonRadio className="text-xs" disabled={isSubmitting} value="smaller">
                     Smaller
                   </IonRadio>
                   <IonRadio disabled={isSubmitting} value="default">
                     Default
                   </IonRadio>
-                  <IonRadio disabled={isSubmitting} value="larger">
+                  <IonRadio className="text-xl" disabled={isSubmitting} value="larger">
                     Larger
                   </IonRadio>
                 </RadioGroupInput>
