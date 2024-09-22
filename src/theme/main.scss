@@ -25,11 +25,14 @@
 /* @import '@ionic/react/css/palettes/dark.class.css'; */
 @import '@ionic/react/css/palettes/dark.system.css';
 
-/* Theme variables */
+/* Custom app CSS */
+// normalize / reset
+@import './normalize.scss';
+// variables / Ionic variable overrides
 @import './variables.scss';
-
-/* Fonts */
+// fonts
 @import './fonts.scss';
-
-/* Typography */
+// typography
 @import './typography.scss';
+// flexbox and grid
+@import './grid.scss';

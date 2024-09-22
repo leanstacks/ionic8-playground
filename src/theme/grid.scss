@@ -1,0 +1,428 @@
+// Flexbox and grid styles inspired by Tailwind
+:root {
+  .order-1 {
+    order: 1;
+  }
+  .order-2 {
+    order: 2;
+  }
+  .order-3 {
+    order: 3;
+  }
+  .order-4 {
+    order: 4;
+  }
+  .order-5 {
+    order: 5;
+  }
+  .order-6 {
+    order: 6;
+  }
+  .order-7 {
+    order: 7;
+  }
+  .order-8 {
+    order: 8;
+  }
+  .order-9 {
+    order: 9;
+  }
+  .order-10 {
+    order: 10;
+  }
+  .order-11 {
+    order: 11;
+  }
+  .order-12 {
+    order: 12;
+  }
+  .order-none {
+    order: 0;
+  }
+  .order-first {
+    order: -9999;
+  }
+  .order-last {
+    order: 9999;
+  }
+
+  .order-1-xs {
+    @media (max-width: 575px) {
+      order: 1;
+    }
+  }
+  .order-2-xs {
+    @media (max-width: 575px) {
+      order: 2;
+    }
+  }
+  .order-3-xs {
+    @media (max-width: 575px) {
+      order: 3;
+    }
+  }
+  .order-4-xs {
+    @media (max-width: 575px) {
+      order: 4;
+    }
+  }
+  .order-5-xs {
+    @media (max-width: 575px) {
+      order: 5;
+    }
+  }
+  .order-6-xs {
+    @media (max-width: 575px) {
+      order: 6;
+    }
+  }
+  .order-7-xs {
+    @media (max-width: 575px) {
+      order: 7;
+    }
+  }
+  .order-8-xs {
+    @media (max-width: 575px) {
+      order: 8;
+    }
+  }
+  .order-9-xs {
+    @media (max-width: 575px) {
+      order: 9;
+    }
+  }
+  .order-10-xs {
+    @media (max-width: 575px) {
+      order: 10;
+    }
+  }
+  .order-11-xs {
+    @media (max-width: 575px) {
+      order: 11;
+    }
+  }
+  .order-12-xs {
+    @media (max-width: 575px) {
+      order: 4;
+    }
+  }
+  .order-none-xs {
+    @media (max-width: 575px) {
+      order: 0;
+    }
+  }
+  .order-first-xs {
+    @media (max-width: 575px) {
+      order: -9999;
+    }
+  }
+  .order-last-xs {
+    @media (max-width: 575px) {
+      order: 9999;
+    }
+  }
+
+  .order-1-sm {
+    @media (min-width: 576px) {
+      order: 1;
+    }
+  }
+  .order-2-sm {
+    @media (min-width: 576px) {
+      order: 2;
+    }
+  }
+  .order-3-sm {
+    @media (min-width: 576px) {
+      order: 3;
+    }
+  }
+  .order-4-sm {
+    @media (min-width: 576px) {
+      order: 4;
+    }
+  }
+  .order-5-sm {
+    @media (min-width: 576px) {
+      order: 5;
+    }
+  }
+  .order-6-sm {
+    @media (min-width: 576px) {
+      order: 6;
+    }
+  }
+  .order-7-sm {
+    @media (min-width: 576px) {
+      order: 7;
+    }
+  }
+  .order-8-sm {
+    @media (min-width: 576px) {
+      order: 8;
+    }
+  }
+  .order-9-sm {
+    @media (min-width: 576px) {
+      order: 9;
+    }
+  }
+  .order-10-sm {
+    @media (min-width: 576px) {
+      order: 10;
+    }
+  }
+  .order-11-sm {
+    @media (min-width: 576px) {
+      order: 11;
+    }
+  }
+  .order-12-sm {
+    @media (min-width: 576px) {
+      order: 4;
+    }
+  }
+  .order-none-sm {
+    @media (min-width: 576px) {
+      order: 0;
+    }
+  }
+  .order-first-sm {
+    @media (min-width: 576px) {
+      order: -9999;
+    }
+  }
+  .order-last-sm {
+    @media (min-width: 576px) {
+      order: 9999;
+    }
+  }
+
+  .order-1-md {
+    @media (min-width: 768px) {
+      order: 1;
+    }
+  }
+  .order-2-md {
+    @media (min-width: 768px) {
+      order: 2;
+    }
+  }
+  .order-3-md {
+    @media (min-width: 768px) {
+      order: 3;
+    }
+  }
+  .order-4-md {
+    @media (min-width: 768px) {
+      order: 4;
+    }
+  }
+  .order-5-md {
+    @media (min-width: 768px) {
+      order: 5;
+    }
+  }
+  .order-6-md {
+    @media (min-width: 768px) {
+      order: 6;
+    }
+  }
+  .order-7-md {
+    @media (min-width: 768px) {
+      order: 7;
+    }
+  }
+  .order-8-md {
+    @media (min-width: 768px) {
+      order: 8;
+    }
+  }
+  .order-9-md {
+    @media (min-width: 768px) {
+      order: 9;
+    }
+  }
+  .order-10-md {
+    @media (min-width: 768px) {
+      order: 10;
+    }
+  }
+  .order-11-md {
+    @media (min-width: 768px) {
+      order: 11;
+    }
+  }
+  .order-12-md {
+    @media (min-width: 768px) {
+      order: 4;
+    }
+  }
+  .order-none-md {
+    @media (min-width: 768px) {
+      order: 0;
+    }
+  }
+  .order-first-md {
+    @media (min-width: 768px) {
+      order: -9999;
+    }
+  }
+  .order-last-md {
+    @media (min-width: 768px) {
+      order: 9999;
+    }
+  }
+
+  .order-1-lg {
+    @media (min-width: 992px) {
+      order: 1;
+    }
+  }
+  .order-2-lg {
+    @media (min-width: 992px) {
+      order: 2;
+    }
+  }
+  .order-3-lg {
+    @media (min-width: 992px) {
+      order: 3;
+    }
+  }
+  .order-4-lg {
+    @media (min-width: 992px) {
+      order: 4;
+    }
+  }
+  .order-5-lg {
+    @media (min-width: 992px) {
+      order: 5;
+    }
+  }
+  .order-6-lg {
+    @media (min-width: 992px) {
+      order: 6;
+    }
+  }
+  .order-7-lg {
+    @media (min-width: 992px) {
+      order: 7;
+    }
+  }
+  .order-8-lg {
+    @media (min-width: 992px) {
+      order: 8;
+    }
+  }
+  .order-9-lg {
+    @media (min-width: 992px) {
+      order: 9;
+    }
+  }
+  .order-10-lg {
+    @media (min-width: 992px) {
+      order: 10;
+    }
+  }
+  .order-11-lg {
+    @media (min-width: 992px) {
+      order: 11;
+    }
+  }
+  .order-12-lg {
+    @media (min-width: 992px) {
+      order: 4;
+    }
+  }
+  .order-none-lg {
+    @media (min-width: 992px) {
+      order: 0;
+    }
+  }
+  .order-first-lg {
+    @media (min-width: 992px) {
+      order: -9999;
+    }
+  }
+  .order-last-lg {
+    @media (min-width: 992px) {
+      order: 9999;
+    }
+  }
+
+  .order-1-xl {
+    @media (min-width: 1200px) {
+      order: 1;
+    }
+  }
+  .order-2-xl {
+    @media (min-width: 1200px) {
+      order: 2;
+    }
+  }
+  .order-3-xl {
+    @media (min-width: 1200px) {
+      order: 3;
+    }
+  }
+  .order-4-xl {
+    @media (min-width: 1200px) {
+      order: 4;
+    }
+  }
+  .order-5-xl {
+    @media (min-width: 1200px) {
+      order: 5;
+    }
+  }
+  .order-6-xl {
+    @media (min-width: 1200px) {
+      order: 6;
+    }
+  }
+  .order-7-xl {
+    @media (min-width: 1200px) {
+      order: 7;
+    }
+  }
+  .order-8-xl {
+    @media (min-width: 1200px) {
+      order: 8;
+    }
+  }
+  .order-9-xl {
+    @media (min-width: 1200px) {
+      order: 9;
+    }
+  }
+  .order-10-xl {
+    @media (min-width: 1200px) {
+      order: 10;
+    }
+  }
+  .order-11-xl {
+    @media (min-width: 1200px) {
+      order: 11;
+    }
+  }
+  .order-12-xl {
+    @media (min-width: 1200px) {
+      order: 4;
+    }
+  }
+  .order-none-xl {
+    @media (min-width: 1200px) {
+      order: 0;
+    }
+  }
+  .order-first-xl {
+    @media (min-width: 1200px) {
+      order: -9999;
+    }
+  }
+  .order-last-xl {
+    @media (min-width: 1200px) {
+      order: 9999;
+    }
+  }
+}
