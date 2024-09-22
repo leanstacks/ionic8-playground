@@ -39,7 +39,7 @@ const RadioGroupInput = ({
    * Handles changes to the field value as a result of user action.
    * @param {RadioGroupCustomEvent} event - The event
    */
-  const onChange = async (event: RadioGroupCustomEvent) => {
+  const onChange = async (event: RadioGroupCustomEvent): Promise<void> => {
     await helpers.setValue(event.detail.value);
     await helpers.setTouched(true);
     onIonChange?.(event);
