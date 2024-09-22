@@ -45,14 +45,14 @@ const AccountPage = ({ testid = 'page-account' }: PropsWithTestId): JSX.Element 
   };
 
   return (
-    <IonPage className="page-account" data-testid={testid}>
+    <IonPage className="ls-page-account" data-testid={testid}>
       <ProgressProvider>
         <Header title="My Account" />
 
         <IonContent>
           <IonGrid fixed>
             <IonRow>
-              <IonCol size="12" sizeLg="6">
+              <IonCol size="12" sizeLg="6" className="order-1-lg">
                 <List>
                   <IonListHeader>
                     <IonLabel>Account</IonLabel>
@@ -67,11 +67,11 @@ const AccountPage = ({ testid = 'page-account' }: PropsWithTestId): JSX.Element 
                 </List>
               </IonCol>
 
-              <IonCol size="12" sizeLg="6">
+              <IonCol size="12" sizeLg="6" className="order-3-lg">
                 <SettingsForm />
               </IonCol>
 
-              <IonCol size="12" sizeLg="6">
+              <IonCol size="12" sizeLg="6" className="order-2-lg">
                 <List>
                   <IonListHeader>
                     <IonLabel>Legal</IonLabel>
@@ -86,7 +86,7 @@ const AccountPage = ({ testid = 'page-account' }: PropsWithTestId): JSX.Element 
                 </List>
               </IonCol>
 
-              <IonCol size="12" sizeLg="6">
+              <IonCol size="12" sizeLg="6" className="order-4-lg">
                 <List>
                   <IonListHeader>
                     <IonLabel>About</IonLabel>

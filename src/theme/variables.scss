@@ -2,5 +2,10 @@
 http://ionicframework.com/docs/theming/ */
 
 :root {
-  line-height: 1.5;
+  // media breakpoints
+  --ls-breakpoint-xs: 0px;
+  --ls-breakpoint-sm: 576px;
+  --ls-breakpoint-md: 768px;
+  --ls-breakpoint-lg: 992px;
+  --ls-breakpoint-xl: 1200px;
 }
