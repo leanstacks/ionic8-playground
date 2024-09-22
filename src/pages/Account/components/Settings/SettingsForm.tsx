@@ -66,13 +66,23 @@ const SettingsForm = ({
           </IonListHeader>
 
           <IonItem>
-            <LoaderSkeleton animated heightStyle="1.5rem" />
+            <LoaderSkeleton animated heightStyle="1.25rem" />
           </IonItem>
           <IonItem>
-            <LoaderSkeleton animated heightStyle="1.5rem" />
+            <LoaderSkeleton animated heightStyle="1.25rem" />
           </IonItem>
           <IonItem>
-            <LoaderSkeleton animated heightStyle="1.5rem" />
+            <LoaderSkeleton animated heightStyle="1.25rem" />
+          </IonItem>
+          <IonItem lines="none">
+            <LoaderSkeleton animated heightStyle="1.25rem" />
+          </IonItem>
+          <IonItem>
+            <div style={{ width: '100%' }}>
+              <LoaderSkeleton animated heightStyle="1rem" className="ion-margin-bottom" />
+              <LoaderSkeleton animated heightStyle="1.25rem" className="ion-margin-bottom" />
+              <LoaderSkeleton animated heightStyle="1.5rem" className="ion-margin-bottom" />
+            </div>
           </IonItem>
         </List>
       </div>
