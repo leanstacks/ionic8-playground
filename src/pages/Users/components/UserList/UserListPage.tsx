@@ -47,7 +47,7 @@ export const UserListPage = ({ testid = 'page-user-list' }: PropsWithTestId): JS
    * Handle changes to the search toolbar value as a user types.
    * @param {SearchbarCustomEvent} event - The event.
    */
-  const onInputSearch = (event: SearchbarCustomEvent) => {
+  const handleInputSearch = (event: SearchbarCustomEvent) => {
     setSearch(event.target.value ?? '');
   };
 
@@ -58,7 +58,7 @@ export const UserListPage = ({ testid = 'page-user-list' }: PropsWithTestId): JS
           title="Users"
           toolbars={[
             {
-              children: <Searchbar debounce={500} onIonInput={onInputSearch} />,
+              children: <Searchbar debounce={500} onIonInput={handleInputSearch} />,
               className: 'ls-toolbar-searchbar',
             },
           ]}

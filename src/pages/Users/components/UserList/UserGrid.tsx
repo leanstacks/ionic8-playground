@@ -14,8 +14,7 @@ import EmptyCard from 'common/components/Card/EmptyCard';
 
 /**
  * Properties for the `UserGrid` component.
- * @param {string} [filterBy] - Optional. Filter the collection of users by a
- * partial `name` match.
+ * @param {string} [filterBy] - Optional. Critera to filter the list of `Users`.
  * @see {@link BaseComponentProps}
  */
 interface UserGridProps extends BaseComponentProps {

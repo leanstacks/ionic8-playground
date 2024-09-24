@@ -88,12 +88,13 @@ const Header = ({
       </IonToolbar>
 
       {toolbars?.map((toolbarProps, index) => {
-        const isLastToolbar = toolbars.length - 1 === index;
+        const isLastToolbar: boolean = toolbars.length === index + 1;
+        const showProgressBar: boolean = isActiveProgressBar && isLastToolbar;
         const { children, ...props } = toolbarProps;
         return (
           <IonToolbar key={index} {...props}>
             {children}
-            {isActiveProgressBar && isLastToolbar && <IonProgressBar {...progressBar} />}
+            {showProgressBar && <IonProgressBar {...progressBar} />}
           </IonToolbar>
         );
       })}

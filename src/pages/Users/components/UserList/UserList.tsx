@@ -14,8 +14,7 @@ import EmptyCard from 'common/components/Card/EmptyCard';
 
 /**
  * Properties for the `UserList` component.
- * @param {string} [filterBy] - Optional. Filter the collection of users by a
- * partial `name` match.
+ * @param {string} [filterBy] - Optional. Critera to filter the list of `Users`.
  * @param {string} [header] - Optional. The list header title. Default: `Users`.
  * @param {boolean} [showHeader] - Optional. Indicates if the header is shown. Default: `false`.
  * @see {@link BaseComponentProps}
