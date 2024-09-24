@@ -5,7 +5,6 @@ import {
   IonPage,
   IonRefresher,
   IonRefresherContent,
-  IonSearchbar,
   RefresherEventDetail,
   SearchbarCustomEvent,
 } from '@ionic/react';
@@ -16,6 +15,7 @@ import './UserListPage.scss';
 import { PropsWithTestId } from 'common/components/types';
 import { QueryKey } from 'common/utils/constants';
 import Header from 'common/components/Header/Header';
+import Searchbar from 'common/components/Searchbar/Searchbar';
 import Container from 'common/components/Content/Container';
 import PageHeader from 'common/components/Content/PageHeader';
 import UserList from './UserList';
@@ -58,8 +58,8 @@ export const UserListPage = ({ testid = 'page-user-list' }: PropsWithTestId): JS
           title="Users"
           toolbars={[
             {
-              children: <IonSearchbar debounce={500} onIonInput={onInputSearch} />,
-              className: 'ls-toolbar-search',
+              children: <Searchbar debounce={500} onIonInput={onInputSearch} />,
+              className: 'ls-toolbar-searchbar',
             },
           ]}
         />
