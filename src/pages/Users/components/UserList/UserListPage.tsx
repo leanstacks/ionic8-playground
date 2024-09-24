@@ -6,6 +6,7 @@ import {
   IonRefresher,
   IonRefresherContent,
   RefresherEventDetail,
+  SearchbarCustomEvent,
 } from '@ionic/react';
 import { useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
@@ -14,6 +15,7 @@ import './UserListPage.scss';
 import { PropsWithTestId } from 'common/components/types';
 import { QueryKey } from 'common/utils/constants';
 import Header from 'common/components/Header/Header';
+import Searchbar from 'common/components/Searchbar/Searchbar';
 import Container from 'common/components/Content/Container';
 import PageHeader from 'common/components/Content/PageHeader';
 import UserList from './UserList';
@@ -29,17 +31,38 @@ import UserAddModal from '../UserAdd/UserAddModal';
  */
 export const UserListPage = ({ testid = 'page-user-list' }: PropsWithTestId): JSX.Element => {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+  const [search, setSearch] = useState<string>('');
   const queryClient = useQueryClient();
 
+  /**
+   * Handle pull to refresh events.
+   * @param {CustomEvent} event - The refresh event.
+   */
   const handleRefresh = async (event: CustomEvent<RefresherEventDetail>) => {
     await queryClient.refetchQueries({ queryKey: [QueryKey.Users], exact: true });
     event.detail.complete();
   };
 
+  /**
+   * Handle changes to the search toolbar value as a user types.
+   * @param {SearchbarCustomEvent} event - The event.
+   */
+  const handleInputSearch = (event: SearchbarCustomEvent) => {
+    setSearch(event.target.value ?? '');
+  };
+
   return (
-    <IonPage className="page-user-list" data-testid={testid}>
+    <IonPage className="ls-page-user-list" data-testid={testid}>
       <ProgressProvider>
-        <Header title="Users" />
+        <Header
+          title="Users"
+          toolbars={[
+            {
+              children: <Searchbar debounce={500} onIonInput={handleInputSearch} />,
+              className: 'ls-toolbar-searchbar',
+            },
+          ]}
+        />
 
         <IonContent>
           <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
@@ -60,8 +83,8 @@ export const UserListPage = ({ testid = 'page-user-list' }: PropsWithTestId): JS
                 </IonButton>
               </IonButtons>
             </PageHeader>
-            <UserList className="ion-hide-md-up" />
-            <UserGrid className="ion-hide-md-down" />
+            <UserList className="ion-hide-md-up" filterBy={search} />
+            <UserGrid className="ion-hide-md-down" filterBy={search} />
           </Container>
           <UserAddFab className="ion-hide-md-up" onClick={() => setIsOpenModal(true)} />
           <UserAddModal isOpen={isOpenModal} setIsOpen={setIsOpenModal} />

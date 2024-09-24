@@ -5,6 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import './UserGrid.scss';
 import { BaseComponentProps } from 'common/components/types';
 import { useGetUsers } from 'pages/Users/api/useGetUsers';
+import { filterUsers } from 'pages/Users/utils/users';
 import UserCard from './UserCard';
 import LoaderSpinner from 'common/components/Loader/LoaderSpinner';
 import CardRow from 'common/components/Card/CardRow';
@@ -13,8 +14,12 @@ import EmptyCard from 'common/components/Card/EmptyCard';
 
 /**
  * Properties for the `UserGrid` component.
+ * @param {string} [filterBy] - Optional. Critera to filter the list of `Users`.
+ * @see {@link BaseComponentProps}
  */
-interface UserGridProps extends BaseComponentProps {}
+interface UserGridProps extends BaseComponentProps {
+  filterBy?: string;
+}
 
 /**
  * The `UserGrid` component renders a grid of `UserCard`s. Uses the `IonGrid`
@@ -23,7 +28,7 @@ interface UserGridProps extends BaseComponentProps {}
  * @returns JSX
  * @see {@link IonGrid}
  */
-const UserGrid = ({ className, testid = 'grid-user' }: UserGridProps): JSX.Element => {
+const UserGrid = ({ className, filterBy, testid = 'grid-user' }: UserGridProps): JSX.Element => {
   const { data: users, isError, isLoading } = useGetUsers();
 
   const baseProps = {
@@ -51,8 +56,10 @@ const UserGrid = ({ className, testid = 'grid-user' }: UserGridProps): JSX.Eleme
     );
   }
 
+  const filteredUsers = filterUsers(users, filterBy);
+
   // Empty state
-  if (isEmpty(users)) {
+  if (isEmpty(filteredUsers)) {
     return (
       <div {...baseProps}>
         <CardRow className="row-message" testid={`${testid}-empty`}>
@@ -66,8 +73,8 @@ const UserGrid = ({ className, testid = 'grid-user' }: UserGridProps): JSX.Eleme
   return (
     <IonGrid {...baseProps}>
       <IonRow>
-        {users &&
-          users.map((user) => (
+        {filteredUsers &&
+          filteredUsers.map((user) => (
             <IonCol key={user.id} sizeXs="12" sizeMd="6" sizeXl="4">
               <UserCard user={user} testid={`${testid}-card-user-${user.id}`} />
             </IonCol>

@@ -25,6 +25,11 @@ import { useAuth } from 'common/hooks/useAuth';
  * @param {string} [defaultHref] - Optional. The default back navigation
  * href if there is no history in the route stack.
  * @param {string} [title] - Optional. The header title.
+ * @param [toolbars] - Optional. Array of IonToolbar properties objects
+ * each describing an additional toolbar to appear in the header.
+ * @see {@link PropsWithTestId}
+ * @see {@link IonBackButton}
+ * @see {@link IonToolbar}
  */
 interface HeaderProps
   extends PropsWithTestId,
@@ -32,6 +37,7 @@ interface HeaderProps
   backButton?: boolean;
   buttons?: ReactNode;
   title?: string;
+  toolbars?: ComponentPropsWithoutRef<typeof IonToolbar>[];
 }
 
 const Header = ({
@@ -40,6 +46,7 @@ const Header = ({
   defaultHref,
   testid = 'header-app',
   title,
+  toolbars,
 }: HeaderProps): JSX.Element => {
   const { isAuthenticated } = useAuth();
   const { isActive: isActiveProgressBar, progressBar } = useProgress();
@@ -77,8 +84,20 @@ const Header = ({
           {buttons}
         </IonButtons>
 
-        {isActiveProgressBar && <IonProgressBar {...progressBar} />}
+        {isActiveProgressBar && !toolbars && <IonProgressBar {...progressBar} />}
       </IonToolbar>
+
+      {toolbars?.map((toolbarProps, index) => {
+        const isLastToolbar: boolean = toolbars.length === index + 1;
+        const showProgressBar: boolean = isActiveProgressBar && isLastToolbar;
+        const { children, ...props } = toolbarProps;
+        return (
+          <IonToolbar key={index} {...props}>
+            {children}
+            {showProgressBar && <IonProgressBar {...progressBar} />}
+          </IonToolbar>
+        );
+      })}
     </IonHeader>
   );
 };
