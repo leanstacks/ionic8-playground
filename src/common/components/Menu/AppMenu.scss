@@ -4,6 +4,7 @@
 
     ion-row {
       column-gap: 0.5rem;
+      flex-wrap: nowrap;
 
       > * {
         min-width: 0;
@@ -13,7 +14,7 @@
         text-overflow: ellipsis;
       }
 
-      .avatar {
+      .ls-avatar {
         flex-shrink: 0;
       }
     }
