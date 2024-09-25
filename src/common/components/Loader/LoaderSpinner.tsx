@@ -28,9 +28,9 @@ const LoaderSpinner = ({
   text,
 }: LoaderSpinnerProps): JSX.Element => {
   return (
-    <div className={classNames('loader-spinner', className)} data-testid={testid}>
+    <div className={classNames('ls-loader-spinner', className)} data-testid={testid}>
       <IonSpinner></IonSpinner>
-      {text && <div className="text">{text}</div>}
+      {text && <div className="ls-loader-spinner-text">{text}</div>}
     </div>
   );
 };

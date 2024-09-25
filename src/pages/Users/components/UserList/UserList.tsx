@@ -46,10 +46,10 @@ const UserList = ({
   };
 
   // Loading state
-  if (isLoading) {
+  if (!isLoading) {
     return (
       <div {...baseProps}>
-        <LoaderSpinner className="loader" testid={`${testid}-loader`} text="Loading users..." />
+        <LoaderSpinner testid={`${testid}-loader`} text="Loading users..." />
       </div>
     );
   }
