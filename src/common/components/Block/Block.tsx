@@ -23,14 +23,14 @@ interface BlockProps extends BaseComponentProps {
  */
 const Block = ({ className, content, testid = 'block', title }: BlockProps): JSX.Element => {
   return (
-    <div className={classNames('block', className)} data-testid={testid}>
+    <div className={classNames('ls-block', className)} data-testid={testid}>
       {title && (
-        <div className="block-title" data-testid={`${testid}-title`}>
+        <div className="ls-block-title" data-testid={`${testid}-title`}>
           {title}
         </div>
       )}
       {content && (
-        <div className="block-content" data-testid={`${testid}-content`}>
+        <div className="ls-block-content" data-testid={`${testid}-content`}>
           {content}
         </div>
       )}
