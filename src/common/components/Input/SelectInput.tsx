@@ -40,10 +40,10 @@ const SelectInput = ({
   };
 
   return (
-    <div className="ls-input-select-wrapper">
+    <div className="ls-select-input-wrapper">
       <IonSelect
         className={classNames(
-          'ls-input-select',
+          'ls-select-input',
           className,
           { 'ion-touched': meta.touched },
           { 'ion-invalid': meta.error },
@@ -55,7 +55,7 @@ const SelectInput = ({
         {...selectProps}
       ></IonSelect>
       {meta.error && (
-        <IonText color="danger" className="ls-input-select-error text-xs font-normal">
+        <IonText color="danger" className="ls-select-input-error text-xs font-normal">
           {meta.error}
         </IonText>
       )}

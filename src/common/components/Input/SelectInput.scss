@@ -1,4 +1,4 @@
-.ls-input-select-wrapper {
+.ls-select-input-wrapper {
   width: 100%;
 
   display: flex;
@@ -10,7 +10,7 @@
     }
   }
 
-  .ls-input-select-error {
+  .ls-select-input-error {
     padding: 0.375rem 0 0.375rem 0;
 
     border-top-color: var(--ion-color-danger);
