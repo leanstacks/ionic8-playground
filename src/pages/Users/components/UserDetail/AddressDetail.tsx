@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 
-import './AddressDetail.scss';
 import { Address } from 'common/models/user';
 import { BaseComponentProps } from 'common/components/types';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
@@ -41,20 +40,18 @@ const AddressDetail = ({
   isLoading = false,
   testid = 'address-detail',
 }: AddressDetailProps): JSX.Element | false => {
-  const baseProps = {
-    className: classNames('address-detail', className),
-    'data-testid': testid,
-  };
-
   if (isLoading) {
     // loading state
     return (
-      <div {...baseProps}>
-        <div className="header">
+      <div
+        className={classNames('ls-address-detail ls-address-detail-loader', className)}
+        data-testid={`${testid}-loader`}
+      >
+        <HeaderRow border>
           <LoaderSkeleton animated heightStyle="1.5rem" widthStyle="1.5rem" />
           <LoaderSkeleton animated heightStyle="1.5rem" widthStyle="10rem" />
-        </div>
-        <div className="content" data-testid={`${testid}-loader`}>
+        </HeaderRow>
+        <div>
           <LoaderSkeleton animated heightStyle="1.25rem" widthStyle="20rem" />
           <LoaderSkeleton animated heightStyle="1.25rem" widthStyle="20rem" />
           <LoaderSkeleton animated heightStyle="1.25rem" widthStyle="20rem" />
@@ -67,12 +64,12 @@ const AddressDetail = ({
   if (address) {
     // success state
     return (
-      <div {...baseProps}>
+      <div className={classNames('ls-address-detail', className)} data-testid={testid}>
         <HeaderRow border>
           <Icon icon={IconName.MapLocationDot} />
           <div>Address</div>
         </HeaderRow>
-        <div className="content">
+        <div className="ls-address-detail-content">
           <div>{address.street}</div>
           <div>{address.suite}</div>
           <div>{address.city}</div>
