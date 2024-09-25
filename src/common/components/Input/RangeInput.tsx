@@ -44,7 +44,7 @@ const RangeInput = ({
 
   return (
     <IonRange
-      className={classNames('ls-input-range', className)}
+      className={classNames('ls-range-input', className)}
       onIonChange={onChange}
       data-testid={testid}
       {...field}
