@@ -32,7 +32,10 @@ const Container = ({
   testid = 'container',
 }: ContainerProps): JSX.Element => {
   return (
-    <div className={classNames('container', { fixed: fixed }, className)} data-testid={testid}>
+    <div
+      className={classNames('ls-container', { 'ls-container-fixed': fixed }, className)}
+      data-testid={testid}
+    >
       {children}
     </div>
   );

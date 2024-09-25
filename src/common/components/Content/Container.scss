@@ -1,4 +1,4 @@
-.container {
+.ls-container {
   width: 100%;
 
   margin-left: auto;
@@ -14,21 +14,21 @@
 
   // md
   @media (min-width: 768px) {
-    &.fixed {
+    &.ls-container-fixed {
       width: 720px;
     }
   }
 
   // lg
   @media (min-width: 992px) {
-    &.fixed {
+    &.ls-container-fixed {
       width: 960px;
     }
   }
 
   // xl
   @media (min-width: 1200px) {
-    &.fixed {
+    &.ls-container-fixed {
       width: 1140px;
     }
   }
