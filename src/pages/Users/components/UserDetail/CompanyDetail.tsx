@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 
-import './CompanyDetail.scss';
 import { BaseComponentProps } from 'common/components/types';
 import { Company } from 'common/models/user';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
@@ -41,19 +40,17 @@ const CompanyDetail = ({
   isLoading = false,
   testid = 'company-detail',
 }: CompanyDetailProps): JSX.Element | false => {
-  const baseProps = {
-    className: classNames('company-detail', className),
-    'data-testid': testid,
-  };
-
   if (isLoading) {
     // loading state
     return (
-      <div {...baseProps}>
-        <div className="header">
+      <div
+        className={classNames('ls-company-detail ls-company-detail-loader')}
+        data-testid={`${testid}-loader`}
+      >
+        <HeaderRow border>
           <LoaderSkeleton animated heightStyle="1.5rem" widthStyle="1.5rem" />
           <LoaderSkeleton animated heightStyle="1.5rem" widthStyle="10rem" />
-        </div>
+        </HeaderRow>
         <div className="content" data-testid={`${testid}-loader`}>
           <LoaderSkeleton animated heightStyle="1.25rem" widthStyle="20rem" />
           <LoaderSkeleton animated heightStyle="1.25rem" widthStyle="20rem" />
@@ -66,13 +63,13 @@ const CompanyDetail = ({
   if (company) {
     // success state
     return (
-      <div {...baseProps}>
+      <div className={classNames('ls-company-detail', className)} data-testid={testid}>
         <HeaderRow border>
           <Icon icon={IconName.Building} />
           <div>Company</div>
         </HeaderRow>
-        <div className="content">
-          <div className="primary">{company.name}</div>
+        <div className="ls-company-detail-content">
+          <div className="font-bold">{company.name}</div>
           <div>{company.catchPhrase}</div>
           <div>{company.bs}</div>
         </div>
