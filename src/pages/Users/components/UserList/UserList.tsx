@@ -46,7 +46,7 @@ const UserList = ({
   };
 
   // Loading state
-  if (!isLoading) {
+  if (isLoading) {
     return (
       <div {...baseProps}>
         <LoaderSpinner testid={`${testid}-loader`} text="Loading users..." />
