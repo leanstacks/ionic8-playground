@@ -39,7 +39,7 @@ const UserDetail = ({
   const { data: user, isError, isLoading } = useGetUser({ userId });
 
   const baseProps = {
-    className: classNames('user-detail', className),
+    className: classNames('ls-user-detail', className),
     'data-testid': testid,
   };
 
@@ -47,7 +47,7 @@ const UserDetail = ({
   if (isError) {
     return (
       <div {...baseProps}>
-        <CardRow className="row-message" testid={`${testid}-error`}>
+        <CardRow testid={`${testid}-error`}>
           <ErrorCard content="We are experiencing problems getting the requested user information." />
         </CardRow>
       </div>
@@ -60,10 +60,16 @@ const UserDetail = ({
       <IonGrid>
         <IonRow>
           <IonCol sizeXs="12" sizeMd="6" sizeXl="4">
-            <ContactInfo isLoading={isLoading} user={user} testid={`${testid}-user-summary`} />
+            <ContactInfo
+              className="ion-margin-bottom"
+              isLoading={isLoading}
+              user={user}
+              testid={`${testid}-user-summary`}
+            />
           </IonCol>
           <IonCol sizeXs="12" sizeMd="6" sizeXl="4">
             <CompanyDetail
+              className="ion-margin-bottom"
               company={user?.company}
               isLoading={isLoading}
               testid={`${testid}-company-detail`}
@@ -71,6 +77,7 @@ const UserDetail = ({
           </IonCol>
           <IonCol sizeXs="12" sizeMd="6" sizeXl="4">
             <AddressDetail
+              className="ion-margin-bottom"
               address={user?.address}
               isLoading={isLoading}
               testid={`${testid}-address-detail`}
