@@ -39,7 +39,7 @@ const ToggleInput = ({
 
   return (
     <IonToggle
-      className={classNames('input-toggle', className)}
+      className={classNames('ls-toggle-input', className)}
       checked={field.value}
       onIonChange={onChange}
       data-testid={testid}
