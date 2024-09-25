@@ -156,7 +156,7 @@ const DatetimeInput = ({
       </IonInput>
 
       <IonModal
-        className="ls-datetime-modal"
+        className="ls-datetime-input-modal"
         data-testid={`${testid}-modal`}
         isOpen={isOpen}
         onIonModalDidDismiss={onDidDismiss}
