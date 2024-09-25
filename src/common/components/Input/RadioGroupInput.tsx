@@ -46,7 +46,7 @@ const RadioGroupInput = ({
   };
 
   return (
-    <div className="ls-radiogroup-wrapper" data-testid={`${testid}-wrapper`}>
+    <div className="ls-radiogroup-input-wrapper" data-testid={`${testid}-wrapper`}>
       <IonRadioGroup
         className={classNames('ls-radiogroup-input', className)}
         data-testid={testid}
@@ -55,7 +55,11 @@ const RadioGroupInput = ({
         {...radioGroupProps}
       />
       {!!meta.error && (
-        <IonText className="ls-radiogroup-error" color="danger" data-testid={`${testid}-error`}>
+        <IonText
+          className="ls-radiogroup-input-error"
+          color="danger"
+          data-testid={`${testid}-error`}
+        >
           {meta.error}
         </IonText>
       )}
