@@ -33,7 +33,11 @@ const PageHeader = ({
   ...props
 }: PageHeaderProps): JSX.Element => {
   return (
-    <HeaderRow className={classNames('page-header', className)} data-testid={testid} {...props} />
+    <HeaderRow
+      className={classNames('ls-page-header', className)}
+      data-testid={testid}
+      {...props}
+    />
   );
 };
 

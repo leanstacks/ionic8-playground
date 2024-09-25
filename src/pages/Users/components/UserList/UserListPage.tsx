@@ -70,7 +70,7 @@ export const UserListPage = ({ testid = 'page-user-list' }: PropsWithTestId): JS
           </IonRefresher>
 
           <Container fixed>
-            <PageHeader border inset className="ion-hide-md-down">
+            <PageHeader border inset className="ion-margin-top ion-hide-md-down">
               <div>Users</div>
               <IonButtons>
                 <IonButton
