@@ -30,7 +30,7 @@ const Toasts = ({ className, testid = 'toasts' }: ToastsProps): JSX.Element => {
   const toast = toasts[0];
 
   return (
-    <div id="toasts" className={classNames('toasts', className)} data-testid={testid}>
+    <div id="toasts" className={classNames('ls-toasts', className)} data-testid={testid}>
       {toast && (
         <Toast
           dismiss={() => removeToast(toast.id)}
