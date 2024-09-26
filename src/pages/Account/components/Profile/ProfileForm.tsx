@@ -68,7 +68,7 @@ const ProfileForm = ({
   };
 
   return (
-    <div className={classNames('form-profile', className)} data-testid={testid}>
+    <div className={classNames('ls-profile-form', className)} data-testid={testid}>
       {error && (
         <ErrorCard
           content={`We are experiencing problems processing your request. ${error}`}
