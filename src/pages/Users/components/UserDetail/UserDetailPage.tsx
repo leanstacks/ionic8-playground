@@ -44,7 +44,7 @@ export const UserDetailPage = ({
   const { data: user } = useGetUser({ userId });
 
   return (
-    <IonPage className={'page-user-detail'} data-testid={testid}>
+    <IonPage data-testid={testid}>
       <ProgressProvider>
         {({ setProgress }) => (
           <>
