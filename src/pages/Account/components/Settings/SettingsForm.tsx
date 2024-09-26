@@ -59,7 +59,7 @@ const SettingsForm = ({
 
   if (isLoading) {
     return (
-      <div className={classNames('form-settings', className)} data-testid={`${testid}-loading`}>
+      <div className={classNames('ls-settings-form', className)} data-testid={`${testid}-loading`}>
         <List>
           <IonListHeader>
             <IonLabel>Settings</IonLabel>
@@ -128,7 +128,7 @@ const SettingsForm = ({
         validationSchema={validationSchema}
       >
         {({ isSubmitting, submitForm }) => (
-          <Form data-testid={testid} className={classNames('ls-form-settings', className)}>
+          <Form data-testid={testid} className={classNames('ls-settings-form', className)}>
             <List>
               <IonListHeader>
                 <IonLabel>Settings</IonLabel>
