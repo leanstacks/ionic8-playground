@@ -1,10 +1,10 @@
-.page-signin {
+.ls-signin-page {
   .ls-container {
-    &.ls-container-fixed {
+    &-fixed {
       max-width: 576px;
     }
 
-    .form-signin {
+    .ls-signin-form {
       margin: 2rem 0;
     }
   }
