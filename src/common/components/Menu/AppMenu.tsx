@@ -38,7 +38,7 @@ const AppMenu = ({ className, testid = 'menu-app' }: AppMenuProps): JSX.Element 
 
   return (
     <IonMenu
-      className={classNames('menu-app', className)}
+      className={classNames('ls-app-menu', className)}
       contentId="content-main"
       data-testid={testid}
       menuId="menu-app"
