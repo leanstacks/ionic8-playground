@@ -69,7 +69,7 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
   });
 
   return (
-    <div className={classNames('form-signin', className)} data-testid={testid}>
+    <div className={classNames('ls-signin-form', className)} data-testid={testid}>
       {error && (
         <ErrorCard
           content={`We were unable verify your credentials. Please try again. ${error}`}
@@ -145,7 +145,7 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
             <IonButton
               type="submit"
               color="primary"
-              className="button-submit"
+              className="ls-signin-form-button-submit"
               expand="block"
               disabled={isSubmitting || !dirty}
               data-testid={`${testid}-button-submit`}
@@ -153,7 +153,11 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
               Sign In
             </IonButton>
 
-            <IonPopover trigger="signinInfo" triggerAction="hover" className="form-signin-popover">
+            <IonPopover
+              trigger="signinInfo"
+              triggerAction="hover"
+              className="ls-signin-form-popover"
+            >
               <IonContent className="ion-padding">
                 <p>
                   This example application uses{' '}

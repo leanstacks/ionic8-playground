@@ -1,4 +1,4 @@
-.form-signin {
+.ls-signin-form {
   ion-input,
   ion-checkbox {
     margin-bottom: 1rem;
@@ -8,12 +8,12 @@
     font-size: 0.75rem;
   }
 
-  ion-button.button-submit {
+  &-button-submit {
     margin-top: 2rem;
   }
 }
 
-.form-signin-popover {
+ion-popover.ls-signin-form-popover {
   .inline-code {
     font-family: monospace;
     font-size: 1rem;
