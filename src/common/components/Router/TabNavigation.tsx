@@ -32,7 +32,7 @@ const TabNavigation = (): JSX.Element => {
     <>
       <AppMenu />
 
-      <IonTabs className="tab-navigation">
+      <IonTabs className="ls-tab-navigation">
         <IonRouterOutlet id="content-main">
           <Redirect exact path="/tabs" to="/tabs/home" />
           <Route exact path="/tabs/home">
