@@ -21,7 +21,7 @@ const PlatformDiagnostics = ({
   const { isNativePlatform, platforms } = usePlatform();
 
   return (
-    <List className={classNames('platform-diagnostics', className)} data-testid={testid}>
+    <List className={classNames('ls-platform-diagnostics', className)} data-testid={testid}>
       <IonListHeader lines="full">
         <IonLabel>Platform</IonLabel>
       </IonListHeader>
