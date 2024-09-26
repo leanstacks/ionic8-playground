@@ -57,7 +57,7 @@ const ContactInfo = ({
             <LoaderSkeleton animated widthStyle="12rem" heightStyle="1.5rem" />
           </HeaderRow>
         )}
-        <div className="ls-contact-info-content" data-testid={`${testid}-loader`}>
+        <div className="ls-contact-info-content">
           <LoaderSkeleton animated widthStyle="20rem" heightStyle="1.25rem" />
           <LoaderSkeleton animated widthStyle="20rem" heightStyle="1.25rem" />
           <LoaderSkeleton animated widthStyle="20rem" heightStyle="1.25rem" />

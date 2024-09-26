@@ -51,7 +51,7 @@ const CompanyDetail = ({
           <LoaderSkeleton animated heightStyle="1.5rem" widthStyle="1.5rem" />
           <LoaderSkeleton animated heightStyle="1.5rem" widthStyle="10rem" />
         </HeaderRow>
-        <div className="content" data-testid={`${testid}-loader`}>
+        <div className="content">
           <LoaderSkeleton animated heightStyle="1.25rem" widthStyle="20rem" />
           <LoaderSkeleton animated heightStyle="1.25rem" widthStyle="20rem" />
           <LoaderSkeleton animated heightStyle="1.25rem" widthStyle="20rem" />
