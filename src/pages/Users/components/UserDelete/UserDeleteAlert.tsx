@@ -70,7 +70,7 @@ const UserDeleteAlert = ({
 
   return (
     <IonAlert
-      className={classNames('alert-user-delete', className)}
+      className={classNames('ls-user-delete-alert', className)}
       data-testid={testid}
       buttons={[
         {
