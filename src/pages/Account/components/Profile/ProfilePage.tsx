@@ -22,7 +22,7 @@ const ProfilePage = ({ testid = 'page-profile' }: PropsWithTestId): JSX.Element 
   const { data: profile, isError, isLoading } = useGetProfile();
 
   return (
-    <IonPage className="page-profile" data-testid={testid}>
+    <IonPage className="ls-profile-page" data-testid={testid}>
       <ProgressProvider>
         <Header backButton defaultHref="/tabs/account" title="Profile" />
 
