@@ -32,7 +32,7 @@ const UserGrid = ({ className, filterBy, testid = 'grid-user' }: UserGridProps):
   const { data: users, isError, isLoading } = useGetUsers();
 
   const baseProps = {
-    className: classNames('grid-user', className),
+    className: classNames('ls-user-grid', className),
     'data-testid': testid,
   };
 
@@ -40,7 +40,11 @@ const UserGrid = ({ className, filterBy, testid = 'grid-user' }: UserGridProps):
   if (isLoading) {
     return (
       <div {...baseProps}>
-        <LoaderSpinner className="loader" testid={`${testid}-loader`} text="Loading users..." />
+        <LoaderSpinner
+          className="ls-user-grid__loader"
+          testid={`${testid}-loader`}
+          text="Loading users..."
+        />
       </div>
     );
   }
@@ -49,7 +53,7 @@ const UserGrid = ({ className, filterBy, testid = 'grid-user' }: UserGridProps):
   if (isError) {
     return (
       <div {...baseProps}>
-        <CardRow className="row-message" testid={`${testid}-error`}>
+        <CardRow className="ls-user-grid__card-row" testid={`${testid}-error`}>
           <ErrorCard content="We are experiencing problems getting the users." />
         </CardRow>
       </div>
@@ -62,7 +66,7 @@ const UserGrid = ({ className, filterBy, testid = 'grid-user' }: UserGridProps):
   if (isEmpty(filteredUsers)) {
     return (
       <div {...baseProps}>
-        <CardRow className="row-message" testid={`${testid}-empty`}>
+        <CardRow className="ls-user-grid__card-row" testid={`${testid}-empty`}>
           <EmptyCard content="No users found." />
         </CardRow>
       </div>
