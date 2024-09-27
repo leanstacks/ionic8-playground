@@ -29,7 +29,7 @@ export const UserEditPage = (): JSX.Element => {
   const { data: user } = useGetUser({ userId });
 
   return (
-    <IonPage className={'page-user-edit'} data-testid={testid}>
+    <IonPage data-testid={testid}>
       <ProgressProvider>
         <Header backButton defaultHref="/tabs/users" title={user && user.name} />
 
