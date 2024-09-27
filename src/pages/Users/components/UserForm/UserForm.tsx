@@ -58,7 +58,7 @@ const UserForm = ({
   }, []);
 
   return (
-    <div className={classNames('form-user', className)} data-testid={testid}>
+    <div className={classNames('ls-user-form', className)} data-testid={testid}>
       <Formik<UserFormValues>
         enableReinitialize={true}
         initialValues={{
