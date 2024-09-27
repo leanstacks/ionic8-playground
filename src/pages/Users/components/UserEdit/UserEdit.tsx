@@ -32,7 +32,7 @@ const UserEdit = ({ className, user, testid = 'user-edit' }: UserEditProps): JSX
   const { setProgress } = useProgress();
 
   return (
-    <div className={classNames('user-edit', className)} data-testid={testid}>
+    <div className={classNames('ls-user-edit', className)} data-testid={testid}>
       <IonGrid>
         <IonRow>
           <IonCol size="12" sizeMd="10" sizeLg="8" sizeXl="6">
