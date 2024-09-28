@@ -52,14 +52,14 @@ export const UserListPage = ({ testid = 'page-user-list' }: PropsWithTestId): JS
   };
 
   return (
-    <IonPage className="ls-page-user-list" data-testid={testid}>
+    <IonPage className="ls-user-list-page" data-testid={testid}>
       <ProgressProvider>
         <Header
           title="Users"
           toolbars={[
             {
               children: <Searchbar debounce={500} onIonInput={handleInputSearch} />,
-              className: 'ls-toolbar-searchbar',
+              className: 'ls-user-list-page__searchbar',
             },
           ]}
         />
@@ -83,7 +83,7 @@ export const UserListPage = ({ testid = 'page-user-list' }: PropsWithTestId): JS
                 </IonButton>
               </IonButtons>
             </PageHeader>
-            <UserList className="ion-hide-md-up" filterBy={search} />
+            <UserList className="ion-hide-md-up ls-user-list-page__list" filterBy={search} />
             <UserGrid className="ion-hide-md-down" filterBy={search} />
           </Container>
           <UserAddFab className="ion-hide-md-up" onClick={() => setIsOpenModal(true)} />
