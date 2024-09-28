@@ -1,33 +1,26 @@
-.list-item-user {
+.ls-user-list-item {
   ion-item {
     --inner-padding-bottom: 0.5rem;
     --inner-padding-top: 0.5rem;
+  }
 
-    .ls-avatar {
-      margin-right: 1rem;
+  &__avatar {
+    margin-right: 1rem;
+  }
+
+  &__content-row {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+
+    &--primary {
+      font-weight: 500;
     }
 
-    .content-row {
-      display: flex;
-      align-items: center;
-      column-gap: 1rem;
-      row-gap: 0.25rem;
-
-      &.primary {
-        font-weight: 500;
-      }
-
-      &.secondary {
-        font-size: 0.85rem;
-        color: var(--ion-color-medium);
-      }
-
-      > * {
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
-        text-wrap: nowrap;
-      }
+    &--secondary {
+      font-size: 0.875rem;
+      color: var(--ion-color-medium);
+      text-wrap: nowrap;
     }
   }
 
