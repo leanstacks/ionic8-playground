@@ -41,7 +41,7 @@ const UserList = ({
   const { data: users, isError, isLoading } = useGetUsers();
 
   const baseProps = {
-    className: classNames('list-user', className),
+    className: classNames('ls-user-list', className),
     'data-testid': testid,
   };
 
@@ -49,7 +49,11 @@ const UserList = ({
   if (isLoading) {
     return (
       <div {...baseProps}>
-        <LoaderSpinner testid={`${testid}-loader`} text="Loading users..." />
+        <LoaderSpinner
+          className="ls-user-list__loader"
+          testid={`${testid}-loader`}
+          text="Loading users..."
+        />
       </div>
     );
   }
@@ -58,7 +62,7 @@ const UserList = ({
   if (isError) {
     return (
       <div {...baseProps}>
-        <CardRow className="row-message" testid={`${testid}-error`}>
+        <CardRow className="ls-user-list__card-row" testid={`${testid}-error`}>
           <ErrorCard content="We are experiencing problems getting the users." />
         </CardRow>
       </div>
@@ -71,7 +75,7 @@ const UserList = ({
   if (isEmpty(filteredUsers)) {
     return (
       <div {...baseProps}>
-        <CardRow className="row-message" testid={`${testid}-empty`}>
+        <CardRow className="ls-user-list__card-row" testid={`${testid}-empty`}>
           <EmptyCard content="No users found." />
         </CardRow>
       </div>
