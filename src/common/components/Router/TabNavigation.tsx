@@ -61,17 +61,36 @@ const TabNavigation = (): JSX.Element => {
           </Route>
         </IonRouterOutlet>
 
-        <IonTabBar slot="bottom" className="ion-hide-md-up">
-          <IonTabButton tab="home" href="/tabs/home">
-            <Icon icon={IconName.House} size="xl" fixedWidth />
+        <IonTabBar slot="bottom" className="ls-tab-navigation__bar ion-hide-md-up">
+          <IonTabButton className="ls-tab-navigation__bar-button" tab="home" href="/tabs/home">
+            <Icon
+              className="ls-tab-navigation__bar-button-icon"
+              icon={IconName.House}
+              size="xl"
+              fixedWidth
+            />
             <IonLabel>Home</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="users" href="/tabs/users">
-            <Icon icon={IconName.Users} size="xl" fixedWidth />
+          <IonTabButton className="ls-tab-navigation__bar-button" tab="users" href="/tabs/users">
+            <Icon
+              className="ls-tab-navigation__bar-button-icon"
+              icon={IconName.Users}
+              size="xl"
+              fixedWidth
+            />
             <IonLabel>Users</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="account" href="/tabs/account">
-            <Icon icon={IconName.UserGear} size="xl" fixedWidth />
+          <IonTabButton
+            className="ls-tab-navigation__bar-button"
+            tab="account"
+            href="/tabs/account"
+          >
+            <Icon
+              className="ls-tab-navigation__bar-button-icon"
+              icon={IconName.UserGear}
+              size="xl"
+              fixedWidth
+            />
             <IonLabel>Account</IonLabel>
           </IonTabButton>
         </IonTabBar>

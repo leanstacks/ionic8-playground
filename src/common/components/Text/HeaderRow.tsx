@@ -39,8 +39,8 @@ const HeaderRow = ({
     <IonRow
       className={classNames(
         'ls-header-row ion-align-items-center ion-text-uppercase',
-        { 'ls-header-row-bordered': border },
-        { 'ls-header-row-inset': inset },
+        { 'ls-header-row--bordered': border },
+        { 'ls-header-row--inset': inset },
         className,
       )}
       data-testid={testid}

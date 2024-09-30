@@ -37,7 +37,7 @@ export const UserEditPage = (): JSX.Element => {
           <Container fixed>
             {user ? (
               <>
-                <PageHeader border inset className="ion-hide-md-down">
+                <PageHeader border inset className="ion-margin-top ion-hide-md-down">
                   <Avatar value={user.name} size="large" />
                   <IonText data-testid={`${testid}-title`}>{user.name}</IonText>
                 </PageHeader>

@@ -1,5 +1,5 @@
 .ls-app-menu {
-  ion-title {
+  &__title {
     font-size: 1rem;
 
     ion-row {
@@ -13,14 +13,14 @@
         overflow: hidden;
         text-overflow: ellipsis;
       }
+    }
 
-      .ls-avatar {
-        flex-shrink: 0;
-      }
+    &-avatar {
+      flex-shrink: 0;
     }
   }
 
-  .ls-icon {
+  &__toggle-icon {
     margin-right: 1rem;
 
     opacity: 0.5;

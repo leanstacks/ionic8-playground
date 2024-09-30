@@ -69,7 +69,7 @@ const ContactInfo = ({
   if (user) {
     // success state
     return (
-      <div className={classNames('ls-contact-info')} data-testid={testid}>
+      <div className={classNames('ls-contact-info', className)} data-testid={testid}>
         {showHeader && (
           <HeaderRow border>
             <Icon icon={IconName.User} />

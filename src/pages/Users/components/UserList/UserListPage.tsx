@@ -5,6 +5,7 @@ import {
   IonPage,
   IonRefresher,
   IonRefresherContent,
+  IonText,
   RefresherEventDetail,
   SearchbarCustomEvent,
 } from '@ionic/react';
@@ -71,7 +72,7 @@ export const UserListPage = ({ testid = 'page-user-list' }: PropsWithTestId): JS
 
           <Container fixed>
             <PageHeader border inset className="ion-margin-top ion-hide-md-down">
-              <div>Users</div>
+              <IonText>Users</IonText>
               <IonButtons>
                 <IonButton
                   shape="round"

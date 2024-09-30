@@ -1,17 +1,15 @@
 .ls-page-header {
-  &.ls-header-row {
-    font-size: 1.5rem;
-    line-height: 2rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
 
-    ion-buttons {
-      margin-left: auto;
+  ion-buttons {
+    margin-left: auto;
 
-      ion-button {
-        height: 3rem;
-        width: 3rem;
+    ion-button {
+      height: 3rem;
+      width: 3rem;
 
-        margin: 0;
-      }
+      margin: 0;
     }
   }
 }

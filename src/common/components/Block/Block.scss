@@ -4,7 +4,7 @@
   margin: 0.75rem;
   padding: 1rem;
 
-  .ls-block-title {
+  &__title {
     font-size: 1.25rem;
     font-weight: 500;
     text-transform: uppercase;
@@ -12,7 +12,7 @@
     margin-bottom: 0.5rem;
   }
 
-  .ls-block-content {
+  &__content {
     color: var(--ion-color-medium);
 
     margin-bottom: 0.5rem;

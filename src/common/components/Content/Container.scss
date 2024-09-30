@@ -14,21 +14,21 @@
 
   // md
   @media (min-width: 768px) {
-    &.ls-container-fixed {
+    &--fixed {
       width: 720px;
     }
   }
 
   // lg
   @media (min-width: 992px) {
-    &.ls-container-fixed {
+    &--fixed {
       width: 960px;
     }
   }
 
   // xl
   @media (min-width: 1200px) {
-    &.ls-container-fixed {
+    &--fixed {
       width: 1140px;
     }
   }

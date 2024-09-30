@@ -55,17 +55,21 @@ const MessageCard = ({
     >
       {title && (
         <IonCardHeader className="header">
-          <IonCardTitle className="ls-message-card-title-block">
+          <IonCardTitle className="ls-message-card__header">
             {icon && (
-              <Icon className="ls-message-card-icon" icon={icon} data-testid={`${testid}-icon`} />
+              <Icon
+                className="ls-message-card__header-icon"
+                icon={icon}
+                data-testid={`${testid}-icon`}
+              />
             )}
-            <div className="ls-message-card-title" data-testid={`${testid}-title`}>
+            <div className="ls-message-card__header-title" data-testid={`${testid}-title`}>
               {title}
             </div>
           </IonCardTitle>
           {subtitle && (
             <IonCardSubtitle
-              className="ls-message-card-subtitle"
+              className="ls-message-card__subtitle"
               data-testid={`${testid}-subtitle`}
             >
               {subtitle}
@@ -75,7 +79,7 @@ const MessageCard = ({
       )}
 
       {content && (
-        <IonCardContent className="ls-message-card-content" data-testid={`${testid}-content`}>
+        <IonCardContent className="ls-message-card__content" data-testid={`${testid}-content`}>
           {content}
         </IonCardContent>
       )}

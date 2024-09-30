@@ -1,5 +1,5 @@
 .ls-header {
-  .ls-header-logo {
+  &__logo {
     height: 2rem;
     width: 2rem;
 
@@ -8,7 +8,7 @@
     border-radius: 0.25rem;
   }
 
-  .ls-header-nav-main {
+  &__nav-main {
     justify-content: center;
     column-gap: 0.5rem;
 
@@ -17,7 +17,7 @@
     }
   }
 
-  ion-buttons[slot='end'] {
+  &__nav-end {
     ion-button {
       height: 3rem;
       width: 3rem;

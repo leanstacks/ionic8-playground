@@ -25,12 +25,12 @@ const Block = ({ className, content, testid = 'block', title }: BlockProps): JSX
   return (
     <div className={classNames('ls-block', className)} data-testid={testid}>
       {title && (
-        <div className="ls-block-title" data-testid={`${testid}-title`}>
+        <div className="ls-block__title" data-testid={`${testid}-title`}>
           {title}
         </div>
       )}
       {content && (
-        <div className="ls-block-content" data-testid={`${testid}-content`}>
+        <div className="ls-block__content" data-testid={`${testid}-content`}>
           {content}
         </div>
       )}

@@ -32,7 +32,7 @@ const ButtonRow = ({
     <IonRow
       className={classNames(
         'ls-button-row',
-        { 'ls-button-row-block': expand === 'block' },
+        { 'ls-button-row--block': expand === 'block' },
         className,
       )}
       data-testid={testid}

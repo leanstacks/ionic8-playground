@@ -59,7 +59,7 @@ const Header = ({
             <IonBackButton defaultHref={defaultHref} data-testid={`${testid}-button-back`} />
           ) : (
             <img
-              className="ls-header-logo"
+              className="ls-header__logo"
               src={logo}
               alt="Logo"
               data-testid={`${testid}-image-logo`}
@@ -70,7 +70,7 @@ const Header = ({
           {title}
         </IonTitle>
         <IonButtons
-          className="ls-header-nav-main ion-hide-md-down"
+          className="ls-header__nav-main ion-hide-md-down"
           data-testid={`${testid}-menu-row`}
         >
           {isAuthenticated && (
@@ -80,7 +80,7 @@ const Header = ({
             </>
           )}
         </IonButtons>
-        <IonButtons slot="end">
+        <IonButtons className="ls-header__nav-end" slot="end">
           {isAuthenticated && (
             <IonMenuButton
               autoHide={false}

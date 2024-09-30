@@ -1,16 +1,18 @@
-.ls-select-input-wrapper {
-  width: 100%;
-
+.ls-select-input {
   display: flex;
   flex-direction: column;
 
-  ion-select {
+  &--expand-full {
+    width: 100%;
+  }
+
+  &__select {
     &.ion-invalid {
       color: var(--ion-color-danger);
     }
   }
 
-  .ls-select-input-error {
+  &__error {
     padding: 0.375rem 0 0.375rem 0;
 
     border-top-color: var(--ion-color-danger);

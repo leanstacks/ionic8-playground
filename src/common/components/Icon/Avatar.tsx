@@ -34,12 +34,12 @@ interface AvatarProps extends BaseComponentProps {
  * List of possible colors for generated Avatars.
  */
 const COLORS = [
-  'ls-avatar-color-primary',
-  'ls-avatar-color-secondary',
-  'ls-avatar-color-tertiary',
-  'ls-avatar-color-success',
-  'ls-avatar-color-warning',
-  'ls-avatar-color-danger',
+  'ls-avatar--primary',
+  'ls-avatar--secondary',
+  'ls-avatar--tertiary',
+  'ls-avatar--success',
+  'ls-avatar--warning',
+  'ls-avatar--danger',
 ];
 
 /**
@@ -70,20 +70,20 @@ const Avatar = ({
     <IonAvatar
       className={classNames(
         'ls-avatar',
-        { 'ls-avatar-round': shape === 'round' },
-        { 'ls-avatar-square': shape === 'square' },
-        { 'ls-avatar-small': size === 'small' },
-        { 'ls-avatar-large': size === 'large' },
+        { 'ls-avatar--round': shape === 'round' },
+        { 'ls-avatar--square': shape === 'square' },
+        { 'ls-avatar--small': size === 'small' },
+        { 'ls-avatar--large': size === 'large' },
         className,
       )}
       data-testid={testid}
       title={trimmedValue}
     >
       {src ? (
-        <img className="ls-avatar-image" src={src} alt={value} data-testid={`${testid}-image`} />
+        <img className="ls-avatar__image" src={src} alt={value} data-testid={`${testid}-image`} />
       ) : (
         <div
-          className={classNames('ls-avatar-initial', colorClass)}
+          className={classNames('ls-avatar__initial', colorClass)}
           data-testid={`${testid}-initial`}
         >
           {initial}
