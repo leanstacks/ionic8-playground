@@ -182,18 +182,29 @@ const SettingsForm = ({
 
               <IonItem>
                 <RadioGroupInput
-                  className="ls-field-fontSize"
                   name="fontSize"
                   onIonChange={() => submitForm()}
                   testid={`${testid}-field-fontSize`}
                 >
-                  <IonRadio className="text-xs" disabled={isSubmitting} value="smaller">
+                  <IonRadio
+                    className="ls-settings-form__input-fontsize-radio text-xs"
+                    disabled={isSubmitting}
+                    value="smaller"
+                  >
                     Smaller
                   </IonRadio>
-                  <IonRadio disabled={isSubmitting} value="default">
+                  <IonRadio
+                    className="ls-settings-form__input-fontsize-radio"
+                    disabled={isSubmitting}
+                    value="default"
+                  >
                     Default
                   </IonRadio>
-                  <IonRadio className="text-xl" disabled={isSubmitting} value="larger">
+                  <IonRadio
+                    className="ls-settings-form__input-fontsize-radio text-xl"
+                    disabled={isSubmitting}
+                    value="larger"
+                  >
                     Larger
                   </IonRadio>
                 </RadioGroupInput>

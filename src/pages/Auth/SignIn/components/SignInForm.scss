@@ -1,14 +1,13 @@
 .ls-signin-form {
-  ion-input,
-  ion-checkbox {
+  &__input {
     margin-bottom: 1rem;
   }
 
-  ion-checkbox {
+  &__input-checkbox {
     font-size: 0.75rem;
   }
 
-  &-button-submit {
+  &__button {
     margin-top: 2rem;
   }
 }

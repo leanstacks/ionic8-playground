@@ -37,7 +37,7 @@ const UserAddFab = ({
       {...fabProps}
     >
       <IonFabButton>
-        <Icon icon={IconName.Plus} />
+        <Icon className="ls-user-add-fab__icon" icon={IconName.Plus} />
       </IonFabButton>
     </IonFab>
   );

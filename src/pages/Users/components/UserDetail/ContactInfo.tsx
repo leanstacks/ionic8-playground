@@ -48,7 +48,7 @@ const ContactInfo = ({
     // loading state
     return (
       <div
-        className={classNames('ls-contact-info ls-contact-info-loader', className)}
+        className={classNames('ls-contact-info ls-contact-info--loading', className)}
         data-testid={`${testid}-loader`}
       >
         {showHeader && (
@@ -57,7 +57,7 @@ const ContactInfo = ({
             <LoaderSkeleton animated widthStyle="12rem" heightStyle="1.5rem" />
           </HeaderRow>
         )}
-        <div className="ls-contact-info-content">
+        <div className="ls-contact-info__content">
           <LoaderSkeleton animated widthStyle="20rem" heightStyle="1.25rem" />
           <LoaderSkeleton animated widthStyle="20rem" heightStyle="1.25rem" />
           <LoaderSkeleton animated widthStyle="20rem" heightStyle="1.25rem" />
@@ -76,7 +76,7 @@ const ContactInfo = ({
             <div>Contact Info</div>
           </HeaderRow>
         )}
-        <div className="ls-contact-info-content">
+        <div className="ls-contact-info__content">
           {user.email && (
             <div>
               <Icon icon={IconName.Envelope} />

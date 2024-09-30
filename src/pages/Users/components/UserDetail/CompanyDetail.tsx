@@ -44,7 +44,7 @@ const CompanyDetail = ({
     // loading state
     return (
       <div
-        className={classNames('ls-company-detail ls-company-detail-loader')}
+        className={classNames('ls-company-detail ls-company-detail--loading')}
         data-testid={`${testid}-loader`}
       >
         <HeaderRow border>

@@ -51,7 +51,7 @@ const AuthProvider = ({ children }: PropsWithChildren): JSX.Element => {
       {!isReady && (
         <IonPage className="ls-auth-provider">
           <IonContent fullscreen>
-            <LoaderSpinner />
+            <LoaderSpinner className="ls-auth-provider__spinner" />
           </IonContent>
         </IonPage>
       )}

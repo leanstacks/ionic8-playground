@@ -40,7 +40,7 @@ const HomePage = (): JSX.Element => {
         <IonGrid fixed>
           <IonRow>
             <IonCol sizeXs="12" sizeMd="6">
-              <WelcomeBlock className="block-welcome" />
+              <WelcomeBlock />
             </IonCol>
             <IonCol sizeXs="12" sizeMd="6">
               <UserSummaryCard />

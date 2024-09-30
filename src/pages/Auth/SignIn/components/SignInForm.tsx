@@ -123,6 +123,7 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
               labelPlacement="stacked"
               maxlength={30}
               autocomplete="off"
+              className="ls-signin-form__input"
               ref={focusInput}
               data-testid={`${testid}-field-username`}
             />
@@ -133,19 +134,24 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
               labelPlacement="stacked"
               maxlength={30}
               autocomplete="off"
+              className="ls-signin-form__input"
               data-testid={`${testid}-field-password`}
             >
               <IonInputPasswordToggle slot="end"></IonInputPasswordToggle>
             </Input>
 
-            <CheckboxInput name="rememberMe" testid={`${testid}-field-rememberme`}>
+            <CheckboxInput
+              name="rememberMe"
+              className="ls-signin-form__input ls-signin-form__input-checkbox"
+              testid={`${testid}-field-rememberme`}
+            >
               Remember me
             </CheckboxInput>
 
             <IonButton
               type="submit"
               color="primary"
-              className="ls-signin-form-button-submit"
+              className="ls-signin-form__button"
               expand="block"
               disabled={isSubmitting || !dirty}
               data-testid={`${testid}-button-submit`}

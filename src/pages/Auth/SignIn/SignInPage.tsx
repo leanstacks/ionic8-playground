@@ -24,8 +24,8 @@ const SignInPage = ({ testid = 'page-signin' }: SignInPageProps): JSX.Element =>
         <Header title="Ionic Playground" />
 
         <IonContent fullscreen className="ion-padding">
-          <Container fixed>
-            <SignInForm />
+          <Container className="ls-signin-page__container" fixed>
+            <SignInForm className="ls-signin-page__form" />
           </Container>
         </IonContent>
       </ProgressProvider>

@@ -1,10 +1,9 @@
 .ls-profile-form {
-  ion-input,
-  ion-textarea {
+  &__input {
     margin-bottom: 0.5rem;
   }
 
-  .ls-button-row {
+  &__button-row {
     margin-top: 2rem;
   }
 }

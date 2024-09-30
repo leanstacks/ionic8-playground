@@ -44,7 +44,7 @@ const AddressDetail = ({
     // loading state
     return (
       <div
-        className={classNames('ls-address-detail ls-address-detail-loader', className)}
+        className={classNames('ls-address-detail ls-address-detail--loading', className)}
         data-testid={`${testid}-loader`}
       >
         <HeaderRow border>
