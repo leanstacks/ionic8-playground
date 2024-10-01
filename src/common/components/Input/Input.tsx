@@ -34,6 +34,7 @@ const Input = forwardRef<HTMLIonInputElement, InputProps>(
     return (
       <IonInput
         className={classNames(
+          'ls-input',
           className,
           { 'ion-touched': meta.touched },
           { 'ion-invalid': meta.error },

@@ -35,7 +35,7 @@ const LoaderSkeleton = ({
   return (
     <IonSkeletonText
       animated={animated}
-      className={classNames('loader-skeleton', className)}
+      className={classNames('ls-loader-skeleton', className)}
       data-testid={testid}
       style={styles}
     ></IonSkeletonText>

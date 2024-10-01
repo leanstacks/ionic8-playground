@@ -55,33 +55,38 @@ const UserListItem = ({ className, lines, testid, user }: UserListItemProps): JS
   return (
     <IonItemSliding
       ref={ionSlidingRef}
-      className={classNames('list-item-user', className)}
+      className={classNames('ls-user-list-item', className)}
       data-testid={testIdentifier}
     >
-      <IonItem routerLink={`/tabs/users/${user.id}`} lines={lines} detail>
-        <Avatar value={user.name} size="large" />
+      <IonItem
+        className="ls-user-list-item__item"
+        routerLink={`/tabs/users/${user.id}`}
+        lines={lines}
+        detail
+      >
+        <Avatar className="ls-user-list-item__avatar" value={user.name} size="large" />
         <IonLabel>
-          <div className="content-row primary">
-            <div className="name" data-testid={`${testIdentifier}-name`}>
-              {user.name}
-            </div>
+          <div className="ls-user-list-item__content-row ls-user-list-item__content-row--primary">
+            <div data-testid={`${testIdentifier}-name`}>{user.name}</div>
           </div>
-          <div className="content-row secondary">
-            <div>
-              <Icon icon={IconName.Envelope} />
-              <div data-testid={`${testIdentifier}-email`}>{user.email}</div>
-            </div>
+          <div className="ls-user-list-item__content-row ls-user-list-item__content-row--secondary">
+            <Icon icon={IconName.Envelope} />
+            <div data-testid={`${testIdentifier}-email`}>{user.email}</div>
           </div>
         </IonLabel>
       </IonItem>
 
       <IonItemOptions>
-        <IonItemOption onClick={() => doEdit()}>
-          <Icon icon={IconName.PenToSquare} />
+        <IonItemOption className="ls-user-list-item__sliding-option" onClick={() => doEdit()}>
+          <Icon className="ls-user-list-item__sliding-option-icon" icon={IconName.PenToSquare} />
           Edit
         </IonItemOption>
-        <IonItemOption color="danger" onClick={() => setShowConfirmDelete(true)}>
-          <Icon icon={IconName.Trash} />
+        <IonItemOption
+          className="ls-user-list-item__sliding-option"
+          color="danger"
+          onClick={() => setShowConfirmDelete(true)}
+        >
+          <Icon className="ls-user-list-item__sliding-option-icon" icon={IconName.Trash} />
           Delete
         </IonItemOption>
       </IonItemOptions>

@@ -1,4 +1,4 @@
-.row-header {
+.ls-header-row {
   font-size: 1.25rem;
   font-weight: 500;
   line-height: 1.75rem;
@@ -8,13 +8,13 @@
   padding-bottom: 0.25rem;
   margin-bottom: 0.25rem;
 
-  &.bordered {
+  &--bordered {
     border-bottom-width: 1px;
     border-bottom-style: solid;
     border-bottom-color: var(--ion-color-light);
   }
 
-  &.inset {
+  &--inset {
     padding-inline: 0.5rem;
   }
 }

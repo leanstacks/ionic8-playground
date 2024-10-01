@@ -1,14 +1,15 @@
-.card-message {
+.ls-message-card {
   margin: 0;
 
-  .title-block {
+  &__header {
     display: flex;
     flex-direction: row;
     align-items: center;
 
-    .icon {
-      font-size: 1.25rem;
+    &-icon {
       margin-right: 0.5rem;
+
+      font-size: 1.25rem;
     }
   }
 }

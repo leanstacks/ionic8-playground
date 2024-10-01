@@ -10,7 +10,6 @@ import {
 } from '@ionic/react';
 import { useQueryClient } from '@tanstack/react-query';
 
-import './HomePage.scss';
 import { QueryKey } from 'common/utils/constants';
 import Header from 'common/components/Header/Header';
 import UserSummaryCard from 'pages/Users/components/UserSummaryCard/UserSummaryCard';
@@ -30,7 +29,7 @@ const HomePage = (): JSX.Element => {
   };
 
   return (
-    <IonPage className="page-home" data-testid="page-home">
+    <IonPage data-testid="page-home">
       <Header title="Ionic Playground" />
 
       <IonContent fullscreen>
@@ -40,10 +39,10 @@ const HomePage = (): JSX.Element => {
 
         <IonGrid fixed>
           <IonRow>
-            <IonCol sizeXs="2" sizeMd="1">
-              <WelcomeBlock className="block-welcome" />
+            <IonCol sizeXs="12" sizeMd="6">
+              <WelcomeBlock />
             </IonCol>
-            <IonCol sizeXs="2" sizeMd="1">
+            <IonCol sizeXs="12" sizeMd="6">
               <UserSummaryCard />
             </IonCol>
           </IonRow>

@@ -52,8 +52,8 @@ describe('Avatar', () => {
     await screen.findByTestId('avatar');
 
     // ASSERT
-    expect(screen.getByTestId('avatar')).toHaveClass('avatar-small');
-    expect(screen.getByTestId('avatar')).not.toHaveClass('avatar-large');
+    expect(screen.getByTestId('avatar')).toHaveClass('ls-avatar--small');
+    expect(screen.getByTestId('avatar')).not.toHaveClass('ls-avatar--large');
   });
 
   it('should render large size', async () => {
@@ -62,8 +62,8 @@ describe('Avatar', () => {
     await screen.findByTestId('avatar');
 
     // ASSERT
-    expect(screen.getByTestId('avatar')).not.toHaveClass('avatar-small');
-    expect(screen.getByTestId('avatar')).toHaveClass('avatar-large');
+    expect(screen.getByTestId('avatar')).not.toHaveClass('ls-avatar--small');
+    expect(screen.getByTestId('avatar')).toHaveClass('ls-avatar--large');
   });
 
   it('should render default size', async () => {
@@ -72,8 +72,8 @@ describe('Avatar', () => {
     await screen.findByTestId('avatar');
 
     // ASSERT
-    expect(screen.getByTestId('avatar')).not.toHaveClass('avatar-small');
-    expect(screen.getByTestId('avatar')).not.toHaveClass('avatar-large');
+    expect(screen.getByTestId('avatar')).not.toHaveClass('ls-avatar--small');
+    expect(screen.getByTestId('avatar')).not.toHaveClass('ls-avatar--large');
   });
 
   it('should render round shape', async () => {
@@ -82,8 +82,8 @@ describe('Avatar', () => {
     await screen.findByTestId('avatar');
 
     // ASSERT
-    expect(screen.getByTestId('avatar')).toHaveClass('avatar-round');
-    expect(screen.getByTestId('avatar')).not.toHaveClass('avatar-square');
+    expect(screen.getByTestId('avatar')).toHaveClass('ls-avatar--round');
+    expect(screen.getByTestId('avatar')).not.toHaveClass('ls-avatar--square');
   });
 
   it('should render square shape', async () => {
@@ -92,8 +92,8 @@ describe('Avatar', () => {
     await screen.findByTestId('avatar');
 
     // ASSERT
-    expect(screen.getByTestId('avatar')).not.toHaveClass('avatar-round');
-    expect(screen.getByTestId('avatar')).toHaveClass('avatar-square');
+    expect(screen.getByTestId('avatar')).not.toHaveClass('ls-avatar--round');
+    expect(screen.getByTestId('avatar')).toHaveClass('ls-avatar--square');
   });
 
   it('should render default shape', async () => {
@@ -102,7 +102,7 @@ describe('Avatar', () => {
     await screen.findByTestId('avatar');
 
     // ASSERT
-    expect(screen.getByTestId('avatar')).not.toHaveClass('avatar-round');
-    expect(screen.getByTestId('avatar')).not.toHaveClass('avatar-square');
+    expect(screen.getByTestId('avatar')).not.toHaveClass('ls-avatar--round');
+    expect(screen.getByTestId('avatar')).not.toHaveClass('ls-avatar--square');
   });
 });

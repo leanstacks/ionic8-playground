@@ -1,7 +1,5 @@
-.contact-info {
-  margin-bottom: 1rem;
-
-  .content {
+.ls-contact-info {
+  &__content {
     > * {
       display: flex;
       align-items: center;

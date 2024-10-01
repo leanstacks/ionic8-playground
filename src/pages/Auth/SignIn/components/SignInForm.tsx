@@ -69,7 +69,7 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
   });
 
   return (
-    <div className={classNames('form-signin', className)} data-testid={testid}>
+    <div className={classNames('ls-signin-form', className)} data-testid={testid}>
       {error && (
         <ErrorCard
           content={`We were unable verify your credentials. Please try again. ${error}`}
@@ -123,6 +123,7 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
               labelPlacement="stacked"
               maxlength={30}
               autocomplete="off"
+              className="ls-signin-form__input"
               ref={focusInput}
               data-testid={`${testid}-field-username`}
             />
@@ -133,19 +134,24 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
               labelPlacement="stacked"
               maxlength={30}
               autocomplete="off"
+              className="ls-signin-form__input"
               data-testid={`${testid}-field-password`}
             >
               <IonInputPasswordToggle slot="end"></IonInputPasswordToggle>
             </Input>
 
-            <CheckboxInput name="rememberMe" testid={`${testid}-field-rememberme`}>
+            <CheckboxInput
+              name="rememberMe"
+              className="ls-signin-form__input ls-signin-form__input-checkbox"
+              testid={`${testid}-field-rememberme`}
+            >
               Remember me
             </CheckboxInput>
 
             <IonButton
               type="submit"
               color="primary"
-              className="button-submit"
+              className="ls-signin-form__button"
               expand="block"
               disabled={isSubmitting || !dirty}
               data-testid={`${testid}-button-submit`}
@@ -153,7 +159,11 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
               Sign In
             </IonButton>
 
-            <IonPopover trigger="signinInfo" triggerAction="hover" className="form-signin-popover">
+            <IonPopover
+              trigger="signinInfo"
+              triggerAction="hover"
+              className="ls-signin-form-popover"
+            >
               <IonContent className="ion-padding">
                 <p>
                   This example application uses{' '}

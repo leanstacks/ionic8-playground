@@ -49,9 +49,9 @@ const AuthProvider = ({ children }: PropsWithChildren): JSX.Element => {
     <AuthContext.Provider value={value}>
       {isReady && <>{children}</>}
       {!isReady && (
-        <IonPage className="provider-auth">
+        <IonPage className="ls-auth-provider">
           <IonContent fullscreen>
-            <LoaderSpinner />
+            <LoaderSpinner className="ls-auth-provider__spinner" />
           </IonContent>
         </IonPage>
       )}

@@ -25,19 +25,17 @@ interface UserCardProps extends BaseComponentProps {
 const UserCard = ({ className, testid = 'card-user', user }: UserCardProps): JSX.Element => {
   return (
     <IonCard
-      className={classNames('card-user', className)}
+      className={classNames('ls-card-user', className)}
       routerLink={`/tabs/users/${user.id}`}
       data-testid={testid}
     >
-      <div className="layout">
-        <Avatar value={user.name} size="large" />
+      <div className="ls-card-user__layout">
+        <Avatar className="ls-card-user__avatar" value={user.name} size="large" />
         <div>
-          <div className="header">{user.name}</div>
-          <div className="content-row">
-            <div>
-              <Icon icon={IconName.Envelope} />
-              <div>{user.email}</div>
-            </div>
+          <div className="ls-card-user__header">{user.name}</div>
+          <div className="ls-card-user__content-row">
+            <Icon icon={IconName.Envelope} />
+            <div>{user.email}</div>
           </div>
         </div>
       </div>

@@ -1,8 +1,10 @@
-.tab-navigation {
-  ion-tab-button {
-    .icon {
-      margin-top: 0.375rem;
-      margin-bottom: 0.125rem;
+.ls-tab-navigation {
+  &__bar {
+    &-button {
+      &-icon {
+        margin-top: 0.375rem;
+        margin-bottom: 0.125rem;
+      }
     }
   }
 }

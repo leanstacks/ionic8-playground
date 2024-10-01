@@ -44,22 +44,20 @@ const ContactInfo = ({
   testid = 'contact-info',
   user,
 }: ContactInfoProps): JSX.Element | false => {
-  const baseProps = {
-    className: classNames('contact-info', className),
-    'data-testid': testid,
-  };
-
   if (isLoading) {
     // loading state
     return (
-      <div {...baseProps}>
+      <div
+        className={classNames('ls-contact-info ls-contact-info--loading', className)}
+        data-testid={`${testid}-loader`}
+      >
         {showHeader && (
-          <div className="header">
+          <HeaderRow border>
             <LoaderSkeleton animated widthStyle="1.5rem" heightStyle="1.5rem" />
             <LoaderSkeleton animated widthStyle="12rem" heightStyle="1.5rem" />
-          </div>
+          </HeaderRow>
         )}
-        <div className="content" data-testid={`${testid}-loader`}>
+        <div className="ls-contact-info__content">
           <LoaderSkeleton animated widthStyle="20rem" heightStyle="1.25rem" />
           <LoaderSkeleton animated widthStyle="20rem" heightStyle="1.25rem" />
           <LoaderSkeleton animated widthStyle="20rem" heightStyle="1.25rem" />
@@ -71,14 +69,14 @@ const ContactInfo = ({
   if (user) {
     // success state
     return (
-      <div {...baseProps}>
+      <div className={classNames('ls-contact-info', className)} data-testid={testid}>
         {showHeader && (
           <HeaderRow border>
             <Icon icon={IconName.User} />
             <div>Contact Info</div>
           </HeaderRow>
         )}
-        <div className="content">
+        <div className="ls-contact-info__content">
           {user.email && (
             <div>
               <Icon icon={IconName.Envelope} />

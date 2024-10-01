@@ -30,7 +30,7 @@ const CardRow = ({
   ...colProps
 }: CardRowProps): JSX.Element => {
   return (
-    <IonGrid className={classNames('row-card', className)} data-testid={testid}>
+    <IonGrid className={classNames('ls-card-row', className)} data-testid={testid}>
       <IonRow>
         <IonCol
           sizeMd={sizeMd}

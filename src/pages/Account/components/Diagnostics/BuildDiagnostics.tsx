@@ -21,7 +21,7 @@ const BuildDiagnostics = ({
   const config = useConfig();
 
   return (
-    <List className={classNames('build-diagnostics', className)} data-testid={testid}>
+    <List className={classNames('ls-build-diagnostics', className)} data-testid={testid}>
       <IonListHeader lines="full">
         <IonLabel>Build</IonLabel>
       </IonListHeader>

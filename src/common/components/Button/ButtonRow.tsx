@@ -30,7 +30,11 @@ const ButtonRow = ({
 }: ButtonRowProps): JSX.Element => {
   return (
     <IonRow
-      className={classNames('button-row', { 'button-row-block': expand === 'block' }, className)}
+      className={classNames(
+        'ls-button-row',
+        { 'ls-button-row--block': expand === 'block' },
+        className,
+      )}
       data-testid={testid}
       {...rowProps}
     />

@@ -1,7 +1,9 @@
-.ls-radiogroup-wrapper {
-  width: 100%;
+.ls-radiogroup-input {
+  &--expand-full {
+    width: 100%;
+  }
 
-  .ls-radiogroup-error {
+  &__error {
     display: block;
     margin-bottom: 0.5rem;
 

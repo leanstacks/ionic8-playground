@@ -59,7 +59,7 @@ const SettingsForm = ({
 
   if (isLoading) {
     return (
-      <div className={classNames('form-settings', className)} data-testid={`${testid}-loading`}>
+      <div className={classNames('ls-settings-form', className)} data-testid={`${testid}-loading`}>
         <List>
           <IonListHeader>
             <IonLabel>Settings</IonLabel>
@@ -128,7 +128,7 @@ const SettingsForm = ({
         validationSchema={validationSchema}
       >
         {({ isSubmitting, submitForm }) => (
-          <Form data-testid={testid} className={classNames('ls-form-settings', className)}>
+          <Form data-testid={testid} className={classNames('ls-settings-form', className)}>
             <List>
               <IonListHeader>
                 <IonLabel>Settings</IonLabel>
@@ -182,18 +182,29 @@ const SettingsForm = ({
 
               <IonItem>
                 <RadioGroupInput
-                  className="ls-field-fontSize"
                   name="fontSize"
                   onIonChange={() => submitForm()}
                   testid={`${testid}-field-fontSize`}
                 >
-                  <IonRadio className="text-xs" disabled={isSubmitting} value="smaller">
+                  <IonRadio
+                    className="ls-settings-form__input-fontsize-radio text-xs"
+                    disabled={isSubmitting}
+                    value="smaller"
+                  >
                     Smaller
                   </IonRadio>
-                  <IonRadio disabled={isSubmitting} value="default">
+                  <IonRadio
+                    className="ls-settings-form__input-fontsize-radio"
+                    disabled={isSubmitting}
+                    value="default"
+                  >
                     Default
                   </IonRadio>
-                  <IonRadio className="text-xl" disabled={isSubmitting} value="larger">
+                  <IonRadio
+                    className="ls-settings-form__input-fontsize-radio text-xl"
+                    disabled={isSubmitting}
+                    value="larger"
+                  >
                     Larger
                   </IonRadio>
                 </RadioGroupInput>

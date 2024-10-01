@@ -105,7 +105,7 @@ const Icon = ({
   return (
     <IonText color={color} slot={slot} data-testid={testid}>
       <FontAwesomeIcon
-        className={classNames('icon', className)}
+        className={classNames('ls-icon', className)}
         icon={faIcon}
         {...iconProps}
         data-testid={`${testid}-icon`}

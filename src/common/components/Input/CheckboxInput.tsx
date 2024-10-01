@@ -35,7 +35,7 @@ const CheckboxInput = ({
   className,
   name,
   onIonChange,
-  testid = 'ls-input-checkbox',
+  testid = 'input-checkbox',
   value,
   ...checkboxProps
 }: CheckboxInputProps): JSX.Element => {

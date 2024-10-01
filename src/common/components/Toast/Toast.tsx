@@ -44,7 +44,7 @@ const Toast = ({ className, dismiss, testid = 'toast', toast }: ToastProps): JSX
   return (
     <IonToast
       buttons={toast.buttons}
-      className={classNames('toast', className)}
+      className={classNames('ls-toast', className)}
       color={toast.color ?? 'medium'}
       data-testid={testid}
       duration={toast.duration}

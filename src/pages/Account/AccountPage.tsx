@@ -45,7 +45,7 @@ const AccountPage = ({ testid = 'page-account' }: PropsWithTestId): JSX.Element 
   };
 
   return (
-    <IonPage className="ls-page-account" data-testid={testid}>
+    <IonPage className="ls-account-page" data-testid={testid}>
       <ProgressProvider>
         <Header title="My Account" />
 

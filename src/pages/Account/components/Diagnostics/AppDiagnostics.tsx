@@ -24,7 +24,7 @@ const AppDiagnostics = ({
 
   if (isNativePlatform) {
     return (
-      <List className={classNames('app-diagnostics', className)} data-testid={testid}>
+      <List className={classNames('ls-app-diagnostics', className)} data-testid={testid}>
         <IonListHeader lines="full">
           <IonLabel>App</IonLabel>
         </IonListHeader>
@@ -65,7 +65,7 @@ const AppDiagnostics = ({
     );
   } else {
     return (
-      <List className={classNames('app-diagnostics', className)} data-testid={testid}>
+      <List className={classNames('ls-app-diagnostics', className)} data-testid={testid}>
         <IonListHeader lines="full">
           <IonLabel>App</IonLabel>
         </IonListHeader>

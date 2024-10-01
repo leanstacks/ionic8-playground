@@ -19,13 +19,13 @@ interface SignInPageProps extends PropsWithTestId {}
  */
 const SignInPage = ({ testid = 'page-signin' }: SignInPageProps): JSX.Element => {
   return (
-    <IonPage className="page-signin" data-testid={testid}>
+    <IonPage className="ls-signin-page" data-testid={testid}>
       <ProgressProvider>
         <Header title="Ionic Playground" />
 
         <IonContent fullscreen className="ion-padding">
-          <Container fixed>
-            <SignInForm />
+          <Container className="ls-signin-page__container" fixed>
+            <SignInForm className="ls-signin-page__form" />
           </Container>
         </IonContent>
       </ProgressProvider>

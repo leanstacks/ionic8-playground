@@ -1,11 +1,9 @@
-.page-signin {
-  .container {
-    &.fixed {
-      max-width: 576px;
-    }
+.ls-signin-page {
+  &__container {
+    max-width: 576px;
+  }
 
-    .form-signin {
-      margin: 2rem 0;
-    }
+  &__form {
+    margin: 2rem 0;
   }
 }

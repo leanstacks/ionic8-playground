@@ -1,9 +1,9 @@
-.list-user {
-  .loader {
+.ls-user-list {
+  &__loader {
     height: 8rem;
   }
 
-  .row-message {
+  &__card-row {
     margin: 2rem 0rem;
   }
 }

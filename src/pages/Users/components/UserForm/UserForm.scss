@@ -1,5 +1,9 @@
-.form-user {
-  ion-input {
+.ls-user-form {
+  &__input {
     margin-bottom: 0.5rem;
+  }
+
+  &__button {
+    margin-top: 2rem;
   }
 }

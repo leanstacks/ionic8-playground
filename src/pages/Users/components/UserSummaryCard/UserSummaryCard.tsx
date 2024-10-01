@@ -35,14 +35,14 @@ const UserSummaryCard = ({
     <IonCard
       button
       routerLink="/tabs/users"
-      className={classNames('card-user-summary', className)}
+      className={classNames('ls-user-summary-card', className)}
       data-testid={testid}
     >
       <IonCardHeader>
         <IonCardTitle className="ion-text-uppercase">
           Users
           {users && (
-            <IonBadge className="badge" data-testid={`${testid}-badge`}>
+            <IonBadge className="ls-user-summary-card__badge" data-testid={`${testid}-badge`}>
               {users.length}
             </IonBadge>
           )}

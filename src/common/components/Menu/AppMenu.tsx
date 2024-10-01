@@ -38,7 +38,7 @@ const AppMenu = ({ className, testid = 'menu-app' }: AppMenuProps): JSX.Element 
 
   return (
     <IonMenu
-      className={classNames('menu-app', className)}
+      className={classNames('ls-app-menu', className)}
       contentId="content-main"
       data-testid={testid}
       menuId="menu-app"
@@ -46,10 +46,10 @@ const AppMenu = ({ className, testid = 'menu-app' }: AppMenuProps): JSX.Element 
     >
       <IonHeader>
         <IonToolbar>
-          <IonTitle data-testid={`${testid}-title`}>
+          <IonTitle className="ls-app-menu__title" data-testid={`${testid}-title`}>
             {showUserHeader ? (
               <IonRow className="ion-align-items-center">
-                <Avatar value={currentUser.name} />
+                <Avatar className="ls-app-menu__title-avatar" value={currentUser.name} />
                 <div>{currentUser.name}</div>
               </IonRow>
             ) : (
@@ -63,13 +63,13 @@ const AppMenu = ({ className, testid = 'menu-app' }: AppMenuProps): JSX.Element 
           <>
             <IonMenuToggle>
               <IonItem routerLink="/tabs/home" lines="full" data-testid={`${testid}-item-home`}>
-                <Icon icon={IconName.House} fixedWidth className="icon" />
+                <Icon className="ls-app-menu__toggle-icon" icon={IconName.House} fixedWidth />
                 <IonLabel>Home</IonLabel>
               </IonItem>
             </IonMenuToggle>
             <IonMenuToggle>
               <IonItem routerLink="/tabs/users" lines="full" data-testid={`${testid}-item-users`}>
-                <Icon icon={IconName.Users} fixedWidth className="icon" />
+                <Icon className="ls-app-menu__toggle-icon" icon={IconName.Users} fixedWidth />
                 <IonLabel>Users</IonLabel>
               </IonItem>
             </IonMenuToggle>
@@ -79,7 +79,7 @@ const AppMenu = ({ className, testid = 'menu-app' }: AppMenuProps): JSX.Element 
                 lines="full"
                 data-testid={`${testid}-item-account`}
               >
-                <Icon icon={IconName.UserGear} fixedWidth className="icon" />
+                <Icon className="ls-app-menu__toggle-icon" icon={IconName.UserGear} fixedWidth />
                 <IonLabel>Account</IonLabel>
               </IonItem>
             </IonMenuToggle>
@@ -89,7 +89,7 @@ const AppMenu = ({ className, testid = 'menu-app' }: AppMenuProps): JSX.Element 
                 lines="full"
                 data-testid={`${testid}-item-signout`}
               >
-                <Icon icon={IconName.SignOut} fixedWidth className="icon" />
+                <Icon className="ls-app-menu__toggle-icon" icon={IconName.SignOut} fixedWidth />
                 <IonLabel>Sign Out</IonLabel>
               </IonItem>
             </IonMenuToggle>

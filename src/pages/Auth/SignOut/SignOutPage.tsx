@@ -30,9 +30,9 @@ const SignOutPage = ({ testid = 'page-signout' }: PropsWithTestId): JSX.Element 
   }, []);
 
   return (
-    <IonPage className="page-signout" data-testid={testid}>
+    <IonPage className="ls-page-signout" data-testid={testid}>
       <IonContent fullscreen>
-        <LoaderSpinner />
+        <LoaderSpinner className="ls-page-signout__loader-spinner" />
       </IonContent>
     </IonPage>
   );

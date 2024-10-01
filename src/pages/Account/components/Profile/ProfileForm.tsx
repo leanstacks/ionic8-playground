@@ -68,7 +68,7 @@ const ProfileForm = ({
   };
 
   return (
-    <div className={classNames('form-profile', className)} data-testid={testid}>
+    <div className={classNames('ls-profile-form', className)} data-testid={testid}>
       {error && (
         <ErrorCard
           content={`We are experiencing problems processing your request. ${error}`}
@@ -119,6 +119,7 @@ const ProfileForm = ({
               labelPlacement="stacked"
               disabled={isSubmitting}
               autocomplete="off"
+              className="ls-profile-form__input"
               ref={focusInput}
               data-testid={`${testid}-field-name`}
             />
@@ -130,6 +131,7 @@ const ProfileForm = ({
               labelPlacement="stacked"
               disabled={isSubmitting}
               autocomplete="off"
+              className="ls-profile-form__input"
               data-testid={`${testid}-field-email`}
             />
 
@@ -141,6 +143,7 @@ const ProfileForm = ({
               counter
               maxlength={500}
               disabled={isSubmitting}
+              className="ls-profile-form__input"
               data-testid={`${testid}-field-bio`}
             />
 
@@ -149,13 +152,14 @@ const ProfileForm = ({
               label="Birthday"
               labelPlacement="stacked"
               disabled={isSubmitting}
+              className="ls-profile-form__input"
               showClearButton
               showDefaultButtons
               showDefaultTitle
               testid={`${testid}-field-dateofbirth`}
             />
 
-            <ButtonRow expand="block">
+            <ButtonRow className="ls-profile-form__button-row" expand="block">
               <IonButton
                 type="button"
                 color="secondary"

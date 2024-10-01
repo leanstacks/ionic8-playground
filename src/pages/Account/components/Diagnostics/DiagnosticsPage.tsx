@@ -16,7 +16,7 @@ import BuildDiagnostics from './BuildDiagnostics';
  */
 const DiagnosticsPage = ({ testid = 'page-diagnostics' }: PropsWithTestId): JSX.Element => {
   return (
-    <IonPage className="page-diagnostics" data-testid={testid}>
+    <IonPage className="ls-diagnostics-page" data-testid={testid}>
       <Header title="Diagnostics" backButton defaultHref="/tabs/account" />
 
       <IonContent>

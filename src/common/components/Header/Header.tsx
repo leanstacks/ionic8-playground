@@ -52,19 +52,27 @@ const Header = ({
   const { isActive: isActiveProgressBar, progressBar } = useProgress();
 
   return (
-    <IonHeader className="header-app" data-testid="header-app">
+    <IonHeader className="ls-header" data-testid="header-app">
       <IonToolbar>
         <IonButtons slot="start">
           {backButton ? (
             <IonBackButton defaultHref={defaultHref} data-testid={`${testid}-button-back`} />
           ) : (
-            <img className="logo" src={logo} alt="Logo" data-testid={`${testid}-image-logo`} />
+            <img
+              className="ls-header__logo"
+              src={logo}
+              alt="Logo"
+              data-testid={`${testid}-image-logo`}
+            />
           )}
         </IonButtons>
         <IonTitle className="ion-hide-md-up" data-testid={`${testid}-title`}>
           {title}
         </IonTitle>
-        <IonButtons className="nav-main ion-hide-md-down" data-testid={`${testid}-menu-row`}>
+        <IonButtons
+          className="ls-header__nav-main ion-hide-md-down"
+          data-testid={`${testid}-menu-row`}
+        >
           {isAuthenticated && (
             <>
               <IonButton routerLink="/tabs/home">Home</IonButton>
@@ -72,7 +80,7 @@ const Header = ({
             </>
           )}
         </IonButtons>
-        <IonButtons slot="end">
+        <IonButtons className="ls-header__nav-end" slot="end">
           {isAuthenticated && (
             <IonMenuButton
               autoHide={false}

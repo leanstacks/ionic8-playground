@@ -58,7 +58,7 @@ const UserForm = ({
   }, []);
 
   return (
-    <div className={classNames('form-user', className)} data-testid={testid}>
+    <div className={classNames('ls-user-form', className)} data-testid={testid}>
       <Formik<UserFormValues>
         enableReinitialize={true}
         initialValues={{
@@ -78,6 +78,7 @@ const UserForm = ({
               label="Name"
               labelPlacement="stacked"
               disabled={isSubmitting}
+              className="ls-user-form__input"
               ref={focusInput}
               data-testid={`${testid}-field-name`}
             ></Input>
@@ -87,6 +88,7 @@ const UserForm = ({
               labelPlacement="stacked"
               disabled={isSubmitting}
               maxlength={30}
+              className="ls-user-form__input"
               data-testid={`${testid}-field-username`}
             ></Input>
             <Input
@@ -95,6 +97,7 @@ const UserForm = ({
               label="Email"
               labelPlacement="stacked"
               disabled={isSubmitting}
+              className="ls-user-form__input"
               data-testid={`${testid}-field-email`}
             ></Input>
             <Input
@@ -102,6 +105,7 @@ const UserForm = ({
               label="Phone"
               labelPlacement="stacked"
               disabled={isSubmitting}
+              className="ls-user-form__input"
               data-testid={`${testid}-field-phone`}
             ></Input>
             <Input
@@ -109,13 +113,14 @@ const UserForm = ({
               label="Website"
               labelPlacement="stacked"
               disabled={isSubmitting}
+              className="ls-user-form__input"
               data-testid={`${testid}-field-website`}
             ></Input>
 
             <IonButton
               type="submit"
               color="primary"
-              className="ion-margin-top"
+              className="ls-user-form__button"
               expand="block"
               disabled={isSubmitting || !dirty}
               data-testid={`${testid}-button-submit`}

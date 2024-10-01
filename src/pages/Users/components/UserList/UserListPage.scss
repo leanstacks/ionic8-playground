@@ -1,9 +1,10 @@
-.ls-page-user-list {
-  .page-header {
-    margin-top: 1rem;
+.ls-user-list-page {
+  &__searchbar {
+    --padding-start: 9px;
+    --padding-end: 9px;
   }
 
-  .list-user {
+  &__list {
     margin-top: 1rem;
     margin-bottom: 5rem;
   }

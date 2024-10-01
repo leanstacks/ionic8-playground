@@ -48,17 +48,30 @@ const MessageCard = ({
   title,
 }: MessageCardProps): JSX.Element => {
   return (
-    <IonCard className={classNames('card-message', className)} data-testid={testid} color={color}>
+    <IonCard
+      className={classNames('ls-message-card', className)}
+      data-testid={testid}
+      color={color}
+    >
       {title && (
         <IonCardHeader className="header">
-          <IonCardTitle className="title-block">
-            {icon && <Icon icon={icon} data-testid={`${testid}-icon`} />}
-            <div className="title" data-testid={`${testid}-title`}>
+          <IonCardTitle className="ls-message-card__header">
+            {icon && (
+              <Icon
+                className="ls-message-card__header-icon"
+                icon={icon}
+                data-testid={`${testid}-icon`}
+              />
+            )}
+            <div className="ls-message-card__header-title" data-testid={`${testid}-title`}>
               {title}
             </div>
           </IonCardTitle>
           {subtitle && (
-            <IonCardSubtitle className="subtitle" data-testid={`${testid}-subtitle`}>
+            <IonCardSubtitle
+              className="ls-message-card__subtitle"
+              data-testid={`${testid}-subtitle`}
+            >
               {subtitle}
             </IonCardSubtitle>
           )}
@@ -66,7 +79,7 @@ const MessageCard = ({
       )}
 
       {content && (
-        <IonCardContent className="content" data-testid={`${testid}-content`}>
+        <IonCardContent className="ls-message-card__content" data-testid={`${testid}-content`}>
           {content}
         </IonCardContent>
       )}

@@ -1,4 +1,4 @@
-import { IonSpinner } from '@ionic/react';
+import { IonSpinner, IonText } from '@ionic/react';
 import classNames from 'classnames';
 
 import './LoaderSpinner.scss';
@@ -28,9 +28,9 @@ const LoaderSpinner = ({
   text,
 }: LoaderSpinnerProps): JSX.Element => {
   return (
-    <div className={classNames('loader-spinner', className)} data-testid={testid}>
+    <div className={classNames('ls-loader-spinner', className)} data-testid={testid}>
       <IonSpinner></IonSpinner>
-      {text && <div className="text">{text}</div>}
+      {text && <IonText className="ls-loader-spinner__text">{text}</IonText>}
     </div>
   );
 };
