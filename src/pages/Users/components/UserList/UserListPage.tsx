@@ -15,6 +15,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import './UserListPage.scss';
 import { PropsWithTestId } from 'common/components/types';
 import { QueryKey } from 'common/utils/constants';
+import { useScrollContext } from 'common/hooks/useScrollContext';
 import Header from 'common/components/Header/Header';
 import Searchbar from 'common/components/Searchbar/Searchbar';
 import Container from 'common/components/Content/Container';
@@ -25,6 +26,7 @@ import ProgressProvider from 'common/providers/ProgressProvider';
 import UserAddFab from '../UserAdd/UserAddFab';
 import Icon, { IconName } from 'common/components/Icon/Icon';
 import UserAddModal from '../UserAdd/UserAddModal';
+import classNames from 'classnames';
 
 /**
  * The `UserListPage` component renders a list of all `User` objects.
@@ -34,6 +36,7 @@ export const UserListPage = ({ testid = 'page-user-list' }: PropsWithTestId): JS
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
   const [search, setSearch] = useState<string>('');
   const queryClient = useQueryClient();
+  const { handleIonScroll, scrollDirection } = useScrollContext();
 
   /**
    * Handle pull to refresh events.
@@ -60,12 +63,14 @@ export const UserListPage = ({ testid = 'page-user-list' }: PropsWithTestId): JS
           toolbars={[
             {
               children: <Searchbar debounce={500} onIonInput={handleInputSearch} />,
-              className: 'ls-user-list-page__searchbar',
+              className: classNames('ls-user-list-page__searchbar', {
+                'ion-hide': scrollDirection === 'down',
+              }),
             },
           ]}
         />
 
-        <IonContent>
+        <IonContent scrollEvents onIonScroll={handleIonScroll}>
           <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
             <IonRefresherContent></IonRefresherContent>
           </IonRefresher>
