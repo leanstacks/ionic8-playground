@@ -7,6 +7,7 @@ import ConfigContextProvider from 'common/providers/ConfigProvider';
 import ToastProvider from 'common/providers/ToastProvider';
 import AxiosProvider from 'common/providers/AxiosProvider';
 import AuthProvider from 'common/providers/AuthProvider';
+import ScrollProvider from 'common/providers/ScrollProvider';
 
 const WithAllProviders = ({ children }: PropsWithChildren): JSX.Element => {
   return (
@@ -15,7 +16,9 @@ const WithAllProviders = ({ children }: PropsWithChildren): JSX.Element => {
         <AuthProvider>
           <AxiosProvider>
             <ToastProvider>
-              <MemoryRouter>{children}</MemoryRouter>
+              <ScrollProvider>
+                <MemoryRouter>{children}</MemoryRouter>
+              </ScrollProvider>
             </ToastProvider>
           </AxiosProvider>
         </AuthProvider>

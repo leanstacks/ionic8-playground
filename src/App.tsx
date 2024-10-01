@@ -11,6 +11,7 @@ import Toasts from 'common/components/Toast/Toasts';
 import AppRouter from 'common/components/Router/AppRouter';
 
 import './theme/main.scss';
+import ScrollProvider from 'common/providers/ScrollProvider';
 
 setupIonicReact();
 
@@ -26,9 +27,11 @@ const App = (): JSX.Element => (
         <AuthProvider>
           <AxiosProvider>
             <ToastProvider>
-              <AppRouter />
-              <Toasts />
-              <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-left" />
+              <ScrollProvider>
+                <AppRouter />
+                <Toasts />
+                <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-left" />
+              </ScrollProvider>
             </ToastProvider>
           </AxiosProvider>
         </AuthProvider>
