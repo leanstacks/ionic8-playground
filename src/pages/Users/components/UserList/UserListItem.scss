@@ -1,5 +1,5 @@
 .ls-user-list-item {
-  ion-item {
+  &__item {
     --inner-padding-bottom: 0.5rem;
     --inner-padding-top: 0.5rem;
   }
@@ -24,8 +24,8 @@
     }
   }
 
-  ion-item-option {
-    .ls-icon {
+  &__sliding-option {
+    &-icon {
       margin-right: 0.375rem;
     }
   }

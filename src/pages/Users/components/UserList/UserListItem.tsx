@@ -58,7 +58,12 @@ const UserListItem = ({ className, lines, testid, user }: UserListItemProps): JS
       className={classNames('ls-user-list-item', className)}
       data-testid={testIdentifier}
     >
-      <IonItem routerLink={`/tabs/users/${user.id}`} lines={lines} detail>
+      <IonItem
+        className="ls-user-list-item__item"
+        routerLink={`/tabs/users/${user.id}`}
+        lines={lines}
+        detail
+      >
         <Avatar className="ls-user-list-item__avatar" value={user.name} size="large" />
         <IonLabel>
           <div className="ls-user-list-item__content-row ls-user-list-item__content-row--primary">
@@ -72,12 +77,16 @@ const UserListItem = ({ className, lines, testid, user }: UserListItemProps): JS
       </IonItem>
 
       <IonItemOptions>
-        <IonItemOption onClick={() => doEdit()}>
-          <Icon icon={IconName.PenToSquare} />
+        <IonItemOption className="ls-user-list-item__sliding-option" onClick={() => doEdit()}>
+          <Icon className="ls-user-list-item__sliding-option-icon" icon={IconName.PenToSquare} />
           Edit
         </IonItemOption>
-        <IonItemOption color="danger" onClick={() => setShowConfirmDelete(true)}>
-          <Icon icon={IconName.Trash} />
+        <IonItemOption
+          className="ls-user-list-item__sliding-option"
+          color="danger"
+          onClick={() => setShowConfirmDelete(true)}
+        >
+          <Icon className="ls-user-list-item__sliding-option-icon" icon={IconName.Trash} />
           Delete
         </IonItemOption>
       </IonItemOptions>
