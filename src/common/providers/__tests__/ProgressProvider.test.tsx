@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
+import userEvent from '@testing-library/user-event';
 
 import { render, screen, waitFor } from 'test/test-utils';
 
 import ProgressProvider from '../ProgressProvider';
-import userEvent from '@testing-library/user-event';
 
 describe('ProgressProvider', () => {
   it('should render successfully', async () => {

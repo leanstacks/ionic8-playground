@@ -7,6 +7,7 @@ import { queryClient } from 'common/utils/query-client';
 import AuthProvider from 'common/providers/AuthProvider';
 import AxiosProvider from 'common/providers/AxiosProvider';
 import ToastProvider from 'common/providers/ToastProvider';
+import ScrollProvider from 'common/providers/ScrollProvider';
 import Toasts from 'common/components/Toast/Toasts';
 import AppRouter from 'common/components/Router/AppRouter';
 
@@ -26,9 +27,11 @@ const App = (): JSX.Element => (
         <AuthProvider>
           <AxiosProvider>
             <ToastProvider>
-              <AppRouter />
-              <Toasts />
-              <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-left" />
+              <ScrollProvider>
+                <AppRouter />
+                <Toasts />
+                <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-left" />
+              </ScrollProvider>
             </ToastProvider>
           </AxiosProvider>
         </AuthProvider>
