@@ -11,6 +11,7 @@ import {
 } from '@ionic/react';
 import { useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
+import classNames from 'classnames';
 
 import './UserListPage.scss';
 import { PropsWithTestId } from 'common/components/types';
@@ -26,7 +27,6 @@ import ProgressProvider from 'common/providers/ProgressProvider';
 import UserAddFab from '../UserAdd/UserAddFab';
 import Icon, { IconName } from 'common/components/Icon/Icon';
 import UserAddModal from '../UserAdd/UserAddModal';
-import classNames from 'classnames';
 
 /**
  * The `UserListPage` component renders a list of all `User` objects.
