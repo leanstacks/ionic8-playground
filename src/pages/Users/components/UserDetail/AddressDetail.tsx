@@ -51,7 +51,7 @@ const AddressDetail = ({
           <LoaderSkeleton animated heightStyle="1.5rem" widthStyle="1.5rem" />
           <LoaderSkeleton animated heightStyle="1.5rem" widthStyle="10rem" />
         </HeaderRow>
-        <div>
+        <div className="ls-address-detail__content">
           <LoaderSkeleton animated heightStyle="1.25rem" widthStyle="20rem" />
           <LoaderSkeleton animated heightStyle="1.25rem" widthStyle="20rem" />
           <LoaderSkeleton animated heightStyle="1.25rem" widthStyle="20rem" />
@@ -69,7 +69,7 @@ const AddressDetail = ({
           <Icon icon={IconName.MapLocationDot} />
           <div>Address</div>
         </HeaderRow>
-        <div className="ls-address-detail-content">
+        <div className="ls-address-detail__content">
           <div>{address.street}</div>
           <div>{address.suite}</div>
           <div>{address.city}</div>
