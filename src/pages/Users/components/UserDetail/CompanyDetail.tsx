@@ -51,7 +51,7 @@ const CompanyDetail = ({
           <LoaderSkeleton animated heightStyle="1.5rem" widthStyle="1.5rem" />
           <LoaderSkeleton animated heightStyle="1.5rem" widthStyle="10rem" />
         </HeaderRow>
-        <div className="content">
+        <div className="ls-company-detail__content">
           <LoaderSkeleton animated heightStyle="1.25rem" widthStyle="20rem" />
           <LoaderSkeleton animated heightStyle="1.25rem" widthStyle="20rem" />
           <LoaderSkeleton animated heightStyle="1.25rem" widthStyle="20rem" />
@@ -68,7 +68,7 @@ const CompanyDetail = ({
           <Icon icon={IconName.Building} />
           <div>Company</div>
         </HeaderRow>
-        <div className="ls-company-detail-content">
+        <div className="ls-company-detail__content">
           <div className="font-bold">{company.name}</div>
           <div>{company.catchPhrase}</div>
           <div>{company.bs}</div>

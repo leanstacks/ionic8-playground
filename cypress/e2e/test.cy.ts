@@ -1,6 +1,6 @@
-describe('Home Page', () => {
-  it('Visits the Home Page URL', () => {
-    cy.visit('/tabs/home');
-    cy.get('[data-testid="page-home"]').should('be.visible');
+describe('Sign In Page', () => {
+  it('Visits the Sign In Page', () => {
+    cy.visit('/auth/signin');
+    cy.get('[data-testid="page-signin"]').should('be.visible');
   });
 });
