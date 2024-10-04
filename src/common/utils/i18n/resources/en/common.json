@@ -1,3 +1,10 @@
 {
+  "navigation": {
+    "account": "Account",
+    "home": "Home",
+    "menu": "Menu",
+    "signout": "Sign Out",
+    "users": "Users"
+  },
   "welcome": "Welcome"
 }

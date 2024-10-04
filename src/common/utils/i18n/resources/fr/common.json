@@ -1,3 +1,10 @@
 {
+  "navigation": {
+    "account": "Compte",
+    "home": "Maison",
+    "menu": "Menu",
+    "signout": "Déconnecter",
+    "users": "Utilisateurs"
+  },
   "welcome": "Bienvenu"
 }
