@@ -7,7 +7,7 @@ import map from 'lodash/map';
 
 import './SettingsForm.scss';
 import { BaseComponentProps } from 'common/components/types';
-import { LANGUAGES } from 'common/utils/constants';
+import { LANGUAGES, StorageKey } from 'common/utils/constants';
 import { Settings } from 'common/models/settings';
 import { useGetSettings } from 'common/api/useGetSettings';
 import { useUpdateSettings } from 'common/api/useUpdateSettings';
@@ -21,6 +21,8 @@ import RangeInput from 'common/components/Input/RangeInput';
 import Icon, { IconName } from 'common/components/Icon/Icon';
 import SelectInput from 'common/components/Input/SelectInput';
 import RadioGroupInput from 'common/components/Input/RadioGroupInput';
+import storage from 'common/utils/storage';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Settings form values.
@@ -56,6 +58,7 @@ const SettingsForm = ({
   const { mutate: updateSettings } = useUpdateSettings();
   const { setProgress } = useProgress();
   const { createToast } = useToasts();
+  const { i18n } = useTranslation();
 
   if (isLoading) {
     return (
@@ -104,12 +107,15 @@ const SettingsForm = ({
           updateSettings(
             { settings: values },
             {
-              onSuccess: () => {
+              onSuccess: (settings) => {
                 createToast({
                   message: 'Settings updated.',
                   duration: 3000,
                   buttons: [DismissButton],
                 });
+                // store the preferred language for i18n language detection
+                storage.setItem(StorageKey.Language, settings.language);
+                i18n.changeLanguage(settings.language);
               },
               onError: () => {
                 createToast({
