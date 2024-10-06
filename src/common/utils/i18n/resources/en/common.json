@@ -11,5 +11,7 @@
     "signout": "Sign Out",
     "users": "Users"
   },
+  "error-no-data": "No data",
+  "error-generic": "Uh oh",
   "welcome": "Welcome"
 }

@@ -3,6 +3,7 @@ import { useRef, useState } from 'react';
 import { Form, Formik } from 'formik';
 import { date, object, string } from 'yup';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 import './ProfileForm.scss';
 import { BaseComponentProps } from 'common/components/types';
@@ -16,7 +17,6 @@ import Input from 'common/components/Input/Input';
 import ButtonRow from 'common/components/Button/ButtonRow';
 import Textarea from 'common/components/Input/Textarea';
 import DateInput from 'common/components/Input/DateInput';
-import { useTranslation } from 'react-i18next';
 
 /**
  * Profile form values.

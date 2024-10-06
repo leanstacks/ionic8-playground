@@ -11,5 +11,7 @@
     "signout": "Desconecta",
     "users": "Usuarios"
   },
+  "error-no-data": "Sin datos",
+  "error-generic": "Un problema",
   "welcome": "Bienvenido"
 }
