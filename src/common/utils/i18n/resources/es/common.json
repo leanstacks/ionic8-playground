@@ -1,5 +1,9 @@
 {
   "ionic-playground": "Proyecto Ionic",
+  "label": {
+    "cancel": "Cancelar",
+    "save": "Guardar"
+  },
   "navigation": {
     "account": "Cuenta",
     "home": "Inicio",

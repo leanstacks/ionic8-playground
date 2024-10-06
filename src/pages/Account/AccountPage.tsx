@@ -62,7 +62,7 @@ const AccountPage = ({ testid = 'page-account' }: PropsWithTestId): JSX.Element 
 
                   <IonItem className="text-sm" detail routerLink="/tabs/account/profile">
                     <IonLabel className="font-medium ion-margin-end">
-                      {t('profile', { ns: 'account' })}
+                      {t('profile.profile', { ns: 'account' })}
                     </IonLabel>
                   </IonItem>
                   <IonItem className="text-sm" detail routerLink="/auth/signout">

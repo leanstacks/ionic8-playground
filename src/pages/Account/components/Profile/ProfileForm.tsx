@@ -16,6 +16,7 @@ import Input from 'common/components/Input/Input';
 import ButtonRow from 'common/components/Button/ButtonRow';
 import Textarea from 'common/components/Input/Textarea';
 import DateInput from 'common/components/Input/DateInput';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Profile form values.
@@ -58,6 +59,7 @@ const ProfileForm = ({
   const router = useIonRouter();
   const { setProgress } = useProgress();
   const { createToast } = useToasts();
+  const { t } = useTranslation();
 
   useIonViewDidEnter(() => {
     focusInput.current?.setFocus();
@@ -71,7 +73,7 @@ const ProfileForm = ({
     <div className={classNames('ls-profile-form', className)} data-testid={testid}>
       {error && (
         <ErrorCard
-          content={`We are experiencing problems processing your request. ${error}`}
+          content={`${t('profile.unable-to-process', { ns: 'account' })} ${error}`}
           className="ion-margin-bottom"
           testid={`${testid}-error`}
         />
@@ -115,7 +117,7 @@ const ProfileForm = ({
           <Form>
             <Input
               name="name"
-              label="Name"
+              label={t('profile.label.name', { ns: 'account' })}
               labelPlacement="stacked"
               disabled={isSubmitting}
               autocomplete="off"
@@ -127,7 +129,7 @@ const ProfileForm = ({
             <Input
               name="email"
               type="email"
-              label="Email"
+              label={t('profile.label.email', { ns: 'account' })}
               labelPlacement="stacked"
               disabled={isSubmitting}
               autocomplete="off"
@@ -137,7 +139,7 @@ const ProfileForm = ({
 
             <Textarea
               name="bio"
-              label="Bio"
+              label={t('profile.label.bio', { ns: 'account' })}
               labelPlacement="stacked"
               autoGrow
               counter
@@ -149,7 +151,7 @@ const ProfileForm = ({
 
             <DateInput
               name="dateOfBirth"
-              label="Birthday"
+              label={t('profile.label.birthday', { ns: 'account' })}
               labelPlacement="stacked"
               disabled={isSubmitting}
               className="ls-profile-form__input"
@@ -168,7 +170,7 @@ const ProfileForm = ({
                 onClick={onCancel}
                 data-testid={`${testid}-button-cancel`}
               >
-                Cancel
+                {t('label.cancel')}
               </IonButton>
               <IonButton
                 type="submit"
@@ -176,7 +178,7 @@ const ProfileForm = ({
                 disabled={isSubmitting || !dirty}
                 data-testid={`${testid}-button-submit`}
               >
-                Save
+                {t('label.save')}
               </IonButton>
             </ButtonRow>
           </Form>

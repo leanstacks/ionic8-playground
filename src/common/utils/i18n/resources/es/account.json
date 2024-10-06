@@ -3,7 +3,17 @@
   "legal": "Legal",
   "my-account": "Mi Cuenta",
   "privacy-policy": "Política de privacidad",
-  "profile": "Perfil",
+  "profile": {
+    "label": {
+      "bio": "Biografía",
+      "birthday": "Cumpleaños",
+      "email": "Correo electrónico",
+      "name": "Nombre"
+    },
+    "profile": "Perfil",
+    "unable-to-process": "We are experiencing problems processing your request.",
+    "unable-to-retrieve": "We are unable to retrieve your profile details at this time."
+  },
   "terms-and-conditions": "Términos y condiciones",
   "version": "Versión"
 }

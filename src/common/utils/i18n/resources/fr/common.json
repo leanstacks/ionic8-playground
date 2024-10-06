@@ -1,5 +1,9 @@
 {
   "ionic-playground": "Projet Ionic",
+  "label": {
+    "cancel": "Annuler",
+    "save": "Sauvegarder"
+  },
   "navigation": {
     "account": "Compte",
     "home": "Maison",
