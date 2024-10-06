@@ -11,8 +11,8 @@
       "name": "Nom"
     },
     "profile": "Profil",
-    "unable-to-process": "We are experiencing problems processing your request.",
-    "unable-to-retrieve": "We are unable to retrieve your profile details at this time."
+    "unable-to-process": "Nous rencontrons des problèmes lors du traitement de votre demande.",
+    "unable-to-retrieve": "Nous ne sommes pas en mesure de récupérer les détails de votre profil pour le moment."
   },
   "terms-and-conditions": "Terms and conditions",
   "version": "Version"
