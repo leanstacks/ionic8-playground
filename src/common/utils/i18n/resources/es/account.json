@@ -1,5 +1,24 @@
 {
   "about": "Sobre",
+  "diagnostics": {
+    "app": "App",
+    "build": "Build",
+    "diagnostics": "Diagnósticos",
+    "label": {
+      "build": "Compilación",
+      "environment": "Ambiente",
+      "id": "ID",
+      "name": "Nombre",
+      "native": "Nativo",
+      "platforms": "Plataformas",
+      "sha": "SHA",
+      "time": "Tiempo",
+      "version": "Versión",
+      "workflow": "Flujo de trabajo"
+    },
+    "platform": "Plataforma",
+    "platform-not-native": "Información disponible en dispositivos móviles."
+  },
   "legal": "Legal",
   "my-account": "Mi Cuenta",
   "privacy-policy": "Política de privacidad",

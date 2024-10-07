@@ -13,5 +13,7 @@
   },
   "error-no-data": "Sin datos",
   "error-generic": "Un problema",
+  "no": "no",
+  "yes": "sí",
   "welcome": "Bienvenido"
 }
