@@ -14,6 +14,27 @@
     "unable-to-process": "We are experiencing problems processing your request.",
     "unable-to-retrieve": "We are unable to retrieve your profile details at this time."
   },
+  "settings": {
+    "font-size": {
+      "default": "Default",
+      "larger": "Larger",
+      "smaller": "Smaller"
+    },
+    "label": {
+      "brightness": "Brightness",
+      "font-size": "Font Size",
+      "language": "Language",
+      "notifications": "Notifications"
+    },
+    "language": {
+      "en": "English",
+      "es": "Spanish",
+      "fr": "French"
+    },
+    "settings": "Settings",
+    "unable-to-update": "Unable to update settings.",
+    "update-success": "Settings updated."
+  },
   "terms-and-conditions": "Terms and conditions",
   "version": "Version"
 }

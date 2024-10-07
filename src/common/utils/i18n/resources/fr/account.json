@@ -14,6 +14,27 @@
     "unable-to-process": "Nous rencontrons des problèmes lors du traitement de votre demande.",
     "unable-to-retrieve": "Nous ne sommes pas en mesure de récupérer les détails de votre profil pour le moment."
   },
+  "settings": {
+    "font-size": {
+      "default": "Valeur par défaut",
+      "larger": "Plus grand",
+      "smaller": "Plus petit"
+    },
+    "label": {
+      "brightness": "Luminosité",
+      "font-size": "Taille de la police",
+      "language": "Langue",
+      "notifications": "Notifications"
+    },
+    "language": {
+      "en": "Anglais",
+      "es": "Espagnol",
+      "fr": "Français"
+    },
+    "settings": "Paramètres",
+    "unable-to-update": "Impossible de mettre à jour les paramètres.",
+    "update-success": "Paramètres mis à jour."
+  },
   "terms-and-conditions": "Terms and conditions",
   "version": "Version"
 }
