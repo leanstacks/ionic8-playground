@@ -1,0 +1,11 @@
+{
+  "add-user": "Add User",
+  "label": {
+    "email": "Email",
+    "name": "Name",
+    "phone": "Phone",
+    "username": "Username",
+    "website": "Website"
+  },
+  "unable-to-process": "We are experiencing problems processing your request."
+}

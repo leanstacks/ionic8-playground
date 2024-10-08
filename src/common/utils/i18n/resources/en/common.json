@@ -1,4 +1,7 @@
 {
+  "created": "created",
+  "error-no-data": "No data",
+  "error-generic": "Uh oh",
   "ionic-playground": "Ionic Playground",
   "label": {
     "cancel": "Cancel",
@@ -11,8 +14,13 @@
     "signout": "Sign Out",
     "users": "Users"
   },
-  "error-no-data": "No data",
-  "error-generic": "Uh oh",
+  "validation": {
+    "email": "Must be an email address. ",
+    "max": "Must be at most {{max}} characters. ",
+    "min": "Must be at least {{min}} characters. ",
+    "required": "Required. ",
+    "url": "Must be a URL. "
+  },
   "no": "no",
   "yes": "yes",
   "welcome": "Welcome"

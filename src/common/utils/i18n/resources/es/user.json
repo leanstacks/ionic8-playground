@@ -1,0 +1,11 @@
+{
+  "add-user": "Agregar usuario",
+  "label": {
+    "email": "Dirección de correo electrónico",
+    "name": "Nombre",
+    "phone": "Número de teléfono",
+    "username": "Nombre de usuario",
+    "website": "Sitio web"
+  },
+  "unable-to-process": "Estamos experimentando problemas al procesar su solicitud."
+}

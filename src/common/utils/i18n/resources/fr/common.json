@@ -1,4 +1,7 @@
 {
+  "created": "créé",
+  "error-no-data": "Aucune donnée",
+  "error-generic": "Un problème",
   "ionic-playground": "Projet Ionic",
   "label": {
     "cancel": "Annuler",
@@ -11,8 +14,13 @@
     "signout": "Déconnecter",
     "users": "Utilisateurs"
   },
-  "error-no-data": "Aucune donnée",
-  "error-generic": "Un problème",
+  "validation": {
+    "email": "Doit être une adresse e-mail. ",
+    "max": "Doit contenir au maximum {{max}} caractères. ",
+    "min": "Doit contenir au moins {{min}} caractères. ",
+    "required": "Requis. ",
+    "url": "Doit être une URL. "
+  },
   "no": "non",
   "yes": "oui",
   "welcome": "Bienvenu"

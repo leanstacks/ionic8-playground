@@ -1,0 +1,11 @@
+{
+  "add-user": "Ajouter un utilisateur",
+  "label": {
+    "email": "Adresse email",
+    "name": "Nom",
+    "phone": "Numéro de téléphone",
+    "username": "Nom d'utilisateur",
+    "website": "Site web"
+  },
+  "unable-to-process": "Nous rencontrons des problèmes lors du traitement de votre demande."
+}
