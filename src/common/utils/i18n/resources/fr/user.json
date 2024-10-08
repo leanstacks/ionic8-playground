@@ -1,5 +1,10 @@
 {
   "add-user": "Ajouter un utilisateur",
+  "delete": {
+    "deleting": "Suppression...",
+    "in-progress": "Suppression {{name}} en cours.",
+    "warning": "La suppression de {{name}} est permanente."
+  },
   "label": {
     "email": "Adresse email",
     "name": "Nom",

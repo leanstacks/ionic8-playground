@@ -1,10 +1,12 @@
 {
+  "confirm-prompt": "Es-tu sûr??",
   "created": "créé",
   "error-no-data": "Aucune donnée",
   "error-generic": "Un problème",
   "ionic-playground": "Projet Ionic",
   "label": {
     "cancel": "Annuler",
+    "delete": "Supprimer",
     "save": "Sauvegarder"
   },
   "navigation": {
