@@ -14,5 +14,6 @@
     "website": "Sitio web"
   },
   "tap-to-view": "Toque para ver todos los usuarios.",
-  "unable-to-process": "Estamos experimentando problemas al procesar su solicitud."
+  "unable-to-process": "Estamos experimentando problemas al procesar su solicitud.",
+  "unable-to-retrieve": "No podemos recuperar el usuario solicitado en este momento."
 }

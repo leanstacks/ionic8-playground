@@ -14,5 +14,6 @@
     "website": "Site web"
   },
   "tap-to-view": "Appuyez pour afficher tous les utilisateurs.",
-  "unable-to-process": "Nous rencontrons des problèmes lors du traitement de votre demande."
+  "unable-to-process": "Nous rencontrons des problèmes lors du traitement de votre demande.",
+  "unable-to-retrieve": "Nous ne sommes pas en mesure de récupérer l'utilisateur demandé pour le moment."
 }

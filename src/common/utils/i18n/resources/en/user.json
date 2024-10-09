@@ -16,5 +16,6 @@
     "website": "Website"
   },
   "tap-to-view": "Tap to view all users.",
-  "unable-to-process": "We are experiencing problems processing your request."
+  "unable-to-process": "We are experiencing problems processing your request.",
+  "unable-to-retrieve": "We are unable to retrieve the requested user at this time."
 }
