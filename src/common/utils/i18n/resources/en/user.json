@@ -6,6 +6,8 @@
     "in-progress": "Deleting {{name}} in progress.",
     "warning": "Deleting {{name}} is permanent."
   },
+  "delete-user": "Delete User",
+  "edit-user": "Edit User",
   "label": {
     "email": "Email",
     "name": "Name",

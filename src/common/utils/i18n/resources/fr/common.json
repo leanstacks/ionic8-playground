@@ -1,6 +1,7 @@
 {
   "confirm-prompt": "Es-tu sûr??",
   "created": "créé",
+  "deleted": "supprimé",
   "error-no-data": "Aucune donnée",
   "error-generic": "Un problème",
   "ionic-playground": "Projet Ionic",
