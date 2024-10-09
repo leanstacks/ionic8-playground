@@ -1,11 +1,16 @@
 {
+  "address": "Adresse",
   "add-user": "Ajouter un utilisateur",
   "browse-and-search": "Parcourez et recherchez tous les utilisateurs. Affichez les profils des utilisateurs et lisez leurs publications.",
+  "company": "Entreprise",
+  "contact": "Contact",
   "delete": {
     "deleting": "Suppression...",
     "in-progress": "Suppression {{name}} en cours.",
     "warning": "La suppression de {{name}} est permanente."
   },
+  "delete-user": "Supprimer l'utilisateur",
+  "edit-user": "Modifier l'utilisateur",
   "label": {
     "email": "Adresse email",
     "name": "Nom",
