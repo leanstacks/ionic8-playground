@@ -25,6 +25,7 @@
     "url": "Debe ser una URL. "
   },
   "no": "no",
-  "yes": "sí",
-  "welcome": "Bienvenido"
+  "updated": "actualizado",
+  "welcome": "Bienvenido",
+  "yes": "sí"
 }
