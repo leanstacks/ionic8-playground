@@ -1,5 +1,6 @@
 {
   "add-user": "Ajouter un utilisateur",
+  "browse-and-search": "Parcourez et recherchez tous les utilisateurs. Affichez les profils des utilisateurs et lisez leurs publications.",
   "delete": {
     "deleting": "Suppression...",
     "in-progress": "Suppression {{name}} en cours.",
@@ -12,5 +13,6 @@
     "username": "Nom d'utilisateur",
     "website": "Site web"
   },
+  "tap-to-view": "Appuyez pour afficher tous les utilisateurs.",
   "unable-to-process": "Nous rencontrons des problèmes lors du traitement de votre demande."
 }

@@ -1,5 +1,6 @@
 {
   "add-user": "Add User",
+  "browse-and-search": "Browse and search all the users. View user profiles and read their posts.",
   "delete": {
     "deleting": "Deleting...",
     "in-progress": "Deleting {{name}} in progress.",
@@ -12,5 +13,6 @@
     "username": "Username",
     "website": "Website"
   },
+  "tap-to-view": "Tap to view all users.",
   "unable-to-process": "We are experiencing problems processing your request."
 }
