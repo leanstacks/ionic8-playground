@@ -18,7 +18,9 @@
     "username": "Username",
     "website": "Website"
   },
+  "loading-users": "Loading users",
   "tap-to-view": "Tap to view all users.",
+  "unable-to-find": "We are unable to find information matching your request.",
   "unable-to-process": "We are experiencing problems processing your request.",
-  "unable-to-retrieve": "We are unable to retrieve the requested user at this time."
+  "unable-to-retrieve": "We are unable to retrieve the requested information at this time."
 }

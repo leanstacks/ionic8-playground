@@ -18,7 +18,9 @@
     "username": "Nom d'utilisateur",
     "website": "Site web"
   },
+  "loading-users": "Chargement des utilisateurs",
   "tap-to-view": "Appuyez pour afficher tous les utilisateurs.",
+  "unable-to-find": "Nous ne parvenons pas à trouver d'informations correspondant à votre demande.",
   "unable-to-process": "Nous rencontrons des problèmes lors du traitement de votre demande.",
-  "unable-to-retrieve": "Nous ne sommes pas en mesure de récupérer l'utilisateur demandé pour le moment."
+  "unable-to-retrieve": "Nous ne sommes pas en mesure de récupérer les informations demandées pour le moment."
 }
