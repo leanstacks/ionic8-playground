@@ -83,7 +83,7 @@ export const UserListPage = ({ testid = 'page-user-list' }: PropsWithTestId): JS
               <IonButtons>
                 <IonButton
                   shape="round"
-                  title="Add user"
+                  title={t('add-user', { ns: 'user' })}
                   onClick={() => setIsOpenModal(true)}
                   data-testid={`${testid}-page-header-button-create`}
                 >
