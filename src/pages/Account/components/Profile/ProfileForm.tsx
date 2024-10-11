@@ -3,6 +3,7 @@ import { useRef, useState } from 'react';
 import { Form, Formik } from 'formik';
 import { date, object, string } from 'yup';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 import './ProfileForm.scss';
 import { BaseComponentProps } from 'common/components/types';
@@ -33,16 +34,6 @@ interface ProfileFormProps extends BaseComponentProps {
 }
 
 /**
- * Profile form validation schema.
- */
-const validationSchema = object<ProfileFormValues>({
-  name: string().required('Required. '),
-  email: string().required('Required. ').email('Must be an email address. '),
-  bio: string().max(500, 'Must be 500 characters or less. '),
-  dateOfBirth: date().required('Required. '),
-});
-
-/**
  * The `ProfileForm` component renders a Formik form to edit a user profile.
  * @param {ProfileFormProps} props - Component propeties.
  * @returns {JSX.Element} JSX
@@ -58,6 +49,17 @@ const ProfileForm = ({
   const router = useIonRouter();
   const { setProgress } = useProgress();
   const { createToast } = useToasts();
+  const { t } = useTranslation();
+
+  /**
+   * Profile form validation schema.
+   */
+  const validationSchema = object<ProfileFormValues>({
+    name: string().required(t('validation.required')),
+    email: string().required(t('validation.required')).email(t('validation.email')),
+    bio: string().max(500, ({ max }) => t('validation.max', { max })),
+    dateOfBirth: date().required(t('validation.required')),
+  });
 
   useIonViewDidEnter(() => {
     focusInput.current?.setFocus();
@@ -71,7 +73,7 @@ const ProfileForm = ({
     <div className={classNames('ls-profile-form', className)} data-testid={testid}>
       {error && (
         <ErrorCard
-          content={`We are experiencing problems processing your request. ${error}`}
+          content={`${t('profile.unable-to-process', { ns: 'account' })} ${error}`}
           className="ion-margin-bottom"
           testid={`${testid}-error`}
         />
@@ -95,7 +97,7 @@ const ProfileForm = ({
                 createToast({
                   message: 'Updated profile',
                   duration: 5000,
-                  buttons: [DismissButton],
+                  buttons: [DismissButton()],
                 });
                 router.goBack();
               },
@@ -115,7 +117,7 @@ const ProfileForm = ({
           <Form>
             <Input
               name="name"
-              label="Name"
+              label={t('profile.label.name', { ns: 'account' })}
               labelPlacement="stacked"
               disabled={isSubmitting}
               autocomplete="off"
@@ -127,7 +129,7 @@ const ProfileForm = ({
             <Input
               name="email"
               type="email"
-              label="Email"
+              label={t('profile.label.email', { ns: 'account' })}
               labelPlacement="stacked"
               disabled={isSubmitting}
               autocomplete="off"
@@ -137,7 +139,7 @@ const ProfileForm = ({
 
             <Textarea
               name="bio"
-              label="Bio"
+              label={t('profile.label.bio', { ns: 'account' })}
               labelPlacement="stacked"
               autoGrow
               counter
@@ -149,7 +151,7 @@ const ProfileForm = ({
 
             <DateInput
               name="dateOfBirth"
-              label="Birthday"
+              label={t('profile.label.birthday', { ns: 'account' })}
               labelPlacement="stacked"
               disabled={isSubmitting}
               className="ls-profile-form__input"
@@ -168,7 +170,7 @@ const ProfileForm = ({
                 onClick={onCancel}
                 data-testid={`${testid}-button-cancel`}
               >
-                Cancel
+                {t('label.cancel')}
               </IonButton>
               <IonButton
                 type="submit"
@@ -176,7 +178,7 @@ const ProfileForm = ({
                 disabled={isSubmitting || !dirty}
                 data-testid={`${testid}-button-submit`}
               >
-                Save
+                {t('label.save')}
               </IonButton>
             </ButtonRow>
           </Form>

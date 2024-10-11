@@ -1,0 +1,33 @@
+{
+  "confirm-prompt": "Are you sure?",
+  "created": "created",
+  "deleted": "deleted",
+  "error-no-data": "No data",
+  "error-generic": "Uh oh",
+  "ionic-playground": "Ionic Playground",
+  "label": {
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "dismiss": "Dismiss",
+    "save": "Save"
+  },
+  "navigation": {
+    "account": "Account",
+    "home": "Home",
+    "menu": "Menu",
+    "signout": "Sign Out",
+    "users": "Users"
+  },
+  "validation": {
+    "email": "Must be an email address. ",
+    "max": "Must be at most {{max}} characters. ",
+    "min": "Must be at least {{min}} characters. ",
+    "oneOf": "Must be one of: {{values}} ",
+    "required": "Required. ",
+    "url": "Must be a URL. "
+  },
+  "no": "no",
+  "updated": "updated",
+  "welcome": "Welcome",
+  "yes": "yes"
+}

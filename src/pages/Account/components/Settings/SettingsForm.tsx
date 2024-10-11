@@ -4,10 +4,12 @@ import { Form, Formik } from 'formik';
 import { boolean, number, object, string } from 'yup';
 import orderBy from 'lodash/orderBy';
 import map from 'lodash/map';
+import { useTranslation } from 'react-i18next';
 
 import './SettingsForm.scss';
+import storage from 'common/utils/storage';
 import { BaseComponentProps } from 'common/components/types';
-import { LANGUAGES } from 'common/utils/constants';
+import { LANGUAGES, StorageKey } from 'common/utils/constants';
 import { Settings } from 'common/models/settings';
 import { useGetSettings } from 'common/api/useGetSettings';
 import { useUpdateSettings } from 'common/api/useUpdateSettings';
@@ -32,18 +34,6 @@ type SettingsFormValues = Pick<
 >;
 
 /**
- * Settings form validation schema.
- */
-const validationSchema = object<SettingsFormValues>({
-  allowNotifications: boolean(),
-  brightness: number().min(0).max(100),
-  fontSize: string()
-    .required('Required. ')
-    .oneOf(['smaller', 'default', 'larger'], 'Font size must be one of: ${values} '),
-  language: string().oneOf(map(LANGUAGES, 'code')),
-});
-
-/**
  * The `SettingsForm` component renders a Formik form to edit user settings.
  * @param {BaseComponentProps} props - Component properties.
  * @returns {JSX.Element} JSX
@@ -56,13 +46,28 @@ const SettingsForm = ({
   const { mutate: updateSettings } = useUpdateSettings();
   const { setProgress } = useProgress();
   const { createToast } = useToasts();
+  const { i18n, t } = useTranslation();
+
+  /**
+   * Settings form validation schema.
+   */
+  const validationSchema = object<SettingsFormValues>({
+    allowNotifications: boolean(),
+    brightness: number().min(0).max(100),
+    fontSize: string()
+      .required(t('validation.required'))
+      .oneOf(['smaller', 'default', 'larger'], ({ values }) => t('validation.oneOf', { values })),
+    language: string().oneOf(map(LANGUAGES, 'code'), ({ values }) =>
+      t('validation.oneOf', { values }),
+    ),
+  });
 
   if (isLoading) {
     return (
       <div className={classNames('ls-settings-form', className)} data-testid={`${testid}-loading`}>
         <List>
           <IonListHeader>
-            <IonLabel>Settings</IonLabel>
+            <IonLabel>{t('settings.settings', { ns: 'account' })}</IonLabel>
           </IonListHeader>
 
           <IonItem>
@@ -104,17 +109,20 @@ const SettingsForm = ({
           updateSettings(
             { settings: values },
             {
-              onSuccess: () => {
+              onSuccess: (settings) => {
                 createToast({
-                  message: 'Settings updated.',
+                  message: t('settings.update-success', { ns: 'account' }),
                   duration: 3000,
-                  buttons: [DismissButton],
+                  buttons: [DismissButton()],
                 });
+                // store the preferred language for i18n language detection
+                storage.setItem(StorageKey.Language, settings.language);
+                i18n.changeLanguage(settings.language);
               },
               onError: () => {
                 createToast({
-                  message: 'Unable to update settings.',
-                  buttons: [DismissButton],
+                  message: t('settings.unable-to-update', { ns: 'account' }),
+                  buttons: [DismissButton()],
                   color: 'danger',
                 });
               },
@@ -131,7 +139,7 @@ const SettingsForm = ({
           <Form data-testid={testid} className={classNames('ls-settings-form', className)}>
             <List>
               <IonListHeader>
-                <IonLabel>Settings</IonLabel>
+                <IonLabel>{t('settings.settings', { ns: 'account' })}</IonLabel>
               </IonListHeader>
 
               <IonItem className="text-sm font-medium">
@@ -141,14 +149,14 @@ const SettingsForm = ({
                   onIonChange={() => submitForm()}
                   testid={`${testid}-field-allowNotifications`}
                 >
-                  Notifications
+                  {t('settings.label.notifications', { ns: 'account' })}
                 </ToggleInput>
               </IonItem>
 
               <IonItem className="text-sm font-medium">
                 <RangeInput
                   name="brightness"
-                  label="Brightness"
+                  label={t('settings.label.brightness', { ns: 'account' })}
                   labelPlacement="start"
                   disabled={isSubmitting}
                   onIonChange={() => submitForm()}
@@ -162,7 +170,7 @@ const SettingsForm = ({
               <IonItem className="text-sm font-medium">
                 <SelectInput
                   name="language"
-                  label="Language"
+                  label={t('settings.label.language', { ns: 'account' })}
                   interface="popover"
                   disabled={isSubmitting}
                   onIonChange={() => submitForm()}
@@ -170,14 +178,14 @@ const SettingsForm = ({
                 >
                   {orderBy(LANGUAGES, ['value']).map((language) => (
                     <IonSelectOption key={language.code} value={language.code}>
-                      {language.value}
+                      {t(`settings.language.${language.code}`, { ns: 'account' })}
                     </IonSelectOption>
                   ))}
                 </SelectInput>
               </IonItem>
 
               <IonItem lines="none" className="text-sm font-medium">
-                <IonLabel>Font Size</IonLabel>
+                <IonLabel>{t('settings.label.font-size', { ns: 'account' })}</IonLabel>
               </IonItem>
 
               <IonItem>
@@ -191,21 +199,21 @@ const SettingsForm = ({
                     disabled={isSubmitting}
                     value="smaller"
                   >
-                    Smaller
+                    {t('settings.font-size.smaller', { ns: 'account' })}
                   </IonRadio>
                   <IonRadio
                     className="ls-settings-form__input-fontsize-radio"
                     disabled={isSubmitting}
                     value="default"
                   >
-                    Default
+                    {t('settings.font-size.default', { ns: 'account' })}
                   </IonRadio>
                   <IonRadio
                     className="ls-settings-form__input-fontsize-radio text-xl"
                     disabled={isSubmitting}
                     value="larger"
                   >
-                    Larger
+                    {t('settings.font-size.larger', { ns: 'account' })}
                   </IonRadio>
                 </RadioGroupInput>
               </IonItem>
