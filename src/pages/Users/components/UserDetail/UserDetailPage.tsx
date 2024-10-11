@@ -129,7 +129,7 @@ export const UserDetailPage = ({
                     onSuccess={() => {
                       setShowConfirmDelete(false);
                       createToast({
-                        buttons: [DismissButton],
+                        buttons: [DismissButton()],
                         duration: 5000,
                         message: `${user?.name} ${t('deleted')}`,
                       });

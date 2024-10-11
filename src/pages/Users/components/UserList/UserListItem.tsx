@@ -102,7 +102,7 @@ const UserListItem = ({ className, lines, testid, user }: UserListItemProps): JS
         onSuccess={() => {
           setShowConfirmDelete(false);
           createToast({
-            buttons: [DismissButton],
+            buttons: [DismissButton()],
             duration: 5000,
             message: `${user?.name} deleted`,
           });

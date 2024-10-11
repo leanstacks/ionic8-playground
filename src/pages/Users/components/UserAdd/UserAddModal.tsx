@@ -93,7 +93,7 @@ const UserAddModal = ({
                   setProgress(false);
                   setSubmitting(false);
                   createToast({
-                    buttons: [DismissButton],
+                    buttons: [DismissButton()],
                     duration: 5000,
                     message: `${user.name} ${t('created')}`,
                   });

@@ -1,6 +1,7 @@
 import { IonToast, ToastButton } from '@ionic/react';
 import { useState } from 'react';
 import classNames from 'classnames';
+import { t } from 'i18next';
 
 import { BaseComponentProps } from '../types';
 import { ToastData } from 'common/providers/ToastProvider';
@@ -17,12 +18,13 @@ interface ToastProps extends BaseComponentProps {
 }
 
 /**
- * A `ToastButton` to dismiss a toast.
+ * Creates a standardized `ToastButton` to dismiss a `Toast`.
+ * @returns {ToastButton} A `ToastButton`.
  */
-export const DismissButton: ToastButton = {
+export const DismissButton = (): ToastButton => ({
   role: 'cancel',
-  text: 'Dismiss',
-};
+  text: t('label.dismiss'),
+});
 
 /**
  * The `Toast` component renders an `IonToast` using the supplied `toast`

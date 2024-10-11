@@ -97,7 +97,7 @@ const ProfileForm = ({
                 createToast({
                   message: 'Updated profile',
                   duration: 5000,
-                  buttons: [DismissButton],
+                  buttons: [DismissButton()],
                 });
                 router.goBack();
               },

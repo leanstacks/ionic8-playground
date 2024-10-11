@@ -8,6 +8,7 @@
   "label": {
     "cancel": "Cancel",
     "delete": "Delete",
+    "dismiss": "Dismiss",
     "save": "Save"
   },
   "navigation": {

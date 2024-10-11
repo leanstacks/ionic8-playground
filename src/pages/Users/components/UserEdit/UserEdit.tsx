@@ -58,7 +58,7 @@ const UserEdit = ({ className, user, testid = 'user-edit' }: UserEditProps): JSX
                       setProgress(false);
                       setSubmitting(false);
                       createToast({
-                        buttons: [DismissButton],
+                        buttons: [DismissButton()],
                         duration: 5000,
                         message: `${user.name} ${t('updated')}`,
                       });

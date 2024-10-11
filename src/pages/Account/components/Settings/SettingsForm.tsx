@@ -113,7 +113,7 @@ const SettingsForm = ({
                 createToast({
                   message: t('settings.update-success', { ns: 'account' }),
                   duration: 3000,
-                  buttons: [DismissButton],
+                  buttons: [DismissButton()],
                 });
                 // store the preferred language for i18n language detection
                 storage.setItem(StorageKey.Language, settings.language);
@@ -122,7 +122,7 @@ const SettingsForm = ({
               onError: () => {
                 createToast({
                   message: t('settings.unable-to-update', { ns: 'account' }),
-                  buttons: [DismissButton],
+                  buttons: [DismissButton()],
                   color: 'danger',
                 });
               },
