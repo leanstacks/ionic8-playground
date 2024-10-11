@@ -34,18 +34,6 @@ type SettingsFormValues = Pick<
 >;
 
 /**
- * Settings form validation schema.
- */
-const validationSchema = object<SettingsFormValues>({
-  allowNotifications: boolean(),
-  brightness: number().min(0).max(100),
-  fontSize: string()
-    .required('Required. ')
-    .oneOf(['smaller', 'default', 'larger'], 'Font size must be one of: ${values} '),
-  language: string().oneOf(map(LANGUAGES, 'code')),
-});
-
-/**
  * The `SettingsForm` component renders a Formik form to edit user settings.
  * @param {BaseComponentProps} props - Component properties.
  * @returns {JSX.Element} JSX
@@ -59,6 +47,20 @@ const SettingsForm = ({
   const { setProgress } = useProgress();
   const { createToast } = useToasts();
   const { i18n, t } = useTranslation();
+
+  /**
+   * Settings form validation schema.
+   */
+  const validationSchema = object<SettingsFormValues>({
+    allowNotifications: boolean(),
+    brightness: number().min(0).max(100),
+    fontSize: string()
+      .required(t('validation.required'))
+      .oneOf(['smaller', 'default', 'larger'], ({ values }) => t('validation.oneOf', { values })),
+    language: string().oneOf(map(LANGUAGES, 'code'), ({ values }) =>
+      t('validation.oneOf', { values }),
+    ),
+  });
 
   if (isLoading) {
     return (

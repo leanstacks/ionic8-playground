@@ -21,6 +21,7 @@
     "email": "Doit être une adresse e-mail. ",
     "max": "Doit contenir au maximum {{max}} caractères. ",
     "min": "Doit contenir au moins {{min}} caractères. ",
+    "oneOf": "Doit être l'un des: {{values}} ",
     "required": "Requis. ",
     "url": "Doit être une URL. "
   },

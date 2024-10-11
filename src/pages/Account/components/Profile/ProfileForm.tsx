@@ -34,16 +34,6 @@ interface ProfileFormProps extends BaseComponentProps {
 }
 
 /**
- * Profile form validation schema.
- */
-const validationSchema = object<ProfileFormValues>({
-  name: string().required('Required. '),
-  email: string().required('Required. ').email('Must be an email address. '),
-  bio: string().max(500, 'Must be 500 characters or less. '),
-  dateOfBirth: date().required('Required. '),
-});
-
-/**
  * The `ProfileForm` component renders a Formik form to edit a user profile.
  * @param {ProfileFormProps} props - Component propeties.
  * @returns {JSX.Element} JSX
@@ -60,6 +50,16 @@ const ProfileForm = ({
   const { setProgress } = useProgress();
   const { createToast } = useToasts();
   const { t } = useTranslation();
+
+  /**
+   * Profile form validation schema.
+   */
+  const validationSchema = object<ProfileFormValues>({
+    name: string().required(t('validation.required')),
+    email: string().required(t('validation.required')).email(t('validation.email')),
+    bio: string().max(500, ({ max }) => t('validation.max', { max })),
+    dateOfBirth: date().required(t('validation.required')),
+  });
 
   useIonViewDidEnter(() => {
     focusInput.current?.setFocus();

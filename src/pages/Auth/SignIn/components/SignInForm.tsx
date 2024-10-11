@@ -42,15 +42,6 @@ interface SignInFormValues {
 }
 
 /**
- * Sign in form validation schema.
- */
-const validationSchema = object<SignInFormValues>({
-  username: string().required('Required. '),
-  password: string().required('Required. '),
-  rememberMe: boolean().default(false),
-});
-
-/**
  * The `SignInForm` component renders a Formik form for user authentication.
  * @param {SignInFormProps} props - Component properties.
  * @returns {JSX.Element} JSX
@@ -62,6 +53,15 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
   const router = useIonRouter();
   const { mutate: signIn } = useSignIn();
   const { t } = useTranslation();
+
+  /**
+   * Sign in form validation schema.
+   */
+  const validationSchema = object<SignInFormValues>({
+    username: string().required(t('validation.required')),
+    password: string().required(t('validation.required')),
+    rememberMe: boolean().default(false),
+  });
 
   // remember me details
   const rememberMe = storage.getJsonItem<RememberMe>(StorageKey.RememberMe);
