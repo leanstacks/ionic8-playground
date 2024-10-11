@@ -14,7 +14,7 @@ i18n
   .use(initReactI18next)
   .init({
     // logging
-    debug: true,
+    debug: import.meta.env.DEV,
 
     // languages, namespaces, and resources
     supportedLngs: ['en', 'es', 'fr'],
