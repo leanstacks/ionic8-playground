@@ -14,7 +14,9 @@ This project's API integration uses the simulated REST endpoints made available 
 
 When running the application, you may sign in with any of the JSON Placeholder [Users](https://jsonplaceholder.typicode.com/users). Simply enter the _Username_ value from any user in the API and use any value for the _Password_. For example, try username `Bret` and password `abc123`.
 
-### Diagnostics
+### Easter Eggs
+
+#### Diagnostics
 
 Many applications, particularly mobile applications, have a hidden page which displays content useful for troubleshooting and support. To access the diagnostics page, go to the _Account_ page. Locate the _About_ section and click or tap the _Version_ item 7 times.
 
@@ -38,9 +40,11 @@ The technology stack includes:
 - Yup - validation
 - Lodash - utility functions
 - DayJS - date utility functions
-- Testing Library React - tests
-- Vitest - tests
+- i18next - internationalization framework
+- Testing Library React - unit tests
+- Vitest - unit tests
 - MSW - API mocking
+- Cypress - end-to-end tests
 - TypeScript
 
 ### Repository
