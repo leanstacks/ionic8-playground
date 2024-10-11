@@ -7,6 +7,7 @@ import map from 'lodash/map';
 import { useTranslation } from 'react-i18next';
 
 import './SettingsForm.scss';
+import storage from 'common/utils/storage';
 import { BaseComponentProps } from 'common/components/types';
 import { LANGUAGES, StorageKey } from 'common/utils/constants';
 import { Settings } from 'common/models/settings';
@@ -22,7 +23,6 @@ import RangeInput from 'common/components/Input/RangeInput';
 import Icon, { IconName } from 'common/components/Icon/Icon';
 import SelectInput from 'common/components/Input/SelectInput';
 import RadioGroupInput from 'common/components/Input/RadioGroupInput';
-import storage from 'common/utils/storage';
 
 /**
  * Settings form values.
