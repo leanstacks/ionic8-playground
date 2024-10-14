@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package net.leanstacks.ionic8;
 
 import com.getcapacitor.BridgeActivity;
 
