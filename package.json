@@ -16,7 +16,8 @@
     "test:ci": "vitest run --coverage --silent",
     "test:coverage": "vitest --coverage",
     "test:e2e": "cypress run",
-    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "android": "npx cap sync android && npx cap open android"
   },
   "dependencies": {
     "@capacitor/android": "6.1.2",
@@ -25,6 +26,7 @@
     "@capacitor/core": "6.1.2",
     "@capacitor/haptics": "6.0.1",
     "@capacitor/keyboard": "6.0.2",
+    "@capacitor/splash-screen": "6.0.2",
     "@capacitor/status-bar": "6.0.1",
     "@fortawesome/fontawesome-svg-core": "6.6.0",
     "@fortawesome/free-solid-svg-icons": "6.6.0",
