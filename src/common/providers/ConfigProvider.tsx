@@ -32,7 +32,7 @@ const configSchema: ObjectSchema<Config> = object({
   VITE_BUILD_WORKFLOW_RUNNER: string().default('local'),
   VITE_BUILD_WORKFLOW_NAME: string().default('local'),
   VITE_BUILD_WORKFLOW_RUN_NUMBER: number().default(1),
-  VITE_BUILD_WORKFLOW_RUN_ATTEMPT: number().default(1),
+  VITE_BUILD_WORKFLOW_RUN_ATTEMPT: number().default(-1),
   VITE_TOAST_AUTO_DISMISS_MILLIS: number().default(5000),
 });
 

@@ -16,7 +16,6 @@ then
   echo "VITE_BUILD_WORKFLOW_RUNNER=Appflow" >> .env
   echo "VITE_BUILD_WORKFLOW_NAME=$CI_APP_NAME" >> .env
   echo "VITE_BUILD_WORKFLOW_RUN_NUMBER=$CI_BUILD_NUMBER" >> .env
-  echo "VITE_BUILD_WORKFLOW_RUN_ATTEMPT=" >> .env
 else
   echo "NOT an Appflow build; skipping .env file creation"
 fi

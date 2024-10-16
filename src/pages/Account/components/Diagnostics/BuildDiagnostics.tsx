@@ -61,8 +61,10 @@ const BuildDiagnostics = ({
           {t('diagnostics.label.workflow', { ns: 'account' })}
         </IonLabel>
         <IonText data-testid={`${testid}-workflow`}>
-          {config.VITE_BUILD_WORKFLOW_NAME} {config.VITE_BUILD_WORKFLOW_RUN_NUMBER}.
-          {config.VITE_BUILD_WORKFLOW_RUN_ATTEMPT}
+          {config.VITE_BUILD_WORKFLOW_NAME} {config.VITE_BUILD_WORKFLOW_RUN_NUMBER}
+          {config.VITE_BUILD_WORKFLOW_RUN_ATTEMPT > -1 && (
+            <>.{config.VITE_BUILD_WORKFLOW_RUN_ATTEMPT}</>
+          )}
         </IonText>
       </IonItem>
     </List>
