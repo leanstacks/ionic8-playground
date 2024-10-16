@@ -11,6 +11,7 @@ export interface Config {
   VITE_BUILD_TS: string;
   VITE_BUILD_COMMIT_SHA: string;
   VITE_BUILD_ENV_CODE: string;
+  VITE_BUILD_WORKFLOW_RUNNER: string;
   VITE_BUILD_WORKFLOW_NAME: string;
   VITE_BUILD_WORKFLOW_RUN_NUMBER: number;
   VITE_BUILD_WORKFLOW_RUN_ATTEMPT: number;
@@ -28,6 +29,7 @@ const configSchema: ObjectSchema<Config> = object({
   VITE_BUILD_TS: string().default('1970-01-01T00:00:00+0000'),
   VITE_BUILD_COMMIT_SHA: string().default('local'),
   VITE_BUILD_ENV_CODE: string().default('local'),
+  VITE_BUILD_WORKFLOW_RUNNER: string().default('local'),
   VITE_BUILD_WORKFLOW_NAME: string().default('local'),
   VITE_BUILD_WORKFLOW_RUN_NUMBER: number().default(1),
   VITE_BUILD_WORKFLOW_RUN_ATTEMPT: number().default(1),

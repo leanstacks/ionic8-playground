@@ -52,6 +52,12 @@ const BuildDiagnostics = ({
       </IonItem>
       <IonItem className="text-sm">
         <IonLabel className="font-medium ion-margin-end">
+          {t('diagnostics.label.runner', { ns: 'account' })}
+        </IonLabel>
+        <IonText data-testid={`${testid}-runner`}>{config.VITE_BUILD_WORKFLOW_RUNNER}</IonText>
+      </IonItem>
+      <IonItem className="text-sm">
+        <IonLabel className="font-medium ion-margin-end">
           {t('diagnostics.label.workflow', { ns: 'account' })}
         </IonLabel>
         <IonText data-testid={`${testid}-workflow`}>
