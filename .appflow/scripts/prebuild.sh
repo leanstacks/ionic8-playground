@@ -3,8 +3,6 @@
 # see: https://ionic.io/docs/appflow/automation/environments
 # see: https://ionic.io/docs/appflow/cookbook/hooks#npm-pre--post-scripts
 
-printenv
-
 # create .env file if running in Ionic Appflow
 if [ "$CI_SERVER" = "yes" ]
 then
