@@ -81,7 +81,7 @@ const UserListItem = ({ className, lines, testid, user }: UserListItemProps): JS
       <IonItemOptions>
         <IonItemOption className="ls-user-list-item__sliding-option" onClick={() => doEdit()}>
           <Icon className="ls-user-list-item__sliding-option-icon" icon={IconName.PenToSquare} />
-          Edit
+          {t('label.edit')}
         </IonItemOption>
         <IonItemOption
           className="ls-user-list-item__sliding-option"
@@ -89,7 +89,7 @@ const UserListItem = ({ className, lines, testid, user }: UserListItemProps): JS
           onClick={() => setShowConfirmDelete(true)}
         >
           <Icon className="ls-user-list-item__sliding-option-icon" icon={IconName.Trash} />
-          Delete
+          {t('label.delete')}
         </IonItemOption>
       </IonItemOptions>
 
