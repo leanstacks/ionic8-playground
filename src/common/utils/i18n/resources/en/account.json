@@ -32,7 +32,8 @@
     },
     "profile": "Profile",
     "unable-to-process": "We are experiencing problems processing your request.",
-    "unable-to-retrieve": "We are unable to retrieve your profile details at this time."
+    "unable-to-retrieve": "We are unable to retrieve your profile details at this time.",
+    "updated-profile": "Updated profile"
   },
   "settings": {
     "font-size": {
