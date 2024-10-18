@@ -2,7 +2,7 @@
 http://ionicframework.com/docs/theming/ */
 
 :root {
-  // media breakpoints
+  /* media breakpoints */
   --ls-breakpoint-xs: 0px;
   --ls-breakpoint-sm: 576px;
   --ls-breakpoint-md: 768px;

@@ -11,7 +11,7 @@ import ScrollProvider from 'common/providers/ScrollProvider';
 import Toasts from 'common/components/Toast/Toasts';
 import AppRouter from 'common/components/Router/AppRouter';
 
-import './theme/main.scss';
+import './theme/main.css';
 
 setupIonicReact();
 

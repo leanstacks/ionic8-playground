@@ -1,6 +1,6 @@
-// Typography styles inspired by Tailwind
+/* Typography styles inspired by Tailwind */
 :root {
-  // font size
+  /* font size */
   .text-xs {
     font-size: 0.75rem;
     line-height: 1rem;
@@ -34,7 +34,7 @@
     line-height: 2.5rem;
   }
 
-  // font weight
+  /* font weight */
   .font-thin {
     font-weight: 100;
   }
@@ -63,7 +63,7 @@
     font-weight: 900;
   }
 
-  // word break
+  /* word break */
   .break-normal {
     overflow-wrap: normal;
     word-break: normal;
@@ -78,7 +78,7 @@
     word-break: keep-all;
   }
 
-  // text transform
+  /* text transform */
   .capitalize {
     text-transform: capitalize;
   }
