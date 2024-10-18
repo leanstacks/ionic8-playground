@@ -8,6 +8,7 @@ import {
   useIonRouter,
 } from '@ionic/react';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 import './UserListItem.scss';
 import { BaseComponentProps } from 'common/components/types';
@@ -42,6 +43,7 @@ interface UserListItemProps
 const UserListItem = ({ className, lines, testid, user }: UserListItemProps): JSX.Element => {
   const testIdentifier = testid ?? `list-item-user-${user.id}`;
   const [showConfirmDelete, setShowConfirmDelete] = useState<boolean>(false);
+  const { t } = useTranslation();
   const { setProgress } = useProgress();
   const { createToast } = useToasts();
   const router = useIonRouter();
@@ -79,7 +81,7 @@ const UserListItem = ({ className, lines, testid, user }: UserListItemProps): JS
       <IonItemOptions>
         <IonItemOption className="ls-user-list-item__sliding-option" onClick={() => doEdit()}>
           <Icon className="ls-user-list-item__sliding-option-icon" icon={IconName.PenToSquare} />
-          Edit
+          {t('label.edit')}
         </IonItemOption>
         <IonItemOption
           className="ls-user-list-item__sliding-option"
@@ -87,7 +89,7 @@ const UserListItem = ({ className, lines, testid, user }: UserListItemProps): JS
           onClick={() => setShowConfirmDelete(true)}
         >
           <Icon className="ls-user-list-item__sliding-option-icon" icon={IconName.Trash} />
-          Delete
+          {t('label.delete')}
         </IonItemOption>
       </IonItemOptions>
 
@@ -104,7 +106,7 @@ const UserListItem = ({ className, lines, testid, user }: UserListItemProps): JS
           createToast({
             buttons: [DismissButton()],
             duration: 5000,
-            message: `${user?.name} deleted`,
+            message: `${user?.name} ${t('deleted')}`,
           });
         }}
         user={user}

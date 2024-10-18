@@ -95,7 +95,7 @@ const ProfileForm = ({
             {
               onSuccess: () => {
                 createToast({
-                  message: 'Updated profile',
+                  message: t('profile.updated-profile', { ns: 'account' }),
                   duration: 5000,
                   buttons: [DismissButton()],
                 });
