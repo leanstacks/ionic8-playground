@@ -23,7 +23,7 @@ export interface Config {
  * @see {@link https://github.com/jquense/yup | Yup}
  */
 const configSchema: ObjectSchema<Config> = object({
-  VITE_BASE_URL_API: string().url().required(),
+  VITE_BASE_URL_API: string().url().required('${path} is required.'),
   VITE_BUILD_DATE: string().default('1970-01-01'),
   VITE_BUILD_TIME: string().default('00:00:00'),
   VITE_BUILD_TS: string().default('1970-01-01T00:00:00+0000'),
@@ -63,8 +63,12 @@ const ConfigContextProvider = ({ children }: PropsWithChildren): JSX.Element => 
       setConfig(validatedConfig);
       setIsReady(true);
     } catch (err) {
-      if (err instanceof ValidationError) throw new Error(`${err}::${err.errors}`);
-      if (err instanceof Error) throw new Error(`Configuration error: ${err.message}`);
+      if (err instanceof ValidationError) {
+        throw new Error(
+          `Configuration validation error. ${err.errors.reduce((msg, error) => `${msg} ${error}`)}`,
+        );
+      }
+      if (err instanceof Error) throw new Error(`Configuration error. ${err.message}`);
       throw err;
     }
   }, []);
