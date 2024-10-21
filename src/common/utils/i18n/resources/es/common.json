@@ -2,15 +2,20 @@
   "confirm-prompt": "Estas seguro?",
   "created": "creado",
   "deleted": "eliminado",
+  "error": "Error",
+  "error-configuration": "Error de configuración",
+  "error-configuration-validation": "Error de validación de configuración",
   "error-no-data": "Sin datos",
   "error-generic": "Un problema",
+  "error-validation": "Error de validación",
   "ionic-playground": "Proyecto Ionic",
   "label": {
     "cancel": "Cancelar",
     "delete": "Borrar",
     "dismiss": "Despedir",
     "edit": "Editar",
-    "save": "Guardar"
+    "save": "Guardar",
+    "try-again": "Intentar otra vez"
   },
   "navigation": {
     "account": "Cuenta",

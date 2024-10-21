@@ -11,8 +11,16 @@ import Container from '../Content/Container';
 import Icon, { IconName } from '../Icon/Icon';
 import ButtonRow from '../Button/ButtonRow';
 
+/**
+ * Properties for the `ErrorPage` component.
+ */
 interface ErrorPageProps extends FallbackProps, PropsWithTestId {}
 
+/**
+ * The `ErrorPage` displays the attributes of an `Error`.
+ * @param {ErrorPageProps} props - Component properties.
+ * @returns {JSX.Element} JSX
+ */
 const ErrorPage = ({
   error,
   resetErrorBoundary,
@@ -23,16 +31,13 @@ const ErrorPage = ({
   let title;
   let message;
   if (error instanceof ValidationError) {
-    console.log(`ValidationError::${error}`);
-    title = 'Validation Error';
+    title = t('error-validation');
     message = error.errors.reduce((msg, error) => `${msg} ${error}`);
   } else if (error instanceof AxiosError) {
-    console.log(`AxiosError::${error}`);
     title = error.status ?? error.code;
     message = `${error.message}. ${error.config?.url}`;
   } else {
-    console.log(`Error::${error}`);
-    title = error.name ?? 'Error';
+    title = error.name ?? t('error');
     message = error.message ?? error;
   }
 
@@ -56,7 +61,7 @@ const ErrorPage = ({
 
             <ButtonRow className="ion-hide-md-down ls-error-page__button-row">
               <IonButton color="medium" onClick={() => resetErrorBoundary()}>
-                Try Again
+                {t('label.try-again')}
               </IonButton>
             </ButtonRow>
           </div>
@@ -65,7 +70,7 @@ const ErrorPage = ({
       <IonFooter className="ion-hide-md-up">
         <IonToolbar>
           <IonButtons slot="end">
-            <IonButton onClick={() => resetErrorBoundary()}>Try Again</IonButton>
+            <IonButton onClick={() => resetErrorBoundary()}>{t('label.try-again')}</IonButton>
           </IonButtons>
         </IonToolbar>
       </IonFooter>

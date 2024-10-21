@@ -1,5 +1,6 @@
 import React, { PropsWithChildren, useEffect, useState } from 'react';
 import { ObjectSchema, ValidationError, number, object, string } from 'yup';
+import { useTranslation } from 'react-i18next';
 
 /**
  * The application configuration. The `value` provided by the `ConfigContext`.
@@ -51,6 +52,7 @@ export const ConfigContext = React.createContext<Config | undefined>(undefined);
  * @returns {JSX.Element} JSX
  */
 const ConfigContextProvider = ({ children }: PropsWithChildren): JSX.Element => {
+  const { t } = useTranslation();
   const [isReady, setIsReady] = useState<boolean>(false);
   const [config, setConfig] = useState<Config>();
 
@@ -65,12 +67,15 @@ const ConfigContextProvider = ({ children }: PropsWithChildren): JSX.Element => 
     } catch (err) {
       if (err instanceof ValidationError) {
         throw new Error(
-          `Configuration validation error. ${err.errors.reduce((msg, error) => `${msg} ${error}`)}`,
+          `${t('error-configuration-validation')}. ${err.errors.reduce(
+            (msg, error) => `${msg} ${error}`,
+          )}`,
         );
       }
-      if (err instanceof Error) throw new Error(`Configuration error. ${err.message}`);
+      if (err instanceof Error) throw new Error(`${t('error-configuration')}. ${err.message}`);
       throw err;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
