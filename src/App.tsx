@@ -3,7 +3,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { ErrorBoundary } from 'react-error-boundary';
 
-import ErrorFallback from 'common/components/ErrorBoundary/ErrorFallback';
+import ErrorPage from 'common/components/Error/ErrorPage';
 import ConfigContextProvider from './common/providers/ConfigProvider';
 import { queryClient } from 'common/utils/query-client';
 import AuthProvider from 'common/providers/AuthProvider';
@@ -24,7 +24,7 @@ setupIonicReact();
  */
 const App = (): JSX.Element => (
   <IonApp data-testid="app">
-    <ErrorBoundary FallbackComponent={ErrorFallback}>
+    <ErrorBoundary FallbackComponent={ErrorPage}>
       <ConfigContextProvider>
         <QueryClientProvider client={queryClient}>
           <AuthProvider>

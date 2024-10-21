@@ -5,19 +5,19 @@ import { ValidationError } from 'yup';
 import { AxiosError } from 'axios';
 
 import { PropsWithTestId } from '../types';
-import './ErrorFallback.scss';
+import './ErrorPage.scss';
 import Header from '../Header/Header';
 import Container from '../Content/Container';
 import Icon, { IconName } from '../Icon/Icon';
 import ButtonRow from '../Button/ButtonRow';
 
-interface ErrorFallbackProps extends FallbackProps, PropsWithTestId {}
+interface ErrorPageProps extends FallbackProps, PropsWithTestId {}
 
-const ErrorFallback = ({
+const ErrorPage = ({
   error,
   resetErrorBoundary,
-  testid = 'page-error-fallback',
-}: ErrorFallbackProps): JSX.Element => {
+  testid = 'page-error',
+}: ErrorPageProps): JSX.Element => {
   const { t } = useTranslation();
 
   let title;
@@ -37,26 +37,24 @@ const ErrorFallback = ({
   }
 
   return (
-    <IonPage className="ls-error-fallback-page" data-testid={testid}>
+    <IonPage className="ls-error-page" data-testid={testid}>
       <Header title={t('ionic-playground')} />
 
       <IonContent className="ion-padding">
-        <Container fixed className="ls-error-fallback-page__container">
-          <div className="ls-error-fallback-page__content">
+        <Container fixed className="ls-error-page__container">
+          <div className="ls-error-page__content">
             <Icon
               icon={IconName.FaceSurprise}
               color="warning"
               size="10x"
-              className="ls-error-fallback-page__icon"
+              className="ls-error-page__icon"
             />
 
-            <div className="text-3xl font-bold uppercase ls-error-fallback-page__title">
-              {title}
-            </div>
+            <div className="text-3xl font-bold uppercase ls-error-page__title">{title}</div>
 
-            <div className="ion-text-center text-lg ls-error-fallback-page__message">{message}</div>
+            <div className="ion-text-center text-lg ls-error-page__message">{message}</div>
 
-            <ButtonRow className="ion-hide-md-down ls-error-fallback-page__button-row">
+            <ButtonRow className="ion-hide-md-down ls-error-page__button-row">
               <IonButton color="medium" onClick={() => resetErrorBoundary()}>
                 Try Again
               </IonButton>
@@ -75,4 +73,4 @@ const ErrorFallback = ({
   );
 };
 
-export default ErrorFallback;
+export default ErrorPage;
