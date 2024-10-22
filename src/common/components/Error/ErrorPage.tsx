@@ -50,12 +50,26 @@ const ErrorPage = ({
           <div className="ls-error-page__content">
             <img src={image} alt={title} />
 
-            <div className="text-3xl font-bold uppercase ls-error-page__title">{title}</div>
+            <div
+              className="text-3xl font-bold uppercase ls-error-page__title"
+              data-testid={`${testid}-title`}
+            >
+              {title}
+            </div>
 
-            <div className="ion-text-center text-lg ls-error-page__message">{message}</div>
+            <div
+              className="ion-text-center text-lg ls-error-page__message"
+              data-testid={`${testid}-message`}
+            >
+              {message}
+            </div>
 
             <ButtonRow className="ion-hide-md-down ls-error-page__button-row">
-              <IonButton color="medium" onClick={() => resetErrorBoundary()}>
+              <IonButton
+                color="medium"
+                onClick={() => resetErrorBoundary()}
+                data-testid={`${testid}-button`}
+              >
                 {t('label.try-again')}
               </IonButton>
             </ButtonRow>
@@ -65,7 +79,9 @@ const ErrorPage = ({
       <IonFooter className="ion-hide-md-up">
         <IonToolbar>
           <IonButtons slot="end">
-            <IonButton onClick={() => resetErrorBoundary()}>{t('label.try-again')}</IonButton>
+            <IonButton onClick={() => resetErrorBoundary()} data-testid={`${testid}-footer-button`}>
+              {t('label.try-again')}
+            </IonButton>
           </IonButtons>
         </IonToolbar>
       </IonFooter>

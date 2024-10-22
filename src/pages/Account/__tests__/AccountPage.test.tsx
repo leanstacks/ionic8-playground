@@ -10,6 +10,7 @@ describe('AccountPage', () => {
     render(<AccountPage />);
     await screen.findByTestId('page-account');
 
+    // ASSERT
     expect(screen.getByTestId('page-account')).toBeDefined();
   });
 });
