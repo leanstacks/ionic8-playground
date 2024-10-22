@@ -4,11 +4,11 @@ import { useTranslation } from 'react-i18next';
 import { ValidationError } from 'yup';
 import { AxiosError } from 'axios';
 
+import image from 'assets/img/face_surprise_melting.png';
 import { PropsWithTestId } from '../types';
 import './ErrorPage.scss';
 import Header from '../Header/Header';
 import Container from '../Content/Container';
-import Icon, { IconName } from '../Icon/Icon';
 import ButtonRow from '../Button/ButtonRow';
 
 /**
@@ -48,12 +48,7 @@ const ErrorPage = ({
       <IonContent className="ion-padding">
         <Container fixed className="ls-error-page__container">
           <div className="ls-error-page__content">
-            <Icon
-              icon={IconName.FaceSurprise}
-              color="warning"
-              size="10x"
-              className="ls-error-page__icon"
-            />
+            <img src={image} alt={title} />
 
             <div className="text-3xl font-bold uppercase ls-error-page__title">{title}</div>
 
