@@ -30,6 +30,7 @@
     "min": "Must be at least {{min}} characters. ",
     "oneOf": "Must be one of: {{values}} ",
     "required": "Required. ",
+    "required-path": "{{path}} is required. ",
     "url": "Must be a URL. "
   },
   "no": "no",
