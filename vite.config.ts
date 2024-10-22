@@ -30,6 +30,7 @@ export default defineConfig({
       exclude: [
         '**/__fixtures__/**',
         '**/__mocks__/**',
+        'android/**',
         'src/main.tsx',
         'src/test',
         'capacitor.config.ts',

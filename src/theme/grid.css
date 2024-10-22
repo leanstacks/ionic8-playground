@@ -1,4 +1,4 @@
-// Flexbox and grid styles inspired by Tailwind
+/* Flexbox and grid styles inspired by Tailwind */
 :root {
   .order-1 {
     order: 1;

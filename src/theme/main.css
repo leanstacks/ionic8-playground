@@ -26,13 +26,13 @@
 @import '@ionic/react/css/palettes/dark.system.css';
 
 /* Custom app CSS */
-// normalize / reset
-@import './normalize.scss';
-// variables / Ionic variable overrides
-@import './variables.scss';
-// fonts
-@import './fonts.scss';
-// typography
-@import './typography.scss';
-// flexbox and grid
-@import './grid.scss';
+/* normalize / reset */
+@import './normalize.css';
+/* variables / Ionic variable overrides */
+@import './variables.css';
+/* fonts */
+@import './fonts.css';
+/* typography */
+@import './typography.css';
+/* flexbox and grid */
+@import './grid.css';

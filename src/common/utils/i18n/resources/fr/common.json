@@ -2,15 +2,20 @@
   "confirm-prompt": "Es-tu sûr??",
   "created": "créé",
   "deleted": "supprimé",
+  "error": "Erreur",
+  "error-configuration": "Erreur de configuration",
+  "error-configuration-validation": "Erreur de validation de configuration",
   "error-no-data": "Aucune donnée",
   "error-generic": "Un problème",
+  "error-validation": "Erreur de validation",
   "ionic-playground": "Projet Ionic",
   "label": {
     "cancel": "Annuler",
     "delete": "Supprimer",
     "dismiss": "Rejeter",
     "edit": "Modifier",
-    "save": "Sauvegarder"
+    "save": "Sauvegarder",
+    "try-again": "Essayer à nouveau"
   },
   "navigation": {
     "account": "Compte",
@@ -25,6 +30,7 @@
     "min": "Doit contenir au moins {{min}} caractères. ",
     "oneOf": "Doit être l'un des: {{values}} ",
     "required": "Requis. ",
+    "required-path": "{{path}} est obligatoire. ",
     "url": "Doit être une URL. "
   },
   "no": "non",

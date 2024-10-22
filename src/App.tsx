@@ -1,7 +1,9 @@
 import { IonApp, setupIonicReact } from '@ionic/react';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { ErrorBoundary } from 'react-error-boundary';
 
+import ErrorPage from 'common/components/Error/ErrorPage';
 import ConfigContextProvider from './common/providers/ConfigProvider';
 import { queryClient } from 'common/utils/query-client';
 import AuthProvider from 'common/providers/AuthProvider';
@@ -11,7 +13,7 @@ import ScrollProvider from 'common/providers/ScrollProvider';
 import Toasts from 'common/components/Toast/Toasts';
 import AppRouter from 'common/components/Router/AppRouter';
 
-import './theme/main.scss';
+import './theme/main.css';
 
 setupIonicReact();
 
@@ -22,21 +24,23 @@ setupIonicReact();
  */
 const App = (): JSX.Element => (
   <IonApp data-testid="app">
-    <ConfigContextProvider>
-      <QueryClientProvider client={queryClient}>
-        <AuthProvider>
-          <AxiosProvider>
-            <ToastProvider>
-              <ScrollProvider>
-                <AppRouter />
-                <Toasts />
-                <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-left" />
-              </ScrollProvider>
-            </ToastProvider>
-          </AxiosProvider>
-        </AuthProvider>
-      </QueryClientProvider>
-    </ConfigContextProvider>
+    <ErrorBoundary FallbackComponent={ErrorPage}>
+      <ConfigContextProvider>
+        <QueryClientProvider client={queryClient}>
+          <AuthProvider>
+            <AxiosProvider>
+              <ToastProvider>
+                <ScrollProvider>
+                  <AppRouter />
+                  <Toasts />
+                  <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-left" />
+                </ScrollProvider>
+              </ToastProvider>
+            </AxiosProvider>
+          </AuthProvider>
+        </QueryClientProvider>
+      </ConfigContextProvider>
+    </ErrorBoundary>
   </IonApp>
 );
 

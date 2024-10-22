@@ -2,15 +2,20 @@
   "confirm-prompt": "Are you sure?",
   "created": "created",
   "deleted": "deleted",
+  "error": "Error",
+  "error-configuration": "Configuration error",
+  "error-configuration-validation": "Configuration validation error",
   "error-no-data": "No data",
   "error-generic": "Uh oh",
+  "error-validation": "Validation Error",
   "ionic-playground": "Ionic Playground",
   "label": {
     "cancel": "Cancel",
     "delete": "Delete",
     "dismiss": "Dismiss",
     "edit": "Edit",
-    "save": "Save"
+    "save": "Save",
+    "try-again": "Try Again"
   },
   "navigation": {
     "account": "Account",
@@ -25,6 +30,7 @@
     "min": "Must be at least {{min}} characters. ",
     "oneOf": "Must be one of: {{values}} ",
     "required": "Required. ",
+    "required-path": "{{path}} is required. ",
     "url": "Must be a URL. "
   },
   "no": "no",
