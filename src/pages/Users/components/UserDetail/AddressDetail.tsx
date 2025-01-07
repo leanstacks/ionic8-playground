@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Address } from 'common/models/user';
 import { BaseComponentProps } from 'common/components/types';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
-import Icon, { IconName } from 'common/components/Icon/Icon';
+import Icon from 'common/components/Icon/Icon';
 import HeaderRow from 'common/components/Text/HeaderRow';
 
 /**
@@ -69,7 +69,7 @@ const AddressDetail = ({
     return (
       <div className={classNames('ls-address-detail', className)} data-testid={testid}>
         <HeaderRow border>
-          <Icon icon={IconName.MapLocationDot} />
+          <Icon icon="mapLocationDot" />
           <div>{t('address', { ns: 'user' })}</div>
         </HeaderRow>
         <div className="ls-address-detail__content">

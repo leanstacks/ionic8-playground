@@ -5,7 +5,7 @@ import './ContactInfo.scss';
 import { BaseComponentProps } from 'common/components/types';
 import { User } from 'common/models/user';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
-import Icon, { IconName } from 'common/components/Icon/Icon';
+import Icon from 'common/components/Icon/Icon';
 import HeaderRow from 'common/components/Text/HeaderRow';
 
 /**
@@ -75,26 +75,26 @@ const ContactInfo = ({
       <div className={classNames('ls-contact-info', className)} data-testid={testid}>
         {showHeader && (
           <HeaderRow border>
-            <Icon icon={IconName.User} />
+            <Icon icon="user" />
             <div>{t('contact', { ns: 'user' })}</div>
           </HeaderRow>
         )}
         <div className="ls-contact-info__content">
           {user.email && (
             <div>
-              <Icon icon={IconName.Envelope} />
+              <Icon icon="envelope" />
               <div>{user.email}</div>
             </div>
           )}
           {user.phone && (
             <div>
-              <Icon icon={IconName.Phone} />
+              <Icon icon="phone" />
               <div>{user.phone}</div>
             </div>
           )}
           {user.website && (
             <div>
-              <Icon icon={IconName.Link} />
+              <Icon icon="link" />
               <div>{user.website}</div>
             </div>
           )}

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { ScrollContext, ScrollContextValue } from 'common/providers/ScrollProvider';
+import { ScrollContext, ScrollContextValue } from 'common/providers/ScrollContext';
 
 /**
  * The `useScrollContext` hook returns the current `ScrollContext` value.

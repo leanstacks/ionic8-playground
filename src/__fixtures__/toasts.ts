@@ -1,4 +1,4 @@
-import { ToastData } from 'common/providers/ToastProvider';
+import { ToastData } from 'common/providers/ToastContext';
 
 export const toastFixture1: ToastData = {
   id: '790b780b-4eb5-49c0-8220-9663a25e86e1',

@@ -10,7 +10,7 @@ import { DismissButton } from 'common/components/Toast/Toast';
 import ProgressProvider from 'common/providers/ProgressProvider';
 import Header from 'common/components/Header/Header';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
-import Icon, { IconName } from 'common/components/Icon/Icon';
+import Icon from 'common/components/Icon/Icon';
 import UserDetail from './UserDetail';
 import Container from 'common/components/Content/Container';
 import PageHeader from 'common/components/Content/PageHeader';
@@ -62,7 +62,7 @@ export const UserDetailPage = ({
                       routerLink={`/tabs/users/${userId}/edit`}
                       data-testid={`${testid}-header-button-edit`}
                     >
-                      <Icon icon={IconName.PenToSquare} size="xl" />
+                      <Icon icon="penToSquare" size="xl" />
                     </IonButton>
                     <IonButton
                       title={t('delete-user', { ns: 'user' })}
@@ -71,7 +71,7 @@ export const UserDetailPage = ({
                       onClick={() => setShowConfirmDelete(true)}
                       data-testid={`${testid}-header-button-delete`}
                     >
-                      <Icon icon={IconName.Trash} size="xl" />
+                      <Icon icon="trash" size="xl" />
                     </IonButton>
                   </>
                 )
@@ -93,7 +93,7 @@ export const UserDetailPage = ({
                         routerLink={`/tabs/users/${userId}/edit`}
                         data-testid={`${testid}-page-header-button-edit`}
                       >
-                        <Icon icon={IconName.PenToSquare} size="xl" />
+                        <Icon icon="penToSquare" size="xl" />
                       </IonButton>
                       <IonButton
                         title={t('delete-user', { ns: 'user' })}
@@ -101,7 +101,7 @@ export const UserDetailPage = ({
                         onClick={() => setShowConfirmDelete(true)}
                         data-testid={`${testid}-page-header-button-delete`}
                       >
-                        <Icon icon={IconName.Trash} size="xl" />
+                        <Icon icon="trash" size="xl" />
                       </IonButton>
                     </IonButtons>
                   </PageHeader>

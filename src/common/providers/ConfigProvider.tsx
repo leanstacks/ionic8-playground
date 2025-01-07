@@ -1,28 +1,8 @@
-import React, { PropsWithChildren, useEffect, useState } from 'react';
+import { PropsWithChildren, useEffect, useState } from 'react';
 import { ObjectSchema, ValidationError, number, object, string } from 'yup';
 import { useTranslation } from 'react-i18next';
 
-/**
- * The application configuration. The `value` provided by the `ConfigContext`.
- */
-export interface Config {
-  VITE_BASE_URL_API: string;
-  VITE_BUILD_DATE: string;
-  VITE_BUILD_TIME: string;
-  VITE_BUILD_TS: string;
-  VITE_BUILD_COMMIT_SHA: string;
-  VITE_BUILD_ENV_CODE: string;
-  VITE_BUILD_WORKFLOW_RUNNER: string;
-  VITE_BUILD_WORKFLOW_NAME: string;
-  VITE_BUILD_WORKFLOW_RUN_NUMBER: number;
-  VITE_BUILD_WORKFLOW_RUN_ATTEMPT: number;
-  VITE_TOAST_AUTO_DISMISS_MILLIS: number;
-}
-
-/**
- * The `ConfigContext` instance.
- */
-export const ConfigContext = React.createContext<Config | undefined>(undefined);
+import { Config, ConfigContext } from './ConfigContext';
 
 /**
  * The `ConfigContextProvider` React component creates, maintains, and provides
@@ -77,7 +57,6 @@ const ConfigContextProvider = ({ children }: PropsWithChildren): JSX.Element => 
       if (err instanceof Error) throw new Error(`${t('error-configuration')}. ${err.message}`);
       throw err;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

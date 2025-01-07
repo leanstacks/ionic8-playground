@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { t } from 'i18next';
 
 import { BaseComponentProps } from '../types';
-import { ToastData } from 'common/providers/ToastProvider';
+import { ToastData } from 'common/providers/ToastContext';
 
 /**
  * Properties for the `Toast` component.

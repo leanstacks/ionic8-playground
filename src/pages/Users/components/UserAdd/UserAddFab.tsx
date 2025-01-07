@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import './UserAddFab.scss';
 import { PropsWithTestId } from 'common/components/types';
-import Icon, { IconName } from 'common/components/Icon/Icon';
+import Icon from 'common/components/Icon/Icon';
 
 /**
  * Properties for the `UserAddFab` component.
@@ -37,7 +37,7 @@ const UserAddFab = ({
       {...fabProps}
     >
       <IonFabButton>
-        <Icon className="ls-user-add-fab__icon" icon={IconName.Plus} />
+        <Icon className="ls-user-add-fab__icon" icon="plus" />
       </IonFabButton>
     </IonFab>
   );

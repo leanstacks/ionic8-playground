@@ -17,7 +17,7 @@ import { BaseComponentProps } from '../types';
 import { useAuth } from 'common/hooks/useAuth';
 import { useGetCurrentUser } from 'common/api/useGetCurrentUser';
 import Avatar from '../Icon/Avatar';
-import Icon, { IconName } from '../Icon/Icon';
+import Icon from '../Icon/Icon';
 
 /**
  * Properties for the `AppMenu` component.
@@ -65,13 +65,13 @@ const AppMenu = ({ className, testid = 'menu-app' }: AppMenuProps): JSX.Element 
           <>
             <IonMenuToggle>
               <IonItem routerLink="/tabs/home" lines="full" data-testid={`${testid}-item-home`}>
-                <Icon className="ls-app-menu__toggle-icon" icon={IconName.House} fixedWidth />
+                <Icon className="ls-app-menu__toggle-icon" icon="house" fixedWidth />
                 <IonLabel>{t('navigation.home')}</IonLabel>
               </IonItem>
             </IonMenuToggle>
             <IonMenuToggle>
               <IonItem routerLink="/tabs/users" lines="full" data-testid={`${testid}-item-users`}>
-                <Icon className="ls-app-menu__toggle-icon" icon={IconName.Users} fixedWidth />
+                <Icon className="ls-app-menu__toggle-icon" icon="users" fixedWidth />
                 <IonLabel>{t('navigation.users')}</IonLabel>
               </IonItem>
             </IonMenuToggle>
@@ -81,7 +81,7 @@ const AppMenu = ({ className, testid = 'menu-app' }: AppMenuProps): JSX.Element 
                 lines="full"
                 data-testid={`${testid}-item-account`}
               >
-                <Icon className="ls-app-menu__toggle-icon" icon={IconName.UserGear} fixedWidth />
+                <Icon className="ls-app-menu__toggle-icon" icon="userGear" fixedWidth />
                 <IonLabel>{t('navigation.account')}</IonLabel>
               </IonItem>
             </IonMenuToggle>
@@ -91,7 +91,7 @@ const AppMenu = ({ className, testid = 'menu-app' }: AppMenuProps): JSX.Element 
                 lines="full"
                 data-testid={`${testid}-item-signout`}
               >
-                <Icon className="ls-app-menu__toggle-icon" icon={IconName.SignOut} fixedWidth />
+                <Icon className="ls-app-menu__toggle-icon" icon="signOut" fixedWidth />
                 <IonLabel>{t('navigation.signout')}</IonLabel>
               </IonItem>
             </IonMenuToggle>

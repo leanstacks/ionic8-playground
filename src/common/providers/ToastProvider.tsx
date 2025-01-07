@@ -1,38 +1,7 @@
-import { IonToast } from '@ionic/react';
-import React, {
-  ComponentPropsWithoutRef,
-  Dispatch,
-  PropsWithChildren,
-  useMemo,
-  useReducer,
-} from 'react';
+import { Dispatch, PropsWithChildren, useMemo, useReducer } from 'react';
 import { v4 as uuid } from 'uuid';
 
-/**
- * Describes the attributes of a single `Toast`.
- * @see {@link IonToast}
- */
-export interface ToastData
-  extends Pick<
-    ComponentPropsWithoutRef<typeof IonToast>,
-    'buttons' | 'color' | 'duration' | 'layout' | 'message' | 'position' | 'positionAnchor'
-  > {
-  id: string;
-}
-
-/**
- * A DTO type which describes the attributes to create a new `Toast`.
- */
-export type CreateToastDTO = Omit<ToastData, 'id'>;
-
-/**
- * The `value` provided by the `ToastContext`.
- */
-export interface ToastContextValue {
-  toasts: ToastData[];
-  createToast: (toast: CreateToastDTO) => void;
-  removeToast: (id: string) => void;
-}
+import { CreateToastDTO, ToastContext, ToastContextValue, ToastData } from './ToastContext';
 
 /**
  * The `ToastContext` reducer state.
@@ -123,11 +92,6 @@ const actions = (dispatch: Dispatch<ToastContextAction>) => {
     removeToast,
   };
 };
-
-/**
- * The `ToastContext` instance.
- */
-export const ToastContext = React.createContext<ToastContextValue | undefined>(undefined);
 
 /**
  * The `ToastProvider` component creates, maintains, and provides access to the
