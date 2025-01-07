@@ -30,6 +30,7 @@ function customRenderHook<
 }
 
 // re-export @testing-library/react
+// eslint-disable-next-line
 export * from '@testing-library/react';
 
 // override the render function

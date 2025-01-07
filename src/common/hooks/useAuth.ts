@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { AuthContext, AuthContextValue } from 'common/providers/AuthProvider';
+import { AuthContext, AuthContextValue } from 'common/providers/AuthContext';
 
 /**
  * The `useAuth` hook returns the current `AuthContext` value.

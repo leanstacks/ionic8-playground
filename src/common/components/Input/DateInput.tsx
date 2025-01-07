@@ -7,7 +7,7 @@ import dayjs from 'dayjs';
 
 import './DateInput.scss';
 import { PropsWithTestId } from '../types';
-import Icon, { IconName } from '../Icon/Icon';
+import Icon from '../Icon/Icon';
 
 /**
  * Default `IonDatetime` `formatOptions` for the date. May be overridden by
@@ -137,7 +137,7 @@ const DateInput = ({
           onClick={() => setIsOpen(true)}
           slot="end"
         >
-          <Icon icon={IconName.Calendar} />
+          <Icon icon="calendar" />
         </IonButton>
       </IonInput>
 

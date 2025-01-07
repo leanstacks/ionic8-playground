@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { BaseComponentProps } from 'common/components/types';
 import { Company } from 'common/models/user';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
-import Icon, { IconName } from 'common/components/Icon/Icon';
+import Icon from 'common/components/Icon/Icon';
 import HeaderRow from 'common/components/Text/HeaderRow';
 
 /**
@@ -68,7 +68,7 @@ const CompanyDetail = ({
     return (
       <div className={classNames('ls-company-detail', className)} data-testid={testid}>
         <HeaderRow border>
-          <Icon icon={IconName.Building} />
+          <Icon icon="building" />
           <div>{t('company', { ns: 'user' })}</div>
         </HeaderRow>
         <div className="ls-company-detail__content">

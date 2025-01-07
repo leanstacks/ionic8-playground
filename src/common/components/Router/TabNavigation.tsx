@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import './TabNavigation.scss';
 import AppMenu from '../Menu/AppMenu';
-import Icon, { IconName } from '../Icon/Icon';
+import Icon from '../Icon/Icon';
 import HomePage from 'pages/Home/HomePage';
 import UserDetailPage from 'pages/Users/components/UserDetail/UserDetailPage';
 import UserListPage from 'pages/Users/components/UserList/UserListPage';
@@ -68,7 +68,7 @@ const TabNavigation = (): JSX.Element => {
           <IonTabButton className="ls-tab-navigation__bar-button" tab="home" href="/tabs/home">
             <Icon
               className="ls-tab-navigation__bar-button-icon"
-              icon={IconName.House}
+              icon="house"
               size="xl"
               fixedWidth
             />
@@ -77,7 +77,7 @@ const TabNavigation = (): JSX.Element => {
           <IonTabButton className="ls-tab-navigation__bar-button" tab="users" href="/tabs/users">
             <Icon
               className="ls-tab-navigation__bar-button-icon"
-              icon={IconName.Users}
+              icon="users"
               size="xl"
               fixedWidth
             />
@@ -90,7 +90,7 @@ const TabNavigation = (): JSX.Element => {
           >
             <Icon
               className="ls-tab-navigation__bar-button-icon"
-              icon={IconName.UserGear}
+              icon="userGear"
               size="xl"
               fixedWidth
             />

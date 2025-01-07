@@ -17,7 +17,7 @@ import { useProgress } from 'common/hooks/useProgress';
 import { DismissButton } from 'common/components/Toast/Toast';
 import { User } from 'common/models/user';
 import Avatar from 'common/components/Icon/Avatar';
-import Icon, { IconName } from 'common/components/Icon/Icon';
+import Icon from 'common/components/Icon/Icon';
 import UserDeleteAlert from '../UserDelete/UserDeleteAlert';
 
 /**
@@ -72,7 +72,7 @@ const UserListItem = ({ className, lines, testid, user }: UserListItemProps): JS
             <div data-testid={`${testIdentifier}-name`}>{user.name}</div>
           </div>
           <div className="ls-user-list-item__content-row ls-user-list-item__content-row--secondary">
-            <Icon icon={IconName.Envelope} />
+            <Icon icon="envelope" />
             <div data-testid={`${testIdentifier}-email`}>{user.email}</div>
           </div>
         </IonLabel>
@@ -80,7 +80,7 @@ const UserListItem = ({ className, lines, testid, user }: UserListItemProps): JS
 
       <IonItemOptions>
         <IonItemOption className="ls-user-list-item__sliding-option" onClick={() => doEdit()}>
-          <Icon className="ls-user-list-item__sliding-option-icon" icon={IconName.PenToSquare} />
+          <Icon className="ls-user-list-item__sliding-option-icon" icon="penToSquare" />
           {t('label.edit')}
         </IonItemOption>
         <IonItemOption
@@ -88,7 +88,7 @@ const UserListItem = ({ className, lines, testid, user }: UserListItemProps): JS
           color="danger"
           onClick={() => setShowConfirmDelete(true)}
         >
-          <Icon className="ls-user-list-item__sliding-option-icon" icon={IconName.Trash} />
+          <Icon className="ls-user-list-item__sliding-option-icon" icon="trash" />
           {t('label.delete')}
         </IonItemOption>
       </IonItemOptions>

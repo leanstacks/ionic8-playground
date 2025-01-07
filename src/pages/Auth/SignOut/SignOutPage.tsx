@@ -26,7 +26,6 @@ const SignOutPage = ({ testid = 'page-signout' }: PropsWithTestId): JSX.Element 
         router.push('/tabs/home', 'forward', 'replace');
       },
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

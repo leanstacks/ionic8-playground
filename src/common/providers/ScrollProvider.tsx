@@ -1,30 +1,7 @@
-import { createContext, PropsWithChildren, useState } from 'react';
+import { PropsWithChildren, useState } from 'react';
 import { ScrollCustomEvent } from '@ionic/core';
 
-/**
- * The `ScrollDirection` type describes the direction of the scroll.
- */
-export type ScrollDirection = 'down' | 'up';
-
-/**
- * The `value` provided by the `ScrollContext`.
- */
-export type ScrollContextValue = {
-  scrollDirection?: ScrollDirection;
-  handleIonScroll: (e: ScrollCustomEvent) => void;
-};
-
-/**
- * Default value for the `ScrollContext`.
- */
-const DEFAULT_VALUE: ScrollContextValue = {
-  handleIonScroll: () => {},
-};
-
-/**
- * The `ScrollContext` instance.
- */
-export const ScrollContext = createContext<ScrollContextValue>(DEFAULT_VALUE);
+import { ScrollContext, ScrollContextValue, ScrollDirection } from './ScrollContext';
 
 /**
  * The `ScrollProvider` component creates and provides access to the `ScrollContext`

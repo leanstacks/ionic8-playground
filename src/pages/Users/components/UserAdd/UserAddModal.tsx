@@ -19,7 +19,7 @@ import { useCreateUser } from 'pages/Users/api/useCreateUser';
 import { useProgress } from 'common/hooks/useProgress';
 import { useToasts } from 'common/hooks/useToasts';
 import { DismissButton } from 'common/components/Toast/Toast';
-import Icon, { IconName } from 'common/components/Icon/Icon';
+import Icon from 'common/components/Icon/Icon';
 import UserForm from '../UserForm/UserForm';
 import ErrorCard from 'common/components/Card/ErrorCard';
 
@@ -67,7 +67,7 @@ const UserAddModal = ({
 
           <IonButtons slot="end">
             <IonButton onClick={() => setIsOpen(false)} data-testid={`${testid}-button-close`}>
-              <Icon icon={IconName.Xmark} />
+              <Icon icon="xmark" />
             </IonButton>
           </IonButtons>
 

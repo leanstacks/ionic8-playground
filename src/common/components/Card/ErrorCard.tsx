@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
 import MessageCard, { MessageCardProps } from './MessageCard';
-import { IconName } from '../Icon/Icon';
 
 /**
  * Properties for the `ErrorCard` component.
@@ -17,7 +16,7 @@ interface ErrorCardProps extends MessageCardProps {}
  */
 const ErrorCard = ({
   color = 'danger',
-  icon = IconName.TriangleExclamation,
+  icon = 'triangleExclamation',
   testid = 'card-error',
   title,
   ...cardProps

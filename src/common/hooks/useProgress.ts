@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { ProgressContext, ProgressContextValue } from 'common/providers/ProgressProvider';
+import { ProgressContext, ProgressContextValue } from 'common/providers/ProgressContext';
 
 /**
  * The `useProgress` hook returns the current `ProgressContext` value.

@@ -20,7 +20,7 @@ import ToggleInput from 'common/components/Input/ToggleInput';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 import List from 'common/components/List/List';
 import RangeInput from 'common/components/Input/RangeInput';
-import Icon, { IconName } from 'common/components/Icon/Icon';
+import Icon from 'common/components/Icon/Icon';
 import SelectInput from 'common/components/Input/SelectInput';
 import RadioGroupInput from 'common/components/Input/RadioGroupInput';
 
@@ -162,8 +162,8 @@ const SettingsForm = ({
                   onIonChange={() => submitForm()}
                   testid={`${testid}-field-brightness`}
                 >
-                  <Icon icon={IconName.Minus} slot="start" />
-                  <Icon icon={IconName.Plus} slot="end" />
+                  <Icon icon="minus" slot="start" />
+                  <Icon icon="plus" slot="end" />
                 </RangeInput>
               </IonItem>
 

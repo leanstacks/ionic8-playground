@@ -26,7 +26,7 @@ import UserList from './UserList';
 import UserGrid from './UserGrid';
 import ProgressProvider from 'common/providers/ProgressProvider';
 import UserAddFab from '../UserAdd/UserAddFab';
-import Icon, { IconName } from 'common/components/Icon/Icon';
+import Icon from 'common/components/Icon/Icon';
 import UserAddModal from '../UserAdd/UserAddModal';
 
 /**
@@ -87,7 +87,7 @@ export const UserListPage = ({ testid = 'page-user-list' }: PropsWithTestId): JS
                   onClick={() => setIsOpenModal(true)}
                   data-testid={`${testid}-page-header-button-create`}
                 >
-                  <Icon icon={IconName.Plus} size="xl" />
+                  <Icon icon="plus" size="xl" />
                 </IonButton>
               </IonButtons>
             </PageHeader>

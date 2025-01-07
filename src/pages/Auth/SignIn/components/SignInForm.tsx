@@ -21,7 +21,7 @@ import { useSignIn } from '../api/useSignIn';
 import { useProgress } from 'common/hooks/useProgress';
 import Input from 'common/components/Input/Input';
 import ErrorCard from 'common/components/Card/ErrorCard';
-import Icon, { IconName } from 'common/components/Icon/Icon';
+import Icon from 'common/components/Icon/Icon';
 import HeaderRow from 'common/components/Text/HeaderRow';
 import CheckboxInput from 'common/components/Input/CheckboxInput';
 
@@ -116,7 +116,7 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
           <Form data-testid={`${testid}-form`}>
             <HeaderRow border>
               <div>{t('signin', { ns: 'auth' })}</div>
-              <Icon id="signinInfo" icon={IconName.CircleInfo} color="secondary" />
+              <Icon id="signinInfo" icon="circleInfo" color="secondary" />
             </HeaderRow>
 
             <Input

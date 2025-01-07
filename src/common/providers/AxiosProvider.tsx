@@ -1,20 +1,6 @@
-import React, { PropsWithChildren, useEffect, useState } from 'react';
-import axios, { AxiosInstance } from 'axios';
+import { PropsWithChildren, useEffect, useState } from 'react';
 
-/**
- * Custom `Axios` instance.
- */
-const customAxios = axios.create({
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-  },
-});
-
-/**
- * The `AxiosContext` instance.
- */
-export const AxiosContext = React.createContext<AxiosInstance>(customAxios);
+import { AxiosContext, customAxios } from './AxiosContext';
 
 /**
  * The `AxiosProvider` React component creates, maintains, and provides

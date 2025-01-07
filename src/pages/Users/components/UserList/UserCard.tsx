@@ -5,7 +5,7 @@ import './UserCard.scss';
 import { BaseComponentProps } from 'common/components/types';
 import { User } from 'common/models/user';
 import Avatar from 'common/components/Icon/Avatar';
-import Icon, { IconName } from 'common/components/Icon/Icon';
+import Icon from 'common/components/Icon/Icon';
 
 /**
  * Properties for the `UserCard` component.
@@ -34,7 +34,7 @@ const UserCard = ({ className, testid = 'card-user', user }: UserCardProps): JSX
         <div>
           <div className="ls-card-user__header">{user.name}</div>
           <div className="ls-card-user__content-row">
-            <Icon icon={IconName.Envelope} />
+            <Icon icon="envelope" />
             <div>{user.email}</div>
           </div>
         </div>
