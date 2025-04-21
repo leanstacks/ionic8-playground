@@ -3,10 +3,13 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/vitest';
-import { afterAll, afterEach, beforeAll } from 'vitest';
+import { afterAll, afterEach, beforeAll, vi } from 'vitest';
 
 import { server } from 'test/mocks/server';
 import { queryClient } from 'test/query-client';
+
+// Mocking scrollIntoView which is not implemented by jsdom
+Element.prototype.scrollIntoView = vi.fn();
 
 // Tests always run in this timezone
 process.env.TZ = 'UTC';
