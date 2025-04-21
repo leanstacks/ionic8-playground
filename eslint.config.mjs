@@ -44,6 +44,6 @@ export default tseslint.config(
   {
     // global ignores
     // do not add any other keys to this object
-    ignores: ['coverage/', 'dist/'],
+    ignores: ['android/', 'coverage/', 'dist/'],
   },
 );
